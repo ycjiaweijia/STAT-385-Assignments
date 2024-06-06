@@ -1,0 +1,93 @@
+---
+title: "STAT 385 Quiz 5"
+format: html
+editor: visual
+---
+
+## Quiz 5 Instructions
+
+Please complete the following questions and submit a file named **Quiz5.R** to [Gradescope](https://www.gradescope.com/login).
+
+**Remember:**
+
+<!-- -   Do not rename external data files or edit them in any way. In other words, don't modify *data.csv*. Your code won't work properly on my version of that data set, if you do. -->
+
+-   Do not use global paths in you script. Instead, use *setwd()* interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope's virtual machines.
+-   Do not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.
+-   Check to make sure you do not have any syntax errors. Code that doesn't run will get a very bad grade.
+-   Make sure to name your submission **Quiz5.R**
+
+**Tip:** before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.
+
+::: {style="height:30px;"}
+:::
+
+## Question 1 
+
+**[4pts]** Use `matrix()` to create a matrix `mat1` (see below) from the R built-in constant vector `month.abb`. Use the function `colnames()` to add the standard calendar quarters that make up the year, that is, add the column names `Q1, Q2, Q3, Q4`. Add `1st, 2nd, 3rd` as row names.
+
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- # Solution -->
+<!-- mat1 <- matrix(month.abb, nrow = 3, ncol = 4) -->
+<!-- colnames(mat1) <- c("Q1", "Q2", "Q3", "Q4") -->
+<!-- rownames(mat1) <- c("1st", "2nd", "3rd") -->
+<!-- mat1 -->
+
+<!-- ``` -->
+
+::: {style="height:30px;"}
+:::
+
+## Question 2 
+
+**[3pts]** Create a matrix as below and denote it as `mat2`.
+
+<!-- ```{r} -->
+<!-- #| echo: false -->
+
+<!-- c1 <- rep(c(1, 2), each=3) -->
+<!-- c2 <- rep(c(1, 2, 3), time=2) -->
+<!-- mat2 <- matrix(c(c1, c2), nrow=6) -->
+<!-- mat2 -->
+<!-- ``` -->
+
+::: {style="height:30px;"}
+:::
+
+## Question 3
+
+Assume the matrix `m` is defined as follows. We find that `m` is a matrix, not a vector, as shown below.
+
+```{r}
+m <- matrix(c(1,2,3,4,5,6), nrow=2)
+is.matrix(m) # is.matrix() tests if the object is a matrix
+is.vector(m) # is.vector() tests if the object is a vector
+```
+
+(a) **\[1pt\]** Check the dimension of `m` using `dim()` function. Save the result to object `d`.
+
+<!-- ```{r} -->
+<!-- d = dim(m) -->
+<!-- d -->
+<!-- ``` -->
+
+(b) **\[1pt\]** Define `m1` the same as `m` above. Then Remove the dimension attribute of `m1` by using `dim(m1) <- NULL`. Then check if `m1` is a matrix? a vector?
+
+<!-- ```{r} -->
+<!-- m1 <- matrix(c(1,2,3,4,5,6), nrow=2) -->
+<!-- dim(m1) <- NULL -->
+<!-- is.matrix(m1) -->
+<!-- is.vector(m1) -->
+
+<!-- ``` -->
+
+(c) **\[1pt\]** Let `m2 <- c(1,2,3,4,5,6)`. Add the dimension attribute to `m2` by using `dim(m2) <- c(2, 3)`. Then check if `m2` is a matrix? a vector?
+
+<!-- ```{r} -->
+<!-- m2 <- c(1,2,3,4,5,6) -->
+<!-- dim(m2) <- c(2, 3) -->
+<!-- is.matrix(m2) -->
+<!-- is.vector(m2) -->
+
+<!-- ``` -->

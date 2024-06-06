@@ -25,9 +25,9 @@ Please complete the following questions and submit a file named **Quiz2.R** to [
 ::: {style="height:30px;"}
 :::
 
-## Question 1. 
+## Question 1.
 
-**[2 pts] Area of trapezoid**
+**\[2 pts\] Area of trapezoid**
 
 As you know, the formula for the area of a trapezoid is (base 1 + base 2) /2 $\times$ height, as seen in the figure below:
 

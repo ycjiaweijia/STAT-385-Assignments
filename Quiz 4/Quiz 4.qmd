@@ -1,0 +1,156 @@
+---
+title: "STAT 385 Quiz 4"
+format: html
+editor: visual
+---
+
+## Quiz 4 Instructions
+
+Please complete the following questions and submit a file named **Quiz4.R** to [Gradescope](https://www.gradescope.com/login).
+
+**Remember:**
+
+<!-- -   Do not rename external data files or edit them in any way. In other words, don't modify *data.csv*. Your code won't work properly on my version of that data set, if you do. -->
+
+-   Do not use global paths in you script. Instead, use *setwd()* interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope's virtual machines.
+-   Do not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.
+-   Check to make sure you do not have any syntax errors. Code that doesn't run will get a very bad grade.
+-   Make sure to name your submission **Quiz4.R**
+
+**Tip:** before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.
+
+::: {style="height:30px;"}
+:::
+
+## Question 1
+
+(a) **\[1pts\]** Let `vec1 <- seq(1, 10, 2)`. Generate a factor `vec1_factor` using `vec1`.
+
+<!-- ```{r} -->
+
+<!-- vec1 <- seq(1, 10, 2) -->
+
+<!-- vec1_factor <- factor(vec1) -->
+
+<!-- ``` -->
+
+(b) **\[1pts\]** Check if `vec1` is a vector? A factor? Use `class()` function to check the type of `vec1`.
+
+<!-- ```{r} -->
+
+<!-- is.vector(vec1) -->
+
+<!-- is.factor(vec1) -->
+
+<!-- ``` -->
+
+(c) **\[1pts\]** Check if `vec1_factor` is a vector? A factor? Use `class()` function to check the type of `vec1_factor`.
+
+<!-- ```{r} -->
+
+<!-- is.vector(vec1_factor) -->
+
+<!-- is.factor(vec1_factor) -->
+
+<!-- ``` -->
+
+(d) **\[1pts\]** Generate another factor `vec1_factor10` using `vec1`, but `levels = 1:10`. Use `identical(vec1_factor, vec1_factor10)` to compare if the two factors are the same.
+
+<!-- ```{r} -->
+
+<!-- vec1_factor10 <- factor(vec1, levels = 1:10) -->
+
+<!-- vec1_factor10 -->
+
+<!-- identical(vec1_factor, vec1_factor10) -->
+
+<!-- ``` -->
+
+<!-- (e) Find both the third element of `vec_factor`and save the result as object `v3`. -->
+
+<!-- ```{r} -->
+
+<!-- v3 <- vec1_factor[3] -->
+
+<!-- ``` -->
+
+::: {style="height:30px;"}
+:::
+
+## Question 2 \[2pts\]
+
+The typical 5-point Likert scale includes the following levels:
+
+-   Strongly Disagree
+-   Disagree
+-   Neutral
+-   Agree
+-   Strongly Agree
+
+```{r}
+y <- c(
+  "Disagree", "Disagree", "Agree", "Agree", "Strongly Agree",           
+  "Strongly Agree", "Strongly Disagree", "Strongly Disagree", 
+  "Agree", "Agree", "Neutral", "Disagree",         
+  "Strongly Disagree", "Neutral", "Strongly Agree", "Agree",           
+  "Disagree", "Strongly Agree", "Strongly Agree", "Agree",            
+  "Neutral", "Agree", "Disagree", "Agree", "Agree"  
+)
+```
+
+Based on the vector `y` above, please generate a ordinal factor `y_factor`, which has the ordered levels as shown above (that is, 'Strongly Disagree' \< 'Disagree' \< 'Neutral' \< 'Agree' \< 'Strongly Agree').
+
+<!-- ```{r} -->
+
+<!-- likert <- c("Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree") -->
+
+<!-- y_factor <- factor(y, levels = likert, ordered = TRUE) -->
+
+<!-- y_factor -->
+
+<!-- ``` -->
+
+::: {style="height:30px;"}
+:::
+
+## Question 3
+
+<!-- ```{r} -->
+
+<!-- days_of_week <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday") -->
+
+<!-- DAYS <- c("Saturday", "Wednesday", "Sunday", "Friday") -->
+
+<!-- ``` -->
+
+(a) **\[1pt\]** Sort the `DAYS` vector using `sort()` function. (Please note that the results are in alphabetical order rather than the order of the weekdays.)
+
+<!-- ```{r} -->
+
+<!-- sort(DAYS) -->
+
+<!-- ``` -->
+
+(b) **\[1pt\]** Encode the vector `DAYS` into a factor `DAYS_f`, by using `days_of_week` above as the levels for the factor.
+
+<!-- ```{r} -->
+
+<!-- DAYS_f <- factor(DAYS, levels = days_of_week) -->
+
+<!-- ``` -->
+
+(c) **\[1pt\]** Sort `DAYS_f` using `sort()` function. (Please note that the results now is in the order of the weekdays.)
+
+<!-- ```{r} -->
+
+<!-- sort(DAYS_f) -->
+
+<!-- ``` -->
+
+(d) **\[1pt\]** Use the function `unclass()` to obtain the integer vector associated to `DAYS_f`.
+
+<!-- ```{r} -->
+
+<!-- unclass(DAYS_f) -->
+
+<!-- ``` -->
