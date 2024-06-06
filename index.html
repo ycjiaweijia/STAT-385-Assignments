@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STAT 385 Quiz 2</title>
+<title>STAT 385 Quiz 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,49 +20,54 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="Quiz 2_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Quiz 2_files/libs/quarto-html/quarto.js"></script>
-<script src="Quiz 2_files/libs/quarto-html/popper.min.js"></script>
-<script src="Quiz 2_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Quiz 2_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Quiz 2_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Quiz 2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Quiz 2_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Quiz 2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Quiz 2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="Quiz 5_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Quiz 5_files/libs/quarto-html/quarto.js"></script>
+<script src="Quiz 5_files/libs/quarto-html/popper.min.js"></script>
+<script src="Quiz 5_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Quiz 5_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Quiz 5_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Quiz 5_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Quiz 5_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Quiz 5_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Quiz 5_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -74,7 +79,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">STAT 385 Quiz 2</h1>
+<h1 class="title">STAT 385 Quiz 5</h1>
 </div>
 
 
@@ -91,116 +96,89 @@ window.Quarto = {
 </header>
 
 
-<section id="quiz-2-instructions" class="level2">
-<h2 class="anchored" data-anchor-id="quiz-2-instructions">Quiz 2 Instructions</h2>
-<p>Please complete the following questions and submit a file named <strong>Quiz2.R</strong> to <a href="https://www.gradescope.com/login">Gradescope</a>.</p>
+<section id="quiz-5-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="quiz-5-instructions">Quiz 5 Instructions</h2>
+<p>Please complete the following questions and submit a file named <strong>Quiz5.R</strong> to <a href="https://www.gradescope.com/login">Gradescope</a>.</p>
 <p><strong>Remember:</strong></p>
 <!-- -   Do not rename external data files or edit them in any way. In other words, don't modify *data.csv*. Your code won't work properly on my version of that data set, if you do. -->
 <ul>
 <li>Do not use global paths in you script. Instead, use <em>setwd()</em> interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.</li>
 <li>Do not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.</li>
 <li>Check to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.</li>
-<li>Make sure to name your submission <strong>Quiz2.R</strong></li>
+<li>Make sure to name your submission <strong>Quiz5.R</strong></li>
 </ul>
 <p><strong>Tip:</strong> before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.</p>
 <div style="height:30px;">
 
 </div>
 </section>
-<section id="question-1." class="level2">
-<h2 class="anchored" data-anchor-id="question-1.">Question 1.</h2>
-<p><strong>[2 pts] Area of trapezoid</strong></p>
-<p>As you know, the formula for the area of a trapezoid is (base 1 + base 2) /2 <span class="math inline">\(\times\)</span> height, as seen in the figure below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="area-trapezoid.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-<p>Write R code to compute the area of a trapezoid of <code>base1 = 10</code>, <code>base2 = 7</code>, and <code>height = 5</code>. The computed area should be stored in an object <code>area</code>.</p>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p><strong>[4pts]</strong> Use <code>matrix()</code> to create a matrix <code>mat1</code> (see below) from the R built-in constant vector <code>month.abb</code>. Use the function <code>colnames()</code> to add the standard calendar quarters that make up the year, that is, add the column names <code>Q1, Q2, Q3, Q4</code>. Add <code>1st, 2nd, 3rd</code> as row names.</p>
 <!-- ```{r} -->
-<!-- # Solutions -->
-<!-- base1 = 10 -->
-<!-- base2 = 7 -->
-<!-- height = 5 -->
-<!-- area = (base1 + base2)/2 * height -->
-<!-- area -->
+<!-- #| echo: false -->
+<!-- # Solution -->
+<!-- mat1 <- matrix(month.abb, nrow = 3, ncol = 4) -->
+<!-- colnames(mat1) <- c("Q1", "Q2", "Q3", "Q4") -->
+<!-- rownames(mat1) <- c("1st", "2nd", "3rd") -->
+<!-- mat1 -->
 <!-- ``` -->
 <div style="height:30px;">
 
 </div>
 </section>
-<section id="question-2." class="level2">
-<h2 class="anchored" data-anchor-id="question-2.">Question 2.</h2>
-<p>Consider the scores of a high school student:</p>
-<ul>
-<li>Maths – 95</li>
-<li>Physics – 88.5</li>
-<li>Physics lab – 79</li>
-<li>English – 92</li>
-</ul>
-<p>(a). [1 pt] Use assignments to create variables <code>maths</code>, <code>physics</code>, <code>physicslab</code>, and <code>english</code> with their corresponding amounts.</p>
-<p>(b). [2 pts] Create a <code>scores</code> object with the four scores in (a). And use the function <code>names()</code> to give names o the elements of your vector <code>scores</code>.</p>
-<p>(c). [2 pts] Create a <code>avg</code> object with the average of the scores.</p>
-<p>(d). [4 pts] Create a <code>grades</code> object by converting the scores to grades based on the policy below. Then create a vector <code>grade\_values</code> of <strong>integer</strong> values with the corresponding grade values. Recall that integer values are of the form <code>1L</code>.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Range</th>
-<th>Grade</th>
-<th style="text-align: right;">Grade Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>[90, 100]</td>
-<td>A</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td>[80, 90)</td>
-<td>B</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td>[70, 80)</td>
-<td>C</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td>[60, 70)</td>
-<td>D</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td>&lt;60</td>
-<td>F</td>
-<td style="text-align: right;">0</td>
-</tr>
-</tbody>
-</table>
-<p>(e). [2 pts] Suppose the credits for Maths, Physics, Physics lab, English are 0.5, 1, 0.5, 1, respectively. Create a <code>credits</code> object.</p>
-<p>(f). [2 pts] Calculate the weighted GPA with</p>
-<p><span class="math display">\[\text{High School GPA} = \sum (\text{grade value}*\text{credits})/ \sum \text{credits}\]</span> Save the value to object <code>GPA</code>.</p>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<p><strong>[3pts]</strong> Create a matrix as below and denote it as <code>mat2</code>.</p>
 <!-- ```{r} -->
-<!-- # Solution -->
-<!-- # (a) -->
-<!-- maths = 95 -->
-<!-- physics = 88.5 -->
-<!-- physicslab = 79 -->
-<!-- english = 92 -->
-<!-- # (b) -->
-<!-- scores = c(maths, physics, physicslab, english) -->
-<!-- # (c) -->
-<!-- avg = mean(scores) -->
-<!-- avg -->
-<!-- # (d) -->
-<!-- grades <- c("A", "B", "C", "A") -->
-<!-- grade_values <- c(4L, 3L, 2L, 4L) -->
-<!-- # (e) -->
-<!-- credits <- c(0.5, 1, 0.5, 1) -->
-<!-- # (f) -->
-<!-- GPA <- sum(grade_values*credits)/sum(credits) -->
-<!-- GPA -->
+<!-- #| echo: false -->
+<!-- c1 <- rep(c(1, 2), each=3) -->
+<!-- c2 <- rep(c(1, 2, 3), time=2) -->
+<!-- mat2 <- matrix(c(c1, c2), nrow=6) -->
+<!-- mat2 -->
+<!-- ``` -->
+<div style="height:30px;">
+
+</div>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<p>Assume the matrix <code>m</code> is defined as follows. We find that <code>m</code> is a matrix, not a vector, as shown below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="at">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.matrix</span>(m) <span class="co"># is.matrix() tests if the object is a matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(m) <span class="co"># is.vector() tests if the object is a vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<ol type="a">
+<li><strong>[1pt]</strong> Check the dimension of <code>m</code> using <code>dim()</code> function. Save the result to object <code>d</code>.</li>
+</ol>
+<!-- ```{r} -->
+<!-- d = dim(m) -->
+<!-- d -->
+<!-- ``` -->
+<ol start="2" type="a">
+<li><strong>[1pt]</strong> Define <code>m1</code> the same as <code>m</code> above. Then Remove the dimension attribute of <code>m1</code> by using <code>dim(m1) &lt;- NULL</code>. Then check if <code>m1</code> is a matrix? a vector?</li>
+</ol>
+<!-- ```{r} -->
+<!-- m1 <- matrix(c(1,2,3,4,5,6), nrow=2) -->
+<!-- dim(m1) <- NULL -->
+<!-- is.matrix(m1) -->
+<!-- is.vector(m1) -->
+<!-- ``` -->
+<ol start="3" type="a">
+<li><strong>[1pt]</strong> Let <code>m2 &lt;- c(1,2,3,4,5,6)</code>. Add the dimension attribute to <code>m2</code> by using <code>dim(m2) &lt;- c(2, 3)</code>. Then check if <code>m2</code> is a matrix? a vector?</li>
+</ol>
+<!-- ```{r} -->
+<!-- m2 <- c(1,2,3,4,5,6) -->
+<!-- dim(m2) <- c(2, 3) -->
+<!-- is.matrix(m2) -->
+<!-- is.vector(m2) -->
 <!-- ``` -->
 </section>
 
