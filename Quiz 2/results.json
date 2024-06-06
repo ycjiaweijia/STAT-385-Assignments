@@ -1,0 +1,1 @@
+{"tests":[{"name":"first (visible)","score":1,"max_score":1,"visibility":"visible"},{"name":"second (visible)","score":1,"max_score":1,"visibility":"visible"},{"name":"third (invisible)","score":1,"max_score":1,"visibility":"after_due_date"}]}

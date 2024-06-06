@@ -1,0 +1,128 @@
+---
+title: "STAT 385 Quiz 2"
+editor: visual
+mainfont: "Baskerville" # {html, pdf, beamer} Font family for regular text
+monofont: "JetBrains Mono" # {html, pdf, beamer} Font family for code
+editor_options: 
+  chunk_output_type: console
+---
+
+## Quiz 2 Instructions
+
+Please complete the following questions and submit a file named **Quiz2.R** to [Gradescope](https://www.gradescope.com/login).
+
+**Remember:**
+
+<!-- -   Do not rename external data files or edit them in any way. In other words, don't modify *data.csv*. Your code won't work properly on my version of that data set, if you do. -->
+
+-   Do not use global paths in you script. Instead, use *setwd()* interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope's virtual machines.
+-   Do not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.
+-   Check to make sure you do not have any syntax errors. Code that doesn't run will get a very bad grade.
+-   Make sure to name your submission **Quiz2.R**
+
+**Tip:** before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.
+
+::: {style="height:30px;"}
+:::
+
+## Question 1. 
+
+**[2 pts] Area of trapezoid**
+
+As you know, the formula for the area of a trapezoid is (base 1 + base 2) /2 $\times$ height, as seen in the figure below:
+
+![](area-trapezoid.png){fig-align="center"}
+
+Write R code to compute the area of a trapezoid of `base1 = 10`, `base2 = 7`, and `height = 5`. The computed area should be stored in an object `area`.
+
+<!-- ```{r} -->
+
+<!-- # Solutions -->
+
+<!-- base1 = 10 -->
+
+<!-- base2 = 7 -->
+
+<!-- height = 5 -->
+
+<!-- area = (base1 + base2)/2 * height -->
+
+<!-- area -->
+
+<!-- ``` -->
+
+::: {style="height:30px;"}
+:::
+
+## Question 2.
+
+Consider the scores of a high school student:
+
+-   Maths -- 95
+-   Physics -- 88.5
+-   Physics lab -- 79
+-   English -- 92
+
+(a). \[1 pt\] Use assignments to create variables `maths`, `physics`, `physicslab`, and `english` with their corresponding amounts.
+
+(b). \[2 pts\] Create a `scores` object with the four scores in (a). And use the function `names()` to give names o the elements of your vector `scores`.
+
+(c). \[2 pts\] Create a `avg` object with the average of the scores.
+
+(d). \[4 pts\] Create a `grades` object by converting the scores to grades based on the policy below. Then create a vector `grade\_values` of **integer** values with the corresponding grade values. Recall that integer values are of the form `1L`.
+
+| Range       | Grade | Grade Value |
+|-------------|-------|------------:|
+| \[90, 100\] | A     |           4 |
+| \[80, 90)   | B     |           3 |
+| \[70, 80)   | C     |           2 |
+| \[60, 70)   | D     |           1 |
+| \<60        | F     |           0 |
+
+(e). \[2 pts\] Suppose the credits for Maths, Physics, Physics lab, English are 0.5, 1, 0.5, 1, respectively. Create a `credits` object.
+
+(f). \[2 pts\] Calculate the weighted GPA with
+
+$$\text{High School GPA} = \sum (\text{grade value}*\text{credits})/ \sum \text{credits}$$ Save the value to object `GPA`.
+
+<!-- ```{r} -->
+
+<!-- # Solution -->
+
+<!-- # (a) -->
+
+<!-- maths = 95 -->
+
+<!-- physics = 88.5 -->
+
+<!-- physicslab = 79 -->
+
+<!-- english = 92 -->
+
+<!-- # (b) -->
+
+<!-- scores = c(maths, physics, physicslab, english) -->
+
+<!-- # (c) -->
+
+<!-- avg = mean(scores) -->
+
+<!-- avg -->
+
+<!-- # (d) -->
+
+<!-- grades <- c("A", "B", "C", "A") -->
+
+<!-- grade_values <- c(4L, 3L, 2L, 4L) -->
+
+<!-- # (e) -->
+
+<!-- credits <- c(0.5, 1, 0.5, 1) -->
+
+<!-- # (f) -->
+
+<!-- GPA <- sum(grade_values*credits)/sum(credits) -->
+
+<!-- GPA -->
+
+<!-- ``` -->
