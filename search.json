@@ -105,11 +105,11 @@
     "text": "Question 1\n\n[1pts] Let vec1 &lt;- seq(1, 10, 2). Generate a factor vec1_factor using vec1.\n\n\n\n\n\n\n[1pts] Check if vec1 is a vector? A factor? Use class() function to check the type of vec1.\n\n\n\n\n\n\n[1pts] Check if vec1_factor is a vector? A factor? Use class() function to check the type of vec1_factor.\n\n\n\n\n\n\n[1pts] Generate another factor vec1_factor10 using vec1, but levels = 1:10. Use identical(vec1_factor, vec1_factor10) to compare if the two factors are the same."
   },
   {
-    "objectID": "Quiz4/Quiz4.html#question-2-2pts",
-    "href": "Quiz4/Quiz4.html#question-2-2pts",
+    "objectID": "Quiz4/Quiz4.html#question-2",
+    "href": "Quiz4/Quiz4.html#question-2",
     "title": "",
-    "section": "Question 2 [2pts]",
-    "text": "Question 2 [2pts]\nThe typical 5-point Likert scale includes the following levels:\n\nStrongly Disagree\nDisagree\nNeutral\nAgree\nStrongly Agree\n\n\ny &lt;- c(\n  \"Disagree\", \"Disagree\", \"Agree\", \"Agree\", \"Strongly Agree\",           \n  \"Strongly Agree\", \"Strongly Disagree\", \"Strongly Disagree\", \n  \"Agree\", \"Agree\", \"Neutral\", \"Disagree\",         \n  \"Strongly Disagree\", \"Neutral\", \"Strongly Agree\", \"Agree\",           \n  \"Disagree\", \"Strongly Agree\", \"Strongly Agree\", \"Agree\",            \n  \"Neutral\", \"Agree\", \"Disagree\", \"Agree\", \"Agree\"  \n)\n\nBased on the vector y above, please generate a ordinal factor y_factor, which has the ordered levels as shown above (that is, ‘Strongly Disagree’ &lt; ‘Disagree’ &lt; ‘Neutral’ &lt; ‘Agree’ &lt; ‘Strongly Agree’)."
+    "section": "Question 2",
+    "text": "Question 2\n[2pts]The typical 5-point Likert scale includes the following levels:\n\nStrongly Disagree\nDisagree\nNeutral\nAgree\nStrongly Agree\n\n\ny &lt;- c(\n  \"Disagree\", \"Disagree\", \"Agree\", \"Agree\", \"Strongly Agree\",           \n  \"Strongly Agree\", \"Strongly Disagree\", \"Strongly Disagree\", \n  \"Agree\", \"Agree\", \"Neutral\", \"Disagree\",         \n  \"Strongly Disagree\", \"Neutral\", \"Strongly Agree\", \"Agree\",           \n  \"Disagree\", \"Strongly Agree\", \"Strongly Agree\", \"Agree\",            \n  \"Neutral\", \"Agree\", \"Disagree\", \"Agree\", \"Agree\"  \n)\n\nBased on the vector y above, please generate a ordinal factor y_factor, which has the ordered levels as shown above (that is, ‘Strongly Disagree’ &lt; ‘Disagree’ &lt; ‘Neutral’ &lt; ‘Agree’ &lt; ‘Strongly Agree’)."
   },
   {
     "objectID": "Quiz4/Quiz4.html#question-3",
