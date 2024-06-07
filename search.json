@@ -49,6 +49,41 @@
     "text": "Please complete the following questions and submit a file named Quiz3.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz3.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.\n\n\n\n\n\nCreate the following vector vec1 using the function seq().\n\n\n\n\n\n\n\n\n\n\n\n\n\nFind out how to use the function seq() to create the following vector vec2.\n\n\n\n\n\n\n\n\n\n\nFind out how to use the colon operator : to create the following vector vec3.\n\n\n\n\n\n\n\n\n\n\nFind out how to use the function rep() and the input vector 1:3 to create the following vector vec4 which has 1 2 3 repeated twenty times.\n\n\n\n\n\n\n\n\n\n\nFind out how to use the function rep() and the input vector 1:3 to create the following vector vec5 which has thirty 1, thirty 2, and thirty 3.\n\n\n\n\n\n\n\n\n\n\nFind out how to use the function rep() and the input vector 1:3 to create the following vector vec6 which has twenty 1, ten 2, and forty 3.\n\n\n\n\n\n\n\n\n\n\nUse the function sum() to show that \\(1 + 2 + \\cdots + 1000 = 500500.\\) Create vector vec7 with values \\(1, 2, \\cdots, 1000\\). Then calculate the sum.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLoad the R package MASS and use the data frame cats. Obtain vectors sex and bwt from the data frame with sex &lt;- cats$Sex, bwt &lt;- cats$Bwt. Show the body weights of female cats by creating vector bwtF. How many female cats are there in the data set? Please save the length value in object len."
   },
   {
+    "objectID": "Quiz1/Quiz1.html",
+    "href": "Quiz1/Quiz1.html",
+    "title": "",
+    "section": "",
+    "text": "Please complete the following questions and submit a file named Quiz1.R to Gradescope.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify data.csv. Your code won’t work properly on modified version of the data set.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz1.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html#quiz-1-instructions",
+    "href": "Quiz1/Quiz1.html#quiz-1-instructions",
+    "title": "",
+    "section": "",
+    "text": "Please complete the following questions and submit a file named Quiz1.R to Gradescope.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify data.csv. Your code won’t work properly on modified version of the data set.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz1.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html#question-1.",
+    "href": "Quiz1/Quiz1.html#question-1.",
+    "title": "",
+    "section": "Question 1.",
+    "text": "Question 1.\nMake a vector called myVector and have it store the integers \\(1,2,3\\)"
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html#question-2.",
+    "href": "Quiz1/Quiz1.html#question-2.",
+    "title": "",
+    "section": "Question 2.",
+    "text": "Question 2.\nMake a string called myString and have it store “Hello STAT 385!”."
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html#question-3.",
+    "href": "Quiz1/Quiz1.html#question-3.",
+    "title": "",
+    "section": "Question 3.",
+    "text": "Question 3.\nRead in the data set called data.csv and store the data frame as myDataFrame."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Preface",
@@ -109,7 +144,7 @@
     "href": "Quiz4/Quiz4.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n[2pts]The typical 5-point Likert scale includes the following levels:\n\nStrongly Disagree\nDisagree\nNeutral\nAgree\nStrongly Agree\n\n\ny &lt;- c(\n  \"Disagree\", \"Disagree\", \"Agree\", \"Agree\", \"Strongly Agree\",           \n  \"Strongly Agree\", \"Strongly Disagree\", \"Strongly Disagree\", \n  \"Agree\", \"Agree\", \"Neutral\", \"Disagree\",         \n  \"Strongly Disagree\", \"Neutral\", \"Strongly Agree\", \"Agree\",           \n  \"Disagree\", \"Strongly Agree\", \"Strongly Agree\", \"Agree\",            \n  \"Neutral\", \"Agree\", \"Disagree\", \"Agree\", \"Agree\"  \n)\n\nBased on the vector y above, please generate a ordinal factor y_factor, which has the ordered levels as shown above (that is, ‘Strongly Disagree’ &lt; ‘Disagree’ &lt; ‘Neutral’ &lt; ‘Agree’ &lt; ‘Strongly Agree’)."
+    "text": "Question 2\n[2pts] The typical 5-point Likert scale includes the following levels:\n\nStrongly Disagree\nDisagree\nNeutral\nAgree\nStrongly Agree\n\n\ny &lt;- c(\n  \"Disagree\", \"Disagree\", \"Agree\", \"Agree\", \"Strongly Agree\",           \n  \"Strongly Agree\", \"Strongly Disagree\", \"Strongly Disagree\", \n  \"Agree\", \"Agree\", \"Neutral\", \"Disagree\",         \n  \"Strongly Disagree\", \"Neutral\", \"Strongly Agree\", \"Agree\",           \n  \"Disagree\", \"Strongly Agree\", \"Strongly Agree\", \"Agree\",            \n  \"Neutral\", \"Agree\", \"Disagree\", \"Agree\", \"Agree\"  \n)\n\nBased on the vector y above, please generate a ordinal factor y_factor, which has the ordered levels as shown above (that is, ‘Strongly Disagree’ &lt; ‘Disagree’ &lt; ‘Neutral’ &lt; ‘Agree’ &lt; ‘Strongly Agree’)."
   },
   {
     "objectID": "Quiz4/Quiz4.html#question-3",
