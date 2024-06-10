@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -44,7 +78,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -53,6 +93,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -61,6 +102,33 @@ ul.task-list li input[type="checkbox"] {
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -78,14 +146,11 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#quiz-3-instructions" id="toc-quiz-3-instructions" class="nav-link active" data-scroll-target="#quiz-3-instructions">Quiz 3 Instructions</a>
   <ul class="collapse">
-  <li><a href="#question-1-1pt" id="toc-question-1-1pt" class="nav-link" data-scroll-target="#question-1-1pt">Question 1 [1pt]</a></li>
-  <li><a href="#question-2-1pt" id="toc-question-2-1pt" class="nav-link" data-scroll-target="#question-2-1pt">Question 2 [1pt]</a></li>
-  <li><a href="#question-3-1pt" id="toc-question-3-1pt" class="nav-link" data-scroll-target="#question-3-1pt">Question 3 [1pt]</a></li>
-  <li><a href="#question-4-1pt" id="toc-question-4-1pt" class="nav-link" data-scroll-target="#question-4-1pt">Question 4 [1pt]</a></li>
-  <li><a href="#question-5-1pt" id="toc-question-5-1pt" class="nav-link" data-scroll-target="#question-5-1pt">Question 5 [1pt]</a></li>
-  <li><a href="#question-6-1pt" id="toc-question-6-1pt" class="nav-link" data-scroll-target="#question-6-1pt">Question 6 [1pt]</a></li>
-  <li><a href="#question-7-2pt" id="toc-question-7-2pt" class="nav-link" data-scroll-target="#question-7-2pt">Question 7 [2pt]</a></li>
-  <li><a href="#question-8-2pt" id="toc-question-8-2pt" class="nav-link" data-scroll-target="#question-8-2pt">Question 8 [2pt]</a></li>
+  <li><a href="#question-1-2pt" id="toc-question-1-2pt" class="nav-link" data-scroll-target="#question-1-2pt">Question 1 [2pt]</a></li>
+  <li><a href="#question-2-2pt" id="toc-question-2-2pt" class="nav-link" data-scroll-target="#question-2-2pt">Question 2 [2pt]</a></li>
+  <li><a href="#question-3-2pt" id="toc-question-3-2pt" class="nav-link" data-scroll-target="#question-3-2pt">Question 3 [2pt]</a></li>
+  <li><a href="#question-4-2pt" id="toc-question-4-2pt" class="nav-link" data-scroll-target="#question-4-2pt">Question 4 [2pt]</a></li>
+  <li><a href="#question-5-2pt" id="toc-question-5-2pt" class="nav-link" data-scroll-target="#question-5-2pt">Question 5 [2pt]</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -95,9 +160,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+
 <section id="quiz-3-instructions" class="level2">
 <h2 class="anchored" data-anchor-id="quiz-3-instructions">Quiz 3 Instructions</h2>
-<p>Please complete the following questions and submit a file named <strong>Quiz3.R</strong> to <a href="https://www.gradescope.com/login">Gradescope</a>.</p>
+<p>Please complete the following questions and submit a file named <strong>Quiz3.R</strong>.</p>
 <p><strong>Remember:</strong></p>
 <!-- -   Do not rename external data files or edit them in any way. In other words, don't modify *data.csv*. Your code won't work properly on my version of that data set, if you do. -->
 <ul>
@@ -110,124 +176,70 @@ ul.task-list li input[type="checkbox"] {
 <div style="height:30px;">
 
 </div>
-<section id="question-1-1pt" class="level3">
-<h3 class="anchored" data-anchor-id="question-1-1pt">Question 1 [1pt]</h3>
-<p>Create the following vector <code>vec1</code> using the function <code>seq()</code>.</p>
-<!-- Find out how to use the function `seq()` to create the following vector `vec1`. -->
-<!-- ```{r} -->
-<!-- #| echo: false -->
-<!-- # seq(1, 15, 2) -->
-<!-- vec1 <- seq(1.1, 21, 0.2) -->
-<!-- vec1 -->
-<!-- ``` -->
+<section id="question-1-2pt" class="level3">
+<h3 class="anchored" data-anchor-id="question-1-2pt">Question 1 [2pt]</h3>
+<p>Create the vector <code>vec1</code> with the values shown below, using the function <code>seq()</code>.</p>
+<div class="cell">
+<pre><code>#&gt;   [1]  1.1  1.3  1.5  1.7  1.9  2.1  2.3  2.5  2.7  2.9  3.1  3.3  3.5  3.7  3.9
+#&gt;  [16]  4.1  4.3  4.5  4.7  4.9  5.1  5.3  5.5  5.7  5.9  6.1  6.3  6.5  6.7  6.9
+#&gt;  [31]  7.1  7.3  7.5  7.7  7.9  8.1  8.3  8.5  8.7  8.9  9.1  9.3  9.5  9.7  9.9
+#&gt;  [46] 10.1 10.3 10.5 10.7 10.9 11.1 11.3 11.5 11.7 11.9 12.1 12.3 12.5 12.7 12.9
+#&gt;  [61] 13.1 13.3 13.5 13.7 13.9 14.1 14.3 14.5 14.7 14.9 15.1 15.3 15.5 15.7 15.9
+#&gt;  [76] 16.1 16.3 16.5 16.7 16.9 17.1 17.3 17.5 17.7 17.9 18.1 18.3 18.5 18.7 18.9
+#&gt;  [91] 19.1 19.3 19.5 19.7 19.9 20.1 20.3 20.5 20.7 20.9</code></pre>
+</div>
 <div style="height:30px;">
 
 </div>
 </section>
-<section id="question-2-1pt" class="level3">
-<h3 class="anchored" data-anchor-id="question-2-1pt">Question 2 [1pt]</h3>
-<p>Find out how to use the function <code>seq()</code> to create the following vector <code>vec2</code>.</p>
-<!-- ```{r} -->
-<!-- #| echo: false -->
-<!-- seq(50, 0, -5) -->
-<!-- ``` -->
+<section id="question-2-2pt" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-2pt">Question 2 [2pt]</h3>
+<p>Find out how to use the colon operator <code>:</code> to create the vector <code>vec2</code> with values below.</p>
+<div class="cell">
+<pre><code>#&gt;  [1]  8.5  7.5  6.5  5.5  4.5  3.5  2.5  1.5  0.5 -0.5 -1.5 -2.5 -3.5 -4.5 -5.5
+#&gt; [16] -6.5 -7.5 -8.5</code></pre>
+</div>
 <div style="height:30px;">
 
 </div>
 </section>
-<section id="question-3-1pt" class="level3">
-<h3 class="anchored" data-anchor-id="question-3-1pt">Question 3 [1pt]</h3>
-<p>Find out how to use the colon operator <code>:</code> to create the following vector <code>vec3</code>.</p>
-<!-- ```{r} -->
-<!-- #| echo: false -->
-<!-- 8.5:-8.5 -->
-<!-- ``` -->
+<section id="question-3-2pt" class="level3">
+<h3 class="anchored" data-anchor-id="question-3-2pt">Question 3 [2pt]</h3>
+<p>Find out how to use the function <code>rep()</code> and the input vector <code>1:3</code> to create the vector <code>vec3</code> with the values below, which has twenty <code>1</code>, ten <code>2</code>, and forty <code>3</code>.</p>
+<div class="cell">
+<pre><code>#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3
+#&gt; [39] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3</code></pre>
+</div>
 <div style="height:30px;">
 
 </div>
 </section>
-<section id="question-4-1pt" class="level3">
-<h3 class="anchored" data-anchor-id="question-4-1pt">Question 4 [1pt]</h3>
-<p>Find out how to use the function <code>rep()</code> and the input vector <code>1:3</code> to create the following vector <code>vec4</code> which has <code>1 2 3</code> repeated twenty times.</p>
-<!-- ```{r} -->
-<!-- #| echo: false -->
-<!-- rep(c(1,2,3), times = 20) -->
-<!-- ``` -->
+<section id="question-4-2pt" class="level3">
+<h3 class="anchored" data-anchor-id="question-4-2pt">Question 4 [2pt]</h3>
+<p>Use the function <code>sum()</code> to show that <span class="math inline">\(1 + 2 + \cdots + 1000 = 500500.\)</span> That is, create vector <code>vec4</code> with values <span class="math inline">\(1, 2, \cdots, 1000\)</span>. Then calculate the sum.</p>
 <div style="height:30px;">
 
 </div>
 </section>
-<section id="question-5-1pt" class="level3">
-<h3 class="anchored" data-anchor-id="question-5-1pt">Question 5 [1pt]</h3>
-<p>Find out how to use the function <code>rep()</code> and the input vector <code>1:3</code> to create the following vector <code>vec5</code> which has thirty <code>1</code>, thirty <code>2</code>, and thirty <code>3</code>.</p>
-<!-- ```{r} -->
-<!-- #| echo: false -->
-<!-- rep(1:3, each = 30) -->
-<!-- ``` -->
-<div style="height:30px;">
-
-</div>
-</section>
-<section id="question-6-1pt" class="level3">
-<h3 class="anchored" data-anchor-id="question-6-1pt">Question 6 [1pt]</h3>
-<p>Find out how to use the function <code>rep()</code> and the input vector <code>1:3</code> to create the following vector <code>vec6</code> which has twenty <code>1</code>, ten <code>2</code>, and forty <code>3</code>.</p>
-<!-- ```{r} -->
-<!-- #| echo: false -->
-<!-- rep(1:3, c(20, 10, 40)) -->
-<!-- ``` -->
-<div style="height:30px;">
-
-</div>
-</section>
-<section id="question-7-2pt" class="level3">
-<h3 class="anchored" data-anchor-id="question-7-2pt">Question 7 [2pt]</h3>
-<p>Use the function <code>sum()</code> to show that <span class="math inline">\(1 + 2 + \cdots + 1000 = 500500.\)</span> Create vector <code>vec7</code> with values <span class="math inline">\(1, 2, \cdots, 1000\)</span>. Then calculate the sum.</p>
-<!-- ```{r} -->
-<!-- #| echo: false -->
-<!-- # sum(1:1000) -->
-<!-- ``` -->
-<!-- ### Question 8 -->
-<!-- What is the data type -- as returned by `typeof()` -- of each of the following vectors. Try guessing the data type without running any commands. -->
-<!-- * `v1`: where `v1 <- c(FALSE, TRUE)` -->
-<!-- * `v2`: where `v2 <- c(0L, 1L)` -->
-<!-- * `v3`: where `v3 <- c(0, 1)` -->
-<!-- * `v4`: where `v4 <- c('0', '1')` -->
-<!-- * `v5`: where `v5 <- c(v1, v2)` -->
-<!-- * `v6`: where `v6 <- c(v5, v3)` -->
-<!-- * `v7`: where `v7 <- c(v6, v4)` -->
-<!-- ```{r} -->
-<!-- v1 <- c(FALSE, TRUE) -->
-<!-- v2 <- c(0L, 1L) -->
-<!-- v3 <- c(0, 1) -->
-<!-- v4 <- c('0', '1') -->
-<!-- v5 <- c(v1, v2) -->
-<!-- v6 <- c(v5, v3) -->
-<!-- v7 <- c(v6, v4) -->
-<!-- typeof(v1) -->
-<!-- typeof(v2) -->
-<!-- typeof(v3) -->
-<!-- typeof(v4) -->
-<!-- typeof(v5) -->
-<!-- typeof(v6) -->
-<!-- typeof(v7) -->
-<!-- ``` -->
-<div style="height:30px;">
-
-</div>
-</section>
-<section id="question-8-2pt" class="level3">
-<h3 class="anchored" data-anchor-id="question-8-2pt">Question 8 [2pt]</h3>
+<section id="question-5-2pt" class="level3">
+<h3 class="anchored" data-anchor-id="question-5-2pt">Question 5 [2pt]</h3>
 <p>Load the R package <code>MASS</code> and use the data frame <code>cats</code>. Obtain vectors <code>sex</code> and <code>bwt</code> from the data frame with <code>sex &lt;- cats$Sex</code>, <code>bwt &lt;- cats$Bwt</code>. Show the body weights of female cats by creating vector <code>bwtF</code>. How many female cats are there in the data set? Please save the length value in object <code>len</code>.</p>
-<!-- ```{r} -->
-<!-- library(MASS) -->
-<!-- sex <- cats$Sex -->
-<!-- bwt <- cats$Bwt -->
-<!-- bwtF<- bwt[sex=="F"] -->
-<!-- bwtF -->
-<!-- len <- length(bwtF) -->
-<!-- len <- sum(sex=="F") -->
-<!-- len -->
-<!-- ``` -->
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> cats<span class="sc">$</span>Sex</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>bwt <span class="ot">&lt;-</span> cats<span class="sc">$</span>Bwt</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>bwtF<span class="ot">&lt;-</span> bwt[sex<span class="sc">==</span><span class="st">"F"</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>bwtF</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 2.0 2.0 2.0 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.2 2.2 2.2 2.2 2.2 2.2 2.3</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [20] 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.4 2.4 2.4 2.4 2.5 2.5 2.6 2.6</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [39] 2.6 2.7 2.7 2.7 2.9 2.9 2.9 3.0 3.0</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>len <span class="ot">&lt;-</span> <span class="fu">length</span>(bwtF)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>len <span class="ot">&lt;-</span> <span class="fu">sum</span>(sex<span class="sc">==</span><span class="st">"F"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>len</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 47</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
@@ -313,10 +325,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ycjiaweijia\.github\.io\/STAT-385-Assignments\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -326,8 +355,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -339,7 +377,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -383,6 +544,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -408,6 +570,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -468,6 +656,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
