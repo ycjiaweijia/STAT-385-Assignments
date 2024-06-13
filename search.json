@@ -151,6 +151,6 @@
     "href": "Quiz4/Quiz4.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\n\n\n\n\n\n[1pt] Sort the DAYS vector using sort() function. (Please note that the results are in alphabetical order rather than the order of the weekdays.)\n\n\n\n\n\n[1pt] Encode the vector DAYS into a factor DAYS_f, by using days_of_week above as the levels for the factor.\n\n\n\n\n\n[1pt] Sort DAYS_f using sort() function. (Please note that the results now is in the order of the weekdays.)\n\n\n\n\n\n[1pt] Use the function unclass() to obtain the integer vector associated to DAYS_f."
+    "text": "Question 3\n\n\ndays_of_week &lt;- c(\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\")\n\nDAYS &lt;- c(\"Saturday\", \"Wednesday\", \"Sunday\", \"Friday\")\n\n\n[1pt] Sort the DAYS vector using sort() function. (Please note that the results are in alphabetical order rather than the order of the weekdays.)\n\n\n\n\n\n[1pt] Encode the vector DAYS into a factor DAYS_f, by using days_of_week above as the levels for the factor.\n\n\n\n\n\n[1pt] Sort DAYS_f using sort() function. (Please note that the results now is in the order of the weekdays.)\n\n\n\n\n\n[1pt] Use the function unclass() to obtain the integer vector associated to DAYS_f."
   }
 ]
