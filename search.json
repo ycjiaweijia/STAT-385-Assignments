@@ -1,52 +1,101 @@
 [
   {
-    "objectID": "Quiz5/Quiz5.html",
-    "href": "Quiz5/Quiz5.html",
+    "objectID": "Quiz7/Quiz7.html",
+    "href": "Quiz7/Quiz7.html",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz5.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz5.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz7.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz7.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz5/Quiz5.html#quiz-5-instructions",
-    "href": "Quiz5/Quiz5.html#quiz-5-instructions",
+    "objectID": "Quiz7/Quiz7.html#quiz-7-instructions",
+    "href": "Quiz7/Quiz7.html#quiz-7-instructions",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz5.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz5.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz7.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz7.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz5/Quiz5.html#question-1",
-    "href": "Quiz5/Quiz5.html#question-1",
+    "objectID": "Quiz7/Quiz7.html#question-1",
+    "href": "Quiz7/Quiz7.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n[4pts] Use matrix() to create a matrix mat1 (see below) from the R built-in constant vector month.abb. Use the function colnames() to add the standard calendar quarters that make up the year, that is, add the column names Q1, Q2, Q3, Q4. Add 1st, 2nd, 3rd as row names.\n\n#&gt;     Q1    Q2    Q3    Q4   \n#&gt; 1st \"Jan\" \"Apr\" \"Jul\" \"Oct\"\n#&gt; 2nd \"Feb\" \"May\" \"Aug\" \"Nov\"\n#&gt; 3rd \"Mar\" \"Jun\" \"Sep\" \"Dec\""
+    "text": "Question 1\nWe will use iris data frame, which is a data frame in the R package datasets. Please use ?iris to find more information.\n\n[1pt] Please find the number of columns of iris and store the value to object ncol.iris.\n[1pt] Please show the last three rows of iris and save it as Last.3.\n[1pt] Save the data where the species is “setosa” to the object named Setosa.\n[1pt] Find the column names of iris and save the result to colnames.iris.\n[3pts] Find the mean Sepal.Length of each Species. Save the results as mean.setosa, mean.versicolor, and mean.virginica."
   },
   {
-    "objectID": "Quiz5/Quiz5.html#question-2",
-    "href": "Quiz5/Quiz5.html#question-2",
+    "objectID": "Quiz7/Quiz7.html#question-2",
+    "href": "Quiz7/Quiz7.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n[3pts] Create a matrix as below and denote it as mat2.\n\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    1\n#&gt; [2,]    1    2\n#&gt; [3,]    1    3\n#&gt; [4,]    2    1\n#&gt; [5,]    2    2\n#&gt; [6,]    2    3"
+    "text": "Question 2\n\n[1pt] Create a data frame named df as follows\n\n\n#&gt;     a b     c   d\n#&gt; 1 5.5 a  TRUE 1.1\n#&gt; 2 4.5 a FALSE 1.2\n#&gt; 3 3.5 b  TRUE 1.3\n#&gt; 4 2.5 b FALSE 1.4\n#&gt; 5 1.5 b  TRUE 1.5\n\n\n[1pt] Write a command that would give you the following data from df.\n\n\n#&gt;     a     c\n#&gt; 1 5.5  TRUE\n#&gt; 2 4.5 FALSE\n#&gt; 3 3.5  TRUE\n#&gt; 4 2.5 FALSE\n#&gt; 5 1.5  TRUE\n\n\n[1pt] Add a new_column e &lt;- c(1, 1, 1, 1, 1) to df and save the new data frame as df_new. (Please note that, do not overwrite df.)\n\n\n#&gt;     a b     c   d e\n#&gt; 1 5.5 a  TRUE 1.1 1\n#&gt; 2 4.5 a FALSE 1.2 1\n#&gt; 3 3.5 b  TRUE 1.3 1\n#&gt; 4 2.5 b FALSE 1.4 1\n#&gt; 5 1.5 b  TRUE 1.5 1"
   },
   {
-    "objectID": "Quiz5/Quiz5.html#question-3",
-    "href": "Quiz5/Quiz5.html#question-3",
+    "objectID": "Quiz4/Quiz4.html",
+    "href": "Quiz4/Quiz4.html",
+    "title": "",
+    "section": "",
+    "text": "Please complete the following questions and submit a file named Quiz4.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz4.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz4/Quiz4.html#quiz-4-instructions",
+    "href": "Quiz4/Quiz4.html#quiz-4-instructions",
+    "title": "",
+    "section": "",
+    "text": "Please complete the following questions and submit a file named Quiz4.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz4.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz4/Quiz4.html#question-1",
+    "href": "Quiz4/Quiz4.html#question-1",
+    "title": "",
+    "section": "Question 1",
+    "text": "Question 1\n\n[1pts] Let vec1 &lt;- seq(1, 10, 2). Generate a factor vec1_factor using vec1.\n\n\n\n\n\n\n[1pts] Check if vec1 is a vector? A factor? Use class() function to check the type of vec1.\n\n\n\n\n\n\n[1pts] Check if vec1_factor is a vector? A factor? Use class() function to check the type of vec1_factor.\n\n\n\n\n\n\n[1pts] Generate another factor vec1_factor10 using vec1, but levels = 1:10. Use identical(vec1_factor, vec1_factor10) to compare if the two factors are the same."
+  },
+  {
+    "objectID": "Quiz4/Quiz4.html#question-2",
+    "href": "Quiz4/Quiz4.html#question-2",
+    "title": "",
+    "section": "Question 2",
+    "text": "Question 2\n[2pts] The typical 5-point Likert scale includes the following levels:\n\nStrongly Disagree\nDisagree\nNeutral\nAgree\nStrongly Agree\n\n\ny &lt;- c(\n  \"Disagree\", \"Disagree\", \"Agree\", \"Agree\", \"Strongly Agree\",           \n  \"Strongly Agree\", \"Strongly Disagree\", \"Strongly Disagree\", \n  \"Agree\", \"Agree\", \"Neutral\", \"Disagree\",         \n  \"Strongly Disagree\", \"Neutral\", \"Strongly Agree\", \"Agree\",           \n  \"Disagree\", \"Strongly Agree\", \"Strongly Agree\", \"Agree\",            \n  \"Neutral\", \"Agree\", \"Disagree\", \"Agree\", \"Agree\"  \n)\n\nBased on the vector y above, please generate a ordinal factor y_factor, which has the ordered levels as shown above (that is, ‘Strongly Disagree’ &lt; ‘Disagree’ &lt; ‘Neutral’ &lt; ‘Agree’ &lt; ‘Strongly Agree’)."
+  },
+  {
+    "objectID": "Quiz4/Quiz4.html#question-3",
+    "href": "Quiz4/Quiz4.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\nAssume the matrix m is defined as follows. We find that m is a matrix, not a vector, as shown below.\n\nm &lt;- matrix(c(1,2,3,4,5,6), nrow=2)\nis.matrix(m) # is.matrix() tests if the object is a matrix\n#&gt; [1] TRUE\nis.vector(m) # is.vector() tests if the object is a vector\n#&gt; [1] FALSE\n\n\n[1pt] Check the dimension of m using dim() function. Save the result to object d.\n\n\n\n\n\n\n[1pt] Define m1 the same as m above. Then Remove the dimension attribute of m1 by using dim(m1) &lt;- NULL. Then check if m1 is a matrix? a vector?\n\n\n\n\n\n\n\n\n[1pt] Let m2 &lt;- c(1,2,3,4,5,6). Add the dimension attribute to m2 by using dim(m2) &lt;- c(2, 3). Then check if m2 is a matrix? a vector?"
+    "text": "Question 3\n\n\ndays_of_week &lt;- c(\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\")\n\nDAYS &lt;- c(\"Saturday\", \"Wednesday\", \"Sunday\", \"Friday\")\n\n\n[1pt] Sort the DAYS vector using sort() function. (Please note that the results are in alphabetical order rather than the order of the weekdays.)\n\n\n\n\n\n[1pt] Encode the vector DAYS into a factor DAYS_f, by using days_of_week above as the levels for the factor.\n\n\n\n\n\n[1pt] Sort DAYS_f using sort() function. (Please note that the results now is in the order of the weekdays.)\n\n\n\n\n\n[1pt] Use the function unclass() to obtain the integer vector associated to DAYS_f."
   },
   {
-    "objectID": "Quiz3/Quiz3.html",
-    "href": "Quiz3/Quiz3.html",
+    "objectID": "Quiz2/Quiz2.html",
+    "href": "Quiz2/Quiz2.html",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz3.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz3.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.\n\n\n\n\n\nCreate the vector vec1 with the values shown below, using the function seq().\n\n#&gt;   [1]  1.1  1.3  1.5  1.7  1.9  2.1  2.3  2.5  2.7  2.9  3.1  3.3  3.5  3.7  3.9\n#&gt;  [16]  4.1  4.3  4.5  4.7  4.9  5.1  5.3  5.5  5.7  5.9  6.1  6.3  6.5  6.7  6.9\n#&gt;  [31]  7.1  7.3  7.5  7.7  7.9  8.1  8.3  8.5  8.7  8.9  9.1  9.3  9.5  9.7  9.9\n#&gt;  [46] 10.1 10.3 10.5 10.7 10.9 11.1 11.3 11.5 11.7 11.9 12.1 12.3 12.5 12.7 12.9\n#&gt;  [61] 13.1 13.3 13.5 13.7 13.9 14.1 14.3 14.5 14.7 14.9 15.1 15.3 15.5 15.7 15.9\n#&gt;  [76] 16.1 16.3 16.5 16.7 16.9 17.1 17.3 17.5 17.7 17.9 18.1 18.3 18.5 18.7 18.9\n#&gt;  [91] 19.1 19.3 19.5 19.7 19.9 20.1 20.3 20.5 20.7 20.9\n\n\n\n\n\n\n\nFind out how to use the colon operator : to create the vector vec2 with values below.\n\n#&gt;  [1]  8.5  7.5  6.5  5.5  4.5  3.5  2.5  1.5  0.5 -0.5 -1.5 -2.5 -3.5 -4.5 -5.5\n#&gt; [16] -6.5 -7.5 -8.5\n\n\n\n\n\n\n\nFind out how to use the function rep() and the input vector 1:3 to create the vector vec3 with the values below, which has twenty 1, ten 2, and forty 3.\n\n#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3\n#&gt; [39] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3\n\n\n\n\n\n\n\nUse the function sum() to show that \\(1 + 2 + \\cdots + 1000 = 500500.\\) That is, create vector vec4 with values \\(1, 2, \\cdots, 1000\\). Then calculate the sum.\n\n\n\n\n\n\nLoad the R package MASS and use the data frame cats. Obtain vectors sex and bwt from the data frame with sex &lt;- cats$Sex, bwt &lt;- cats$Bwt. Show the body weights of female cats by creating vector bwtF. How many female cats are there in the data set? Please save the length value in object len.\n\n\n\nlibrary(MASS)\nsex &lt;- cats$Sex\nbwt &lt;- cats$Bwt\nbwtF&lt;- bwt[sex==\"F\"]\nbwtF\n#&gt;  [1] 2.0 2.0 2.0 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.2 2.2 2.2 2.2 2.2 2.2 2.3\n#&gt; [20] 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.4 2.4 2.4 2.4 2.5 2.5 2.6 2.6\n#&gt; [39] 2.6 2.7 2.7 2.7 2.9 2.9 2.9 3.0 3.0\nlen &lt;- length(bwtF)\nlen &lt;- sum(sex==\"F\")\nlen\n#&gt; [1] 47"
+    "text": "Please complete the following questions and submit a file named Quiz2.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz2.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz3/Quiz3.html#quiz-3-instructions",
-    "href": "Quiz3/Quiz3.html#quiz-3-instructions",
+    "objectID": "Quiz2/Quiz2.html#quiz-2-instructions",
+    "href": "Quiz2/Quiz2.html#quiz-2-instructions",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz3.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz3.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.\n\n\n\n\n\nCreate the vector vec1 with the values shown below, using the function seq().\n\n#&gt;   [1]  1.1  1.3  1.5  1.7  1.9  2.1  2.3  2.5  2.7  2.9  3.1  3.3  3.5  3.7  3.9\n#&gt;  [16]  4.1  4.3  4.5  4.7  4.9  5.1  5.3  5.5  5.7  5.9  6.1  6.3  6.5  6.7  6.9\n#&gt;  [31]  7.1  7.3  7.5  7.7  7.9  8.1  8.3  8.5  8.7  8.9  9.1  9.3  9.5  9.7  9.9\n#&gt;  [46] 10.1 10.3 10.5 10.7 10.9 11.1 11.3 11.5 11.7 11.9 12.1 12.3 12.5 12.7 12.9\n#&gt;  [61] 13.1 13.3 13.5 13.7 13.9 14.1 14.3 14.5 14.7 14.9 15.1 15.3 15.5 15.7 15.9\n#&gt;  [76] 16.1 16.3 16.5 16.7 16.9 17.1 17.3 17.5 17.7 17.9 18.1 18.3 18.5 18.7 18.9\n#&gt;  [91] 19.1 19.3 19.5 19.7 19.9 20.1 20.3 20.5 20.7 20.9\n\n\n\n\n\n\n\nFind out how to use the colon operator : to create the vector vec2 with values below.\n\n#&gt;  [1]  8.5  7.5  6.5  5.5  4.5  3.5  2.5  1.5  0.5 -0.5 -1.5 -2.5 -3.5 -4.5 -5.5\n#&gt; [16] -6.5 -7.5 -8.5\n\n\n\n\n\n\n\nFind out how to use the function rep() and the input vector 1:3 to create the vector vec3 with the values below, which has twenty 1, ten 2, and forty 3.\n\n#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3\n#&gt; [39] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3\n\n\n\n\n\n\n\nUse the function sum() to show that \\(1 + 2 + \\cdots + 1000 = 500500.\\) That is, create vector vec4 with values \\(1, 2, \\cdots, 1000\\). Then calculate the sum.\n\n\n\n\n\n\nLoad the R package MASS and use the data frame cats. Obtain vectors sex and bwt from the data frame with sex &lt;- cats$Sex, bwt &lt;- cats$Bwt. Show the body weights of female cats by creating vector bwtF. How many female cats are there in the data set? Please save the length value in object len.\n\n\n\nlibrary(MASS)\nsex &lt;- cats$Sex\nbwt &lt;- cats$Bwt\nbwtF&lt;- bwt[sex==\"F\"]\nbwtF\n#&gt;  [1] 2.0 2.0 2.0 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.2 2.2 2.2 2.2 2.2 2.2 2.3\n#&gt; [20] 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.4 2.4 2.4 2.4 2.5 2.5 2.6 2.6\n#&gt; [39] 2.6 2.7 2.7 2.7 2.9 2.9 2.9 3.0 3.0\nlen &lt;- length(bwtF)\nlen &lt;- sum(sex==\"F\")\nlen\n#&gt; [1] 47"
+    "text": "Please complete the following questions and submit a file named Quiz2.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz2.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz2/Quiz2.html#question-1.",
+    "href": "Quiz2/Quiz2.html#question-1.",
+    "title": "",
+    "section": "Question 1.",
+    "text": "Question 1.\n[2 pts] Area of trapezoid\nAs you know, the formula for the area of a trapezoid is (base 1 + base 2) /2 \\(\\times\\) height, as seen in the figure below:\n\n\n\n\n\nWrite R code to compute the area of a trapezoid of base1 = 10, base2 = 7, and height = 5. The computed area should be stored in an object area."
+  },
+  {
+    "objectID": "Quiz2/Quiz2.html#question-2.",
+    "href": "Quiz2/Quiz2.html#question-2.",
+    "title": "",
+    "section": "Question 2.",
+    "text": "Question 2.\nConsider the scores of a high school student:\n\nMaths – 95\nPhysics – 88.5\nPhysics lab – 79\nEnglish – 92\n\n(a). [1 pt] Use assignments to create variables maths, physics, physicslab, and english with their corresponding amounts.\n(b). [2 pts] Create a scores object with the four scores in (a). And use the function names() to give names o the elements of your vector scores.\n(c). [2 pts] Create a avg object with the average of the scores.\n(d). [4 pts] Create a grades object by converting the scores to grades based on the policy below. Then create a vector grade\\_values of integer values with the corresponding grade values. Recall that integer values are of the form 1L.\n\n\n\nRange\nGrade\nGrade Value\n\n\n\n\n[90, 100]\nA\n4\n\n\n[80, 90)\nB\n3\n\n\n[70, 80)\nC\n2\n\n\n[60, 70)\nD\n1\n\n\n&lt;60\nF\n0\n\n\n\n(e). [2 pts] Suppose the credits for Maths, Physics, Physics lab, English are 0.5, 1, 0.5, 1, respectively. Create a credits object.\n(f). [2 pts] Calculate the weighted GPA with\n\\[\\text{High School GPA} = \\sum (\\text{grade value}*\\text{credits})/ \\sum \\text{credits}\\] Save the value to object GPA."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Preface",
+    "section": "",
+    "text": "This are the lecture notes for STAT 385: Statistics Programming Methods, offered in the Summer of 2024 at UIUC. If you have any comments/suggestions/concerns about the notes please contact me at wjia@illinois.edu."
   },
   {
     "objectID": "Quiz1/Quiz1.html",
@@ -84,73 +133,52 @@
     "text": "Question 3.\nRead in the data set called data.csv and store the data frame as myDataFrame."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Preface",
-    "section": "",
-    "text": "This are the lecture notes for STAT 385: Statistics Programming Methods, offered in the Summer of 2024 at UIUC. If you have any comments/suggestions/concerns about the notes please contact me at wjia@illinois.edu."
-  },
-  {
-    "objectID": "Quiz2/Quiz2.html",
-    "href": "Quiz2/Quiz2.html",
+    "objectID": "Quiz3/Quiz3.html",
+    "href": "Quiz3/Quiz3.html",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz2.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz2.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz3.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz3.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.\n\n\n\n\n\nCreate the vector vec1 with the values shown below, using the function seq().\n\n#&gt;   [1]  1.1  1.3  1.5  1.7  1.9  2.1  2.3  2.5  2.7  2.9  3.1  3.3  3.5  3.7  3.9\n#&gt;  [16]  4.1  4.3  4.5  4.7  4.9  5.1  5.3  5.5  5.7  5.9  6.1  6.3  6.5  6.7  6.9\n#&gt;  [31]  7.1  7.3  7.5  7.7  7.9  8.1  8.3  8.5  8.7  8.9  9.1  9.3  9.5  9.7  9.9\n#&gt;  [46] 10.1 10.3 10.5 10.7 10.9 11.1 11.3 11.5 11.7 11.9 12.1 12.3 12.5 12.7 12.9\n#&gt;  [61] 13.1 13.3 13.5 13.7 13.9 14.1 14.3 14.5 14.7 14.9 15.1 15.3 15.5 15.7 15.9\n#&gt;  [76] 16.1 16.3 16.5 16.7 16.9 17.1 17.3 17.5 17.7 17.9 18.1 18.3 18.5 18.7 18.9\n#&gt;  [91] 19.1 19.3 19.5 19.7 19.9 20.1 20.3 20.5 20.7 20.9\n\n\n\n\n\n\n\nFind out how to use the colon operator : to create the vector vec2 with values below.\n\n#&gt;  [1]  8.5  7.5  6.5  5.5  4.5  3.5  2.5  1.5  0.5 -0.5 -1.5 -2.5 -3.5 -4.5 -5.5\n#&gt; [16] -6.5 -7.5 -8.5\n\n\n\n\n\n\n\nFind out how to use the function rep() and the input vector 1:3 to create the vector vec3 with the values below, which has twenty 1, ten 2, and forty 3.\n\n#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3\n#&gt; [39] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3\n\n\n\n\n\n\n\nUse the function sum() to show that \\(1 + 2 + \\cdots + 1000 = 500500.\\) That is, create vector vec4 with values \\(1, 2, \\cdots, 1000\\). Then calculate the sum.\n\n\n\n\n\n\nLoad the R package MASS and use the data frame cats. Obtain vectors sex and bwt from the data frame with sex &lt;- cats$Sex, bwt &lt;- cats$Bwt. Show the body weights of female cats by creating vector bwtF. How many female cats are there in the data set? Please save the length value in object len.\n\n\n\nlibrary(MASS)\nsex &lt;- cats$Sex\nbwt &lt;- cats$Bwt\nbwtF&lt;- bwt[sex==\"F\"]\nbwtF\n#&gt;  [1] 2.0 2.0 2.0 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.2 2.2 2.2 2.2 2.2 2.2 2.3\n#&gt; [20] 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.4 2.4 2.4 2.4 2.5 2.5 2.6 2.6\n#&gt; [39] 2.6 2.7 2.7 2.7 2.9 2.9 2.9 3.0 3.0\nlen &lt;- length(bwtF)\nlen &lt;- sum(sex==\"F\")\nlen\n#&gt; [1] 47"
   },
   {
-    "objectID": "Quiz2/Quiz2.html#quiz-2-instructions",
-    "href": "Quiz2/Quiz2.html#quiz-2-instructions",
+    "objectID": "Quiz3/Quiz3.html#quiz-3-instructions",
+    "href": "Quiz3/Quiz3.html#quiz-3-instructions",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz2.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz2.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz3.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz3.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.\n\n\n\n\n\nCreate the vector vec1 with the values shown below, using the function seq().\n\n#&gt;   [1]  1.1  1.3  1.5  1.7  1.9  2.1  2.3  2.5  2.7  2.9  3.1  3.3  3.5  3.7  3.9\n#&gt;  [16]  4.1  4.3  4.5  4.7  4.9  5.1  5.3  5.5  5.7  5.9  6.1  6.3  6.5  6.7  6.9\n#&gt;  [31]  7.1  7.3  7.5  7.7  7.9  8.1  8.3  8.5  8.7  8.9  9.1  9.3  9.5  9.7  9.9\n#&gt;  [46] 10.1 10.3 10.5 10.7 10.9 11.1 11.3 11.5 11.7 11.9 12.1 12.3 12.5 12.7 12.9\n#&gt;  [61] 13.1 13.3 13.5 13.7 13.9 14.1 14.3 14.5 14.7 14.9 15.1 15.3 15.5 15.7 15.9\n#&gt;  [76] 16.1 16.3 16.5 16.7 16.9 17.1 17.3 17.5 17.7 17.9 18.1 18.3 18.5 18.7 18.9\n#&gt;  [91] 19.1 19.3 19.5 19.7 19.9 20.1 20.3 20.5 20.7 20.9\n\n\n\n\n\n\n\nFind out how to use the colon operator : to create the vector vec2 with values below.\n\n#&gt;  [1]  8.5  7.5  6.5  5.5  4.5  3.5  2.5  1.5  0.5 -0.5 -1.5 -2.5 -3.5 -4.5 -5.5\n#&gt; [16] -6.5 -7.5 -8.5\n\n\n\n\n\n\n\nFind out how to use the function rep() and the input vector 1:3 to create the vector vec3 with the values below, which has twenty 1, ten 2, and forty 3.\n\n#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3\n#&gt; [39] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3\n\n\n\n\n\n\n\nUse the function sum() to show that \\(1 + 2 + \\cdots + 1000 = 500500.\\) That is, create vector vec4 with values \\(1, 2, \\cdots, 1000\\). Then calculate the sum.\n\n\n\n\n\n\nLoad the R package MASS and use the data frame cats. Obtain vectors sex and bwt from the data frame with sex &lt;- cats$Sex, bwt &lt;- cats$Bwt. Show the body weights of female cats by creating vector bwtF. How many female cats are there in the data set? Please save the length value in object len.\n\n\n\nlibrary(MASS)\nsex &lt;- cats$Sex\nbwt &lt;- cats$Bwt\nbwtF&lt;- bwt[sex==\"F\"]\nbwtF\n#&gt;  [1] 2.0 2.0 2.0 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.2 2.2 2.2 2.2 2.2 2.2 2.3\n#&gt; [20] 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.4 2.4 2.4 2.4 2.5 2.5 2.6 2.6\n#&gt; [39] 2.6 2.7 2.7 2.7 2.9 2.9 2.9 3.0 3.0\nlen &lt;- length(bwtF)\nlen &lt;- sum(sex==\"F\")\nlen\n#&gt; [1] 47"
   },
   {
-    "objectID": "Quiz2/Quiz2.html#question-1.",
-    "href": "Quiz2/Quiz2.html#question-1.",
-    "title": "",
-    "section": "Question 1.",
-    "text": "Question 1.\n[2 pts] Area of trapezoid\nAs you know, the formula for the area of a trapezoid is (base 1 + base 2) /2 \\(\\times\\) height, as seen in the figure below:\n\n\n\n\n\nWrite R code to compute the area of a trapezoid of base1 = 10, base2 = 7, and height = 5. The computed area should be stored in an object area."
-  },
-  {
-    "objectID": "Quiz2/Quiz2.html#question-2.",
-    "href": "Quiz2/Quiz2.html#question-2.",
-    "title": "",
-    "section": "Question 2.",
-    "text": "Question 2.\nConsider the scores of a high school student:\n\nMaths – 95\nPhysics – 88.5\nPhysics lab – 79\nEnglish – 92\n\n(a). [1 pt] Use assignments to create variables maths, physics, physicslab, and english with their corresponding amounts.\n(b). [2 pts] Create a scores object with the four scores in (a). And use the function names() to give names o the elements of your vector scores.\n(c). [2 pts] Create a avg object with the average of the scores.\n(d). [4 pts] Create a grades object by converting the scores to grades based on the policy below. Then create a vector grade\\_values of integer values with the corresponding grade values. Recall that integer values are of the form 1L.\n\n\n\nRange\nGrade\nGrade Value\n\n\n\n\n[90, 100]\nA\n4\n\n\n[80, 90)\nB\n3\n\n\n[70, 80)\nC\n2\n\n\n[60, 70)\nD\n1\n\n\n&lt;60\nF\n0\n\n\n\n(e). [2 pts] Suppose the credits for Maths, Physics, Physics lab, English are 0.5, 1, 0.5, 1, respectively. Create a credits object.\n(f). [2 pts] Calculate the weighted GPA with\n\\[\\text{High School GPA} = \\sum (\\text{grade value}*\\text{credits})/ \\sum \\text{credits}\\] Save the value to object GPA."
-  },
-  {
-    "objectID": "Quiz4/Quiz4.html",
-    "href": "Quiz4/Quiz4.html",
+    "objectID": "Quiz5/Quiz5.html",
+    "href": "Quiz5/Quiz5.html",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz4.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz4.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz5.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz5.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz4/Quiz4.html#quiz-4-instructions",
-    "href": "Quiz4/Quiz4.html#quiz-4-instructions",
+    "objectID": "Quiz5/Quiz5.html#quiz-5-instructions",
+    "href": "Quiz5/Quiz5.html#quiz-5-instructions",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz4.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz4.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz5.R to Gradescope.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz5.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz4/Quiz4.html#question-1",
-    "href": "Quiz4/Quiz4.html#question-1",
+    "objectID": "Quiz5/Quiz5.html#question-1",
+    "href": "Quiz5/Quiz5.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[1pts] Let vec1 &lt;- seq(1, 10, 2). Generate a factor vec1_factor using vec1.\n\n\n\n\n\n\n[1pts] Check if vec1 is a vector? A factor? Use class() function to check the type of vec1.\n\n\n\n\n\n\n[1pts] Check if vec1_factor is a vector? A factor? Use class() function to check the type of vec1_factor.\n\n\n\n\n\n\n[1pts] Generate another factor vec1_factor10 using vec1, but levels = 1:10. Use identical(vec1_factor, vec1_factor10) to compare if the two factors are the same."
+    "text": "Question 1\n[4pts] Use matrix() to create a matrix mat1 (see below) from the R built-in constant vector month.abb. Use the function colnames() to add the standard calendar quarters that make up the year, that is, add the column names Q1, Q2, Q3, Q4. Add 1st, 2nd, 3rd as row names.\n\n#&gt;     Q1    Q2    Q3    Q4   \n#&gt; 1st \"Jan\" \"Apr\" \"Jul\" \"Oct\"\n#&gt; 2nd \"Feb\" \"May\" \"Aug\" \"Nov\"\n#&gt; 3rd \"Mar\" \"Jun\" \"Sep\" \"Dec\""
   },
   {
-    "objectID": "Quiz4/Quiz4.html#question-2",
-    "href": "Quiz4/Quiz4.html#question-2",
+    "objectID": "Quiz5/Quiz5.html#question-2",
+    "href": "Quiz5/Quiz5.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n[2pts] The typical 5-point Likert scale includes the following levels:\n\nStrongly Disagree\nDisagree\nNeutral\nAgree\nStrongly Agree\n\n\ny &lt;- c(\n  \"Disagree\", \"Disagree\", \"Agree\", \"Agree\", \"Strongly Agree\",           \n  \"Strongly Agree\", \"Strongly Disagree\", \"Strongly Disagree\", \n  \"Agree\", \"Agree\", \"Neutral\", \"Disagree\",         \n  \"Strongly Disagree\", \"Neutral\", \"Strongly Agree\", \"Agree\",           \n  \"Disagree\", \"Strongly Agree\", \"Strongly Agree\", \"Agree\",            \n  \"Neutral\", \"Agree\", \"Disagree\", \"Agree\", \"Agree\"  \n)\n\nBased on the vector y above, please generate a ordinal factor y_factor, which has the ordered levels as shown above (that is, ‘Strongly Disagree’ &lt; ‘Disagree’ &lt; ‘Neutral’ &lt; ‘Agree’ &lt; ‘Strongly Agree’)."
+    "text": "Question 2\n[3pts] Create a matrix as below and denote it as mat2.\n\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    1\n#&gt; [2,]    1    2\n#&gt; [3,]    1    3\n#&gt; [4,]    2    1\n#&gt; [5,]    2    2\n#&gt; [6,]    2    3"
   },
   {
-    "objectID": "Quiz4/Quiz4.html#question-3",
-    "href": "Quiz4/Quiz4.html#question-3",
+    "objectID": "Quiz5/Quiz5.html#question-3",
+    "href": "Quiz5/Quiz5.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\n\n\ndays_of_week &lt;- c(\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\")\n\nDAYS &lt;- c(\"Saturday\", \"Wednesday\", \"Sunday\", \"Friday\")\n\n\n[1pt] Sort the DAYS vector using sort() function. (Please note that the results are in alphabetical order rather than the order of the weekdays.)\n\n\n\n\n\n[1pt] Encode the vector DAYS into a factor DAYS_f, by using days_of_week above as the levels for the factor.\n\n\n\n\n\n[1pt] Sort DAYS_f using sort() function. (Please note that the results now is in the order of the weekdays.)\n\n\n\n\n\n[1pt] Use the function unclass() to obtain the integer vector associated to DAYS_f."
+    "text": "Question 3\nAssume the matrix m is defined as follows. We find that m is a matrix, not a vector, as shown below.\n\nm &lt;- matrix(c(1,2,3,4,5,6), nrow=2)\nis.matrix(m) # is.matrix() tests if the object is a matrix\n#&gt; [1] TRUE\nis.vector(m) # is.vector() tests if the object is a vector\n#&gt; [1] FALSE\n\n\n[1pt] Check the dimension of m using dim() function. Save the result to object d.\n\n\n\n\n\n\n[1pt] Define m1 the same as m above. Then Remove the dimension attribute of m1 by using dim(m1) &lt;- NULL. Then check if m1 is a matrix? a vector?\n\n\n\n\n\n\n\n\n[1pt] Let m2 &lt;- c(1,2,3,4,5,6). Add the dimension attribute to m2 by using dim(m2) &lt;- c(2, 3). Then check if m2 is a matrix? a vector?"
   }
 ]
