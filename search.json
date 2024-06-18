@@ -46,7 +46,7 @@
     "href": "Quiz4/Quiz4.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[1pts] Let vec1 &lt;- seq(1, 10, 2). Generate a factor vec1_factor using vec1.\n\n\n\n\n\n\n[1pts] Check if vec1 is a vector? A factor? Use class() function to check the type of vec1.\n\n\n\n\n\n\n[1pts] Check if vec1_factor is a vector? A factor? Use class() function to check the type of vec1_factor.\n\n\n\n\n\n\n[1pts] Generate another factor vec1_factor10 using vec1, but levels = 1:10. Use identical(vec1_factor, vec1_factor10) to compare if the two factors are the same."
+    "text": "Question 1\n\n[1pts] Let vec1 &lt;- seq(1, 10, 2). Generate a factor vec1_factor using vec1.\n\n\n\n\n\n\n[1pts] Check if vec1 is a vector? A factor? In addition, use class() function to check the type of vec1.\n\n\n\n\n\n\n[1pts] Check if vec1_factor is a vector? A factor? In addition, use class() function to check the type of vec1_factor.\n\n\n\n\n\n\n[1pts] Generate another factor vec1_factor10 using vec1, but levels = 1:10. Use identical(vec1_factor, vec1_factor10) to compare if the two factors are the same."
   },
   {
     "objectID": "Quiz4/Quiz4.html#question-2",
