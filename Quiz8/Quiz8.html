@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quiz2</title>
+<title>quiz8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,9 +110,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quiz-2-instructions" id="toc-quiz-2-instructions" class="nav-link active" data-scroll-target="#quiz-2-instructions">Quiz 2 Instructions</a></li>
-  <li><a href="#question-1." id="toc-question-1." class="nav-link" data-scroll-target="#question-1.">Question 1.</a></li>
-  <li><a href="#question-2." id="toc-question-2." class="nav-link" data-scroll-target="#question-2.">Question 2.</a></li>
+  <li><a href="#quiz-8-instructions" id="toc-quiz-8-instructions" class="nav-link active" data-scroll-target="#quiz-8-instructions">Quiz 8 Instructions</a></li>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
   </ul>
 </nav>
     </div>
@@ -122,117 +124,65 @@ window.Quarto = {
 
 
 
-<section id="quiz-2-instructions" class="level2">
-<h2 class="anchored" data-anchor-id="quiz-2-instructions">Quiz 2 Instructions</h2>
-<p>Please complete the following questions and submit a file named <strong>Quiz2.R</strong> to <a href="https://www.gradescope.com/login">Gradescope</a>.</p>
+<section id="quiz-8-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="quiz-8-instructions">Quiz 8 Instructions</h2>
+<p>Please complete the following questions and submit a file named <strong>Quiz8.R</strong>.</p>
 <p><strong>Remember:</strong></p>
 <!-- -   Do not rename external data files or edit them in any way. In other words, don't modify *data.csv*. Your code won't work properly on my version of that data set, if you do. -->
 <ul>
 <li>Do not use global paths in you script. Instead, use <em>setwd()</em> interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.</li>
 <li>Do not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.</li>
 <li>Check to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.</li>
-<li>Make sure to name your submission <strong>Quiz2.R</strong></li>
+<li>Make sure to name your submission <strong>Quiz8.R</strong></li>
 </ul>
 <p><strong>Tip:</strong> before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.</p>
-<div style="height:30px;">
-
-</div>
 </section>
-<section id="question-1." class="level2">
-<h2 class="anchored" data-anchor-id="question-1.">Question 1.</h2>
-<p><strong>[2 pts] Area of trapezoid</strong></p>
-<p>As you know, the formula for the area of a trapezoid is (base 1 + base 2) /2 <span class="math inline">\(\times\)</span> height, as seen in the figure below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="area-trapezoid.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-<p>Write R code to compute the area of a trapezoid of <code>base1 = 10</code>, <code>base2 = 7</code>, and <code>height = 5</code>. The computed area should be stored in an object <code>area</code>.</p>
-<!-- ```{r} -->
-<!-- # Solutions -->
-<!-- base1 = 10 -->
-<!-- base2 = 7 -->
-<!-- height = 5 -->
-<!-- area = (base1 + base2)/2 * height -->
-<!-- area -->
-<!-- ``` -->
-<div style="height:30px;">
-
-</div>
-</section>
-<section id="question-2." class="level2">
-<h2 class="anchored" data-anchor-id="question-2.">Question 2.</h2>
-<p>Consider the scores of a high school student:</p>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p><strong>[2pts]</strong> Create a function to show welcome information.</p>
 <ul>
-<li>Maths – 95</li>
-<li>Physics – 88.5</li>
-<li>Physics lab – 79</li>
-<li>English – 92</li>
+<li>Function Name: <code>welcome</code></li>
+<li>Function Input: Any string, like <code>John Doe</code></li>
+<li>Function Output: “Welcome to STAT 385,” and the input string, then the exclamation point. Example: “Welcome to STAT 385, John Doe!”</li>
 </ul>
-<p>(a). [1 pt] Use assignments to create variables <code>maths</code>, <code>physics</code>, <code>physicslab</code>, and <code>english</code> with their corresponding amounts.</p>
-<p>(b). [2 pts] Create a <code>scores</code> object with the four scores in (a). And use the function <code>names()</code> to give names o the elements of your vector <code>scores</code>.</p>
-<p>(c). [2 pts] Create a <code>avg</code> object with the average of the scores.</p>
-<p>(d). [4 pts] Create a <code>grades</code> object by converting the scores to grades based on the policy below. Then create a vector <code>grade_values</code> of <strong>integer</strong> values with the corresponding grade values. Recall that integer values are of the form <code>1L</code>.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Range</th>
-<th>Grade</th>
-<th style="text-align: right;">Grade Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>[90, 100]</td>
-<td>A</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td>[80, 90)</td>
-<td>B</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td>[70, 80)</td>
-<td>C</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td>[60, 70)</td>
-<td>D</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td>&lt;60</td>
-<td>F</td>
-<td style="text-align: right;">0</td>
-</tr>
-</tbody>
-</table>
-<p>(e). [2 pts] Suppose the credits for Maths, Physics, Physics lab, English are 0.5, 1, 0.5, 1, respectively. Create a <code>credits</code> object.</p>
-<p>(f). [2 pts] Calculate the weighted GPA with</p>
-<p><span class="math display">\[\text{High School GPA} = \sum (\text{grade value}*\text{credits})/ \sum \text{credits}\]</span> Save the value to object <code>GPA</code>.</p>
-<!-- ```{r} -->
-<!-- # Solution -->
-<!-- # (a) -->
-<!-- maths = 95 -->
-<!-- physics = 88.5 -->
-<!-- physicslab = 79 -->
-<!-- english = 92 -->
-<!-- # (b) -->
-<!-- scores = c(maths, physics, physicslab, english) -->
-<!-- # (c) -->
-<!-- avg = mean(scores) -->
-<!-- avg -->
-<!-- # (d) -->
-<!-- grades <- c("A", "B", "C", "A") -->
-<!-- grade_values <- c(4L, 3L, 2L, 4L) -->
-<!-- # (e) -->
-<!-- credits <- c(0.5, 1, 0.5, 1) -->
-<!-- # (f) -->
-<!-- GPA <- sum(grade_values*credits)/sum(credits) -->
-<!-- GPA -->
-<!-- ``` -->
+<p>[Hint: You may use <code>paste0()</code> function. Please make sure the number of spaces is correct, such as having a space after the comma.]</p>
+<div style="height:30px;">
+
+</div>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<p><strong>[2pts]</strong> Create a function to calculate the <span class="math inline">\(t\)</span>-statistic for a given random sample <span class="math inline">\(x\)</span> and the specified <code>mu</code> (defaulting to 0). Recall that <span class="math inline">\(t = \frac{\bar{x} - \mu}{s/\sqrt n}\)</span>, where <span class="math inline">\(\bar x\)</span> is the sample mean, <span class="math inline">\(s\)</span> is the sample standard deviation of <span class="math inline">\(x\)</span>, and <span class="math inline">\(n\)</span> is the sample size.</p>
+<ul>
+<li>Function Name: <code>t.statistic</code></li>
+<li>Function Input: <code>x</code>, <code>mu</code>. Please set <code>mu = 0</code> as the default value.</li>
+<li>Function Output: The t-statistic value.</li>
+</ul>
+<div style="height:30px;">
+
+</div>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<p><strong>[2pts]</strong> Create a function to calculate the squared sum of a vector.</p>
+<ul>
+<li>Function Name: <code>squared_sum</code></li>
+<li>Function Input: Any numeric vector (may contains missing values).</li>
+<li>Function Output: The squared sum of the input vector excluding the missing values.</li>
+</ul>
+<p>[Hint: You may use <code>na.rm = TRUE</code> within <code>sum()</code> to remove the missing values from calculation.]</p>
+<div style="height:30px;">
+
+</div>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<p><strong>[4pts]</strong> Create a function to return the list of summary statistics: the input vector itself <code>vector</code>, vector length <code>n</code>, vector mean <code>mean</code>, vector median value <code>median</code>, standard deviation <code>sd</code>, minimum <code>min</code>, maximum <code>max</code>, first quartile <code>Q1</code>, third quartile <code>Q3</code>, the squared sum <code>sq.sum</code> (please use the function defined in Question 3), the number of missing values <code>num.missing</code>.</p>
+<ul>
+<li>Function Name: <code>summary_stats</code></li>
+<li>Function Input: Any numeric vector (may contains missing values).</li>
+<li>Function Output: A list with values <code>vector</code>, <code>n</code>, <code>mean</code>, <code>median</code>, <code>sd</code>, <code>min</code>, <code>max</code>, <code>Q1</code>, <code>Q3</code>, <code>sq.sum</code>, <code>num.missing</code>. Please make sure the statistics follows the order specified.</li>
+</ul>
 
 
 </section>
