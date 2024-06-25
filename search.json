@@ -133,13 +133,6 @@
     "text": "Question 2.\nConsider the scores of a high school student:\n\nMaths – 95\nPhysics – 88.5\nPhysics lab – 79\nEnglish – 92\n\n(a). [1 pt] Use assignments to create variables maths, physics, physicslab, and english with their corresponding amounts.\n(b). [2 pts] Create a scores object with the four scores in (a). And use the function names() to give names o the elements of your vector scores.\n(c). [2 pts] Create a avg object with the average of the scores.\n(d). [4 pts] Create a grades object by converting the scores to grades based on the policy below. Then create a vector grade_values of integer values with the corresponding grade values. Recall that integer values are of the form 1L.\n\n\n\nRange\nGrade\nGrade Value\n\n\n\n\n[90, 100]\nA\n4\n\n\n[80, 90)\nB\n3\n\n\n[70, 80)\nC\n2\n\n\n[60, 70)\nD\n1\n\n\n&lt;60\nF\n0\n\n\n\n(e). [2 pts] Suppose the credits for Maths, Physics, Physics lab, English are 0.5, 1, 0.5, 1, respectively. Create a credits object.\n(f). [2 pts] Calculate the weighted GPA with\n\\[\\text{High School GPA} = \\sum (\\text{grade value}*\\text{credits})/ \\sum \\text{credits}\\] Save the value to object GPA."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Preface",
-    "section": "",
-    "text": "This are the lecture notes for STAT 385: Statistics Programming Methods, offered in the Summer of 2024 at UIUC. If you have any comments/suggestions/concerns about the notes please contact me at wjia@illinois.edu."
-  },
-  {
     "objectID": "Quiz1/Quiz1.html",
     "href": "Quiz1/Quiz1.html",
     "title": "",
@@ -173,6 +166,55 @@
     "title": "",
     "section": "Question 3.",
     "text": "Question 3.\nRead in the data set called data.csv and store the data frame as myDataFrame."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Preface",
+    "section": "",
+    "text": "This are the lecture notes for STAT 385: Statistics Programming Methods, offered in the Summer of 2024 at UIUC. If you have any comments/suggestions/concerns about the notes please contact me at wjia@illinois.edu."
+  },
+  {
+    "objectID": "Quiz11/Quiz11.html",
+    "href": "Quiz11/Quiz11.html",
+    "title": "",
+    "section": "",
+    "text": "Please complete the following questions and submit a file named Quiz11.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify CLEANDATA.txt, etc. unless specifically requested and instructed below. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz11.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz11/Quiz11.html#quiz-11-instructions",
+    "href": "Quiz11/Quiz11.html#quiz-11-instructions",
+    "title": "",
+    "section": "",
+    "text": "Please complete the following questions and submit a file named Quiz11.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify CLEANDATA.txt, etc. unless specifically requested and instructed below. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz11.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz11/Quiz11.html#data-preparation-practice-converting-xlsx-file-to-csv",
+    "href": "Quiz11/Quiz11.html#data-preparation-practice-converting-xlsx-file-to-csv",
+    "title": "",
+    "section": "Data Preparation – Practice converting XLSX file to CSV",
+    "text": "Data Preparation – Practice converting XLSX file to CSV\nPlease review the instructions on “How to convert Excel file to CSV” at https://www.ablebits.com/office-addins-blog/convert-excel-csv/. Then, save the “BLACKFRIDAY” and “COFFEE” spreadsheets from “Datasets.xlsx” as two separate CSV files named “BLACKFRIDAY.csv” and “COFFEE.csv”.\nAfter this step, we will disregard “Datasets.xlsx” and only use the two newly created CSV files for the following questions."
+  },
+  {
+    "objectID": "Quiz11/Quiz11.html#question-1",
+    "href": "Quiz11/Quiz11.html#question-1",
+    "title": "",
+    "section": "Question 1",
+    "text": "Question 1\n\nImport the first 4 columns of “COFFEE.csv” and save the data frame as COFFEE.PART1. [Hint: You may use nrows for this task.]\n\nThe imported data frame should be\n\n#&gt;   DEMAND PRICE         X Pred_DEMAND\n#&gt; 1   1120   3.0 0.3333333   1088.8869\n#&gt; 2    999   3.1 0.3225806   1015.6815\n#&gt; 3    932   3.2 0.3125000    947.0514\n#&gt; 4    884   3.3 0.3030303    882.5807\n#&gt; 5    807   3.4 0.2941176    821.9024\n#&gt; 6    760   3.5 0.2857143    764.6914\n#&gt; 7    701   3.6 0.2777778    710.6588\n#&gt; 8    688   3.7 0.2702703    659.5469\n\n\nExport the regression analysis results to file “REGRESSION_COFFEE_PART1.txt”.\n\n[Hint: You may use cat() and sink() for this task; You may use the following R codes.\n\nlmod &lt;- lm(PRICE ~ DEMAND, data = COFFEE.PART1)\nsummary(lmod)\nanova(lmod)\n\n].\nThe final TXT file “REGRESSION_COFFEE_PART1.txt” should look like:\n\n\n\n\n\n\nImport the last 3 columns of “COFFEE.csv” and save the data frame as COFFEE.PART2. Then rename the second column name as inverseP.\n\nThe imported data frame should be: (Below we only show the first and last 3 rows to save space)\n\nhead(COFFEE.PART2, 3)\n#&gt;      P  inverseP     Dhat\n#&gt; 1 3.00 0.3333333 1089.333\n#&gt; 2 3.01 0.3322259 1081.794\n#&gt; 3 3.02 0.3311258 1074.305\ntail(COFFEE.PART2, 3)\n#&gt;       P  inverseP     Dhat\n#&gt; 69 3.68 0.2717391 670.0000\n#&gt; 70 3.69 0.2710027 664.9864\n#&gt; 71 3.70 0.2702703 660.0000\n\n\nUse plot(COFFEE.PART2$P, COFFEE.PART2$inverseP) to draw the scatterplot and save the plot as “PLOT_COFFEE_PART2.png”, make sure you use bg = \"transparent\" to set the background to transparent."
+  },
+  {
+    "objectID": "Quiz11/Quiz11.html#question-2",
+    "href": "Quiz11/Quiz11.html#question-2",
+    "title": "",
+    "section": "Question 2",
+    "text": "Question 2\nImport “BLACKFRIDAY.csv” and save the data frame as BLACKFRIDAY. Filter the data frame with YEARS greater than 10, and save the result as BLACKFRIDAY_gt10. Export data frame BLACKFRIDAY_gt10 to CSV file “BLACKFRIDAY_gt10.csv”. Make sure you use row.names = FALSE to avoid writing the row names."
+  },
+  {
+    "objectID": "Quiz11/Quiz11.html#question-3",
+    "href": "Quiz11/Quiz11.html#question-3",
+    "title": "",
+    "section": "Question 3",
+    "text": "Question 3\nUse “CLEANDATA.txt” for this question. Complete the following parts.\n\n\n\nStep 1: Skip the first five rows (no header, i.e. consider header as Row 1) and import “CLEANDATA.txt”. Save the data frame as CLEANDATA.\nStep 2: Scan the column names from “CLEANDATA.txt” as header. Then assemble the data frame CLEANDATA and header.\nThe data frame CLEANDATA should be:\n\n#&gt;    EXP AUTOMATI OUTPUT\n#&gt; 1   &lt;1        M     12\n#&gt; 2   &lt;1        M     10\n#&gt; 3   &lt;1        L      5\n#&gt; 4   &lt;1        L      4\n#&gt; 5   &lt;1        L      8\n#&gt; 6  1-2        H     15\n#&gt; 7  1-2        H     18\n#&gt; 8  1-2        H     17\n#&gt; 9  1-2        M     10\n#&gt; 10 1-2        M     10\n#&gt; 11 1-2        M     12\n#&gt; 12 1-2        L      8\n#&gt; 13 1-2        L     10\n#&gt; 14 1-2        L     10\n#&gt; 15  &gt;2        H     20\n#&gt; 16  &gt;2        H     18\n#&gt; 17  &gt;2        H     19\n#&gt; 18  &gt;2        M     13\n#&gt; 19  &gt;2        M     13\n#&gt; 20  &gt;2        M     14\n#&gt; 21  &gt;2        L     12\n#&gt; 22  &gt;2        L     11\n#&gt; 23  &gt;2        L     13\n\n\nWrite the CLEANDATA$AUTOMATI, one element per line, to the file “AUTOMATI.txt”."
   },
   {
     "objectID": "Quiz3/Quiz3.html",
