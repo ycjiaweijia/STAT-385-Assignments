@@ -242,35 +242,35 @@
     "href": "Quiz12/Quiz12.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[2 pts] Draw a scatter plot to visualize the relationship between the variables dep_delay and arr_delay in the alaska_flights data frame (defined above). Change the label for the x-axis as Departure Delay, the label for y-axis as Arrival Delay, and the plot title as Relationship between Departure and Arrival Delay.\n\n\n\n\n\n[2 pts] Draw a scatterplot matrices of variables dep_time, sched_dep_time, dep_delay, arr_time, sched_arr_time, arr_delay in the data frame alaska_flights."
+    "text": "Question 1\n\n[2 pts] Draw a scatter plot to visualize the relationship between the variables dep_delay and arr_delay in the alaska_flights data frame (defined above). Change the label for the x-axis as Departure Delay, the label for y-axis as Arrival Delay, and the plot title as Relationship between Departure and Arrival Delay. Save the created plot as Q1a.plot.\n\n\n\n\n\n[2 pts] Draw a scatterplot matrices of variables dep_time, sched_dep_time, dep_delay, arr_time, sched_arr_time, arr_delay in the data frame alaska_flights. Save the created plot as Q1b.plot."
   },
   {
     "objectID": "Quiz12/Quiz12.html#question-2",
     "href": "Quiz12/Quiz12.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n[2 pts] Create a time series plot (line graph) of the hourly temperature (variable temp) vs the time time_hour saved in the early_january_weather data frame (defined above). Change the label for the x-axis as Date and Hour, the label for y-axis as Temperature, and the plot title as Line Graph of Temperature vs Date and Hour."
+    "text": "Question 2\n[2 pts] Create a time series plot (line graph) of the hourly temperature (variable temp) vs the time time_hour saved in the early_january_weather data frame (defined above). Change the label for the x-axis as Date and Hour, the label for y-axis as Temperature, and the plot title as Line Graph of Temperature vs Date and Hour. Save the created plot as Q2.plot."
   },
   {
     "objectID": "Quiz12/Quiz12.html#question-3",
     "href": "Quiz12/Quiz12.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\n[2 pts] Draw histogram of temperature (variable temp) in the data frame weather. Change the bar color to blue. What’s more, use border = \"white\" to change the border color to white."
+    "text": "Question 3\n[2 pts] Draw histogram of temperature (variable temp) in the data frame weather. Change the bar color to blue. What’s more, use border = \"white\" to change the border color to white. Save the created plot as Q3.plot."
   },
   {
     "objectID": "Quiz12/Quiz12.html#question-4",
     "href": "Quiz12/Quiz12.html#question-4",
     "title": "",
     "section": "Question 4",
-    "text": "Question 4\n[2 pts] Draw the two plot side by side (i.e. 1 row and 2 columns).\n\nPlot 1: Draw a boxplot of the variable temp in the data frame weather.\nPlot 2: Draw a boxplot of temp vs month of the data frame weather."
+    "text": "Question 4\n[2 pts] Draw the two plot side by side (i.e. 1 row and 2 columns).\n\nPlot 1: Draw a boxplot of the variable temp in the data frame weather.\nPlot 2: Draw a boxplot of temp vs month of the data frame weather.\n\nSave the created plot as Q4.plot."
   },
   {
     "objectID": "Quiz12/Quiz12.html#question-5",
     "href": "Quiz12/Quiz12.html#question-5",
     "title": "",
     "section": "Question 5",
-    "text": "Question 5\n[2 pts] Draw a bar plot of carrier from the dataset flights."
+    "text": "Question 5\n[2 pts] Draw a bar plot of carrier from the dataset flights. Save the created plot as Q5.plot."
   },
   {
     "objectID": "Quiz3/Quiz3.html",
