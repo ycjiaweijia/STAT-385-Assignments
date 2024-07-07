@@ -252,6 +252,48 @@
     "text": "This are the lecture notes for STAT 385: Statistics Programming Methods, offered in the Summer of 2024 at UIUC. If you have any comments/suggestions/concerns about the notes please contact me at wjia@illinois.edu."
   },
   {
+    "objectID": "Lab6/Lab6.html",
+    "href": "Lab6/Lab6.html",
+    "title": "",
+    "section": "",
+    "text": "Please ensure you review the document STAT 385 Lab 6 Help Document – Kronecker Product Illustration on Canvas or the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab6HelpDoc/Lab6HelpDoc for assistance and information.\nPlease complete the following questions and submit your Lab 6 to Gradescope."
+  },
+  {
+    "objectID": "Lab6/Lab6.html#lab-6-instruction",
+    "href": "Lab6/Lab6.html#lab-6-instruction",
+    "title": "",
+    "section": "",
+    "text": "Please ensure you review the document STAT 385 Lab 6 Help Document – Kronecker Product Illustration on Canvas or the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab6HelpDoc/Lab6HelpDoc for assistance and information.\nPlease complete the following questions and submit your Lab 6 to Gradescope."
+  },
+  {
+    "objectID": "Lab6/Lab6.html#mathemetical-definition-of-kronecker-product",
+    "href": "Lab6/Lab6.html#mathemetical-definition-of-kronecker-product",
+    "title": "",
+    "section": "Mathemetical Definition of Kronecker Product",
+    "text": "Mathemetical Definition of Kronecker Product\nIn mathematics, the Kronecker product, sometimes denoted by \\(\\bigotimes\\), is an operation on two matrices of arbitrary size resulting a block matrix. It is a specialization of the tensor product (which is denoted by the same symbol) from vectors to matrices and gives the matrix of the tensor product linear map with respect to a standard choice of basis. The Kronecker product is to be distinguished from the usual matrix multiplication, which is an entirely different operation. The Kronecker product is also sometimes called matrix direct product.\n\nYou can find more information about Kronecker Product on Wikipedia https://en.wikipedia.org/wiki/Kronecker_product.\n\nIf \\(\\mathbf{A}\\) is an \\(m \\times n\\) matrix and \\(\\mathbf{B}\\) is a \\(p \\times q\\) matrix, then the Kronecker product \\(\\mathbf{A}\\bigotimes \\mathbf{B}\\) is the \\(pm \\times qn\\) block matrix:\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\begin{bmatrix}\na_{11}\\mathbf{B}\\quad  \\cdots \\quad a_{1n}\\mathbf{B}\\\\\n\\vdots\\quad  \\ddots\\quad  \\vdots\\\\\na_{m1}\\mathbf{B}\\quad  \\cdots \\quad a_{mn}\\mathbf{B}\n\\end{bmatrix},\\]\nmore explicitly,\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} =\\left[\\begin{array}{cccccccccc}\na_{11}b_{11}&  a_{11}b_{12} & \\cdots & a_{11}b_{1q}& \\cdots& \\cdots& a_{1n}b_{11}&  a_{1n}b_{12} & \\cdots & a_{1n}b_{1q} \\\\\na_{11}b_{21}&  a_{11}b_{22} & \\cdots & a_{11}b_{2q}& \\cdots& \\cdots& a_{1n}b_{21}&  a_{1n}b_{22} & \\cdots & a_{1n}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{11}b_{p1}&  a_{11}b_{p2} & \\cdots & a_{11}b_{pq}& \\cdots& \\cdots& a_{1n}b_{p1}&  a_{1n}b_{p2} & \\cdots & a_{1n}b_{pq} \\\\\n\\vdots& \\vdots&  &  \\vdots & \\ddots& & \\vdots  & \\vdots& & \\vdots \\\\\n\\vdots& \\vdots&  &  \\vdots & &\\ddots & \\vdots  & \\vdots& & \\vdots \\\\\na_{m1}b_{11}&  a_{m1}b_{12} & \\cdots & a_{m1}b_{1q}& \\cdots& \\cdots& a_{mn}b_{11}&  a_{mn}b_{12} & \\cdots & a_{mn}b_{1q} \\\\\na_{m1}b_{21}&  a_{m1}b_{22} & \\cdots & a_{m1}b_{2q}& \\cdots& \\cdots& a_{mn}b_{21}&  a_{mn}b_{22} & \\cdots & a_{mn}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{m1}b_{p1}&  a_{m1}b_{p2} & \\cdots & a_{m1}b_{pq}& \\cdots& \\cdots& a_{mn}b_{p1}&  a_{mn}b_{p2} & \\cdots & a_{mn}b_{pq}\n\\end{array}\\right],\\]"
+  },
+  {
+    "objectID": "Lab6/Lab6.html#question-1",
+    "href": "Lab6/Lab6.html#question-1",
+    "title": "",
+    "section": "Question 1",
+    "text": "Question 1\n[20 pts] Please define the function forloop_kronecker(), using for loop, to calculate the Kronecker product of matrices A and B with arbitrary dimensions."
+  },
+  {
+    "objectID": "Lab6/Lab6.html#question-2",
+    "href": "Lab6/Lab6.html#question-2",
+    "title": "",
+    "section": "Question 2",
+    "text": "Question 2\n[20 pts] Please define the function vectorization_kronecker(), using vectorization, to calculate the Kronecker product of matrices A and B with arbitrary dimensions."
+  },
+  {
+    "objectID": "Lab6/Lab6.html#question-3",
+    "href": "Lab6/Lab6.html#question-3",
+    "title": "",
+    "section": "Question 3",
+    "text": "Question 3\n[20 pts] Compare the CPU times for three Kronecker product calculation methods below for matrices A1 and B1, A2 and B2, and other pairs of matrices you choose to test. Use times = 10000L for each calculation. Discuss the computational efficiency of the three methods based on your findings.\n\nvectorization_kronecker()\nkronecker()\nforloop_kronecker()\n\n\n(A1 &lt;- matrix(1:16, nrow = 4, ncol = 4))\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    1    5    9   13\n#&gt; [2,]    2    6   10   14\n#&gt; [3,]    3    7   11   15\n#&gt; [4,]    4    8   12   16\n(B1 &lt;- matrix(1:20, nrow = 4, ncol = 5))\n#&gt;      [,1] [,2] [,3] [,4] [,5]\n#&gt; [1,]    1    5    9   13   17\n#&gt; [2,]    2    6   10   14   18\n#&gt; [3,]    3    7   11   15   19\n#&gt; [4,]    4    8   12   16   20\n\n(A2 &lt;- matrix(1:40, nrow = 5, ncol = 8))\n#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]\n#&gt; [1,]    1    6   11   16   21   26   31   36\n#&gt; [2,]    2    7   12   17   22   27   32   37\n#&gt; [3,]    3    8   13   18   23   28   33   38\n#&gt; [4,]    4    9   14   19   24   29   34   39\n#&gt; [5,]    5   10   15   20   25   30   35   40\n(B2 &lt;- matrix(1:50, nrow = 10, ncol = 5))\n#&gt;       [,1] [,2] [,3] [,4] [,5]\n#&gt;  [1,]    1   11   21   31   41\n#&gt;  [2,]    2   12   22   32   42\n#&gt;  [3,]    3   13   23   33   43\n#&gt;  [4,]    4   14   24   34   44\n#&gt;  [5,]    5   15   25   35   45\n#&gt;  [6,]    6   16   26   36   46\n#&gt;  [7,]    7   17   27   37   47\n#&gt;  [8,]    8   18   28   38   48\n#&gt;  [9,]    9   19   29   39   49\n#&gt; [10,]   10   20   30   40   50"
+  },
+  {
     "objectID": "Quiz1/Quiz1.html",
     "href": "Quiz1/Quiz1.html",
     "title": "",
