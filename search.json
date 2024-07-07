@@ -175,6 +175,76 @@
     "text": "Question 3\nUse “CLEANDATA.txt” for this question. Complete the following parts.\n\n[2pts]\n\nStep 1: Skip the first five rows (consider the column names as Row 1) and import “CLEANDATA.txt”. Save the data frame as CLEANDATA.\nStep 2: Scan the column names from “CLEANDATA.txt” as header. Then assemble the data frame CLEANDATA and header.\nThe data frame CLEANDATA should be:\n\n#&gt;    EXP AUTOMATI OUTPUT\n#&gt; 1   &lt;1        M     12\n#&gt; 2   &lt;1        M     10\n#&gt; 3   &lt;1        L      5\n#&gt; 4   &lt;1        L      4\n#&gt; 5   &lt;1        L      8\n#&gt; 6  1-2        H     15\n#&gt; 7  1-2        H     18\n#&gt; 8  1-2        H     17\n#&gt; 9  1-2        M     10\n#&gt; 10 1-2        M     10\n#&gt; 11 1-2        M     12\n#&gt; 12 1-2        L      8\n#&gt; 13 1-2        L     10\n#&gt; 14 1-2        L     10\n#&gt; 15  &gt;2        H     20\n#&gt; 16  &gt;2        H     18\n#&gt; 17  &gt;2        H     19\n#&gt; 18  &gt;2        M     13\n#&gt; 19  &gt;2        M     13\n#&gt; 20  &gt;2        M     14\n#&gt; 21  &gt;2        L     12\n#&gt; 22  &gt;2        L     11\n#&gt; 23  &gt;2        L     13\n\n\n[1pt] Write the CLEANDATA$AUTOMATI, one element per line, to the file “AUTOMATI.txt”."
   },
   {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#why-vectorization",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#why-vectorization",
+    "title": "",
+    "section": "Why Vectorization?",
+    "text": "Why Vectorization?\n\nAvoid using for loops in R when possible.\nUse vectorization whenever you can."
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product",
+    "title": "",
+    "section": "Kronecker Product",
+    "text": "Kronecker Product\nIn mathematics, the Kronecker product, sometimes denoted by \\(\\bigotimes\\), is an operation on two matrices of arbitrary size resulting a block matrix. It is a specialization of the tensor product (which is denoted by the same symbol) from vectors to matrices and gives the matrix of the tensor product linear map with respect to a standard choice of basis. The Kronecker product is to be distinguished from the usual matrix multiplication, which is an entirely different operation. The Kronecker product is also sometimes called matrix direct product.\n\nYou can find more information about Kronecker Product on Wikipedia https://en.wikipedia.org/wiki/Kronecker_product."
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#mathemetical-definition-of-kronecker-product",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#mathemetical-definition-of-kronecker-product",
+    "title": "",
+    "section": "Mathemetical Definition of Kronecker Product",
+    "text": "Mathemetical Definition of Kronecker Product\nIf \\(\\mathbf{A}\\) is an \\(m \\times n\\) matrix and \\(\\mathbf{B}\\) is a \\(p \\times q\\) matrix, then the Kronecker product \\(\\mathbf{A}\\bigotimes \\mathbf{B}\\) is the \\(pm \\times qn\\) block matrix:\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\begin{bmatrix}\na_{11}\\mathbf{B}\\quad  \\cdots \\quad a_{1n}\\mathbf{B}\\\\\n\\vdots\\quad  \\ddots\\quad  \\vdots\\\\\na_{m1}\\mathbf{B}\\quad  \\cdots \\quad a_{mn}\\mathbf{B}\n\\end{bmatrix},\\]\nmore explicitly,\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} =\\left[\\begin{array}{cccccccccc}\na_{11}b_{11}&  a_{11}b_{12} & \\cdots & a_{11}b_{1q}& \\cdots& \\cdots& a_{1n}b_{11}&  a_{1n}b_{12} & \\cdots & a_{1n}b_{1q} \\\\\na_{11}b_{21}&  a_{11}b_{22} & \\cdots & a_{11}b_{2q}& \\cdots& \\cdots& a_{1n}b_{21}&  a_{1n}b_{22} & \\cdots & a_{1n}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{11}b_{p1}&  a_{11}b_{p2} & \\cdots & a_{11}b_{pq}& \\cdots& \\cdots& a_{1n}b_{p1}&  a_{1n}b_{p2} & \\cdots & a_{1n}b_{pq} \\\\\n\\vdots& \\vdots&  &  \\vdots & \\ddots& & \\vdots  & \\vdots& & \\vdots \\\\\n\\vdots& \\vdots&  &  \\vdots & &\\ddots & \\vdots  & \\vdots& & \\vdots \\\\\na_{m1}b_{11}&  a_{m1}b_{12} & \\cdots & a_{m1}b_{1q}& \\cdots& \\cdots& a_{mn}b_{11}&  a_{mn}b_{12} & \\cdots & a_{mn}b_{1q} \\\\\na_{m1}b_{21}&  a_{m1}b_{22} & \\cdots & a_{m1}b_{2q}& \\cdots& \\cdots& a_{mn}b_{21}&  a_{mn}b_{22} & \\cdots & a_{mn}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{m1}b_{p1}&  a_{m1}b_{p2} & \\cdots & a_{m1}b_{pq}& \\cdots& \\cdots& a_{mn}b_{p1}&  a_{mn}b_{p2} & \\cdots & a_{mn}b_{pq}\n\\end{array}\\right],\\]"
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product-example",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product-example",
+    "title": "",
+    "section": "Kronecker Product Example",
+    "text": "Kronecker Product Example\n\\[A = \\begin{bmatrix}\n1 \\quad 3 \\\\\n2 \\quad 4\n\\end{bmatrix}\\]\n\\[B = \\begin{bmatrix}\n0 \\quad 5 \\\\\n6 \\quad 7\n\\end{bmatrix}\\]\nThen\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\left[\\begin{array}{cccc}\n1\\times 0 & 1\\times 5 & 3\\times 0 & 3\\times 5\\\\\n1\\times 6 & 1\\times 7 & 3\\times 6 & 3\\times 7\\\\\n2\\times 0 & 2\\times 5 & 4\\times 0 & 4\\times 5\\\\\n2\\times 6 & 2\\times 7 & 4\\times 6 & 4\\times 7\n\\end{array}\\right] =\n\\left[\\begin{array}{cccc}\n0 & 5 & 0 & 15\\\\\n6 & 7 & 18 & 21\\\\\n0 & 10 & 0 & 20\\\\\n12 & 14 & 24 & 28\n\\end{array}\\right].\\]"
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#calculate-kronecker-product-in-r",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#calculate-kronecker-product-in-r",
+    "title": "",
+    "section": "Calculate Kronecker Product in R",
+    "text": "Calculate Kronecker Product in R\nLet \\(A\\) and \\(B\\) be \\(2 \\times 2\\) matrices as follows:\n\n(A &lt;- matrix(1:4, nrow = 2))\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    3\n#&gt; [2,]    2    4\n(B &lt;- matrix(c(0, 6, 5, 7), nrow = 2))\n#&gt;      [,1] [,2]\n#&gt; [1,]    0    5\n#&gt; [2,]    6    7"
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#method-i-the-kronecker-function",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#method-i-the-kronecker-function",
+    "title": "",
+    "section": "Method I: The kronecker() Function",
+    "text": "Method I: The kronecker() Function\n\nA\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    3\n#&gt; [2,]    2    4\nB\n#&gt;      [,1] [,2]\n#&gt; [1,]    0    5\n#&gt; [2,]    6    7\nkronecker(A, B)\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28"
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#method-ii-for-loop",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#method-ii-for-loop",
+    "title": "",
+    "section": "Method II: For Loop",
+    "text": "Method II: For Loop\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\left[\\begin{array}{cccc}\n1\\times 0 & 1\\times 5 & 3\\times 0 & 3\\times 5\\\\\n1\\times 6 & 1\\times 7 & 3\\times 6 & 3\\times 7\\\\\n2\\times 0 & 2\\times 5 & 4\\times 0 & 4\\times 5\\\\\n2\\times 6 & 2\\times 7 & 4\\times 6 & 4\\times 7\n\\end{array}\\right] =\n\\left[\\begin{array}{cccc}\n0 & 5 & 0 & 15\\\\\n6 & 7 & 18 & 21\\\\\n0 & 10 & 0 & 20\\\\\n12 & 14 & 24 & 28\n\\end{array}\\right].\\] Locations:\n\n\n\n\n\n\nforloop_kronecker &lt;- function(A, B){\n  Res = matrix(NA, nrow = 2*2, ncol = 2*2)\n  k = 0\n  l = 0\n  \n  for (j in 1:2){\n    k = 0\n    for (i in 1:2){\n      Res[(k+1):(k+2), (l+1):(l+2)] &lt;- A[i, j] * B\n      k = k + 2\n    }\n    l = l + 2\n  }\n  Res\n}\n\nforloop_kronecker(A, B)\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28"
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#method-iii-vectorization-recommended",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#method-iii-vectorization-recommended",
+    "title": "",
+    "section": "Method III: Vectorization [Recommended]",
+    "text": "Method III: Vectorization [Recommended]\n\nObjective\n\n\n\n\n\n\n\nDeal with A\n\n\n\n\nRecall\n\nrep(1:2, each = 2)\n#&gt; [1] 1 1 2 2\n\n\nA\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    3\n#&gt; [2,]    2    4\n\nA[rep(1:2, each = 2), rep(1:2, each = 2)]\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    1    1    3    3\n#&gt; [2,]    1    1    3    3\n#&gt; [3,]    2    2    4    4\n#&gt; [4,]    2    2    4    4\n\n\n\nDeal with B\n\n\n\n\nRecall\n\nrep(1:2, times = 2)\n#&gt; [1] 1 2 1 2\n\n\nB\n#&gt;      [,1] [,2]\n#&gt; [1,]    0    5\n#&gt; [2,]    6    7\nB[rep(1:2, times = 2), rep(1:2, times = 2)]\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0    5\n#&gt; [2,]    6    7    6    7\n#&gt; [3,]    0    5    0    5\n#&gt; [4,]    6    7    6    7\n\n\n\nPut Everything Together\n\nrepeated_A &lt;- A[rep(1:2, each = 2), rep(1:2, each = 2)]\nrepeated_B &lt;- B[rep(1:2, times = 2), rep(1:2, times = 2)]\nrepeated_A * repeated_B\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28\n\n\n\nWrap the Calculation into a Function (for \\(2 \\times 2\\) matrices)\n\nvectorization_kronecker &lt;- function(A, B){\n  repeated_A &lt;- A[rep(1:2, each = 2), rep(1:2, each = 2)]\n  repeated_B &lt;- B[rep(1:2, times = 2), rep(1:2, times = 2)]\n  return(repeated_A * repeated_B)\n}\n\nvectorization_kronecker(A, B)\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28"
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#compare-the-cpu-times-that-expressions-used",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#compare-the-cpu-times-that-expressions-used",
+    "title": "",
+    "section": "Compare the CPU Times that Expressions Used",
+    "text": "Compare the CPU Times that Expressions Used\n\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A,B),\n  kronecker(A, B),\n  forloop_kronecker(A, B),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                           expr  min   lq     mean median   uq    max neval\n#&gt;  vectorization_kronecker(A, B)  2.4  3.0  4.76997    3.3  3.7 3457.7 10000\n#&gt;                kronecker(A, B) 19.8 22.9 32.77555   24.1 26.1 2695.1 10000\n#&gt;        forloop_kronecker(A, B)  4.1  4.9  7.68245    5.3  6.0 1956.8 10000"
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#what-if-a-and-b-are-not-2-times-2-matrices",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#what-if-a-and-b-are-not-2-times-2-matrices",
+    "title": "",
+    "section": "What if A and B are not \\(2 \\times 2\\) matrices?",
+    "text": "What if A and B are not \\(2 \\times 2\\) matrices?\nWith the assistance of this instructional document, please proceed with Lab 6.\nIn Lab 6, you will update the forloop_kronecker() and vectorization_kronecker() functions to make them suitable for calculating matrices A and B with arbitrary dimensions. And find result similar to the following.\n\nA1 &lt;- matrix(1:16, nrow = 4, ncol = 4)\nB1 &lt;- matrix(1:20, nrow = 4, ncol = 5)\n\nA2 &lt;- matrix(1:40, nrow = 5, ncol = 8)\nB2 &lt;- matrix(1:50, nrow = 10, ncol = 5)\n\n\nCompare the CPU Times that Expressions Used for A1 and B1\n\n\n# A1 and B1\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A1,B1),\n  kronecker(A1, B1),\n  forloop_kronecker(A1, B1),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                             expr  min   lq     mean median   uq     max neval\n#&gt;  vectorization_kronecker(A1, B1)  6.3  7.2  9.67325   7.60  8.3  2487.7 10000\n#&gt;                kronecker(A1, B1) 19.7 21.4 28.00376  22.65 25.0  3867.2 10000\n#&gt;        forloop_kronecker(A1, B1) 29.6 32.0 41.04195  33.60 36.7 10493.5 10000\n\n\nCompare the CPU Times that Expressions Used for A2 and B2\n\n\n# A2 and B2\n\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A2,B2),\n  kronecker(A2, B2),\n  forloop_kronecker(A2, B2),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                             expr  min   lq      mean median   uq    max neval\n#&gt;  vectorization_kronecker(A2, B2) 13.0 14.5  18.73243   15.2 16.6 3978.9 10000\n#&gt;                kronecker(A2, B2) 26.9 34.1  44.92223   36.6 42.6 3540.0 10000\n#&gt;        forloop_kronecker(A2, B2) 71.9 77.4 100.58271   80.1 84.3 6918.7 10000"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Preface",
