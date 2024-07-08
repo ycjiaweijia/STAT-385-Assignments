@@ -340,14 +340,14 @@
     "href": "Lab5/Lab5.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n\n[20 pts] Create the constructor function new_faculty() to generate objects of the “faculty” class. Faculty participants have the following information: name and department.\n[10 pts] Create the constructor function new_other() to generate objects of the “Other” class. Other participants have the following information: name."
+    "text": "Question 2\n\n[10 pts] Create the constructor function new_faculty() to generate objects of the “faculty” class. Faculty participants have the following information: name and department.\n[10 pts] Create the constructor function new_other() to generate objects of the “Other” class. Other participants have the following information: name."
   },
   {
     "objectID": "Lab5/Lab5.html#question-3",
     "href": "Lab5/Lab5.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\n[20 pts] Define generic and methods using the constructors from Question 1 and 2 to create classes for student, faculty, and other participants. Implement a participantInfo() function that prints specific information based on the class of the object.\nFor example,\n\nSwift &lt;- new_student(x = list(\n  name = \"Taylor Swift\",\n  major = \"Fisheries and Wildlife\",\n  department = \"Biological Sciences\",\n  classYear = \"Junior\", \n  UofI_email = \"Tswift\",\n  dsExperience = 1.5))\nparticipantInfo(Swift)\n\n\nRonaldo &lt;- new_faculty(x = list(\n  name = \"Cristiano Ronaldo\", \n  department = \"Applied Health Science\"\n  )\n)\nparticipantInfo(Ronaldo)\n\n\nSomeone &lt;- new_other(x = list(\n  name = \"Someone Else\"\n  )\n)\nparticipantInfo(Someone)\n\nshould show the following:\n\nFor student\n\nExample: “Taylor Swift is a Fisheries And Wildlife major. The email address is Tswift@illinois.edu. The student has 1.5 years of experience in data science.”\n\nFor faculty\n\nExample: “Cristiano Ronaldo is from the Applied Health Science Department.”\n\nFor other people\n\nExample: “Someone Else is neither a faculty member nor a student.”"
+    "text": "Question 3\n[30 pts] Define generic and methods using the constructors from Question 1 and 2 to create classes for student, faculty, and other participants. Implement a participantInfo() function that prints specific information based on the class of the object.\nFor example,\n\nSwift &lt;- new_student(x = list(\n  name = \"Taylor Swift\",\n  major = \"Fisheries and Wildlife\",\n  department = \"Biological Sciences\",\n  classYear = \"Junior\", \n  UofI_email = \"Tswift\",\n  dsExperience = 1.5))\nparticipantInfo(Swift)\n\n\nRonaldo &lt;- new_faculty(x = list(\n  name = \"Cristiano Ronaldo\", \n  department = \"Applied Health Science\"\n  )\n)\nparticipantInfo(Ronaldo)\n\n\nSomeone &lt;- new_other(x = list(\n  name = \"Someone Else\"\n  )\n)\nparticipantInfo(Someone)\n\nshould show the following:\n\nFor student\n\nExample: “Taylor Swift is a Fisheries And Wildlife major. The email address is Tswift@illinois.edu. The student has 1.5 years of experience in data science.”\n\nFor faculty\n\nExample: “Cristiano Ronaldo is from the Applied Health Science Department.”\n\nFor other people\n\nExample: “Someone Else is neither a faculty member nor a student.”"
   },
   {
     "objectID": "Lab6/Lab6.html",
