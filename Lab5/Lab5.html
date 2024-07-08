@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -98,46 +132,88 @@ ul.task-list li input[type="checkbox"] {
 <section id="lab-5-s3-for-workshop-participants-instruction" class="level2">
 <h2 class="anchored" data-anchor-id="lab-5-s3-for-workshop-participants-instruction">Lab 5 – S3 for Workshop Participants Instruction</h2>
 <ul>
-<li>Please ensure you review the document <em>STAT 385 Lab 5 Help Document – STAT 385 Lab 5 Help Document – S3 Class for Women’s Basketball Team</em> on Canvas under Week 5 Module or visit the weblink <a href="https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc" class="uri">https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc</a> for helpful guidance on this lab.</li>
+<li>Please ensure you review the document <em>Illustrate S3 System – U of I Women’s Basketball Team example</em> on Canvas under Week 5 Module or visit the weblink <a href="https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc" class="uri">https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc</a> for helpful guidance on this lab.</li>
 <li>Please complete the following questions and submit your Lab 5 to Gradescope.</li>
 </ul>
 </section>
 <section id="background" class="level2">
 <h2 class="anchored" data-anchor-id="background">Background</h2>
-<p>Suppose a university is hosting a campus-wide data science workshop with undergraduate and graduate student participants, along with many faculty members showing interest in the series of workshops. Develop S3 classes for students and faculty, incorporating validators and necessary helper functions.</p>
+<p>Suppose a university is hosting a campus-wide data science workshop with undergraduate and graduate student participants, along with many faculty members showing interest in the series of workshops. Develop S3 classes for students, faculty, etc., incorporating validators and necessary helper functions.</p>
 </section>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
-<p><strong>[20 pts]</strong> Create the constructor function <code>new_student</code> to generate objects of the “student” class. Student participants provide the following information: name, major, department, student class (Freshman, Sophomore, Junior, Senior, or Graduate), email address, and years of experience in data science. Below is a list of validations to include.</p>
+<ol type="a">
+<li><p><strong>[10 pts]</strong> Create the constructor function <code>new_student()</code> to generate objects of the “student” class. Student participants provide the following information: <code>name</code>, <code>major</code>, <code>department</code>, <code>classYear</code> (Freshman, Sophomore, Junior, Senior, or Graduate), <code>UofI_email</code>, and <code>dsExperience</code> which represents years of experience in data science.</p></li>
+<li><p><strong>[10 pts]</strong> Create the validator function <code>validate_student()</code>. Below is a list of validations to include.</p></li>
+</ol>
+<p>Validations:</p>
 <ul>
-<li>If any of the information required above is missing, print warning message.</li>
-<li>If the years of experience in data science is not numerical, or the length is not 1, or the years is lower than 0 or greater than 20, print warning message that: The data science experience years information is not valid.</li>
-<li>If the student class doesn’t belong in one of the five categories, print the warning message that: The student’s class information is invalid.</li>
-<li>If the email address doesn’t contain “<span class="citation" data-cites="illinois.edu">@illinois.edu</span>”, print the warning message that: The student’s email information is invalid. [Hint: You may use <code>grepl("@illinois\\.edu", email)</code> to check if the email address is valid.]</li>
+<li>If any of the information required above is missing, print a warning message.</li>
+<li>If <code>dsExperience</code> is not numeric, or the length is not 1, or the years is lower than 0 or greater than 20, print warning message that: The data science experience years information is not valid. Please use <code>||</code> for “or”.</li>
+<li>If <code>classYear</code> doesn’t belong in one of the five categories, print the warning message that: The student’s class information is invalid.</li>
+<li>If <code>UofI_email</code>provided is not character type, print the warning message: The student’s email information is invalid.</li>
 </ul>
+<ol start="3" type="a">
+<li><strong>[10 pts]</strong> Define a helper function to fill in or complete an email address. This is necessary because some students might only provide their NetID instead of a full email address. The <code>completeEmail()</code> function should take <code>UofI_email</code> as input and add <code>@illinois.edu</code> if needed. The output of <code>completeEmail()</code> function is saved as <code>Complete_UofI_email</code>.</li>
+</ol>
+<p>[Hint:</p>
+<ol type="1">
+<li>Consider using an if-else statement to decide whether to append the domain.</li>
+<li>The regular expression <code>grepl("@illinois\\.edu", UofI_email)</code>, checking if <code>UofI_email</code> contains <code>@illinois.edu</code>, might be helpful. ]</li>
+</ol>
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
-<p><strong>[20 pts]</strong> Create the constructor function <code>new_faculty</code> to generate objects of the “faculty” class. Faculty participants provide the following information: name and department.</p>
+<ol type="a">
+<li><p><strong>[20 pts]</strong> Create the constructor function <code>new_faculty()</code> to generate objects of the “faculty” class. Faculty participants have the following information: <code>name</code> and <code>department</code>.</p></li>
+<li><p><strong>[10 pts]</strong> Create the constructor function <code>new_other()</code> to generate objects of the “Other” class. Other participants have the following information: <code>name</code>.</p></li>
+</ol>
 <div style="height:10px;">
 
 </div>
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
-<p><strong>[20 pts]</strong> Define generic and methods using the constructors from Question 1 and 2 to create classes for student, faculty, and Other participants. Implement a <code>participantInfo()</code> function that prints specific information based on the class of the object:</p>
+<p><strong>[20 pts]</strong> Define generic and methods using the constructors from Question 1 and 2 to create classes for student, faculty, and other participants. Implement a <code>participantInfo()</code> function that prints specific information based on the class of the object.</p>
+<p>For example,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Swift <span class="ot">&lt;-</span> <span class="fu">new_student</span>(<span class="at">x =</span> <span class="fu">list</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Taylor Swift"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">major =</span> <span class="st">"Fisheries and Wildlife"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">department =</span> <span class="st">"Biological Sciences"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">classYear =</span> <span class="st">"Junior"</span>, </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">UofI_email =</span> <span class="st">"Tswift"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dsExperience =</span> <span class="fl">1.5</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">participantInfo</span>(Swift)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Ronaldo <span class="ot">&lt;-</span> <span class="fu">new_faculty</span>(<span class="at">x =</span> <span class="fu">list</span>(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Cristiano Ronaldo"</span>, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">department =</span> <span class="st">"Applied Health Science"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">participantInfo</span>(Ronaldo)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Someone <span class="ot">&lt;-</span> <span class="fu">new_other</span>(<span class="at">x =</span> <span class="fu">list</span>(</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Someone Else"</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">participantInfo</span>(Someone)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>should show the following:</p>
 <ul>
 <li>For student
 <ul>
-<li>Example: “John is a Math Education major.The student has 1.5 years of experience in data science.”</li>
+<li>Example: “Taylor Swift is a Fisheries And Wildlife major. The email address is Tswift@illinois.edu. The student has 1.5 years of experience in data science.”</li>
 </ul></li>
 <li>For faculty
 <ul>
-<li>Example: “WJ is from the Statistics Department.</li>
+<li>Example: “Cristiano Ronaldo is from the Applied Health Science Department.”</li>
 </ul></li>
 <li>For other people
 <ul>
-<li>Example: “Someone_else is neither a faculty member nor a student.”</li>
+<li>Example: “Someone Else is neither a faculty member nor a student.”</li>
 </ul></li>
 </ul>
 
