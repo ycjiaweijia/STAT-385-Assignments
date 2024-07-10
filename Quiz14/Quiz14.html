@@ -145,13 +145,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <ol type="a">
 <li><p><strong>[1 pt]</strong> Load the <code>cats</code> data frame from the <em>MASS</em> package. Save it as a tibble named <code>tbl_cats</code>.</p></li>
-<li><p><strong>[1 pt]</strong> Try the codes below to identify another difference between data frame and tibble:</p></li>
+<li><p><strong>[1 pt]</strong> Try the codes below to identify another difference between a data frame and a tibble:</p></li>
 </ol>
 <blockquote class="blockquote">
 <p>Tibbles are also stricter with $. Tibbles never do partial matching, and will throw a warning and return NULL if the column does not exist.</p>
 </blockquote>
 <blockquote class="blockquote">
 <p>In this case, Sex is a variable name, but S is not. Data frame does the partial matching and print the Sex column. But tibble gives a warning.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Instruction: Please just try the codes below. Before submitting Quiz14.R, please comment out <code>tbl_cats$S</code> to ensure there are no bugs.</p>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>S</span>

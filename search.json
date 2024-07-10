@@ -501,7 +501,7 @@
     "href": "Quiz14/Quiz14.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[1 pt] Load the cats data frame from the MASS package. Save it as a tibble named tbl_cats.\n[1 pt] Try the codes below to identify another difference between data frame and tibble:\n\n\nTibbles are also stricter with $. Tibbles never do partial matching, and will throw a warning and return NULL if the column does not exist.\n\n\nIn this case, Sex is a variable name, but S is not. Data frame does the partial matching and print the Sex column. But tibble gives a warning.\n\n\ncats$S\ntbl_cats$S"
+    "text": "Question 1\n\n[1 pt] Load the cats data frame from the MASS package. Save it as a tibble named tbl_cats.\n[1 pt] Try the codes below to identify another difference between a data frame and a tibble:\n\n\nTibbles are also stricter with $. Tibbles never do partial matching, and will throw a warning and return NULL if the column does not exist.\n\n\nIn this case, Sex is a variable name, but S is not. Data frame does the partial matching and print the Sex column. But tibble gives a warning.\n\n\nInstruction: Please just try the codes below. Before submitting Quiz14.R, please comment out tbl_cats$S to ensure there are no bugs.\n\n\ncats$S\ntbl_cats$S"
   },
   {
     "objectID": "Quiz14/Quiz14.html#question-2",
