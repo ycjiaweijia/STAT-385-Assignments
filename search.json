@@ -133,46 +133,242 @@
     "text": "Question 2.\nConsider the scores of a high school student:\n\nMaths – 95\nPhysics – 88.5\nPhysics lab – 79\nEnglish – 92\n\n(a). [1 pt] Use assignments to create variables maths, physics, physicslab, and english with their corresponding amounts.\n(b). [2 pts] Create a scores object with the four scores in (a). And use the function names() to give names o the elements of your vector scores.\n(c). [2 pts] Create a avg object with the average of the scores.\n(d). [4 pts] Create a grades object by converting the scores to grades based on the policy below. Then create a vector grade_values of integer values with the corresponding grade values. Recall that integer values are of the form 1L.\n\n\n\nRange\nGrade\nGrade Value\n\n\n\n\n[90, 100]\nA\n4\n\n\n[80, 90)\nB\n3\n\n\n[70, 80)\nC\n2\n\n\n[60, 70)\nD\n1\n\n\n&lt;60\nF\n0\n\n\n\n(e). [2 pts] Suppose the credits for Maths, Physics, Physics lab, English are 0.5, 1, 0.5, 1, respectively. Create a credits object.\n(f). [2 pts] Calculate the weighted GPA with\n\\[\\text{High School GPA} = \\sum (\\text{grade value}*\\text{credits})/ \\sum \\text{credits}\\] Save the value to object GPA."
   },
   {
-    "objectID": "Quiz11/Quiz11.html",
-    "href": "Quiz11/Quiz11.html",
+    "objectID": "Quiz12/Quiz12.html",
+    "href": "Quiz12/Quiz12.html",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz11.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify CLEANDATA.txt, etc. unless specifically requested and instructed below. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz11.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions using Base R Graphics. Do not use ggplot. And submit a file named Quiz12.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz12.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz11/Quiz11.html#quiz-11-instructions",
-    "href": "Quiz11/Quiz11.html#quiz-11-instructions",
+    "objectID": "Quiz12/Quiz12.html#quiz-12-instructions",
+    "href": "Quiz12/Quiz12.html#quiz-12-instructions",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz11.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify CLEANDATA.txt, etc. unless specifically requested and instructed below. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz11.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions using Base R Graphics. Do not use ggplot. And submit a file named Quiz12.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz12.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz11/Quiz11.html#data-preparation-practice-converting-xlsx-file-to-csv",
-    "href": "Quiz11/Quiz11.html#data-preparation-practice-converting-xlsx-file-to-csv",
+    "objectID": "Quiz12/Quiz12.html#data-preparation",
+    "href": "Quiz12/Quiz12.html#data-preparation",
     "title": "",
-    "section": "Data Preparation – Practice converting XLSX file to CSV",
-    "text": "Data Preparation – Practice converting XLSX file to CSV\nPlease review the instructions on “How to convert Excel file to CSV” at https://www.ablebits.com/office-addins-blog/convert-excel-csv/. Then, save the “BLACKFRIDAY” and “COFFEE” spreadsheets from “Datasets.xlsx” as two separate CSV files named “BLACKFRIDAY.csv” and “COFFEE.csv”.\nAfter this step, we will disregard “Datasets.xlsx” and only use the two newly created CSV files for the following questions."
+    "section": "Data Preparation",
+    "text": "Data Preparation\nIn this quiz, we will use the data frames flights and weather from the package nycflights13. This data frame contains info of on-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in 2013. The description of the variables:\n\nyear, month, day – Date of departure.\ndep_time, arr_time – Actual departure and arrival times (format HHMM or HMM), local tz.\nsched_dep_time, sched_arr_time – Scheduled departure and arrival times (format HHMM or HMM), local tz.\ndep_delay, arr_delay – Departure and arrival delays, in minutes. Negative times represent early departures/arrivals.\ncarrier – Two letter carrier abbreviation. See airlines to get name.\nflight – Flight number.\ntailnum – Plane tail number. See planes for additional metadata.\norigin, dest – Origin and destination. See airports for additional metadata.\nair_time – Amount of time spent in the air, in minutes.\ndistance – Distance between airports, in miles.\nhour, minute – Time of scheduled departure broken into hour and minutes.\ntime_hour – Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be used to join flights data to weather data.\n\nPlease install and load the package nycflights13 beforehand. Then load the data frames flights and weather. Additionally, we could filter the data and create two new data frames, alaska_flights and early_january_weather, which will be used in the subsequent question.\nPlease make sure you copy and paste the code chunk below, for data preparation, at the beginning of your Quiz12.R script.\n\nif(!require(\"nycflights13\", character.only = TRUE)) install.packages(\"nycflights13\")\nlibrary(nycflights13)\ndata(flights)\ndata(weather)\n\n# Define new data frame alaska_flights\nalaska_flights &lt;- flights[flights$carrier == \"AS\",]\n\n### Define new data frame early_january_weather\nearly_january_weather &lt;- weather[weather$origin == \"EWR\" & weather$month == 1 & weather$day &lt;= 15,]"
   },
   {
-    "objectID": "Quiz11/Quiz11.html#question-1",
-    "href": "Quiz11/Quiz11.html#question-1",
+    "objectID": "Quiz12/Quiz12.html#question-1",
+    "href": "Quiz12/Quiz12.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[1pt] Import the first 4 columns of “COFFEE.csv” and save the data frame as COFFEE.PART1. [Hint: You may use nrows for this task.]\n\nThe imported data frame should be\n\n#&gt;   DEMAND PRICE         X Pred_DEMAND\n#&gt; 1   1120   3.0 0.3333333   1088.8869\n#&gt; 2    999   3.1 0.3225806   1015.6815\n#&gt; 3    932   3.2 0.3125000    947.0514\n#&gt; 4    884   3.3 0.3030303    882.5807\n#&gt; 5    807   3.4 0.2941176    821.9024\n#&gt; 6    760   3.5 0.2857143    764.6914\n#&gt; 7    701   3.6 0.2777778    710.6588\n#&gt; 8    688   3.7 0.2702703    659.5469\n\n\n[2pts] Export the regression analysis results to file “REGRESSION_COFFEE_PART1.txt”.\n\n[Hint: You may use cat() and sink() for this task; You may use the following R codes.\n\nlmod &lt;- lm(PRICE ~ DEMAND, data = COFFEE.PART1)\nsummary(lmod)\nanova(lmod)\n\n].\nThe final TXT file “REGRESSION_COFFEE_PART1.txt” should look like:\n\n\n\n\n\n\n[1pt] Import the last 3 columns of “COFFEE.csv” and save the data frame as COFFEE.PART2. Then rename the second column name as inverseP.\n\nThe imported data frame should be: (Below we only show the first and last 3 rows to save space)\n\nhead(COFFEE.PART2, 3)\n#&gt;      P  inverseP     Dhat\n#&gt; 1 3.00 0.3333333 1089.333\n#&gt; 2 3.01 0.3322259 1081.794\n#&gt; 3 3.02 0.3311258 1074.305\ntail(COFFEE.PART2, 3)\n#&gt;       P  inverseP     Dhat\n#&gt; 69 3.68 0.2717391 670.0000\n#&gt; 70 3.69 0.2710027 664.9864\n#&gt; 71 3.70 0.2702703 660.0000\n\n\n[1pt] Use plot(COFFEE.PART2$P, COFFEE.PART2$inverseP) to draw the scatterplot and save the plot as “PLOT_COFFEE_PART2.png”, make sure you use bg = \"transparent\" to set the background to transparent."
+    "text": "Question 1\n\n[2 pts] Draw a scatter plot to visualize the relationship between the variables dep_delay and arr_delay in the alaska_flights data frame (defined above). Change the label for the x-axis as Departure Delay, the label for y-axis as Arrival Delay, and the plot title as Relationship between Departure and Arrival Delay.\n\nSave the generated plot as PlotQ1a.png. Recall that, you can do so using the way below.\n\n\npng(\"PlotQ1a.png\")\n\n# [Code to generate the plot here]\n\ndev.off()\n\n\n\n\n\n[2 pts] Draw a scatterplot matrices of variables dep_time, sched_dep_time, dep_delay, arr_time, sched_arr_time, arr_delay in the data frame alaska_flights. Save the created plot as PlotQ1b.png."
   },
   {
-    "objectID": "Quiz11/Quiz11.html#question-2",
-    "href": "Quiz11/Quiz11.html#question-2",
+    "objectID": "Quiz12/Quiz12.html#question-2",
+    "href": "Quiz12/Quiz12.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n[2pts] Import “BLACKFRIDAY.csv” and save the data frame as BLACKFRIDAY. Filter the data frame with YEARS greater than 10, and save the result as BLACKFRIDAY_gt10. Export data frame BLACKFRIDAY_gt10 to CSV file “BLACKFRIDAY_gt10.csv”. Make sure you use row.names = FALSE to avoid writing the row names."
+    "text": "Question 2\n[2 pts] Create a time series plot (line graph) of the hourly temperature (variable temp) vs the time time_hour saved in the early_january_weather data frame (defined above). Change the label for the x-axis as Date and Hour, the label for y-axis as Temperature, and the plot title as Line Graph of Temperature vs Date and Hour. Save the created plot as PlotQ2.png."
   },
   {
-    "objectID": "Quiz11/Quiz11.html#question-3",
-    "href": "Quiz11/Quiz11.html#question-3",
+    "objectID": "Quiz12/Quiz12.html#question-3",
+    "href": "Quiz12/Quiz12.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\nUse “CLEANDATA.txt” for this question. Complete the following parts.\n\n[2pts]\n\nStep 1: Skip the first five rows (consider the column names as Row 1) and import “CLEANDATA.txt”. Save the data frame as CLEANDATA.\nStep 2: Scan the column names from “CLEANDATA.txt” as header. Then assemble the data frame CLEANDATA and header.\nThe data frame CLEANDATA should be:\n\n#&gt;    EXP AUTOMATI OUTPUT\n#&gt; 1   &lt;1        M     12\n#&gt; 2   &lt;1        M     10\n#&gt; 3   &lt;1        L      5\n#&gt; 4   &lt;1        L      4\n#&gt; 5   &lt;1        L      8\n#&gt; 6  1-2        H     15\n#&gt; 7  1-2        H     18\n#&gt; 8  1-2        H     17\n#&gt; 9  1-2        M     10\n#&gt; 10 1-2        M     10\n#&gt; 11 1-2        M     12\n#&gt; 12 1-2        L      8\n#&gt; 13 1-2        L     10\n#&gt; 14 1-2        L     10\n#&gt; 15  &gt;2        H     20\n#&gt; 16  &gt;2        H     18\n#&gt; 17  &gt;2        H     19\n#&gt; 18  &gt;2        M     13\n#&gt; 19  &gt;2        M     13\n#&gt; 20  &gt;2        M     14\n#&gt; 21  &gt;2        L     12\n#&gt; 22  &gt;2        L     11\n#&gt; 23  &gt;2        L     13\n\n\n[1pt] Write the CLEANDATA$AUTOMATI, one element per line, to the file “AUTOMATI.txt”."
+    "text": "Question 3\n[2 pts] Draw histogram of temperature (variable temp) in the data frame weather. Change the bar color to blue. What’s more, use border = \"white\" to change the border color to white. Save the created plot as PlotQ3.png."
+  },
+  {
+    "objectID": "Quiz12/Quiz12.html#question-4",
+    "href": "Quiz12/Quiz12.html#question-4",
+    "title": "",
+    "section": "Question 4",
+    "text": "Question 4\n[2 pts] Draw the two plot side by side (i.e. 1 row and 2 columns).\n\nPlot 1: Draw a boxplot of the variable temp in the data frame weather.\nPlot 2: Draw a boxplot of temp vs month of the data frame weather.\n\nSave the created plot as PlotQ4.png."
+  },
+  {
+    "objectID": "Quiz12/Quiz12.html#question-5",
+    "href": "Quiz12/Quiz12.html#question-5",
+    "title": "",
+    "section": "Question 5",
+    "text": "Question 5\n[2 pts] Draw a bar plot of carrier from the dataset flights. Save the created plot as PlotQ5.png."
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html",
+    "href": "Quiz1/Quiz1.html",
+    "title": "",
+    "section": "",
+    "text": "Please complete the following questions and submit a file named Quiz1.R to Gradescope.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify data.csv. Your code won’t work properly on modified version of the data set.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz1.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html#quiz-1-instructions",
+    "href": "Quiz1/Quiz1.html#quiz-1-instructions",
+    "title": "",
+    "section": "",
+    "text": "Please complete the following questions and submit a file named Quiz1.R to Gradescope.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify data.csv. Your code won’t work properly on modified version of the data set.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz1.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html#question-1.",
+    "href": "Quiz1/Quiz1.html#question-1.",
+    "title": "",
+    "section": "Question 1.",
+    "text": "Question 1.\nMake a vector called myVector and have it store the integers \\(1,2,3\\)"
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html#question-2.",
+    "href": "Quiz1/Quiz1.html#question-2.",
+    "title": "",
+    "section": "Question 2.",
+    "text": "Question 2.\nMake a string called myString and have it store “Hello STAT 385!”."
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html#question-3.",
+    "href": "Quiz1/Quiz1.html#question-3.",
+    "title": "",
+    "section": "Question 3.",
+    "text": "Question 3.\nRead in the data set called data.csv and store the data frame as myDataFrame."
+  },
+  {
+    "objectID": "Lab6/Lab6.html",
+    "href": "Lab6/Lab6.html",
+    "title": "",
+    "section": "",
+    "text": "Please ensure you review the document STAT 385 Lab 6 Help Document – Kronecker Product Illustration on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab6HelpDoc/Lab6HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 6 to Gradescope."
+  },
+  {
+    "objectID": "Lab6/Lab6.html#lab-6-instruction",
+    "href": "Lab6/Lab6.html#lab-6-instruction",
+    "title": "",
+    "section": "",
+    "text": "Please ensure you review the document STAT 385 Lab 6 Help Document – Kronecker Product Illustration on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab6HelpDoc/Lab6HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 6 to Gradescope."
+  },
+  {
+    "objectID": "Lab6/Lab6.html#mathemetical-definition-of-kronecker-product",
+    "href": "Lab6/Lab6.html#mathemetical-definition-of-kronecker-product",
+    "title": "",
+    "section": "Mathemetical Definition of Kronecker Product",
+    "text": "Mathemetical Definition of Kronecker Product\nIn mathematics, the Kronecker product, sometimes denoted by \\(\\bigotimes\\), is an operation on two matrices of arbitrary size resulting a block matrix. It is a specialization of the tensor product (which is denoted by the same symbol) from vectors to matrices and gives the matrix of the tensor product linear map with respect to a standard choice of basis. The Kronecker product is to be distinguished from the usual matrix multiplication, which is an entirely different operation. The Kronecker product is also sometimes called matrix direct product.\n\nYou can find more information about Kronecker Product on Wikipedia https://en.wikipedia.org/wiki/Kronecker_product.\n\nIf \\(\\mathbf{A}\\) is an \\(m \\times n\\) matrix and \\(\\mathbf{B}\\) is a \\(p \\times q\\) matrix, then the Kronecker product \\(\\mathbf{A}\\bigotimes \\mathbf{B}\\) is the \\(pm \\times qn\\) block matrix:\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\begin{bmatrix}\na_{11}\\mathbf{B}\\quad  \\cdots \\quad a_{1n}\\mathbf{B}\\\\\n\\vdots\\quad  \\ddots\\quad  \\vdots\\\\\na_{m1}\\mathbf{B}\\quad  \\cdots \\quad a_{mn}\\mathbf{B}\n\\end{bmatrix},\\]\nmore explicitly,\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} =\\left[\\begin{array}{cccccccccc}\na_{11}b_{11}&  a_{11}b_{12} & \\cdots & a_{11}b_{1q}& \\cdots& \\cdots& a_{1n}b_{11}&  a_{1n}b_{12} & \\cdots & a_{1n}b_{1q} \\\\\na_{11}b_{21}&  a_{11}b_{22} & \\cdots & a_{11}b_{2q}& \\cdots& \\cdots& a_{1n}b_{21}&  a_{1n}b_{22} & \\cdots & a_{1n}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{11}b_{p1}&  a_{11}b_{p2} & \\cdots & a_{11}b_{pq}& \\cdots& \\cdots& a_{1n}b_{p1}&  a_{1n}b_{p2} & \\cdots & a_{1n}b_{pq} \\\\\n\\vdots& \\vdots&  &  \\vdots & \\ddots& & \\vdots  & \\vdots& & \\vdots \\\\\n\\vdots& \\vdots&  &  \\vdots & &\\ddots & \\vdots  & \\vdots& & \\vdots \\\\\na_{m1}b_{11}&  a_{m1}b_{12} & \\cdots & a_{m1}b_{1q}& \\cdots& \\cdots& a_{mn}b_{11}&  a_{mn}b_{12} & \\cdots & a_{mn}b_{1q} \\\\\na_{m1}b_{21}&  a_{m1}b_{22} & \\cdots & a_{m1}b_{2q}& \\cdots& \\cdots& a_{mn}b_{21}&  a_{mn}b_{22} & \\cdots & a_{mn}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{m1}b_{p1}&  a_{m1}b_{p2} & \\cdots & a_{m1}b_{pq}& \\cdots& \\cdots& a_{mn}b_{p1}&  a_{mn}b_{p2} & \\cdots & a_{mn}b_{pq}\n\\end{array}\\right],\\]"
+  },
+  {
+    "objectID": "Lab6/Lab6.html#question-1",
+    "href": "Lab6/Lab6.html#question-1",
+    "title": "",
+    "section": "Question 1",
+    "text": "Question 1\n[20 pts] Please define the function forloop_kronecker(), using for loop, to calculate the Kronecker product of matrices A and B with arbitrary dimensions."
+  },
+  {
+    "objectID": "Lab6/Lab6.html#question-2",
+    "href": "Lab6/Lab6.html#question-2",
+    "title": "",
+    "section": "Question 2",
+    "text": "Question 2\n[20 pts] Please define the function vectorization_kronecker(), using vectorization, to calculate the Kronecker product of matrices A and B with arbitrary dimensions."
+  },
+  {
+    "objectID": "Lab6/Lab6.html#question-3",
+    "href": "Lab6/Lab6.html#question-3",
+    "title": "",
+    "section": "Question 3",
+    "text": "Question 3\n[20 pts] Compare the CPU times for three Kronecker product calculation methods below for matrices A1 and B1, A2 and B2, and other pairs of matrices you choose to test. Use times = 10000L for each calculation. Discuss the computational efficiency of the three methods based on your findings.\n\nvectorization_kronecker()\nkronecker()\nforloop_kronecker()\n\n\n(A1 &lt;- matrix(1:16, nrow = 4, ncol = 4))\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    1    5    9   13\n#&gt; [2,]    2    6   10   14\n#&gt; [3,]    3    7   11   15\n#&gt; [4,]    4    8   12   16\n(B1 &lt;- matrix(1:20, nrow = 4, ncol = 5))\n#&gt;      [,1] [,2] [,3] [,4] [,5]\n#&gt; [1,]    1    5    9   13   17\n#&gt; [2,]    2    6   10   14   18\n#&gt; [3,]    3    7   11   15   19\n#&gt; [4,]    4    8   12   16   20\n\n(A2 &lt;- matrix(1:40, nrow = 5, ncol = 8))\n#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]\n#&gt; [1,]    1    6   11   16   21   26   31   36\n#&gt; [2,]    2    7   12   17   22   27   32   37\n#&gt; [3,]    3    8   13   18   23   28   33   38\n#&gt; [4,]    4    9   14   19   24   29   34   39\n#&gt; [5,]    5   10   15   20   25   30   35   40\n(B2 &lt;- matrix(1:50, nrow = 10, ncol = 5))\n#&gt;       [,1] [,2] [,3] [,4] [,5]\n#&gt;  [1,]    1   11   21   31   41\n#&gt;  [2,]    2   12   22   32   42\n#&gt;  [3,]    3   13   23   33   43\n#&gt;  [4,]    4   14   24   34   44\n#&gt;  [5,]    5   15   25   35   45\n#&gt;  [6,]    6   16   26   36   46\n#&gt;  [7,]    7   17   27   37   47\n#&gt;  [8,]    8   18   28   38   48\n#&gt;  [9,]    9   19   29   39   49\n#&gt; [10,]   10   20   30   40   50"
+  },
+  {
+    "objectID": "Lab5/Lab5.html",
+    "href": "Lab5/Lab5.html",
+    "title": "",
+    "section": "",
+    "text": "Please ensure you review the document Illustrate S3 System – U of I Women’s Basketball Team example on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 5 to Gradescope."
+  },
+  {
+    "objectID": "Lab5/Lab5.html#lab-5-s3-for-workshop-participants-instruction",
+    "href": "Lab5/Lab5.html#lab-5-s3-for-workshop-participants-instruction",
+    "title": "",
+    "section": "",
+    "text": "Please ensure you review the document Illustrate S3 System – U of I Women’s Basketball Team example on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 5 to Gradescope."
+  },
+  {
+    "objectID": "Lab5/Lab5.html#background",
+    "href": "Lab5/Lab5.html#background",
+    "title": "",
+    "section": "Background",
+    "text": "Background\nSuppose a university is hosting a campus-wide data science workshop with undergraduate and graduate student participants, along with many faculty members showing interest in the series of workshops. Develop S3 classes for students, faculty, etc., incorporating validators and necessary helper functions."
+  },
+  {
+    "objectID": "Lab5/Lab5.html#question-1",
+    "href": "Lab5/Lab5.html#question-1",
+    "title": "",
+    "section": "Question 1",
+    "text": "Question 1\n\n[10 pts] Create the constructor function new_student() to generate objects of the “student” class. Student participants provide the following information: name, major, department, classYear (Freshman, Sophomore, Junior, Senior, or Graduate), UofI_email, and dsExperience which represents years of experience in data science.\n[10 pts] Create the validator function validate_student(). Below is a list of validations to include.\n\nValidations:\n\nIf any of the information required above is missing, print a warning message.\nIf dsExperience is not numeric, or the length is not 1, or the years is lower than 0 or greater than 20, print warning message that: The data science experience years information is not valid. Please use || for “or”.\nIf classYear doesn’t belong in one of the five categories, print the warning message that: The student’s class information is invalid.\nIf UofI_emailprovided is not character type, print the warning message: The student’s email information is invalid.\n\n\n[10 pts] Define a helper function to fill in or complete an email address. This is necessary because some students might only provide their NetID instead of a full email address. The completeEmail() function should take UofI_email as input and add @illinois.edu if needed. The output of completeEmail() function is saved as Complete_UofI_email.\n\n[Hint:\n\nConsider using an if-else statement to decide whether to append the domain.\nThe regular expression grepl(\"@illinois\\\\.edu\", UofI_email), checking if UofI_email contains @illinois.edu, might be helpful. ]"
+  },
+  {
+    "objectID": "Lab5/Lab5.html#question-2",
+    "href": "Lab5/Lab5.html#question-2",
+    "title": "",
+    "section": "Question 2",
+    "text": "Question 2\n\n[10 pts] Create the constructor function new_faculty() to generate objects of the “faculty” class. Faculty participants have the following information: name and department.\n[10 pts] Create the constructor function new_other() to generate objects of the “Other” class. Other participants have the following information: name."
+  },
+  {
+    "objectID": "Lab5/Lab5.html#question-3",
+    "href": "Lab5/Lab5.html#question-3",
+    "title": "",
+    "section": "Question 3",
+    "text": "Question 3\n[30 pts] Define generic and methods using the constructors from Question 1 and 2 to create classes for student, faculty, and other participants. Implement a participantInfo() function that prints specific information based on the class of the object.\nFor example,\n\nSwift &lt;- new_student(x = list(\n  name = \"Taylor Swift\",\n  major = \"Fisheries and Wildlife\",\n  department = \"Biological Sciences\",\n  classYear = \"Junior\", \n  UofI_email = \"Tswift\",\n  dsExperience = 1.5))\nparticipantInfo(Swift)\n\n\nRonaldo &lt;- new_faculty(x = list(\n  name = \"Cristiano Ronaldo\", \n  department = \"Applied Health Science\"\n  )\n)\nparticipantInfo(Ronaldo)\n\n\nSomeone &lt;- new_other(x = list(\n  name = \"Someone Else\"\n  )\n)\nparticipantInfo(Someone)\n\nshould show the following:\n\nFor student\n\nExample: “Taylor Swift is a Fisheries And Wildlife major. The email address is Tswift@illinois.edu. The student has 1.5 years of experience in data science.”\n\nFor faculty\n\nExample: “Cristiano Ronaldo is from the Applied Health Science Department.”\n\nFor other people\n\nExample: “Someone Else is neither a faculty member nor a student.”"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Preface",
+    "section": "",
+    "text": "This are the lecture notes for STAT 385: Statistics Programming Methods, offered in the Summer of 2024 at UIUC. If you have any comments/suggestions/concerns about the notes please contact me at wjia@illinois.edu."
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html",
+    "title": "",
+    "section": "",
+    "text": "library(tidyverse) # stringr package is part of the tidyverse collection."
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#illustrate-s3-system-u-of-i-womens-basketball-team-example",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#illustrate-s3-system-u-of-i-womens-basketball-team-example",
+    "title": "",
+    "section": "Illustrate S3 System – U of I Women’s Basketball Team example",
+    "text": "Illustrate S3 System – U of I Women’s Basketball Team example\n\nEnsure you’ve read the following section before watching this video.\n\nhttps://adv-r.hadley.nz/s3.html#s3-classes\n\nThe main components of S3: classes, generics, and methods\nThree functions used in most classes: constructor, helper, validator.\nGenerics, methods, and dispatch"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#u-of-i-womens-basketball-team",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#u-of-i-womens-basketball-team",
+    "title": "",
+    "section": "U of I Women’s Basketball Team",
+    "text": "U of I Women’s Basketball Team\nhttps://fightingillini.com/sports/womens-basketball/roster\n\nObjective: Display the profile information according to roles\n\nFor player, print the profile information like\n\nAdalia Mckenzie is a player on the U of I Women’s Basketball Team. Her jersey number is 24. Adalia is a student in her Senior year. She is 5-10 tall (177.8 cm). Her position is Guard.\n\nFor staff, print the profile information like\n\nShauna Green is the Head Coach of the U of I Women’s Basketball Team.\nMaya Solomon is a staff member of the U of I Women’s Basketball Team.\n\nFor all other people, like the spectator, print the information like\n\nWeijia Jia is neither a player nor a staff member."
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-player-class",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-player-class",
+    "title": "",
+    "section": "Create Player Class",
+    "text": "Create Player Class\n\nConstructor Function\n\nnew_player = function(x){\n  validate_player(x) # Validator, defined below\n  structure(\n    list(firstname = str_to_title(x$firstname), # str_to_title() is from stringr\n         lastname = str_to_title(x$lastname), # str_to_title() converts to title case\n         jersey = as.character(x$jersey),\n         height_inches = x$height,\n         position = str_to_title(x$position),\n         studentclass = str_to_title(x$class), \n         heightcm = convertHeightToCm(x$height) # Helper function, defined below\n         ),\n    class = \"player\"\n  )\n}\n\n\n\nHelper Function\nConvert the height from the “feet-inches” pattern to centimeters.\n\nconvertHeightToCm &lt;- function(height) {\n    # Split the input string by the dash\n    parts &lt;- str_split(height, \"-\")[[1]] # str_split() is from stringr package\n    \n    # Extract feet and inches as numeric values\n    feet &lt;- as.numeric(parts[1])\n    inches &lt;- as.numeric(parts[2])\n    \n    # Convert feet to inches and then total inches to centimeters\n    height_inches &lt;- (feet * 12) + inches\n    height_cm &lt;- height_inches * 2.54\n    \n    return(height_cm)\n}\n\n\n\nValidator Function\n\nIf any information is missing, print ‘… is missing’.\nIf the pattern of height doesn’t follow the “feet-inches” pattern, print a warning message.\nIf the position is not one of the three categories (Guard, Forward, Center), print a warning message.\nIf the class is not one of the five categories (Freshman, Sophomore, Junior, Senior, Fifth), print a warning message.\n\n\nvalidate_player &lt;- function(x){\n  if(is.na(x$firstname)) print(\"The player's first name is missing.\")\n  if(is.na(x$lastname)) print(\"The player's last name is missing.\")\n  if(is.na(x$jersey)) print(\"The player's jersey information is missing.\")\n  if(is.na(x$height)) print(\"The player's height information is missing.\")\n  if(is.na(x$position)) print(\"The player's position information is missing.\")\n  if(is.na(x$class)) print(\"The player's class information is missing.\")\n  \n  \n  if(!grepl(\"^\\\\d+-\\\\d+$\", x$height)) # grepl() is searching for matches\n    print(\"The player's height does not follow the 'feet-inches' pattern.\")\n  if(!str_to_title(x$position) %in% c(\"Guard\", \"Forward\", \"Center\")) \n    print(\"The player's position information is invalid.\")\n  if(!str_to_title(x$class) %in% c(\"Freshman\", \"Sophomore\", \"Junior\", \"Senior\", \"Fifth\")) \n    print(\"The player's class information is invalid.\")\n}"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-staff-class",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-staff-class",
+    "title": "",
+    "section": "Create Staff Class",
+    "text": "Create Staff Class\n\nConstructor Function\n\n\nnew_staff = function(x){\n  validate_staff(x)\n  structure(\n    list(name = x$name,\n         role = x$role,\n         role_with_article = article_selector(x$role) \n         ),\n    class = \"staff\"\n  )\n}\n\n\n\nHelper Function\nChoose appropriate article for the role information.\n\narticle_selector &lt;- function(role) {\n title &lt;- switch(\n   role,\n   \"head coach\" = \"the Head Coach\",\n   \"associate head coach\" = \"the Associate Head Coach\",\n   \"assistant coach\" = \"an Assistant Coach\",\n   \"a staff member\"\n  )\n return(title)\n}\n\n\n\nValidator Function\n\nif name or role is missing or not character type, print warning message.\n\n\nvalidate_staff &lt;- function(x){\n  if(is.na(x$name) || !is.character(x$name)) \n    print(\"The staff's name is not valid\")\n  if(is.na(x$role)|| !is.character(x$role)) \n    print(\"The staff's role information is not valid\")\n}"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-spectator-class",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-spectator-class",
+    "title": "",
+    "section": "Create Spectator Class",
+    "text": "Create Spectator Class\n\n\nnew_spectator = function(x){\n  structure(\n    list(name = x$name),\n    class = \"spectator\"\n  )\n}"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#generic-and-methods",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#generic-and-methods",
+    "title": "",
+    "section": "Generic and Methods",
+    "text": "Generic and Methods\n\nDefine the generic print_profile and the methods.\n\n\nprint_profile = function(x){\n  UseMethod(\"print_profile\")\n}\n\nprint_profile.player = function(x){\n  print(paste0(x$firstname, \" \", x$lastname, \" is a player on the U of I Women's Basketball Team. Her jersey number is \", x$jersey, \". \",  x$firstname, \" is a student in her \", x$studentclass, \" year. She is \", x$height_inches, \" tall (\", x$heightcm,\" cm). Her position is \", x$position, \".\" \n               )\n        )\n}\n\nprint_profile.staff = function(x){\n  print(paste0(x$name, \" is \", x$role_with_article, \n               \" of the U of I Women's Basketball Team.\" ))\n}\n\nprint_profile.default = function(x){\n  print(paste0(x$name, \" is neither a player nor a staff member.\"))\n}"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#test",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#test",
+    "title": "",
+    "section": "Test",
+    "text": "Test\n\n# Player\n\nMckenzie &lt;- new_player(x = list(\n  firstname = \"Adalia\",\n  lastname = \"Mckenzie\",\n  jersey = \"24\",\n  height = \"5-10\",\n  position = \"guard\",\n  class = \"senior\"\n)\n)\n\n### Incorrect Usage\nBryant &lt;- new_player(x = list(\n  firstname = \"Genesis\",\n  lastname = \"Bryant\",\n  jersey = \"1\",\n  height = \"5'6''\", \n  position = \"guard\",\n  class = \"fifth\"))\n#&gt; [1] \"The player's height does not follow the 'feet-inches' pattern.\"\n#&gt; Warning in convertHeightToCm(x$height): NAs introduced by coercion\n# Corrected\nBryant &lt;- new_player(x = list(\n  firstname = \"Genesis\",\n  lastname = \"Bryant\",\n  jersey = \"1\",\n  height = \"5-6\", \n  position = \"guard\",\n  class = \"fifth\"))\n\n\n# Staff\n\nGreen &lt;- new_staff(x = list(\n  name = \"Shauna Green\", \n  role = \"head coach\"\n  )\n)\n\nSolomon &lt;- new_staff(x = list(\n  name = \"Maya Solomon\", \n  role = \"director of basketball operations\"\n  )\n)\n\n# Spectator\n\nJia &lt;- new_spectator(x = list(\n  name = \"Weijia Jia\"\n  ))\nprint_profile(Mckenzie)\n#&gt; [1] \"Adalia Mckenzie is a player on the U of I Women's Basketball Team. Her jersey number is 24. Adalia is a student in her Senior year. She is 5-10 tall (177.8 cm). Her position is Guard.\"\nprint_profile(Bryant)\n#&gt; [1] \"Genesis Bryant is a player on the U of I Women's Basketball Team. Her jersey number is 1. Genesis is a student in her Fifth year. She is 5-6 tall (167.64 cm). Her position is Guard.\"\nprint_profile(Green)\n#&gt; [1] \"Shauna Green is the Head Coach of the U of I Women's Basketball Team.\"\nprint_profile(Solomon)\n#&gt; [1] \"Maya Solomon is a staff member of the U of I Women's Basketball Team.\"\nprint_profile(Jia)\n#&gt; [1] \"Weijia Jia is neither a player nor a staff member.\""
   },
   {
     "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#why-vectorization",
@@ -245,242 +441,81 @@
     "text": "What if A and B are not \\(2 \\times 2\\) matrices?\nWith the assistance of this instructional document, please proceed with Lab 6.\nIn Lab 6, you will update the forloop_kronecker() and vectorization_kronecker() functions to make them suitable for calculating matrices A and B with arbitrary dimensions. And find result similar to the following.\n\nA1 &lt;- matrix(1:16, nrow = 4, ncol = 4)\nB1 &lt;- matrix(1:20, nrow = 4, ncol = 5)\n\nA2 &lt;- matrix(1:40, nrow = 5, ncol = 8)\nB2 &lt;- matrix(1:50, nrow = 10, ncol = 5)\n\n\nCompare the CPU Times that Expressions Used for A1 and B1\n\n\n# A1 and B1\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A1,B1),\n  kronecker(A1, B1),\n  forloop_kronecker(A1, B1),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                             expr  min   lq     mean median   uq    max neval\n#&gt;  vectorization_kronecker(A1, B1)  4.4  5.2  6.90709    5.5  5.8 1764.6 10000\n#&gt;                kronecker(A1, B1) 14.1 15.8 18.59105   16.4 17.3 1911.6 10000\n#&gt;        forloop_kronecker(A1, B1) 21.1 23.6 28.10669   24.6 25.6 6144.4 10000\n\n\nCompare the CPU Times that Expressions Used for A2 and B2\n\n\n# A2 and B2\n\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A2,B2),\n  kronecker(A2, B2),\n  forloop_kronecker(A2, B2),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                             expr  min   lq     mean median   uq    max neval\n#&gt;  vectorization_kronecker(A2, B2)  9.5 10.7 12.40686   11.3 12.0  240.7 10000\n#&gt;                kronecker(A2, B2) 19.8 22.7 29.42047   24.4 28.0 2941.8 10000\n#&gt;        forloop_kronecker(A2, B2) 53.1 58.3 72.02094   61.0 64.2 3951.4 10000"
   },
   {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html",
+    "objectID": "Quiz11/Quiz11.html",
+    "href": "Quiz11/Quiz11.html",
     "title": "",
     "section": "",
-    "text": "library(tidyverse) # stringr package is part of the tidyverse collection."
+    "text": "Please complete the following questions and submit a file named Quiz11.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify CLEANDATA.txt, etc. unless specifically requested and instructed below. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz11.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#illustrate-s3-system-u-of-i-womens-basketball-team-example",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#illustrate-s3-system-u-of-i-womens-basketball-team-example",
-    "title": "",
-    "section": "Illustrate S3 System – U of I Women’s Basketball Team example",
-    "text": "Illustrate S3 System – U of I Women’s Basketball Team example\n\nEnsure you’ve read the following section before watching this video.\n\nhttps://adv-r.hadley.nz/s3.html#s3-classes\n\nThe main components of S3: classes, generics, and methods\nThree functions used in most classes: constructor, helper, validator.\nGenerics, methods, and dispatch"
-  },
-  {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#u-of-i-womens-basketball-team",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#u-of-i-womens-basketball-team",
-    "title": "",
-    "section": "U of I Women’s Basketball Team",
-    "text": "U of I Women’s Basketball Team\nhttps://fightingillini.com/sports/womens-basketball/roster\n\nObjective: Display the profile information according to roles\n\nFor player, print the profile information like\n\nAdalia Mckenzie is a player on the U of I Women’s Basketball Team. Her jersey number is 24. Adalia is a student in her Senior year. She is 5-10 tall (177.8 cm). Her position is Guard.\n\nFor staff, print the profile information like\n\nShauna Green is the Head Coach of the U of I Women’s Basketball Team.\nMaya Solomon is a staff member of the U of I Women’s Basketball Team.\n\nFor all other people, like the spectator, print the information like\n\nWeijia Jia is neither a player nor a staff member."
-  },
-  {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-player-class",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-player-class",
-    "title": "",
-    "section": "Create Player Class",
-    "text": "Create Player Class\n\nConstructor Function\n\nnew_player = function(x){\n  validate_player(x) # Validator, defined below\n  structure(\n    list(firstname = str_to_title(x$firstname), # str_to_title() is from stringr\n         lastname = str_to_title(x$lastname), # str_to_title() converts to title case\n         jersey = as.character(x$jersey),\n         height_inches = x$height,\n         position = str_to_title(x$position),\n         studentclass = str_to_title(x$class), \n         heightcm = convertHeightToCm(x$height) # Helper function, defined below\n         ),\n    class = \"player\"\n  )\n}\n\n\n\nHelper Function\nConvert the height from the “feet-inches” pattern to centimeters.\n\nconvertHeightToCm &lt;- function(height) {\n    # Split the input string by the dash\n    parts &lt;- str_split(height, \"-\")[[1]] # str_split() is from stringr package\n    \n    # Extract feet and inches as numeric values\n    feet &lt;- as.numeric(parts[1])\n    inches &lt;- as.numeric(parts[2])\n    \n    # Convert feet to inches and then total inches to centimeters\n    height_inches &lt;- (feet * 12) + inches\n    height_cm &lt;- height_inches * 2.54\n    \n    return(height_cm)\n}\n\n\n\nValidator Function\n\nIf any information is missing, print ‘… is missing’.\nIf the pattern of height doesn’t follow the “feet-inches” pattern, print a warning message.\nIf the position is not one of the three categories (Guard, Forward, Center), print a warning message.\nIf the class is not one of the five categories (Freshman, Sophomore, Junior, Senior, Fifth), print a warning message.\n\n\nvalidate_player &lt;- function(x){\n  if(is.na(x$firstname)) print(\"The player's first name is missing.\")\n  if(is.na(x$lastname)) print(\"The player's last name is missing.\")\n  if(is.na(x$jersey)) print(\"The player's jersey information is missing.\")\n  if(is.na(x$height)) print(\"The player's height information is missing.\")\n  if(is.na(x$position)) print(\"The player's position information is missing.\")\n  if(is.na(x$class)) print(\"The player's class information is missing.\")\n  \n  \n  if(!grepl(\"^\\\\d+-\\\\d+$\", x$height)) # grepl() is searching for matches\n    print(\"The player's height does not follow the 'feet-inches' pattern.\")\n  if(!str_to_title(x$position) %in% c(\"Guard\", \"Forward\", \"Center\")) \n    print(\"The player's position information is invalid.\")\n  if(!str_to_title(x$class) %in% c(\"Freshman\", \"Sophomore\", \"Junior\", \"Senior\", \"Fifth\")) \n    print(\"The player's class information is invalid.\")\n}"
-  },
-  {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-staff-class",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-staff-class",
-    "title": "",
-    "section": "Create Staff Class",
-    "text": "Create Staff Class\n\nConstructor Function\n\n\nnew_staff = function(x){\n  validate_staff(x)\n  structure(\n    list(name = x$name,\n         role = x$role,\n         role_with_article = article_selector(x$role) \n         ),\n    class = \"staff\"\n  )\n}\n\n\n\nHelper Function\nChoose appropriate article for the role information.\n\narticle_selector &lt;- function(role) {\n title &lt;- switch(\n   role,\n   \"head coach\" = \"the Head Coach\",\n   \"associate head coach\" = \"the Associate Head Coach\",\n   \"assistant coach\" = \"an Assistant Coach\",\n   \"a staff member\"\n  )\n return(title)\n}\n\n\n\nValidator Function\n\nif name or role is missing or not character type, print warning message.\n\n\nvalidate_staff &lt;- function(x){\n  if(is.na(x$name) || !is.character(x$name)) \n    print(\"The staff's name is not valid\")\n  if(is.na(x$role)|| !is.character(x$role)) \n    print(\"The staff's role information is not valid\")\n}"
-  },
-  {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-spectator-class",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-spectator-class",
-    "title": "",
-    "section": "Create Spectator Class",
-    "text": "Create Spectator Class\n\n\nnew_spectator = function(x){\n  structure(\n    list(name = x$name),\n    class = \"spectator\"\n  )\n}"
-  },
-  {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#generic-and-methods",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#generic-and-methods",
-    "title": "",
-    "section": "Generic and Methods",
-    "text": "Generic and Methods\n\nDefine the generic print_profile and the methods.\n\n\nprint_profile = function(x){\n  UseMethod(\"print_profile\")\n}\n\nprint_profile.player = function(x){\n  print(paste0(x$firstname, \" \", x$lastname, \" is a player on the U of I Women's Basketball Team. Her jersey number is \", x$jersey, \". \",  x$firstname, \" is a student in her \", x$studentclass, \" year. She is \", x$height_inches, \" tall (\", x$heightcm,\" cm). Her position is \", x$position, \".\" \n               )\n        )\n}\n\nprint_profile.staff = function(x){\n  print(paste0(x$name, \" is \", x$role_with_article, \n               \" of the U of I Women's Basketball Team.\" ))\n}\n\nprint_profile.default = function(x){\n  print(paste0(x$name, \" is neither a player nor a staff member.\"))\n}"
-  },
-  {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#test",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#test",
-    "title": "",
-    "section": "Test",
-    "text": "Test\n\n# Player\n\nMckenzie &lt;- new_player(x = list(\n  firstname = \"Adalia\",\n  lastname = \"Mckenzie\",\n  jersey = \"24\",\n  height = \"5-10\",\n  position = \"guard\",\n  class = \"senior\"\n)\n)\n\n### Incorrect Usage\nBryant &lt;- new_player(x = list(\n  firstname = \"Genesis\",\n  lastname = \"Bryant\",\n  jersey = \"1\",\n  height = \"5'6''\", \n  position = \"guard\",\n  class = \"fifth\"))\n#&gt; [1] \"The player's height does not follow the 'feet-inches' pattern.\"\n#&gt; Warning in convertHeightToCm(x$height): NAs introduced by coercion\n# Corrected\nBryant &lt;- new_player(x = list(\n  firstname = \"Genesis\",\n  lastname = \"Bryant\",\n  jersey = \"1\",\n  height = \"5-6\", \n  position = \"guard\",\n  class = \"fifth\"))\n\n\n# Staff\n\nGreen &lt;- new_staff(x = list(\n  name = \"Shauna Green\", \n  role = \"head coach\"\n  )\n)\n\nSolomon &lt;- new_staff(x = list(\n  name = \"Maya Solomon\", \n  role = \"director of basketball operations\"\n  )\n)\n\n# Spectator\n\nJia &lt;- new_spectator(x = list(\n  name = \"Weijia Jia\"\n  ))\nprint_profile(Mckenzie)\n#&gt; [1] \"Adalia Mckenzie is a player on the U of I Women's Basketball Team. Her jersey number is 24. Adalia is a student in her Senior year. She is 5-10 tall (177.8 cm). Her position is Guard.\"\nprint_profile(Bryant)\n#&gt; [1] \"Genesis Bryant is a player on the U of I Women's Basketball Team. Her jersey number is 1. Genesis is a student in her Fifth year. She is 5-6 tall (167.64 cm). Her position is Guard.\"\nprint_profile(Green)\n#&gt; [1] \"Shauna Green is the Head Coach of the U of I Women's Basketball Team.\"\nprint_profile(Solomon)\n#&gt; [1] \"Maya Solomon is a staff member of the U of I Women's Basketball Team.\"\nprint_profile(Jia)\n#&gt; [1] \"Weijia Jia is neither a player nor a staff member.\""
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Preface",
-    "section": "",
-    "text": "This are the lecture notes for STAT 385: Statistics Programming Methods, offered in the Summer of 2024 at UIUC. If you have any comments/suggestions/concerns about the notes please contact me at wjia@illinois.edu."
-  },
-  {
-    "objectID": "Lab5/Lab5.html",
-    "href": "Lab5/Lab5.html",
+    "objectID": "Quiz11/Quiz11.html#quiz-11-instructions",
+    "href": "Quiz11/Quiz11.html#quiz-11-instructions",
     "title": "",
     "section": "",
-    "text": "Please ensure you review the document Illustrate S3 System – U of I Women’s Basketball Team example on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 5 to Gradescope."
+    "text": "Please complete the following questions and submit a file named Quiz11.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify CLEANDATA.txt, etc. unless specifically requested and instructed below. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz11.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Lab5/Lab5.html#lab-5-s3-for-workshop-participants-instruction",
-    "href": "Lab5/Lab5.html#lab-5-s3-for-workshop-participants-instruction",
+    "objectID": "Quiz11/Quiz11.html#data-preparation-practice-converting-xlsx-file-to-csv",
+    "href": "Quiz11/Quiz11.html#data-preparation-practice-converting-xlsx-file-to-csv",
     "title": "",
-    "section": "",
-    "text": "Please ensure you review the document Illustrate S3 System – U of I Women’s Basketball Team example on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 5 to Gradescope."
+    "section": "Data Preparation – Practice converting XLSX file to CSV",
+    "text": "Data Preparation – Practice converting XLSX file to CSV\nPlease review the instructions on “How to convert Excel file to CSV” at https://www.ablebits.com/office-addins-blog/convert-excel-csv/. Then, save the “BLACKFRIDAY” and “COFFEE” spreadsheets from “Datasets.xlsx” as two separate CSV files named “BLACKFRIDAY.csv” and “COFFEE.csv”.\nAfter this step, we will disregard “Datasets.xlsx” and only use the two newly created CSV files for the following questions."
   },
   {
-    "objectID": "Lab5/Lab5.html#background",
-    "href": "Lab5/Lab5.html#background",
-    "title": "",
-    "section": "Background",
-    "text": "Background\nSuppose a university is hosting a campus-wide data science workshop with undergraduate and graduate student participants, along with many faculty members showing interest in the series of workshops. Develop S3 classes for students, faculty, etc., incorporating validators and necessary helper functions."
-  },
-  {
-    "objectID": "Lab5/Lab5.html#question-1",
-    "href": "Lab5/Lab5.html#question-1",
+    "objectID": "Quiz11/Quiz11.html#question-1",
+    "href": "Quiz11/Quiz11.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[10 pts] Create the constructor function new_student() to generate objects of the “student” class. Student participants provide the following information: name, major, department, classYear (Freshman, Sophomore, Junior, Senior, or Graduate), UofI_email, and dsExperience which represents years of experience in data science.\n[10 pts] Create the validator function validate_student(). Below is a list of validations to include.\n\nValidations:\n\nIf any of the information required above is missing, print a warning message.\nIf dsExperience is not numeric, or the length is not 1, or the years is lower than 0 or greater than 20, print warning message that: The data science experience years information is not valid. Please use || for “or”.\nIf classYear doesn’t belong in one of the five categories, print the warning message that: The student’s class information is invalid.\nIf UofI_emailprovided is not character type, print the warning message: The student’s email information is invalid.\n\n\n[10 pts] Define a helper function to fill in or complete an email address. This is necessary because some students might only provide their NetID instead of a full email address. The completeEmail() function should take UofI_email as input and add @illinois.edu if needed. The output of completeEmail() function is saved as Complete_UofI_email.\n\n[Hint:\n\nConsider using an if-else statement to decide whether to append the domain.\nThe regular expression grepl(\"@illinois\\\\.edu\", UofI_email), checking if UofI_email contains @illinois.edu, might be helpful. ]"
+    "text": "Question 1\n\n[1pt] Import the first 4 columns of “COFFEE.csv” and save the data frame as COFFEE.PART1. [Hint: You may use nrows for this task.]\n\nThe imported data frame should be\n\n#&gt;   DEMAND PRICE         X Pred_DEMAND\n#&gt; 1   1120   3.0 0.3333333   1088.8869\n#&gt; 2    999   3.1 0.3225806   1015.6815\n#&gt; 3    932   3.2 0.3125000    947.0514\n#&gt; 4    884   3.3 0.3030303    882.5807\n#&gt; 5    807   3.4 0.2941176    821.9024\n#&gt; 6    760   3.5 0.2857143    764.6914\n#&gt; 7    701   3.6 0.2777778    710.6588\n#&gt; 8    688   3.7 0.2702703    659.5469\n\n\n[2pts] Export the regression analysis results to file “REGRESSION_COFFEE_PART1.txt”.\n\n[Hint: You may use cat() and sink() for this task; You may use the following R codes.\n\nlmod &lt;- lm(PRICE ~ DEMAND, data = COFFEE.PART1)\nsummary(lmod)\nanova(lmod)\n\n].\nThe final TXT file “REGRESSION_COFFEE_PART1.txt” should look like:\n\n\n\n\n\n\n[1pt] Import the last 3 columns of “COFFEE.csv” and save the data frame as COFFEE.PART2. Then rename the second column name as inverseP.\n\nThe imported data frame should be: (Below we only show the first and last 3 rows to save space)\n\nhead(COFFEE.PART2, 3)\n#&gt;      P  inverseP     Dhat\n#&gt; 1 3.00 0.3333333 1089.333\n#&gt; 2 3.01 0.3322259 1081.794\n#&gt; 3 3.02 0.3311258 1074.305\ntail(COFFEE.PART2, 3)\n#&gt;       P  inverseP     Dhat\n#&gt; 69 3.68 0.2717391 670.0000\n#&gt; 70 3.69 0.2710027 664.9864\n#&gt; 71 3.70 0.2702703 660.0000\n\n\n[1pt] Use plot(COFFEE.PART2$P, COFFEE.PART2$inverseP) to draw the scatterplot and save the plot as “PLOT_COFFEE_PART2.png”, make sure you use bg = \"transparent\" to set the background to transparent."
   },
   {
-    "objectID": "Lab5/Lab5.html#question-2",
-    "href": "Lab5/Lab5.html#question-2",
+    "objectID": "Quiz11/Quiz11.html#question-2",
+    "href": "Quiz11/Quiz11.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n\n[10 pts] Create the constructor function new_faculty() to generate objects of the “faculty” class. Faculty participants have the following information: name and department.\n[10 pts] Create the constructor function new_other() to generate objects of the “Other” class. Other participants have the following information: name."
+    "text": "Question 2\n[2pts] Import “BLACKFRIDAY.csv” and save the data frame as BLACKFRIDAY. Filter the data frame with YEARS greater than 10, and save the result as BLACKFRIDAY_gt10. Export data frame BLACKFRIDAY_gt10 to CSV file “BLACKFRIDAY_gt10.csv”. Make sure you use row.names = FALSE to avoid writing the row names."
   },
   {
-    "objectID": "Lab5/Lab5.html#question-3",
-    "href": "Lab5/Lab5.html#question-3",
+    "objectID": "Quiz11/Quiz11.html#question-3",
+    "href": "Quiz11/Quiz11.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\n[30 pts] Define generic and methods using the constructors from Question 1 and 2 to create classes for student, faculty, and other participants. Implement a participantInfo() function that prints specific information based on the class of the object.\nFor example,\n\nSwift &lt;- new_student(x = list(\n  name = \"Taylor Swift\",\n  major = \"Fisheries and Wildlife\",\n  department = \"Biological Sciences\",\n  classYear = \"Junior\", \n  UofI_email = \"Tswift\",\n  dsExperience = 1.5))\nparticipantInfo(Swift)\n\n\nRonaldo &lt;- new_faculty(x = list(\n  name = \"Cristiano Ronaldo\", \n  department = \"Applied Health Science\"\n  )\n)\nparticipantInfo(Ronaldo)\n\n\nSomeone &lt;- new_other(x = list(\n  name = \"Someone Else\"\n  )\n)\nparticipantInfo(Someone)\n\nshould show the following:\n\nFor student\n\nExample: “Taylor Swift is a Fisheries And Wildlife major. The email address is Tswift@illinois.edu. The student has 1.5 years of experience in data science.”\n\nFor faculty\n\nExample: “Cristiano Ronaldo is from the Applied Health Science Department.”\n\nFor other people\n\nExample: “Someone Else is neither a faculty member nor a student.”"
+    "text": "Question 3\nUse “CLEANDATA.txt” for this question. Complete the following parts.\n\n[2pts]\n\nStep 1: Skip the first five rows (consider the column names as Row 1) and import “CLEANDATA.txt”. Save the data frame as CLEANDATA.\nStep 2: Scan the column names from “CLEANDATA.txt” as header. Then assemble the data frame CLEANDATA and header.\nThe data frame CLEANDATA should be:\n\n#&gt;    EXP AUTOMATI OUTPUT\n#&gt; 1   &lt;1        M     12\n#&gt; 2   &lt;1        M     10\n#&gt; 3   &lt;1        L      5\n#&gt; 4   &lt;1        L      4\n#&gt; 5   &lt;1        L      8\n#&gt; 6  1-2        H     15\n#&gt; 7  1-2        H     18\n#&gt; 8  1-2        H     17\n#&gt; 9  1-2        M     10\n#&gt; 10 1-2        M     10\n#&gt; 11 1-2        M     12\n#&gt; 12 1-2        L      8\n#&gt; 13 1-2        L     10\n#&gt; 14 1-2        L     10\n#&gt; 15  &gt;2        H     20\n#&gt; 16  &gt;2        H     18\n#&gt; 17  &gt;2        H     19\n#&gt; 18  &gt;2        M     13\n#&gt; 19  &gt;2        M     13\n#&gt; 20  &gt;2        M     14\n#&gt; 21  &gt;2        L     12\n#&gt; 22  &gt;2        L     11\n#&gt; 23  &gt;2        L     13\n\n\n[1pt] Write the CLEANDATA$AUTOMATI, one element per line, to the file “AUTOMATI.txt”."
   },
   {
-    "objectID": "Lab6/Lab6.html",
-    "href": "Lab6/Lab6.html",
+    "objectID": "Quiz14/Quiz14.html",
+    "href": "Quiz14/Quiz14.html",
     "title": "",
     "section": "",
-    "text": "Please ensure you review the document STAT 385 Lab 6 Help Document – Kronecker Product Illustration on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab6HelpDoc/Lab6HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 6 to Gradescope."
+    "text": "Please complete the following questions and submit a file named Quiz14.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify BLACKFRIDAY.csv. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz14.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Lab6/Lab6.html#lab-6-instruction",
-    "href": "Lab6/Lab6.html#lab-6-instruction",
+    "objectID": "Quiz14/Quiz14.html#quiz-14-instructions",
+    "href": "Quiz14/Quiz14.html#quiz-14-instructions",
     "title": "",
     "section": "",
-    "text": "Please ensure you review the document STAT 385 Lab 6 Help Document – Kronecker Product Illustration on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab6HelpDoc/Lab6HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 6 to Gradescope."
+    "text": "Please complete the following questions and submit a file named Quiz14.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify BLACKFRIDAY.csv. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz14.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Lab6/Lab6.html#mathemetical-definition-of-kronecker-product",
-    "href": "Lab6/Lab6.html#mathemetical-definition-of-kronecker-product",
-    "title": "",
-    "section": "Mathemetical Definition of Kronecker Product",
-    "text": "Mathemetical Definition of Kronecker Product\nIn mathematics, the Kronecker product, sometimes denoted by \\(\\bigotimes\\), is an operation on two matrices of arbitrary size resulting a block matrix. It is a specialization of the tensor product (which is denoted by the same symbol) from vectors to matrices and gives the matrix of the tensor product linear map with respect to a standard choice of basis. The Kronecker product is to be distinguished from the usual matrix multiplication, which is an entirely different operation. The Kronecker product is also sometimes called matrix direct product.\n\nYou can find more information about Kronecker Product on Wikipedia https://en.wikipedia.org/wiki/Kronecker_product.\n\nIf \\(\\mathbf{A}\\) is an \\(m \\times n\\) matrix and \\(\\mathbf{B}\\) is a \\(p \\times q\\) matrix, then the Kronecker product \\(\\mathbf{A}\\bigotimes \\mathbf{B}\\) is the \\(pm \\times qn\\) block matrix:\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\begin{bmatrix}\na_{11}\\mathbf{B}\\quad  \\cdots \\quad a_{1n}\\mathbf{B}\\\\\n\\vdots\\quad  \\ddots\\quad  \\vdots\\\\\na_{m1}\\mathbf{B}\\quad  \\cdots \\quad a_{mn}\\mathbf{B}\n\\end{bmatrix},\\]\nmore explicitly,\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} =\\left[\\begin{array}{cccccccccc}\na_{11}b_{11}&  a_{11}b_{12} & \\cdots & a_{11}b_{1q}& \\cdots& \\cdots& a_{1n}b_{11}&  a_{1n}b_{12} & \\cdots & a_{1n}b_{1q} \\\\\na_{11}b_{21}&  a_{11}b_{22} & \\cdots & a_{11}b_{2q}& \\cdots& \\cdots& a_{1n}b_{21}&  a_{1n}b_{22} & \\cdots & a_{1n}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{11}b_{p1}&  a_{11}b_{p2} & \\cdots & a_{11}b_{pq}& \\cdots& \\cdots& a_{1n}b_{p1}&  a_{1n}b_{p2} & \\cdots & a_{1n}b_{pq} \\\\\n\\vdots& \\vdots&  &  \\vdots & \\ddots& & \\vdots  & \\vdots& & \\vdots \\\\\n\\vdots& \\vdots&  &  \\vdots & &\\ddots & \\vdots  & \\vdots& & \\vdots \\\\\na_{m1}b_{11}&  a_{m1}b_{12} & \\cdots & a_{m1}b_{1q}& \\cdots& \\cdots& a_{mn}b_{11}&  a_{mn}b_{12} & \\cdots & a_{mn}b_{1q} \\\\\na_{m1}b_{21}&  a_{m1}b_{22} & \\cdots & a_{m1}b_{2q}& \\cdots& \\cdots& a_{mn}b_{21}&  a_{mn}b_{22} & \\cdots & a_{mn}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{m1}b_{p1}&  a_{m1}b_{p2} & \\cdots & a_{m1}b_{pq}& \\cdots& \\cdots& a_{mn}b_{p1}&  a_{mn}b_{p2} & \\cdots & a_{mn}b_{pq}\n\\end{array}\\right],\\]"
-  },
-  {
-    "objectID": "Lab6/Lab6.html#question-1",
-    "href": "Lab6/Lab6.html#question-1",
+    "objectID": "Quiz14/Quiz14.html#question-1",
+    "href": "Quiz14/Quiz14.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n[20 pts] Please define the function forloop_kronecker(), using for loop, to calculate the Kronecker product of matrices A and B with arbitrary dimensions."
+    "text": "Question 1\n\n[1 pt] Load the cats data frame from the MASS package. Save it as a tibble named tbl_cats.\n[1 pt] Try the codes below to identify another difference between data frame and tibble:\n\n\nTibbles are also stricter with $. Tibbles never do partial matching, and will throw a warning and return NULL if the column does not exist.\n\n\nIn this case, Sex is a variable name, but S is not. Data frame does the partial matching and print the Sex column. But tibble gives a warning.\n\n\ncats$S\ntbl_cats$S"
   },
   {
-    "objectID": "Lab6/Lab6.html#question-2",
-    "href": "Lab6/Lab6.html#question-2",
+    "objectID": "Quiz14/Quiz14.html#question-2",
+    "href": "Quiz14/Quiz14.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n[20 pts] Please define the function vectorization_kronecker(), using vectorization, to calculate the Kronecker product of matrices A and B with arbitrary dimensions."
+    "text": "Question 2\n\n[1 pt] Please import the CSV data BLACKFRIDAY as a tibble named BlackFriday.\n[1 pt] Check if BlackFriday is a data frame. Use is_tibble() to check if BlackFriday is a tibble.\n\nNote that: As tibble is a modern take on the classic data frame in R, and it inherits from the data frame class. Therefore, for a tibble, if you use is.data.frame function to check, it returns TRUE because a tibble is a specialized form of a data frame with additional features."
   },
   {
-    "objectID": "Lab6/Lab6.html#question-3",
-    "href": "Lab6/Lab6.html#question-3",
+    "objectID": "Quiz14/Quiz14.html#question-3",
+    "href": "Quiz14/Quiz14.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\n[20 pts] Compare the CPU times for three Kronecker product calculation methods below for matrices A1 and B1, A2 and B2, and other pairs of matrices you choose to test. Use times = 10000L for each calculation. Discuss the computational efficiency of the three methods based on your findings.\n\nvectorization_kronecker()\nkronecker()\nforloop_kronecker()\n\n\n(A1 &lt;- matrix(1:16, nrow = 4, ncol = 4))\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    1    5    9   13\n#&gt; [2,]    2    6   10   14\n#&gt; [3,]    3    7   11   15\n#&gt; [4,]    4    8   12   16\n(B1 &lt;- matrix(1:20, nrow = 4, ncol = 5))\n#&gt;      [,1] [,2] [,3] [,4] [,5]\n#&gt; [1,]    1    5    9   13   17\n#&gt; [2,]    2    6   10   14   18\n#&gt; [3,]    3    7   11   15   19\n#&gt; [4,]    4    8   12   16   20\n\n(A2 &lt;- matrix(1:40, nrow = 5, ncol = 8))\n#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]\n#&gt; [1,]    1    6   11   16   21   26   31   36\n#&gt; [2,]    2    7   12   17   22   27   32   37\n#&gt; [3,]    3    8   13   18   23   28   33   38\n#&gt; [4,]    4    9   14   19   24   29   34   39\n#&gt; [5,]    5   10   15   20   25   30   35   40\n(B2 &lt;- matrix(1:50, nrow = 10, ncol = 5))\n#&gt;       [,1] [,2] [,3] [,4] [,5]\n#&gt;  [1,]    1   11   21   31   41\n#&gt;  [2,]    2   12   22   32   42\n#&gt;  [3,]    3   13   23   33   43\n#&gt;  [4,]    4   14   24   34   44\n#&gt;  [5,]    5   15   25   35   45\n#&gt;  [6,]    6   16   26   36   46\n#&gt;  [7,]    7   17   27   37   47\n#&gt;  [8,]    8   18   28   38   48\n#&gt;  [9,]    9   19   29   39   49\n#&gt; [10,]   10   20   30   40   50"
-  },
-  {
-    "objectID": "Quiz1/Quiz1.html",
-    "href": "Quiz1/Quiz1.html",
-    "title": "",
-    "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz1.R to Gradescope.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify data.csv. Your code won’t work properly on modified version of the data set.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz1.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
-  },
-  {
-    "objectID": "Quiz1/Quiz1.html#quiz-1-instructions",
-    "href": "Quiz1/Quiz1.html#quiz-1-instructions",
-    "title": "",
-    "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz1.R to Gradescope.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify data.csv. Your code won’t work properly on modified version of the data set.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz1.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
-  },
-  {
-    "objectID": "Quiz1/Quiz1.html#question-1.",
-    "href": "Quiz1/Quiz1.html#question-1.",
-    "title": "",
-    "section": "Question 1.",
-    "text": "Question 1.\nMake a vector called myVector and have it store the integers \\(1,2,3\\)"
-  },
-  {
-    "objectID": "Quiz1/Quiz1.html#question-2.",
-    "href": "Quiz1/Quiz1.html#question-2.",
-    "title": "",
-    "section": "Question 2.",
-    "text": "Question 2.\nMake a string called myString and have it store “Hello STAT 385!”."
-  },
-  {
-    "objectID": "Quiz1/Quiz1.html#question-3.",
-    "href": "Quiz1/Quiz1.html#question-3.",
-    "title": "",
-    "section": "Question 3.",
-    "text": "Question 3.\nRead in the data set called data.csv and store the data frame as myDataFrame."
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html",
-    "href": "Quiz12/Quiz12.html",
-    "title": "",
-    "section": "",
-    "text": "Please complete the following questions using Base R Graphics. Do not use ggplot. And submit a file named Quiz12.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz12.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html#quiz-12-instructions",
-    "href": "Quiz12/Quiz12.html#quiz-12-instructions",
-    "title": "",
-    "section": "",
-    "text": "Please complete the following questions using Base R Graphics. Do not use ggplot. And submit a file named Quiz12.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz12.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html#data-preparation",
-    "href": "Quiz12/Quiz12.html#data-preparation",
-    "title": "",
-    "section": "Data Preparation",
-    "text": "Data Preparation\nIn this quiz, we will use the data frames flights and weather from the package nycflights13. This data frame contains info of on-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in 2013. The description of the variables:\n\nyear, month, day – Date of departure.\ndep_time, arr_time – Actual departure and arrival times (format HHMM or HMM), local tz.\nsched_dep_time, sched_arr_time – Scheduled departure and arrival times (format HHMM or HMM), local tz.\ndep_delay, arr_delay – Departure and arrival delays, in minutes. Negative times represent early departures/arrivals.\ncarrier – Two letter carrier abbreviation. See airlines to get name.\nflight – Flight number.\ntailnum – Plane tail number. See planes for additional metadata.\norigin, dest – Origin and destination. See airports for additional metadata.\nair_time – Amount of time spent in the air, in minutes.\ndistance – Distance between airports, in miles.\nhour, minute – Time of scheduled departure broken into hour and minutes.\ntime_hour – Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be used to join flights data to weather data.\n\nPlease install and load the package nycflights13 beforehand. Then load the data frames flights and weather. Additionally, we could filter the data and create two new data frames, alaska_flights and early_january_weather, which will be used in the subsequent question.\nPlease make sure you copy and paste the code chunk below, for data preparation, at the beginning of your Quiz12.R script.\n\nif(!require(\"nycflights13\", character.only = TRUE)) install.packages(\"nycflights13\")\nlibrary(nycflights13)\ndata(flights)\ndata(weather)\n\n# Define new data frame alaska_flights\nalaska_flights &lt;- flights[flights$carrier == \"AS\",]\n\n### Define new data frame early_january_weather\nearly_january_weather &lt;- weather[weather$origin == \"EWR\" & weather$month == 1 & weather$day &lt;= 15,]"
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html#question-1",
-    "href": "Quiz12/Quiz12.html#question-1",
-    "title": "",
-    "section": "Question 1",
-    "text": "Question 1\n\n[2 pts] Draw a scatter plot to visualize the relationship between the variables dep_delay and arr_delay in the alaska_flights data frame (defined above). Change the label for the x-axis as Departure Delay, the label for y-axis as Arrival Delay, and the plot title as Relationship between Departure and Arrival Delay.\n\nSave the generated plot as PlotQ1a.png. Recall that, you can do so using the way below.\n\n\npng(\"PlotQ1a.png\")\n\n# [Code to generate the plot here]\n\ndev.off()\n\n\n\n\n\n[2 pts] Draw a scatterplot matrices of variables dep_time, sched_dep_time, dep_delay, arr_time, sched_arr_time, arr_delay in the data frame alaska_flights. Save the created plot as PlotQ1b.png."
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html#question-2",
-    "href": "Quiz12/Quiz12.html#question-2",
-    "title": "",
-    "section": "Question 2",
-    "text": "Question 2\n[2 pts] Create a time series plot (line graph) of the hourly temperature (variable temp) vs the time time_hour saved in the early_january_weather data frame (defined above). Change the label for the x-axis as Date and Hour, the label for y-axis as Temperature, and the plot title as Line Graph of Temperature vs Date and Hour. Save the created plot as PlotQ2.png."
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html#question-3",
-    "href": "Quiz12/Quiz12.html#question-3",
-    "title": "",
-    "section": "Question 3",
-    "text": "Question 3\n[2 pts] Draw histogram of temperature (variable temp) in the data frame weather. Change the bar color to blue. What’s more, use border = \"white\" to change the border color to white. Save the created plot as PlotQ3.png."
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html#question-4",
-    "href": "Quiz12/Quiz12.html#question-4",
-    "title": "",
-    "section": "Question 4",
-    "text": "Question 4\n[2 pts] Draw the two plot side by side (i.e. 1 row and 2 columns).\n\nPlot 1: Draw a boxplot of the variable temp in the data frame weather.\nPlot 2: Draw a boxplot of temp vs month of the data frame weather.\n\nSave the created plot as PlotQ4.png."
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html#question-5",
-    "href": "Quiz12/Quiz12.html#question-5",
-    "title": "",
-    "section": "Question 5",
-    "text": "Question 5\n[2 pts] Draw a bar plot of carrier from the dataset flights. Save the created plot as PlotQ5.png."
+    "text": "Question 3\nCreate the annoying tibble as follows:\n\nannoying &lt;- tibble(\n`1` = c(8, 5, 3, 9, 6, 7, 10, 7, 10, 4),\n`2` = `1` * 2 + rnorm(length(`1`))\n)\n\n\n[2 pt] Extract the column with the variable name 1 as a tibble. Denote it as tbl_1.\n[2 pt] Extract the column with the variable name 1 as a vector . Denote it as vec_1.\n[1 pt] Create a new column called 3, which is column 2 divided by column 1.\n[1 pt] Please rename the columns to “one”, “two”, and “three”."
   },
   {
     "objectID": "Quiz3/Quiz3.html",
