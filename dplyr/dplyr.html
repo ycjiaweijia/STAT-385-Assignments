@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Manipulation with dplyr</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dplyr" id="toc-dplyr" class="nav-link active" data-scroll-target="#dplyr">dplyr</a></li>
+  <li><a href="#commonly-used-commands-in-dplyr" id="toc-commonly-used-commands-in-dplyr" class="nav-link" data-scroll-target="#commonly-used-commands-in-dplyr">Commonly used commands in dplyr</a></li>
+  <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select">select()</a>
+  <ul class="collapse">
+  <li><a href="#select-extract-columns-variables-by-name" id="toc-select-extract-columns-variables-by-name" class="nav-link" data-scroll-target="#select-extract-columns-variables-by-name"><code>select()</code> – Extract columns (variables) by name</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a>
+  <ul class="collapse">
+  <li><a href="#recall-check-missing-values-code-chunk-from-the-previous-lecture" id="toc-recall-check-missing-values-code-chunk-from-the-previous-lecture" class="nav-link" data-scroll-target="#recall-check-missing-values-code-chunk-from-the-previous-lecture">Recall: <em>check missing values</em> code chunk – from the previous lecture</a></li>
+  </ul></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3">Example 3</a></li>
+  </ul></li>
+  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter">filter()</a>
+  <ul class="collapse">
+  <li><a href="#filter-extract-rows-by-logical-criteria" id="toc-filter-extract-rows-by-logical-criteria" class="nav-link" data-scroll-target="#filter-extract-rows-by-logical-criteria"><code>filter()</code> – Extract rows by logical criteria</a>
+  <ul class="collapse">
+  <li><a href="#logical-tests-and-boolean-operators" id="toc-logical-tests-and-boolean-operators" class="nav-link" data-scroll-target="#logical-tests-and-boolean-operators">Logical Tests and Boolean Operators</a></li>
+  </ul></li>
+  <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4">Example 4</a></li>
+  <li><a href="#example-5" id="toc-example-5" class="nav-link" data-scroll-target="#example-5">Example 5</a></li>
+  <li><a href="#example-6" id="toc-example-6" class="nav-link" data-scroll-target="#example-6">Example 6</a>
+  <ul class="collapse">
+  <li><a href="#example-6.1" id="toc-example-6.1" class="nav-link" data-scroll-target="#example-6.1">Example 6.1</a></li>
+  <li><a href="#example-6.2" id="toc-example-6.2" class="nav-link" data-scroll-target="#example-6.2">Example 6.2</a></li>
+  <li><a href="#combine-the-example-6.1-and-6.2" id="toc-combine-the-example-6.1-and-6.2" class="nav-link" data-scroll-target="#combine-the-example-6.1-and-6.2">Combine the Example 6.1 and 6.2</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#arrange" id="toc-arrange" class="nav-link" data-scroll-target="#arrange">arrange()</a>
+  <ul class="collapse">
+  <li><a href="#arrange-reorder-rows-by-the-value-of-one-or-more-columns-variables" id="toc-arrange-reorder-rows-by-the-value-of-one-or-more-columns-variables" class="nav-link" data-scroll-target="#arrange-reorder-rows-by-the-value-of-one-or-more-columns-variables"><code>arrange()</code> – reorder rows by the value of one or more columns (variables)</a></li>
+  <li><a href="#example-7" id="toc-example-7" class="nav-link" data-scroll-target="#example-7">Example 7</a></li>
+  <li><a href="#example-7-continue" id="toc-example-7-continue" class="nav-link" data-scroll-target="#example-7-continue">Example 7 (continue)</a></li>
+  <li><a href="#example-8" id="toc-example-8" class="nav-link" data-scroll-target="#example-8">Example 8</a>
+  <ul class="collapse">
+  <li><a href="#example-8.1" id="toc-example-8.1" class="nav-link" data-scroll-target="#example-8.1">Example 8.1</a></li>
+  </ul></li>
+  <li><a href="#example-8-1" id="toc-example-8-1" class="nav-link" data-scroll-target="#example-8-1">Example 8</a>
+  <ul class="collapse">
+  <li><a href="#example-8.2" id="toc-example-8.2" class="nav-link" data-scroll-target="#example-8.2">Example 8.2</a></li>
+  </ul></li>
+  <li><a href="#example-8-2" id="toc-example-8-2" class="nav-link" data-scroll-target="#example-8-2">Example 8</a>
+  <ul class="collapse">
+  <li><a href="#example-8.2-continue" id="toc-example-8.2-continue" class="nav-link" data-scroll-target="#example-8.2-continue">Example 8.2 (continue)</a></li>
+  </ul></li>
+  <li><a href="#example-9.-sort-the-data-by-multiple-variables" id="toc-example-9.-sort-the-data-by-multiple-variables" class="nav-link" data-scroll-target="#example-9.-sort-the-data-by-multiple-variables">Example 9. Sort the data by multiple variables</a></li>
+  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate">mutate()</a></li>
+  <li><a href="#example-10" id="toc-example-10" class="nav-link" data-scroll-target="#example-10">Example 10</a></li>
+  <li><a href="#example-11" id="toc-example-11" class="nav-link" data-scroll-target="#example-11">Example 11</a>
+  <ul class="collapse">
+  <li><a href="#example-11.1" id="toc-example-11.1" class="nav-link" data-scroll-target="#example-11.1">Example 11.1</a></li>
+  </ul></li>
+  <li><a href="#example-11-1" id="toc-example-11-1" class="nav-link" data-scroll-target="#example-11-1">Example 11</a>
+  <ul class="collapse">
+  <li><a href="#example-11.1-1" id="toc-example-11.1-1" class="nav-link" data-scroll-target="#example-11.1-1">Example 11.1</a></li>
+  </ul></li>
+  <li><a href="#example-11-2" id="toc-example-11-2" class="nav-link" data-scroll-target="#example-11-2">Example 11</a>
+  <ul class="collapse">
+  <li><a href="#example-11.2" id="toc-example-11.2" class="nav-link" data-scroll-target="#example-11.2">Example 11.2</a></li>
+  </ul></li>
+  <li><a href="#example-11-3" id="toc-example-11-3" class="nav-link" data-scroll-target="#example-11-3">Example 11</a>
+  <ul class="collapse">
+  <li><a href="#example-11.2-1" id="toc-example-11.2-1" class="nav-link" data-scroll-target="#example-11.2-1">Example 11.2</a></li>
+  <li><a href="#do-you-have-questions-about-the-code-above" id="toc-do-you-have-questions-about-the-code-above" class="nav-link" data-scroll-target="#do-you-have-questions-about-the-code-above">Do you have questions about the code above?</a></li>
+  </ul></li>
+  <li><a href="#example-11.2-code-illustration-of-str_split" id="toc-example-11.2-code-illustration-of-str_split" class="nav-link" data-scroll-target="#example-11.2-code-illustration-of-str_split">Example 11.2 code – illustration of <code>str_split()</code></a></li>
+  <li><a href="#example-11.2-code-illustration-of-rowwise" id="toc-example-11.2-code-illustration-of-rowwise" class="nav-link" data-scroll-target="#example-11.2-code-illustration-of-rowwise">Example 11.2 code – illustration of <code>rowwise()</code></a></li>
+  </ul></li>
+  <li><a href="#group_by-summarize-count" id="toc-group_by-summarize-count" class="nav-link" data-scroll-target="#group_by-summarize-count">group_by(), summarize(), count()</a>
+  <ul class="collapse">
+  <li><a href="#summarize-information-by-groups" id="toc-summarize-information-by-groups" class="nav-link" data-scroll-target="#summarize-information-by-groups">Summarize information by groups</a></li>
+  <li><a href="#example-11-4" id="toc-example-11-4" class="nav-link" data-scroll-target="#example-11-4">Example 11</a>
+  <ul class="collapse">
+  <li><a href="#example-11.3" id="toc-example-11.3" class="nav-link" data-scroll-target="#example-11.3">Example 11.3</a></li>
+  </ul></li>
+  <li><a href="#example-11-5" id="toc-example-11-5" class="nav-link" data-scroll-target="#example-11-5">Example 11</a>
+  <ul class="collapse">
+  <li><a href="#example-11.4" id="toc-example-11.4" class="nav-link" data-scroll-target="#example-11.4">Example 11.4</a></li>
+  </ul></li>
+  <li><a href="#example-11.5" id="toc-example-11.5" class="nav-link" data-scroll-target="#example-11.5">Example 11.5</a></li>
+  <li><a href="#example-11.5-1" id="toc-example-11.5-1" class="nav-link" data-scroll-target="#example-11.5-1">Example 11.5</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Manipulation with dplyr</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="dplyr">dplyr</h2>
+<blockquote class="blockquote">
+<p><img src="dplyr_logo.png" class="img-fluid" style="width:5.0%"></p>
+</blockquote>
+<ul>
+<li>Core member in tidyverse</li>
+<li>A package that <strong>transforms</strong> data</li>
+<li>dplyr implements a grammar for <strong>transforming tabular</strong> data.</li>
+<li>dplyr cheat sheet <a href="https://nyu-cdsc.github.io/learningr/assets/data-transformation.pdf" class="uri">https://nyu-cdsc.github.io/learningr/assets/data-transformation.pdf</a></li>
+</ul>
+</section>
+<section id="commonly-used-commands-in-dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="commonly-used-commands-in-dplyr">Commonly used commands in dplyr</h2>
+<ul>
+<li>select() – extract variables
+<ul>
+<li>Recommended to always use <code>dplyr::select()</code></li>
+</ul></li>
+<li>filter() – extract cases</li>
+<li>arrange() – reorder cases</li>
+<li>mutate() – create new variables
+<ul>
+<li>n() – number of values/rows</li>
+<li>n_distinct() – number of unique</li>
+</ul></li>
+<li>group_by() – group cases</li>
+<li>summarize() – summarize variables
+<ul>
+<li>Note: summarise() and summarize() are synonyms.</li>
+<li>Recommended to always use <code>dplyr::summarize()</code></li>
+</ul></li>
+<li>count() – count number of rows in each group</li>
+</ul>
+</section>
+<section id="select" class="level1">
+<h1>select()</h1>
+<section id="select-extract-columns-variables-by-name" class="level2">
+<h2 class="anchored" data-anchor-id="select-extract-columns-variables-by-name"><code>select()</code> – Extract columns (variables) by name</h2>
+<ul>
+<li>Select variables <em>var1</em> and <em>var3</em> from the data frame <code>df</code></li>
+</ul>
+<blockquote class="blockquote">
+<p><code>select(df, var1, var3)</code></p>
+</blockquote>
+<ul>
+<li>Select range of variables <em>var1, var2, var3</em> from the data frame <code>df</code></li>
+</ul>
+<blockquote class="blockquote">
+<p><code>select(df, var1:var3)</code></p>
+</blockquote>
+<ul>
+<li>Select every column but variables <em>var1</em> and <em>var2</em> from the data frame <code>df</code></li>
+</ul>
+<blockquote class="blockquote">
+<p><code>select(df, -c(var1, var2))</code></p>
+</blockquote>
+<ul>
+<li>Select every column</li>
+</ul>
+<blockquote class="blockquote">
+<p><code>select(df, everything())</code></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><code>select(df, var7, everything())</code> – Place var7 first, followed by all other variables</p>
+</blockquote>
+</section>
+<section id="example-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-1">Example 1</h2>
+<p>Let’s use the <code>mpg</code> tibble in ggplot2. Please use <code>help(mpg)</code> for the variable definitions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mpg</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 234 × 11</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 audi         a4           2    2008     4 manu… f        20    31 p     comp…</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 audi         a4           2    2008     4 auto… f        21    30 p     comp…</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 224 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="recall-check-missing-values-code-chunk-from-the-previous-lecture" class="level3">
+<h3 class="anchored" data-anchor-id="recall-check-missing-values-code-chunk-from-the-previous-lecture">Recall: <em>check missing values</em> code chunk – from the previous lecture</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">everything</span>()) <span class="sc">%&gt;%</span> <span class="co"># use everything() to select all variables</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize_all</span>(<span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.))) <span class="co"># summarize_all() affects every variable</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 11</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   manufacturer model displ  year   cyl trans   drv   cty   hwy    fl class</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1            0     0     0     0     0     0     0     0     0     0     0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="example-2" class="level2">
+<h2 class="anchored" data-anchor-id="example-2">Example 2</h2>
+<p>List the distinct model names (using the variable <em>model</em>) in the <code>mpg</code> tibble.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(model) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 38 × 1</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    model             </span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;             </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 a4                </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 a4 quattro        </span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 a6 quattro        </span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 c1500 suburban 2wd</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 corvette          </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 k1500 tahoe 4wd   </span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 malibu            </span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 caravan 2wd       </span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 dakota pickup 4wd </span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 durango 4wd       </span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 28 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>There are 38 distinct model names!</li>
+</ul>
+</section>
+<section id="example-3" class="level2">
+<h2 class="anchored" data-anchor-id="example-3">Example 3</h2>
+<p>The <em>model</em> variable has too many categories to be useful. Please remove the column <em>model</em> and save the new tibble as <code>mpg1</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mpg1 <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>model)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mpg1)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] "manufacturer" "displ"        "year"         "cyl"          "trans"       </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6] "drv"          "cty"          "hwy"          "fl"           "class"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="filter" class="level1">
+<h1>filter()</h1>
+<section id="filter-extract-rows-by-logical-criteria" class="level2">
+<h2 class="anchored" data-anchor-id="filter-extract-rows-by-logical-criteria"><code>filter()</code> – Extract rows by logical criteria</h2>
+<p>Extract rows that meet logical criteria from the data frame <code>df</code></p>
+<blockquote class="blockquote">
+<p><code>filter(df, logical_criteria)</code></p>
+</blockquote>
+<section id="logical-tests-and-boolean-operators" class="level3">
+<h3 class="anchored" data-anchor-id="logical-tests-and-boolean-operators">Logical Tests and Boolean Operators</h3>
+<blockquote class="blockquote">
+<p><img src="logical tests.jpg" class="img-fluid" style="width:20.0%" alt="Logical Tests"> <img src="boolean operators.jpg" class="img-fluid" style="width:20.0%" alt="Boolean Operators"></p>
+</blockquote>
+</section>
+</section>
+<section id="example-4" class="level2">
+<h2 class="anchored" data-anchor-id="example-4">Example 4</h2>
+<p>From the <code>mpg1</code> tibble, create a sub-tibble named <em>DODGE</em> with the manufacture being <em>dodge</em> only.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DODGE <span class="ot">&lt;-</span> mpg1 <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">"dodge"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(DODGE)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 37 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-5" class="level2">
+<h2 class="anchored" data-anchor-id="example-5">Example 5</h2>
+<p>From the <code>mpg1</code> tibble, create a sub-tibble named <em>DODGE_SUV</em> with the manufacture being <em>dodge</em> and vehicle class being <em>suv</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>DODGE_SUV <span class="ot">&lt;-</span> mpg1 <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">"dodge"</span> <span class="sc">&amp;</span> class <span class="sc">==</span> <span class="st">'suv'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or equivalently,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>DODGE_SUV <span class="ot">&lt;-</span> mpg1 <span class="sc">%&gt;%</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">"dodge"</span>, class <span class="sc">==</span> <span class="st">'suv'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(DODGE_SUV)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  7 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-6" class="level2">
+<h2 class="anchored" data-anchor-id="example-6">Example 6</h2>
+<p>Draw a scatterplot of <em>hwy</em> vs <em>displ</em> (highway mileage vs engine displacement in liters) for the Japanese cars only (the Japanese manufacturers are <em>honda, nissan, subaru</em>, or <em>toyota</em>), colored by <em>manufacturer</em>.</p>
+<section id="example-6.1" class="level3">
+<h3 class="anchored" data-anchor-id="example-6.1">Example 6.1</h3>
+<p>From the <code>mpg1</code> tibble, create a sub-tibble named <em>Japanese_car</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Japanese_car <span class="ot">&lt;-</span> mpg1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(manufacturer <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"honda"</span>, <span class="st">"nissan"</span>, <span class="st">"subaru"</span>, <span class="st">"toyota"</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(Japanese_car)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 70 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-6.2" class="level3">
+<h3 class="anchored" data-anchor-id="example-6.2">Example 6.2</h3>
+<p>Use the <em>Japanese_car</em> tibble to draw the scatterplot of <em>hwy</em> vs <em>displ</em>. Recall that, <code>geom_point()</code> could be used.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Japanese_car, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">col =</span> manufacturer)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dplyr_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="combine-the-example-6.1-and-6.2" class="level3">
+<h3 class="anchored" data-anchor-id="combine-the-example-6.1-and-6.2">Combine the Example 6.1 and 6.2</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mpg1 <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"honda"</span>, <span class="st">"nissan"</span>, <span class="st">"subaru"</span>, <span class="st">"toyota"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>displ, <span class="at">y=</span>hwy, <span class="at">col=</span> manufacturer)) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dplyr_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="arrange" class="level1">
+<h1>arrange()</h1>
+<section id="arrange-reorder-rows-by-the-value-of-one-or-more-columns-variables" class="level2">
+<h2 class="anchored" data-anchor-id="arrange-reorder-rows-by-the-value-of-one-or-more-columns-variables"><code>arrange()</code> – reorder rows by the value of one or more columns (variables)</h2>
+<ul>
+<li><code>arrange()</code> is used to reorder rows of data.</li>
+<li>Order will be based on values in a specified column.</li>
+<li>The default order will be <em>ascending</em> order.</li>
+<li>To achieve descending order <code>desc()</code> will be used within <code>arrange()</code>.</li>
+</ul>
+</section>
+<section id="example-7" class="level2">
+<h2 class="anchored" data-anchor-id="example-7">Example 7</h2>
+<p>In the workshop data (i.e.&nbsp;DS Workshop Participants List.csv), select the variables <em>Name, Department, Major</em> only, sort depend on the <code>Major</code> variable.</p>
+<section id="step-1.-import-the-workshop-data-in-csv-into-r-using-read_csv-command-in-readr-package." class="level5">
+<h5 class="anchored" data-anchor-id="step-1.-import-the-workshop-data-in-csv-into-r-using-read_csv-command-in-readr-package.">Step 1. Import the workshop data in csv into R, using <code>read_csv()</code> command in <code>readr</code> package.</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tbl_workshop <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DS Workshop Participants List.csv"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>tbl_workshop</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 16 × 11</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Name       Gender `Email Address` Department `Info Source` `Class Year` Major</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Dwayne Jo… M      Djohnson@illin… Statistics Email         Undergradua… Stat…</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Rihanna    F      Rihanna@illino… Economics  Class         Graduate     ECON </span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Ellen DeG… F      Edegeneres@ill… Biology    Email         Undergradua… Biol…</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Will Smith M      Wsmith@illinoi… Electrica… Email         Undergradua… Elec…</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Angelina … F      Ajolie@illinoi… Computer … Class         Undergradua… Comp…</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Cristiano… M      Cronaldo@illin… Economics  Friends/Coll… Faculty and… &lt;NA&gt; </span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Leonardo … M      Ldicaprio@illi… Economics  Email         Undergradua… Econ…</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Tom Cruise M      Tcruise@illino… Mathemati… Class         Undergradua… Math…</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Robert Do… M      RDowneyJr@illi… mechanica… Class         Undergradua… Mech…</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Celine Di… F      Cdion@illinois… Biology    Friends/Coll… Faculty and… &lt;NA&gt; </span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 Adele      F      Adele@illinois… Statistics Class         Undergradua… Stat…</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 Serena Wi… F      Swilliams@illi… Computer … Email         Undergradua… Comp…</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 Lionel Me… M      Lmessi@illinoi… Biology    Professor     Graduate     Biol…</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 Taylor Sw… F      Tswift@illinoi… BIology    Flyer         Undergradua… Biol…</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 J. K. Row… F      JKRowling@illi… Finance    Email         Undergradua… Fina…</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 LeBron Ja… M      Ljames@illinoi… Electrica… Flyer         Undergradua… EE   </span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 4 more variables: `Related Courses Taken` &lt;chr&gt;,</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   `Programming Language Known` &lt;chr&gt;,</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   `Willingness to be the Presenter` &lt;chr&gt;, `DS Years of Experience` &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-2.-select-the-columns-name-department-major-only." class="level5">
+<h5 class="anchored" data-anchor-id="step-2.-select-the-columns-name-department-major-only.">Step 2. Select the columns <em>Name, Department, Major</em> only.</h5>
+</section>
+<section id="step-3.-sort-the-tibble-by-major." class="level5">
+<h5 class="anchored" data-anchor-id="step-3.-sort-the-tibble-by-major.">Step 3. Sort the tibble by <code>Major</code>.</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tbl_workshop <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Name, Department, Major) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Major) </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 16 × 3</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Name              Department                          Major                 </span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;                               &lt;chr&gt;                 </span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Ellen DeGeneres   Biology                             Biology               </span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Lionel Messi      Biology                             Biology               </span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Taylor Swift      BIology                             Biology               </span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Angelina Jolie    Computer Science                    Computer Science      </span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Serena Williams   Computer Science                    Computer Science      </span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Rihanna           Economics                           ECON                  </span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 LeBron James      Electrical and Computer Engineering EE                    </span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Leonardo DiCaprio Economics                           Economics             </span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Will Smith        Electrical and Computer Engineering Electrical Engineering</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 J. K. Rowling     Finance                             Finance               </span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 Tom Cruise        Mathematics                         Mathematics           </span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 Robert Downey Jr. mechanical Science and Engineering  Mechanical Engineering</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 Dwayne Johnson    Statistics                          Statistics            </span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 Adele             Statistics                          Statistics            </span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 Cristiano Ronaldo Economics                           &lt;NA&gt;                  </span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 Celine Dion       Biology                             &lt;NA&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Note that</strong>:</p>
+<ul>
+<li><p>The tibble is sorted by <code>Major</code> in <strong>alphabetical</strong> order, in <strong>ascending</strong> order.</p></li>
+<li><p>Missing values (i.e.&nbsp;<code>NA</code>) are always sorted at the end.</p></li>
+</ul>
+</section>
+</section>
+<section id="example-7-continue" class="level2">
+<h2 class="anchored" data-anchor-id="example-7-continue">Example 7 (continue)</h2>
+<p>In the workshop data (i.e.&nbsp;DS Workshop Participants List.csv), select the variables <em>Name, Department, Major</em> only, sort depend on the <code>Major</code> variable.</p>
+<section id="if-sort-the-tibble-by-major-in-descending-order-is-preferred" class="level4">
+<h4 class="anchored" data-anchor-id="if-sort-the-tibble-by-major-in-descending-order-is-preferred">If sort the tibble by <code>Major</code> in descending order is preferred…</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tbl_workshop <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Name, Department, Major) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Major)) <span class="do">### Use desc() to re-order in descending order</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 16 × 3</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Name              Department                          Major                 </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;                               &lt;chr&gt;                 </span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Dwayne Johnson    Statistics                          Statistics            </span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Adele             Statistics                          Statistics            </span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Robert Downey Jr. mechanical Science and Engineering  Mechanical Engineering</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Tom Cruise        Mathematics                         Mathematics           </span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 J. K. Rowling     Finance                             Finance               </span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Will Smith        Electrical and Computer Engineering Electrical Engineering</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Leonardo DiCaprio Economics                           Economics             </span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 LeBron James      Electrical and Computer Engineering EE                    </span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Rihanna           Economics                           ECON                  </span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Angelina Jolie    Computer Science                    Computer Science      </span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 Serena Williams   Computer Science                    Computer Science      </span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 Ellen DeGeneres   Biology                             Biology               </span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 Lionel Messi      Biology                             Biology               </span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 Taylor Swift      BIology                             Biology               </span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 Cristiano Ronaldo Economics                           &lt;NA&gt;                  </span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 Celine Dion       Biology                             &lt;NA&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="example-8" class="level2">
+<h2 class="anchored" data-anchor-id="example-8">Example 8</h2>
+<p>From the <code>mpg1</code> tibble, draw a bar graph of the vehicle classes (variable <em>class</em>) to go in descending order.</p>
+<section id="example-8.1" class="level3">
+<h3 class="anchored" data-anchor-id="example-8.1">Example 8.1</h3>
+<p>Draw a bar graph of vehicle classes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg1, <span class="fu">aes</span>(class)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dplyr_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="example-8-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-8-1">Example 8</h2>
+<p>From the <code>mpg1</code> tibble, draw a bar graph of the vehicle classes (variable <em>class</em>) to go in descending order.</p>
+<section id="example-8.2" class="level3">
+<h3 class="anchored" data-anchor-id="example-8.2">Example 8.2</h3>
+<p>Use <code>arrange()</code> to sort the bar graph in descending order.</p>
+<section id="step-1.-find-the-counts-for-each-class-type" class="level5">
+<h5 class="anchored" data-anchor-id="step-1.-find-the-counts-for-each-class-type">Step 1. Find the counts for each class type</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mpg1 <span class="sc">%&gt;%</span> <span class="fu">count</span>(class)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 7 × 2</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   class          n</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2seater        5</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 compact       47</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 midsize       41</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 minivan       11</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 pickup        33</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 subcompact    35</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 suv           62</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-2.-use-arrange-to-sort-the-counts" class="level5">
+<h5 class="anchored" data-anchor-id="step-2.-use-arrange-to-sort-the-counts">Step 2. Use <code>arrange()</code> to sort the counts</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mpg1 <span class="sc">%&gt;%</span> <span class="fu">count</span>(class) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="do">## desc() means in descending order</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 7 × 2</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   class          n</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 suv           62</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 compact       47</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 midsize       41</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 subcompact    35</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 pickup        33</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 minivan       11</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 2seater        5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-3.-chain-the-code-to-ggplot-with-geom_col" class="level5">
+<h5 class="anchored" data-anchor-id="step-3.-chain-the-code-to-ggplot-with-geom_col">Step 3. Chain the code to ggplot with <code>geom_col()</code></h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mpg1 <span class="sc">%&gt;%</span> <span class="fu">count</span>(class) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(class, n))<span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dplyr_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Q: <code>arrange()</code> has been used. Why still not sorted?</p>
+</section>
+</section>
+</section>
+<section id="example-8-2" class="level2">
+<h2 class="anchored" data-anchor-id="example-8-2">Example 8</h2>
+<p>Draw a bar graph of the vehicle classes (variable <code>class</code>) to go in descending order.</p>
+<section id="example-8.2-continue" class="level3">
+<h3 class="anchored" data-anchor-id="example-8.2-continue">Example 8.2 (continue)</h3>
+<p>Q: <code>arrange()</code> has been used. Why the bar graph created is still not sorted?</p>
+<p>A: You need to save the order.</p>
+<section id="code-from-the-previous-slide" class="level4">
+<h4 class="anchored" data-anchor-id="code-from-the-previous-slide">Code from the previous slide</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mpg1 <span class="sc">%&gt;%</span> <span class="fu">count</span>(class) <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(class, n))<span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="output-after-using-arrange" class="level4">
+<h4 class="anchored" data-anchor-id="output-after-using-arrange">Output after using arrange()</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mpg1 <span class="sc">%&gt;%</span> <span class="fu">count</span>(class) <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 7 × 2</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   class          n</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 suv           62</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 compact       47</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 midsize       41</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 subcompact    35</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 pickup        33</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 minivan       11</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 2seater        5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="then-use-fct_inorder-to-keep-this-descending-order." class="level4">
+<h4 class="anchored" data-anchor-id="then-use-fct_inorder-to-keep-this-descending-order.">Then use <code>fct_inorder()</code> to keep this descending order.</h4>
+<ul>
+<li><code>fct_inorder()</code> – Reorder factor levels by the order in which they first appear.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mpg1 <span class="sc">%&gt;%</span> <span class="fu">count</span>(class) <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">fct_inorder</span>(class))<span class="sc">%&gt;%</span> <span class="do">### save the order</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(class, n))<span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dplyr_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="example-9.-sort-the-data-by-multiple-variables" class="level2">
+<h2 class="anchored" data-anchor-id="example-9.-sort-the-data-by-multiple-variables">Example 9. Sort the data by multiple variables</h2>
+<p>From the <code>mpg1</code> tibble, create a tibble that satisfies:</p>
+<ol type="1">
+<li>the manufacture is <em>toyota</em>,</li>
+<li>select variables <em>class, year, displ</em> only,</li>
+<li>sort the tibble depend on <em>class</em>, <em>year</em>, and <em>displ</em>, where <em>class</em> and <em>year</em> are in ascending order, <em>displ</em> is in descending order.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mpg1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">"toyota"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(class, year, displ) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(class, year, <span class="fu">desc</span>(displ)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="dv">15</span>) <span class="do">### Print 15 rows</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 34 × 3</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    class    year displ</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 compact  1999   3  </span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 compact  1999   3  </span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 compact  1999   2.2</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 compact  1999   2.2</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 compact  1999   1.8</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 compact  1999   1.8</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 compact  1999   1.8</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 compact  2008   3.3</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 compact  2008   2.4</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 compact  2008   2.4</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 compact  2008   1.8</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 compact  2008   1.8</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 midsize  1999   3  </span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 midsize  1999   3  </span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 midsize  1999   2.2</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 19 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="from-the-output-above-it-seems-like-the-displ-values-increase-as-the-year-grow-for-the-compact-vehicle-type.-is-it-true-for-the-other-vehicle-types" class="level4">
+<h4 class="anchored" data-anchor-id="from-the-output-above-it-seems-like-the-displ-values-increase-as-the-year-grow-for-the-compact-vehicle-type.-is-it-true-for-the-other-vehicle-types">From the output above, it seems like the <em>displ</em> values increase as the <em>year</em> grow for the <em>compact</em> vehicle type. Is it true for the other vehicle types?</h4>
+<p>We could create a scatterplot to visualize the change.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">"toyota"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(class, year, displ) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> displ))<span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">height =</span> <span class="dv">0</span>, <span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dplyr_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- ## Summarize -->
+<!-- * select() -- extract columns or variables -->
+<!-- * filter() -- extract rows or cases -->
+<!-- * arrange() -- reorder cases -->
+<!-- * mutate() -- create new variables -->
+<!--   + n() -- number of values/rows -->
+<!--   + n_distinct() -- number of uniques -->
+<!--   <!-- + sum(!is.na())-- number of non-NA's -->
+<p>–&gt; <!-- * group_by() -- group cases --> <!-- * summarize() -- summarize variables  --> <!--   + Note: summarise() and summarize() are synonyms. --> <!-- * count() -- count number of rows in each group --></p>
+<!-- * Useful function -->
+<!--   + Center: `mean(), median()` -->
+<!--   + Spread: `sd(), IQR(), mad()` -->
+<!--   + Range: `min(), max(), quantile()` -->
+<!--   + Position: `first(), last(), nth()` -->
+<!--   + Count: `n(), n_distinct()` -->
+<!--   + Logical: `any(), all()` -->
+</section>
+</section>
+<section id="mutate" class="level2">
+<h2 class="anchored" data-anchor-id="mutate">mutate()</h2>
+<ul>
+<li>Use <code>mutate()</code> to add new variables and preserves existing ones.</li>
+</ul>
+</section>
+<section id="example-10" class="level2">
+<h2 class="anchored" data-anchor-id="example-10">Example 10</h2>
+<p>Please create a new column <code>combined_mpg</code> in <code>mpg</code> using the formula of</p>
+<blockquote class="blockquote">
+<p>combined_mpg = 0.55 * cty + 0.45 * hwy</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">combined_mpg =</span> <span class="fl">0.55</span><span class="sc">*</span>cty <span class="sc">+</span> <span class="fl">0.45</span><span class="sc">*</span>hwy) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">width =</span> <span class="cn">Inf</span>) <span class="do">## use print(width = Inf) to display all the columns</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 234 × 12</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl   </span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 audi         a4           1.8  1999     4 auto(l5)   f        18    29 p    </span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 audi         a4           1.8  1999     4 manual(m5) f        21    29 p    </span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 audi         a4           2    2008     4 manual(m6) f        20    31 p    </span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 audi         a4           2    2008     4 auto(av)   f        21    30 p    </span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 audi         a4           2.8  1999     6 auto(l5)   f        16    26 p    </span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 audi         a4           2.8  1999     6 manual(m5) f        18    26 p    </span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 audi         a4           3.1  2008     6 auto(av)   f        18    27 p    </span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 audi         a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p    </span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 audi         a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p    </span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 audi         a4 quattro   2    2008     4 manual(m6) 4        20    28 p    </span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    class   combined_mpg</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;          &lt;dbl&gt;</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 compact         23.0</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 compact         24.6</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 compact         25.0</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 compact         25.0</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 compact         20.5</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 compact         21.6</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 compact         22.0</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 compact         21.6</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 compact         20.0</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 compact         23.6</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 224 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-11" class="level2">
+<h2 class="anchored" data-anchor-id="example-11">Example 11</h2>
+<p>Please compare the <em>frequency</em> and <em>engine displacement average (variable <code>displ</code>)</em> between the two transmissions (auto vs manual).</p>
+<section id="example-11.1" class="level3">
+<h3 class="anchored" data-anchor-id="example-11.1">Example 11.1</h3>
+<p>Let’s first find the distinct transmission types (with sub types).</p>
+<ul>
+<li><p>Use <code>distinct()</code> to display the distinct transmission types (with sub types) – variable <code>trans</code>.</p></li>
+<li><p>Use <code>n_distinct</code> to find how many transmission types (with sub types).</p></li>
+</ul>
+</section>
+</section>
+<section id="example-11-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-11-1">Example 11</h2>
+<p>Please compare the <em>frequency</em> and <em>engine displacement average (variable <code>displ</code>)</em> between the two transmissions (auto vs manual).</p>
+<section id="example-11.1-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-11.1-1">Example 11.1</h3>
+<p>Let’s first find the distinct transmission types with sub types.</p>
+<ul>
+<li><p>Use <code>distinct()</code> to display the distinct transmission types (with sub types) – variable <code>trans</code>.</p></li>
+<li><p>Use <code>n_distinct</code> to find how many transmission types (with sub types).</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trans) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 × 1</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    trans     </span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;     </span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 auto(l5)  </span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 manual(m5)</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 manual(m6)</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 auto(av)  </span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 auto(s6)  </span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 auto(l4)  </span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 auto(l3)  </span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 auto(l6)  </span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 auto(s5)  </span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 auto(s4)</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="do">### Find just the count of distinct categories</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trans) <span class="sc">%&gt;%</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">n_distinct</span>()</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>There are 10 distinct transmission types with sub types.</li>
+<li>But we only need to compare auto and manual transmission types.</li>
+</ul>
+</section>
+</section>
+<section id="example-11-2" class="level2">
+<h2 class="anchored" data-anchor-id="example-11-2">Example 11</h2>
+<p>Please compare the <em>frequency</em> and <em>engine displacement average (variable <code>displ</code>)</em> between the two transmissions (auto vs manual).</p>
+<section id="example-11.2" class="level3">
+<h3 class="anchored" data-anchor-id="example-11.2">Example 11.2</h3>
+<p>Use <code>mutate()</code> function to create a new variable <code>trans</code> with transmission type only, without sub types.</p>
+</section>
+</section>
+<section id="example-11-3" class="level2">
+<h2 class="anchored" data-anchor-id="example-11-3">Example 11</h2>
+<p>Please compare the <em>frequency</em> and <em>engine displacement average (variable <code>displ</code>)</em> between the two transmissions (auto vs manual).</p>
+<section id="example-11.2-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-11.2-1">Example 11.2</h3>
+<p>Use <code>mutate()</code> function to create a new variable <code>trans_type</code> with transmission type only, without sub types.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mpg_transtype <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="do">## rowwise() groups the data by row. </span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trans_type =</span> <span class="fu">str_split</span>(trans, <span class="st">"</span><span class="sc">\\</span><span class="st">("</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>]) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="do">## Use ungroup() to drop the rowwise behavior. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mpg_transtype <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(trans_type)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 × 1</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   trans_type</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;     </span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 auto      </span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 manual</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="do-you-have-questions-about-the-code-above" class="level3">
+<h3 class="anchored" data-anchor-id="do-you-have-questions-about-the-code-above">Do you have questions about the code above?</h3>
+<p>Please find the illustration in the next two slides of</p>
+<ul>
+<li><code>str_split(trans, "\\(")[[1]][1]</code></li>
+<li><code>rowwise()</code></li>
+</ul>
+</section>
+</section>
+<section id="example-11.2-code-illustration-of-str_split" class="level2">
+<h2 class="anchored" data-anchor-id="example-11.2-code-illustration-of-str_split">Example 11.2 code – illustration of <code>str_split()</code></h2>
+<ul>
+<li><code>str_split()</code> is from stringr package. The function can be used to split a string into multiple pieces.</li>
+</ul>
+<blockquote class="blockquote">
+<p><code>str_split(string, pattern)</code></p>
+</blockquote>
+<p>where</p>
+<pre><code>* string is a character vector,
+* pattern is the pattern to split on.</code></pre>
+<ul>
+<li>In this example,
+<ul>
+<li>you type <code>\\(</code> to match <code>(</code>, which is the separator.</li>
+</ul>
+<blockquote class="blockquote">
+<p><img src="Stringr str_split.jpg" class="img-fluid" style="width:45.0%"></p>
+</blockquote>
+<ul>
+<li>Please refer to the stringr cheat sheet for more information.</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="st">"auto(l5)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">("</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "auto" "l5)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>We only need “auto” in this example. Therefore,</p>
+<ul>
+<li>Use <code>[[1]]</code> to get the first element in this list – result in a vector,</li>
+<li>Then use <code>[1]</code> get the first value of the vector.</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="st">"auto(l5)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">("</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "auto" "l5)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="st">"auto(l5)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">("</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>]</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "auto"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-11.2-code-illustration-of-rowwise" class="level2">
+<h2 class="anchored" data-anchor-id="example-11.2-code-illustration-of-rowwise">Example 11.2 code – illustration of <code>rowwise()</code></h2>
+<p>If <code>rowwise()</code> is not used,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trans_type =</span> <span class="fu">str_split</span>(trans, <span class="st">"</span><span class="sc">\\</span><span class="st">("</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(trans_type, trans)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 234 × 2</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    trans_type trans     </span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;     </span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 auto       auto(l5)  </span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 auto       manual(m5)</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 auto       manual(m6)</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 auto       auto(av)  </span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 auto       auto(l5)  </span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 auto       manual(m5)</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 auto       auto(av)  </span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 auto       manual(m5)</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 auto       auto(l5)  </span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 auto       manual(m6)</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 224 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>All are <strong>`auto’s</strong> in the <strong>trans</strong> column!</p>
+<ul>
+<li>Therefore, we need to perform the calculation <strong>by row</strong> to get the values for variable trans.</li>
+<li>After the <code>mutate()</code> function, use <code>ungroup()</code> to drop the rowwise behavior.</li>
+</ul>
+</section>
+</section>
+<section id="group_by-summarize-count" class="level1">
+<h1>group_by(), summarize(), count()</h1>
+<section id="summarize-information-by-groups" class="level2">
+<h2 class="anchored" data-anchor-id="summarize-information-by-groups">Summarize information by groups</h2>
+<ul>
+<li>Find summary statistics by group</li>
+</ul>
+<p><img src="group_by and summarize.png" class="img-fluid" style="width:60.0%"></p>
+<!-- * Find group_mean of variable `Var1` by group (variable: GROUP_FACTOR) from the data frame `df`  -->
+<!-- > `df %>% group_by(GROUP_FACTOR) %>% summarize(group_mean = mean(var1))` -->
+<!-- * Find counts by group (variable: GROUP_FACTOR) from the data frame `df`  -->
+<!-- > `df %>% group_by(GROUP_FACTOR) %>% summarize(freq = n())` -->
+<!-- > This is equivalent to: `df %>%  count(GROUP_FACTOR)` -->
+<ul>
+<li><p>Useful function</p>
+<ul>
+<li>Center: <code>mean(), median()</code></li>
+<li>Spread: <code>sd(), IQR(), mad()</code></li>
+<li>Range: <code>min(), max(), quantile()</code></li>
+<li>Position: <code>first(), last(), nth()</code></li>
+<li>Count: <code>n(), n_distinct()</code></li>
+<li>Logical: <code>any(), all()</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="example-11-4" class="level2">
+<h2 class="anchored" data-anchor-id="example-11-4">Example 11</h2>
+<p>Please compare the <em>frequency</em> and <em>engine displacement average (variable <code>displ</code>)</em> between the two transmissions (auto vs manual).</p>
+<section id="example-11.3" class="level3">
+<h3 class="anchored" data-anchor-id="example-11.3">Example 11.3</h3>
+<p>Use <code>group_by()</code>, <code>summarize()</code> and <code>n()</code> to find the frequency of the two transmission types.</p>
+<section id="frequency-table" class="level4">
+<h4 class="anchored" data-anchor-id="frequency-table">Frequency table</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>mpg_transtype <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(trans_type) <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">freq =</span> <span class="fu">n</span>())</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 × 2</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   trans_type  freq</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 auto         157</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 manual        77</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="do">### Or equivalently,</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>mpg_transtype <span class="sc">%&gt;%</span> <span class="fu">count</span>(trans_type)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 × 2</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   trans_type     n</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 auto         157</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 manual        77</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bar-graph" class="level4">
+<h4 class="anchored" data-anchor-id="bar-graph">Bar graph</h4>
+<p>We could show the counts visually using ggplot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mpg_transtype <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(trans_type) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">freq =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(trans_type, freq)) <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dplyr_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="example-11-5" class="level2">
+<h2 class="anchored" data-anchor-id="example-11-5">Example 11</h2>
+<p>Please compare the <em>frequency</em> and <em>engine displacement average (variable <code>displ</code>)</em> between the two transmissions (auto vs manual).</p>
+<section id="example-11.4" class="level3">
+<h3 class="anchored" data-anchor-id="example-11.4">Example 11.4</h3>
+<p>Use <code>mean()</code> to compare the engine displacement average between the two transmissions (auto, manual).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mpg_transtype <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(trans_type) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">displ_avg =</span> <span class="fu">mean</span>(displ))</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 × 2</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   trans_type displ_avg</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 auto            3.72</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 manual          2.97</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="do">### or Visually using ggplot</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>mpg_transtype <span class="sc">%&gt;%</span> </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(trans_type) <span class="sc">%&gt;%</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">displ_avg =</span> <span class="fu">mean</span>(displ)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(trans_type, displ_avg))<span class="sc">+</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dplyr_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- **Question:** It seems like auto transmission has much higher displacement value than manual transmissions. Why is that? -->
+<!-- **Answer: ** Let's display the `displ_avg` vs `trans` across different vehicle classes and compare. -->
+<!-- ```{r} -->
+<!-- mpg1 %>%  -->
+<!--   group_by(trans_type, class) %>% -->
+<!--   dplyr::summarize(displ_avg = mean(displ)) %>% -->
+<!--   ggplot(aes(trans_type, displ_avg))+ -->
+<!--   geom_col() + -->
+<!--   facet_wrap(~class) -->
+<!-- ``` -->
+</section>
+</section>
+<section id="example-11.5" class="level2">
+<h2 class="anchored" data-anchor-id="example-11.5">Example 11.5</h2>
+<p>If you need to</p>
+<ul>
+<li>group by multiple variables, or</li>
+<li>calculate several grouped summary statistics</li>
+</ul>
+<p>Please read Example 11.5 on the next slide.</p>
+</section>
+<section id="example-11.5-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-11.5-1">Example 11.5</h2>
+<p>Get a list of grouped summary statistics (min, Q1, median, Q3, max, mean, std. dev., missing) by <em>transmission type</em> (without sub group) <strong>and</strong> <em>class type</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>displ_summary <span class="ot">&lt;-</span> mpg_transtype <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(trans_type, class)<span class="sc">%&gt;%</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(displ, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">q1 =</span> <span class="fu">quantile</span>(displ, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">quantile</span>(displ, <span class="fl">0.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">q3 =</span> <span class="fu">quantile</span>(displ, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(displ, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(displ, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(displ, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(displ))</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>displ_summary</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 13 × 10</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   trans_type [2]</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    trans_type class        min    q1 median    q3   max  mean    sd missing</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;int&gt;</span></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 auto       2seater      5.7  5.82   5.95  6.08   6.2  5.95 0.354       0</span></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 auto       compact      1.8  2      2.3   2.8    3.3  2.35 0.485       0</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 auto       midsize      1.8  2.4    3.1   3.5    5.3  3.08 0.750       0</span></span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 auto       minivan      2.4  3.3    3.3   3.8    4    3.39 0.453       0</span></span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 auto       pickup       2.7  4.15   4.7   5.2    5.9  4.61 0.789       0</span></span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 auto       subcompact   1.6  1.87   2.1   2.98   4.6  2.6  1.05        0</span></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 auto       suv          2.5  4      4.7   5.4    6.5  4.64 0.964       0</span></span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 manual     2seater      5.7  5.95   6.2   6.6    7    6.3  0.656       0</span></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 manual     compact      1.8  2      2.2   2.65   3.1  2.3  0.425       0</span></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 manual     midsize      1.8  2.35   2.45  2.85   3.5  2.54 0.470       0</span></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 manual     pickup       2.7  3.7    4.2   4.7    5.2  4.13 0.835       0</span></span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 manual     subcompact   1.6  1.95   2.2   3.25   5.4  2.71 1.17        0</span></span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 manual     suv          2.5  2.5    2.7   3.35   4    2.99 0.590       0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ycjiaweijia\.github\.io\/STAT-385-Assignments\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
