@@ -998,7 +998,7 @@
     "href": "Quiz14/Quiz14.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\nCreate the annoying tibble as follows:\n\nannoying &lt;- tibble(\n`1` = c(8, 5, 3, 9, 6, 7, 10, 7, 10, 4),\n`2` = `1` * 2 + rnorm(length(`1`))\n)\n\n\n[2 pt] Extract the column with the variable name 1 as a tibble. Denote it as tbl_1.\n[2 pt] Extract the column with the variable name 1 as a vector . Denote it as vec_1.\n[1 pt] Create a new column called 3, which is column 2 divided by column 1.\n[1 pt] Please rename the columns to “one”, “two”, and “three”. [Hint: After renaming, be sure to save the new tibble to annoying to replace the original tibble. ]"
+    "text": "Question 3\nCreate the annoying tibble as follows:\n\nannoying &lt;- tibble(\n`1` = c(8, 5, 3, 9, 6, 7, 10, 7, 10, 4),\n`2` = `1` * 2 + rnorm(length(`1`))\n)\n\n\n[2 pt] Extract the column with the variable name 1 as a tibble. Denote it as tbl_1.\n[2 pt] Extract the column with the variable name 1 as an (atomic) vector (not a list). Denote it as vec_1.\n[1 pt] Create a new column called 3, which is column 2 divided by column 1.\n[1 pt] Please rename the columns to “one”, “two”, and “three”. [Hint: After renaming, be sure to save the new tibble to annoying to replace the original tibble. ]"
   },
   {
     "objectID": "Quiz2/Quiz2.html",
