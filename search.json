@@ -991,7 +991,7 @@
     "href": "Quiz14/Quiz14.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n\n[1 pt] Please import the CSV data BLACKFRIDAY as a tibble named BlackFriday.\n[1 pt] Check if BlackFriday is a data frame. Use is_tibble() to check if BlackFriday is a tibble.\n\nNote that: As tibble is a modern take on the classic data frame in R, and it inherits from the data frame class. Therefore, for a tibble, if you use is.data.frame function to check, it returns TRUE because a tibble is a specialized form of a data frame with additional features."
+    "text": "Question 2\n\n[1 pt] Please import the CSV data BLACKFRIDAY as a tibble named BlackFriday.\n[1 pt] Check if BlackFriday is a data frame. In addition, please use is_tibble() to check if BlackFriday is a tibble.\n\nNote that: As tibble is a modern take on the classic data frame in R, and it inherits from the data frame class. Therefore, for a tibble, if you use is.data.frame function to check, it returns TRUE because a tibble is a specialized form of a data frame with additional features."
   },
   {
     "objectID": "Quiz14/Quiz14.html#question-3",
