@@ -2,175 +2,175 @@
   {
     "objectID": "Transformation/Transformation.html",
     "href": "Transformation/Transformation.html",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "",
     "text": "Workflow in data science, with Tidyverse – https://oliviergimenez.github.io/intro_tidyverse/#1"
   },
   {
     "objectID": "Transformation/Transformation.html#data-science-workflow",
     "href": "Transformation/Transformation.html#data-science-workflow",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "",
     "text": "Workflow in data science, with Tidyverse – https://oliviergimenez.github.io/intro_tidyverse/#1"
   },
   {
     "objectID": "Transformation/Transformation.html#tidy-data",
     "href": "Transformation/Transformation.html#tidy-data",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
-    "section": "tidy Data",
-    "text": "tidy Data\n\nHappy families are all alike; every unhappy family is unhappy in its own way. — Leo Tolstoy\n\n\nTidy datasets are all alike, but every messy dataset is messy in its own way. — Hadley Wickham, author of R for Data Science\n\n\nTidy data is data where:\n\nEvery column is variables.\nEvery row is an observation.\nEvery cell is a single value.\n\n\n\n\nlibrary(tidyverse)\ntable1\n#&gt; # A tibble: 6 × 4\n#&gt;   country      year  cases population\n#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n#&gt; 1 Afghanistan  1999    745   19987071\n#&gt; 2 Afghanistan  2000   2666   20595360\n#&gt; 3 Brazil       1999  37737  172006362\n#&gt; 4 Brazil       2000  80488  174504898\n#&gt; 5 China        1999 212258 1272915272\n#&gt; 6 China        2000 213766 1280428583\ntable2\n#&gt; # A tibble: 12 × 4\n#&gt;    country      year type            count\n#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n#&gt;  1 Afghanistan  1999 cases             745\n#&gt;  2 Afghanistan  1999 population   19987071\n#&gt;  3 Afghanistan  2000 cases            2666\n#&gt;  4 Afghanistan  2000 population   20595360\n#&gt;  5 Brazil       1999 cases           37737\n#&gt;  6 Brazil       1999 population  172006362\n#&gt;  7 Brazil       2000 cases           80488\n#&gt;  8 Brazil       2000 population  174504898\n#&gt;  9 China        1999 cases          212258\n#&gt; 10 China        1999 population 1272915272\n#&gt; 11 China        2000 cases          213766\n#&gt; 12 China        2000 population 1280428583\ntable3\n#&gt; # A tibble: 6 × 3\n#&gt;   country      year rate             \n#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            \n#&gt; 1 Afghanistan  1999 745/19987071     \n#&gt; 2 Afghanistan  2000 2666/20595360    \n#&gt; 3 Brazil       1999 37737/172006362  \n#&gt; 4 Brazil       2000 80488/174504898  \n#&gt; 5 China        1999 212258/1272915272\n#&gt; 6 China        2000 213766/1280428583\ntable4a\n#&gt; # A tibble: 3 × 3\n#&gt;   country     `1999` `2000`\n#&gt;   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;\n#&gt; 1 Afghanistan    745   2666\n#&gt; 2 Brazil       37737  80488\n#&gt; 3 China       212258 213766\ntable4b\n#&gt; # A tibble: 3 × 3\n#&gt;   country         `1999`     `2000`\n#&gt;   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;\n#&gt; 1 Afghanistan   19987071   20595360\n#&gt; 2 Brazil       172006362  174504898\n#&gt; 3 China       1272915272 1280428583\n\nWhich table is tidy? Table 1? Table 2? Table 3? Or Table 4?\n\nLearn more about tidy data in vignette(\"tidy-data\")."
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
+    "section": "Tidy Data",
+    "text": "Tidy Data\n\nHappy families are all alike; every unhappy family is unhappy in its own way. — Leo Tolstoy\n\n\nTidy datasets are all alike, but every messy dataset is messy in its own way. — Hadley Wickham, author of R for Data Science\n\n\nTidy data is data where:\n\nEvery column is variables.\nEvery row is an observation.\nEvery cell is a single value.\n\n\n\n\nlibrary(tidyverse)\ntable1\n#&gt; # A tibble: 6 × 4\n#&gt;   country      year  cases population\n#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n#&gt; 1 Afghanistan  1999    745   19987071\n#&gt; 2 Afghanistan  2000   2666   20595360\n#&gt; 3 Brazil       1999  37737  172006362\n#&gt; 4 Brazil       2000  80488  174504898\n#&gt; 5 China        1999 212258 1272915272\n#&gt; 6 China        2000 213766 1280428583\ntable2\n#&gt; # A tibble: 12 × 4\n#&gt;    country      year type            count\n#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n#&gt;  1 Afghanistan  1999 cases             745\n#&gt;  2 Afghanistan  1999 population   19987071\n#&gt;  3 Afghanistan  2000 cases            2666\n#&gt;  4 Afghanistan  2000 population   20595360\n#&gt;  5 Brazil       1999 cases           37737\n#&gt;  6 Brazil       1999 population  172006362\n#&gt;  7 Brazil       2000 cases           80488\n#&gt;  8 Brazil       2000 population  174504898\n#&gt;  9 China        1999 cases          212258\n#&gt; 10 China        1999 population 1272915272\n#&gt; 11 China        2000 cases          213766\n#&gt; 12 China        2000 population 1280428583\ntable3\n#&gt; # A tibble: 6 × 3\n#&gt;   country      year rate             \n#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            \n#&gt; 1 Afghanistan  1999 745/19987071     \n#&gt; 2 Afghanistan  2000 2666/20595360    \n#&gt; 3 Brazil       1999 37737/172006362  \n#&gt; 4 Brazil       2000 80488/174504898  \n#&gt; 5 China        1999 212258/1272915272\n#&gt; 6 China        2000 213766/1280428583\ntable4a\n#&gt; # A tibble: 3 × 3\n#&gt;   country     `1999` `2000`\n#&gt;   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;\n#&gt; 1 Afghanistan    745   2666\n#&gt; 2 Brazil       37737  80488\n#&gt; 3 China       212258 213766\ntable4b\n#&gt; # A tibble: 3 × 3\n#&gt;   country         `1999`     `2000`\n#&gt;   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;\n#&gt; 1 Afghanistan   19987071   20595360\n#&gt; 2 Brazil       172006362  174504898\n#&gt; 3 China       1272915272 1280428583\n\nWhich table is tidy? Table 1? Table 2? Table 3? Or Table 4?\n\nLearn more about tidy data in vignette(\"tidy-data\")."
   },
   {
     "objectID": "Transformation/Transformation.html#data-transformation",
     "href": "Transformation/Transformation.html#data-transformation",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Data Transformation",
     "text": "Data Transformation\n\n“Pivoting” which converts between long and wide forms\n\npivot_longer() – “lengthens” data\npivot_wider() – “widens” data\n\n“Splitting” and “Combining” – splits or combines character columns\n\nseparate_wider_delim(), separate_wider_position(), separate_wider_regex() – turns a single character column into multiple columns.\nunite() – pastes together multiple columns into one.\n\ninner_join(), left_join(), right_join(), outer_join() – join tables"
   },
   {
     "objectID": "Transformation/Transformation.html#pivot_longer",
     "href": "Transformation/Transformation.html#pivot_longer",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "pivot_longer()",
     "text": "pivot_longer()\npivot_longer() – “lengthens” data, increasing the number of rows and decreasing the number of columns.\n\npivot_longer(data_frame, \n             cols, \n             ### columns selected to pivot into longer format\n             names_to = \"name\", \n             ### original column-names go to the new \"name\" column\n             values_to = \"value\") \n             ### original column-values go to the new \"value\" column"
   },
   {
     "objectID": "Transformation/Transformation.html#example-1",
     "href": "Transformation/Transformation.html#example-1",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 1",
     "text": "Example 1\nRecall table4a in the tidyverse package. This table is not tidy as the variable cases is scattered across two columns. In other words,\n\nThe column names (1999 and 2000) should be values of the year variable\nThe values (\\(745, 2666, \\cdots\\)) should be values of the cases variable."
   },
   {
     "objectID": "Transformation/Transformation.html#example-1.1",
     "href": "Transformation/Transformation.html#example-1.1",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 1.1",
     "text": "Example 1.1\n\ntable4a\n\nlibrary(tidyverse)\ntable4a\n#&gt; # A tibble: 3 × 3\n#&gt;   country     `1999` `2000`\n#&gt;   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;\n#&gt; 1 Afghanistan    745   2666\n#&gt; 2 Brazil       37737  80488\n#&gt; 3 China       212258 213766\n\n\n\nUse pivot_longer() to “lengthen” the data table table4a\n\ntable4a %&gt;% pivot_longer(cols = c(`1999`, `2000`), \n                         names_to = \"year\", \n                         values_to = \"cases\")\n#&gt; # A tibble: 6 × 3\n#&gt;   country     year   cases\n#&gt;   &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;\n#&gt; 1 Afghanistan 1999     745\n#&gt; 2 Afghanistan 2000    2666\n#&gt; 3 Brazil      1999   37737\n#&gt; 4 Brazil      2000   80488\n#&gt; 5 China       1999  212258\n#&gt; 6 China       2000  213766\n\n\n\nCreate table4 by join the tidy versions of table4a and table4b\n\nUse pivot_longer() to “lengthen” the data table table4a to table4a_tidy (variables: year and cases)\nUse pivot_longer() to “lengthen” the data table table4b to table4b_tidy (variables: year and population)\nThen join the two tidy tables to table4.\n\n\ntable4a_tidy &lt;- table4a %&gt;% pivot_longer(cols = c(`1999`, `2000`), \n                         names_to = \"year\", \n                         values_to = \"cases\")\ntable4b_tidy &lt;- table4b %&gt;% pivot_longer(cols = c(`1999`, `2000`), \n                         names_to = \"year\", \n                         values_to = \"population\")\ntable4 &lt;- left_join(table4a_tidy, table4b_tidy)\ntable4\n#&gt; # A tibble: 6 × 4\n#&gt;   country     year   cases population\n#&gt;   &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n#&gt; 1 Afghanistan 1999     745   19987071\n#&gt; 2 Afghanistan 2000    2666   20595360\n#&gt; 3 Brazil      1999   37737  172006362\n#&gt; 4 Brazil      2000   80488  174504898\n#&gt; 5 China       1999  212258 1272915272\n#&gt; 6 China       2000  213766 1280428583"
   },
   {
     "objectID": "Transformation/Transformation.html#pivot_wider",
     "href": "Transformation/Transformation.html#pivot_wider",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "pivot_wider()",
     "text": "pivot_wider()\npivot_wider() – “widens” data, increasing the number of columns and decreasing the number of rows.\n\npivot_wider(data_frame, \n            names_from = name,\n            values_from = value)\n\n\nnames_from and values_from – a pair of arguments\nnames_from – the original column where the new columns names are from\nvalues_from – the original column where the new columns values are from"
   },
   {
     "objectID": "Transformation/Transformation.html#example-2",
     "href": "Transformation/Transformation.html#example-2",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 2",
     "text": "Example 2\nRecall table2. This table is not tidy as an observations is a country in a year, but each observation is spread across two rows. In other words,\n\nThe cases and population should be variable names\nThe values (\\(745, 2666, \\cdots\\)) should be values of the cases or population variable."
   },
   {
     "objectID": "Transformation/Transformation.html#example-2.1",
     "href": "Transformation/Transformation.html#example-2.1",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 2.1",
     "text": "Example 2.1\n\ntable2\n\ntable2\n#&gt; # A tibble: 12 × 4\n#&gt;    country      year type            count\n#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n#&gt;  1 Afghanistan  1999 cases             745\n#&gt;  2 Afghanistan  1999 population   19987071\n#&gt;  3 Afghanistan  2000 cases            2666\n#&gt;  4 Afghanistan  2000 population   20595360\n#&gt;  5 Brazil       1999 cases           37737\n#&gt;  6 Brazil       1999 population  172006362\n#&gt;  7 Brazil       2000 cases           80488\n#&gt;  8 Brazil       2000 population  174504898\n#&gt;  9 China        1999 cases          212258\n#&gt; 10 China        1999 population 1272915272\n#&gt; 11 China        2000 cases          213766\n#&gt; 12 China        2000 population 1280428583\n\n\n\nUse pivot_wider() to “widens” the data table table2\n\nlibrary(tidyverse)\n\ntable2 %&gt;% pivot_wider(names_from = type, \n                       values_from = count)\n#&gt; # A tibble: 6 × 4\n#&gt;   country      year  cases population\n#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n#&gt; 1 Afghanistan  1999    745   19987071\n#&gt; 2 Afghanistan  2000   2666   20595360\n#&gt; 3 Brazil       1999  37737  172006362\n#&gt; 4 Brazil       2000  80488  174504898\n#&gt; 5 China        1999 212258 1272915272\n#&gt; 6 China        2000 213766 1280428583"
   },
   {
     "objectID": "Transformation/Transformation.html#separate",
     "href": "Transformation/Transformation.html#separate",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
-    "section": "separate",
-    "text": "separate\nTurns a single character column into multiple columns:\n\nseparate_wider_delim() – splits by delimiter\nseparate_wider_position() – splits at fixed widths\nseparate_wider_regex() – splits with regular expression matches"
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
+    "section": "Separate",
+    "text": "Separate\nTurns a single character column into multiple columns:\n\nseparate_wider_delim() – splits by delimiter\nseparate_wider_position() – splits at fixed widths\nseparate_wider_regex() – splits with regular expression matches"
   },
   {
     "objectID": "Transformation/Transformation.html#example-3",
     "href": "Transformation/Transformation.html#example-3",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 3",
     "text": "Example 3\nRecall table3. This table is not tidy as one column rate contains two variables cases and population. To fix this problem, we’ll need the separate-type functions.\n\n\ntable3 %&gt;% \n  separate_wider_delim(rate, delim = \"/\", names =  c(\"cases\", \"population\"))\n#&gt; # A tibble: 6 × 4\n#&gt;   country      year cases  population\n#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     \n#&gt; 1 Afghanistan  1999 745    19987071  \n#&gt; 2 Afghanistan  2000 2666   20595360  \n#&gt; 3 Brazil       1999 37737  172006362 \n#&gt; 4 Brazil       2000 80488  174504898 \n#&gt; 5 China        1999 212258 1272915272\n#&gt; 6 China        2000 213766 1280428583\n\nUsing separate_wider_position() to separate the variable year in table3 to columns century (dropped) and year_last2.\n\ntable3 %&gt;% \n  separate_wider_position(year, c(2, year_last2 = 2))\n#&gt; # A tibble: 6 × 3\n#&gt;   country     year_last2 rate             \n#&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;            \n#&gt; 1 Afghanistan 99         745/19987071     \n#&gt; 2 Afghanistan 00         2666/20595360    \n#&gt; 3 Brazil      99         37737/172006362  \n#&gt; 4 Brazil      00         80488/174504898  \n#&gt; 5 China       99         212258/1272915272\n#&gt; 6 China       00         213766/1280428583"
   },
   {
     "objectID": "Transformation/Transformation.html#unite",
     "href": "Transformation/Transformation.html#unite",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "unite()",
     "text": "unite()\nunite() – a convenience function to paste together multiple columns into one.\n\n\nunite(data_frame, \n      cols, \n      ### vector of columns to be combined\n      sep)\n      ### separator"
   },
   {
     "objectID": "Transformation/Transformation.html#example-4",
     "href": "Transformation/Transformation.html#example-4",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 4",
     "text": "Example 4\nCombine the century and year values in table5.\n\ntable5\n#&gt; # A tibble: 6 × 4\n#&gt;   country     century year  rate             \n#&gt;   &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            \n#&gt; 1 Afghanistan 19      99    745/19987071     \n#&gt; 2 Afghanistan 20      00    2666/20595360    \n#&gt; 3 Brazil      19      99    37737/172006362  \n#&gt; 4 Brazil      20      00    80488/174504898  \n#&gt; 5 China       19      99    212258/1272915272\n#&gt; 6 China       20      00    213766/1280428583\n\nunite() is the inverse of separate: it combines multiple columns into a single column.\nWe combine the century and year values.\n\ntable5 %&gt;% \n  unite(new, century, year)\n#&gt; # A tibble: 6 × 3\n#&gt;   country     new   rate             \n#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;            \n#&gt; 1 Afghanistan 19_99 745/19987071     \n#&gt; 2 Afghanistan 20_00 2666/20595360    \n#&gt; 3 Brazil      19_99 37737/172006362  \n#&gt; 4 Brazil      20_00 80488/174504898  \n#&gt; 5 China       19_99 212258/1272915272\n#&gt; 6 China       20_00 213766/1280428583\n\n\nThere is a understore between century and year above.\nRemove the underscore\n\n\ntable5 %&gt;% \n  unite(new, century, year, sep = \"\")\n#&gt; # A tibble: 6 × 3\n#&gt;   country     new   rate             \n#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;            \n#&gt; 1 Afghanistan 1999  745/19987071     \n#&gt; 2 Afghanistan 2000  2666/20595360    \n#&gt; 3 Brazil      1999  37737/172006362  \n#&gt; 4 Brazil      2000  80488/174504898  \n#&gt; 5 China       1999  212258/1272915272\n#&gt; 6 China       2000  213766/1280428583"
   },
   {
     "objectID": "Transformation/Transformation.html#understand-joins",
     "href": "Transformation/Transformation.html#understand-joins",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Understand joins",
     "text": "Understand joins\nIt’s rare that data analysis involves a single table of data. Multiple tables of data are called relational data.\nFor example, in the nycflights13 package, the airlines, airports, planes, weather are related to the flights data in the following way."
   },
   {
     "objectID": "Transformation/Transformation.html#different-join-functions",
     "href": "Transformation/Transformation.html#different-join-functions",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Different join functions",
     "text": "Different join functions\n\ninner_join()\nleft_join()\nright_join()\nfull_join()"
   },
   {
     "objectID": "Transformation/Transformation.html#example-5",
     "href": "Transformation/Transformation.html#example-5",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 5",
     "text": "Example 5\nTo learn how joins (left_join, right_join, inner_join, outer_join, etc.) works, we use the toy example and a visual representation below.\n\nx &lt;- tribble(\n  ~key, ~val_x,\n     1, \"x1\",\n     2, \"x2\",\n     3, \"x3\"\n)\ny &lt;- tribble(\n  ~key, ~val_y,\n     1, \"y1\",\n     2, \"y2\",\n     4, \"y3\"\n)\n\n\n\nInner join\n\nx %&gt;% inner_join(y, by = \"key\")\n#&gt; # A tibble: 2 × 3\n#&gt;     key val_x val_y\n#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n#&gt; 1     1 x1    y1   \n#&gt; 2     2 x2    y2\n\n\n\n\nOuter joins\n\nleft_join()\nright_join()\nfull_join()\n\n\nx %&gt;% left_join(y, by = \"key\")\n#&gt; # A tibble: 3 × 3\n#&gt;     key val_x val_y\n#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n#&gt; 1     1 x1    y1   \n#&gt; 2     2 x2    y2   \n#&gt; 3     3 x3    &lt;NA&gt;\nx %&gt;% right_join(y, by = \"key\")\n#&gt; # A tibble: 3 × 3\n#&gt;     key val_x val_y\n#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n#&gt; 1     1 x1    y1   \n#&gt; 2     2 x2    y2   \n#&gt; 3     4 &lt;NA&gt;  y3\nx %&gt;% full_join(y, by = \"key\")\n#&gt; # A tibble: 4 × 3\n#&gt;     key val_x val_y\n#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n#&gt; 1     1 x1    y1   \n#&gt; 2     2 x2    y2   \n#&gt; 3     3 x3    &lt;NA&gt; \n#&gt; 4     4 &lt;NA&gt;  y3\n\n\nAnother way to depict the different types of join is with a Venn diagram:"
   },
   {
     "objectID": "Transformation/Transformation.html#example-6",
     "href": "Transformation/Transformation.html#example-6",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 6",
     "text": "Example 6\nWorking with two small dataframes: superheroes and publishers.\n\nsuperheroes &lt;- tibble::tribble(\n       ~name, ~alignment,  ~gender,          ~publ,\n   \"Magneto\",      \"bad\",   \"male\",            \"Marvel\",\n     \"Storm\",     \"good\", \"female\",            \"Marvel\",\n  \"Mystique\",      \"bad\", \"female\",            \"Marvel\",\n    \"Batman\",     \"good\",   \"male\",                \"DC\",\n     \"Joker\",      \"bad\",   \"male\",                \"DC\",\n  \"Catwoman\",      \"bad\", \"female\",                \"DC\",\n   \"Hellboy\",     \"good\",   \"male\", \"Dark Horse Comics\"\n  )\n\npublishers &lt;- tibble::tribble(\n  ~publ, ~yr_founded,\n        \"DC\",       1934L,\n    \"Marvel\",       1939L,\n     \"Image\",       1992L\n  )\n\nLet’s display the tibbles.\n\nsuperheroes\n#&gt; # A tibble: 7 × 4\n#&gt;   name     alignment gender publ             \n#&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;            \n#&gt; 1 Magneto  bad       male   Marvel           \n#&gt; 2 Storm    good      female Marvel           \n#&gt; 3 Mystique bad       female Marvel           \n#&gt; 4 Batman   good      male   DC               \n#&gt; 5 Joker    bad       male   DC               \n#&gt; 6 Catwoman bad       female DC               \n#&gt; 7 Hellboy  good      male   Dark Horse Comics\n\npublishers\n#&gt; # A tibble: 3 × 2\n#&gt;   publ   yr_founded\n#&gt;   &lt;chr&gt;       &lt;int&gt;\n#&gt; 1 DC           1934\n#&gt; 2 Marvel       1939\n#&gt; 3 Image        1992\n\n\nThe key variable name is publ, which needs to be exactly the same in the two dataframes."
   },
   {
     "objectID": "Transformation/Transformation.html#quiz",
     "href": "Transformation/Transformation.html#quiz",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Quiz",
     "text": "Quiz\n\nTibbles superheroes and publishers\n\n\n\n\n\n\n\n\n\n\nPlease match the output tables with the join functions used."
   },
   {
     "objectID": "Transformation/Transformation.html#quiz-solution",
     "href": "Transformation/Transformation.html#quiz-solution",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Quiz Solution",
     "text": "Quiz Solution\n\nTibbles superheroes and publishers\n\n\n\n\n\n\n\n\n\n\nPlease match the output tables with the join functions used."
   },
   {
     "objectID": "Transformation/Transformation.html#example-6.1-inner_join",
     "href": "Transformation/Transformation.html#example-6.1-inner_join",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 6.1 – inner_join()",
-    "text": "Example 6.1 – inner_join()\n\nsuperheroes %&gt;% inner_join(publishers, by = \"publ\")\n#&gt; # A tibble: 6 × 5\n#&gt;   name     alignment gender publ   yr_founded\n#&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;       &lt;int&gt;\n#&gt; 1 Magneto  bad       male   Marvel       1939\n#&gt; 2 Storm    good      female Marvel       1939\n#&gt; 3 Mystique bad       female Marvel       1939\n#&gt; 4 Batman   good      male   DC           1934\n#&gt; 5 Joker    bad       male   DC           1934\n#&gt; 6 Catwoman bad       female DC           1934\n\n\ninner_join returns all rows from superheros where there are matching values in publishers.\nWe lose Hellboy as his publisher Dart Horse Comics does not appear in publishers."
+    "text": "Example 6.1 – inner_join()\n\nsuperheroes %&gt;% inner_join(publishers, by = \"publ\")\n#&gt; # A tibble: 6 × 5\n#&gt;   name     alignment gender publ   yr_founded\n#&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;       &lt;int&gt;\n#&gt; 1 Magneto  bad       male   Marvel       1939\n#&gt; 2 Storm    good      female Marvel       1939\n#&gt; 3 Mystique bad       female Marvel       1939\n#&gt; 4 Batman   good      male   DC           1934\n#&gt; 5 Joker    bad       male   DC           1934\n#&gt; 6 Catwoman bad       female DC           1934\n\n\ninner_join returns all rows from superheros where there are matching values in publishers.\nWe lose Hellboy as his publisher Dark Horse Comics does not appear in publishers."
   },
   {
     "objectID": "Transformation/Transformation.html#example-6.2-left_join",
     "href": "Transformation/Transformation.html#example-6.2-left_join",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 6.2 – left_join()",
-    "text": "Example 6.2 – left_join()\n\nsuperheroes %&gt;% left_join(publishers, by = \"publ\")\n#&gt; # A tibble: 7 × 5\n#&gt;   name     alignment gender publ              yr_founded\n#&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;                  &lt;int&gt;\n#&gt; 1 Magneto  bad       male   Marvel                  1939\n#&gt; 2 Storm    good      female Marvel                  1939\n#&gt; 3 Mystique bad       female Marvel                  1939\n#&gt; 4 Batman   good      male   DC                      1934\n#&gt; 5 Joker    bad       male   DC                      1934\n#&gt; 6 Catwoman bad       female DC                      1934\n#&gt; 7 Hellboy  good      male   Dark Horse Comics         NA\n\n\nleft_join returns all rows from superheros.\nWe get all columns in superheros back, with the addition of variable yr_founded, which is unique to publishers.\nHellboy, whose publisher Dart Horse Comics does not appear in publishers, has an NA for yr_founded."
+    "text": "Example 6.2 – left_join()\n\nsuperheroes %&gt;% left_join(publishers, by = \"publ\")\n#&gt; # A tibble: 7 × 5\n#&gt;   name     alignment gender publ              yr_founded\n#&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;                  &lt;int&gt;\n#&gt; 1 Magneto  bad       male   Marvel                  1939\n#&gt; 2 Storm    good      female Marvel                  1939\n#&gt; 3 Mystique bad       female Marvel                  1939\n#&gt; 4 Batman   good      male   DC                      1934\n#&gt; 5 Joker    bad       male   DC                      1934\n#&gt; 6 Catwoman bad       female DC                      1934\n#&gt; 7 Hellboy  good      male   Dark Horse Comics         NA\n\n\nleft_join returns all rows from superheros.\nWe get all columns in superheros back, with the addition of variable yr_founded, which is unique to publishers.\nHellboy, whose publisher Dark Horse Comics does not appear in publishers, has an NA for yr_founded."
   },
   {
     "objectID": "Transformation/Transformation.html#example-6.3-right_join",
     "href": "Transformation/Transformation.html#example-6.3-right_join",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 6.3 – right_join()",
     "text": "Example 6.3 – right_join()\n\nsuperheroes %&gt;% right_join(publishers, by = \"publ\")\n#&gt; # A tibble: 7 × 5\n#&gt;   name     alignment gender publ   yr_founded\n#&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;       &lt;int&gt;\n#&gt; 1 Magneto  bad       male   Marvel       1939\n#&gt; 2 Storm    good      female Marvel       1939\n#&gt; 3 Mystique bad       female Marvel       1939\n#&gt; 4 Batman   good      male   DC           1934\n#&gt; 5 Joker    bad       male   DC           1934\n#&gt; 6 Catwoman bad       female DC           1934\n#&gt; 7 &lt;NA&gt;     &lt;NA&gt;      &lt;NA&gt;   Image        1992\n\n\nright_join returns all rows from publishers.\nWe get all columns in publishers back, with the addition of variables name, alignment, gender, which is unique to superheroes.\nImage, the publisher has no corresponding superhero, has NAs for name, alignment, gender."
   },
   {
     "objectID": "Transformation/Transformation.html#example-6.4-full_join",
     "href": "Transformation/Transformation.html#example-6.4-full_join",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Example 6.4 – full_join()",
     "text": "Example 6.4 – full_join()\n\nsuperheroes %&gt;% full_join(publishers, by = \"publ\")\n#&gt; # A tibble: 8 × 5\n#&gt;   name     alignment gender publ              yr_founded\n#&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;                  &lt;int&gt;\n#&gt; 1 Magneto  bad       male   Marvel                  1939\n#&gt; 2 Storm    good      female Marvel                  1939\n#&gt; 3 Mystique bad       female Marvel                  1939\n#&gt; 4 Batman   good      male   DC                      1934\n#&gt; 5 Joker    bad       male   DC                      1934\n#&gt; 6 Catwoman bad       female DC                      1934\n#&gt; 7 Hellboy  good      male   Dark Horse Comics         NA\n#&gt; 8 &lt;NA&gt;     &lt;NA&gt;      &lt;NA&gt;   Image                   1992\n\n\nrull_join returns all rows and columns from superheroes and publishers.\nWhere there are not matching values, use NA."
   },
   {
     "objectID": "Transformation/Transformation.html#reference-books",
     "href": "Transformation/Transformation.html#reference-books",
-    "title": "Data Transformation with Pivot, Seperate, Unite, and Join",
+    "title": "Data Transformation with Pivot, Separate, Unite, and Join",
     "section": "Reference books",
     "text": "Reference books\n\nR for Data Science: https://r4ds.hadley.nz/\nHands-on Programming with R: https://rstudio-education.github.io/hopr/\nR Graphics Cookbook: https://r-graphics.org/\nStatistical Inference via Data Science: A Modern Dive into R and the Tidyverse, by Chester Ismay, Albert Y. Kim\nhttps://stat545.com/join-cheatsheet.html\n\n\nReference resources on tidyverse on github\nhttps://github.com/stmorse/intro-tidyverse\nhttps://github.com/rstudio-education/welcome-to-the-tidyverse"
   },

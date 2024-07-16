@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Transformation with Pivot, Seperate, Unite, and Join</title>
+<title>Data Transformation with Pivot, Separate, Unite, and Join</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -145,7 +145,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#data-science-workflow" id="toc-data-science-workflow" class="nav-link active" data-scroll-target="#data-science-workflow">Data Science Workflow</a></li>
-  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">tidy Data</a></li>
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy Data</a></li>
   <li><a href="#data-transformation" id="toc-data-transformation" class="nav-link" data-scroll-target="#data-transformation">Data Transformation</a></li>
   <li><a href="#pivot_longer" id="toc-pivot_longer" class="nav-link" data-scroll-target="#pivot_longer">pivot_longer()</a></li>
   <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a></li>
@@ -162,7 +162,7 @@ window.Quarto = {
   <li><a href="#table2" id="toc-table2" class="nav-link" data-scroll-target="#table2">table2</a></li>
   <li><a href="#use-pivot_wider-to-widens-the-data-table-table2" id="toc-use-pivot_wider-to-widens-the-data-table-table2" class="nav-link" data-scroll-target="#use-pivot_wider-to-widens-the-data-table-table2">Use <code>pivot_wider()</code> to “widens” the data table <code>table2</code></a></li>
   </ul></li>
-  <li><a href="#separate" id="toc-separate" class="nav-link" data-scroll-target="#separate">separate</a></li>
+  <li><a href="#separate" id="toc-separate" class="nav-link" data-scroll-target="#separate">Separate</a></li>
   <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3">Example 3</a></li>
   <li><a href="#unite" id="toc-unite" class="nav-link" data-scroll-target="#unite">unite()</a></li>
   <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4">Example 4</a></li>
@@ -192,7 +192,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Transformation with Pivot, Seperate, Unite, and Join</h1>
+<h1 class="title">Data Transformation with Pivot, Separate, Unite, and Join</h1>
 </div>
 
 
@@ -221,7 +221,7 @@ window.Quarto = {
 </blockquote>
 </section>
 <section id="tidy-data" class="level2">
-<h2 class="anchored" data-anchor-id="tidy-data">tidy Data</h2>
+<h2 class="anchored" data-anchor-id="tidy-data">Tidy Data</h2>
 <blockquote class="blockquote">
 <p>Happy families are all alike; every unhappy family is unhappy in its own way. — Leo Tolstoy</p>
 </blockquote>
@@ -459,7 +459,7 @@ window.Quarto = {
 </section>
 </section>
 <section id="separate" class="level2">
-<h2 class="anchored" data-anchor-id="separate">separate</h2>
+<h2 class="anchored" data-anchor-id="separate">Separate</h2>
 <p>Turns a single character column into multiple columns:</p>
 <ul>
 <li><code>separate_wider_delim()</code> – splits by delimiter</li>
@@ -738,7 +738,7 @@ window.Quarto = {
 </div>
 <ul>
 <li><code>inner_join</code> returns all rows from <code>superheros</code> where there are matching values in <code>publishers</code>.</li>
-<li>We lose <strong>Hellboy</strong> as his publisher Dart Horse Comics does not appear in <code>publishers</code>.</li>
+<li>We lose <strong>Hellboy</strong> as his publisher Dark Horse Comics does not appear in <code>publishers</code>.</li>
 </ul>
 </section>
 <section id="example-6.2-left_join" class="level2">
@@ -759,7 +759,7 @@ window.Quarto = {
 <ul>
 <li><code>left_join</code> returns all rows from <code>superheros</code>.</li>
 <li>We get all columns in <code>superheros</code> back, with the addition of variable <code>yr_founded</code>, which is unique to <code>publishers</code>.</li>
-<li><strong>Hellboy</strong>, whose publisher Dart Horse Comics does not appear in <code>publishers</code>, has an <code>NA</code> for <code>yr_founded</code>.</li>
+<li><strong>Hellboy</strong>, whose publisher Dark Horse Comics does not appear in <code>publishers</code>, has an <code>NA</code> for <code>yr_founded</code>.</li>
 </ul>
 </section>
 <section id="example-6.3-right_join" class="level2">
