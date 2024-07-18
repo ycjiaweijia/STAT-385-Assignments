@@ -186,10 +186,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Input.device"</span>, <span class="st">"Device.OS"</span>, <span class="st">"WiFi.stable"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
-<li>Technically, it’s impossible to have a Reaction Time less than or equal to 100 milliseconds. Remove the observations with <code>Reaction.time</code> less than or equal to 100. [<em>Notes: In reality, we contacted the students to confirm or update their submissions.</em>]</li>
-<li>You may use <code>separate_wider_delim()</code> to clean up the <code>Visual.acuity</code> so that the variable becomes a <strong>factor</strong> with the following levels: “Very Poor”, “Poor”, “Average”, “Good”, “Excellent”.</li>
+<li><p>Technically, it’s impossible to have a Reaction Time less than or equal to 100 milliseconds. Remove the observations with <code>Reaction.time</code> less than or equal to 100. [<em>Notes: In reality, we contacted the students to confirm or update their submissions.</em>]</p></li>
+<li><p>You may use <code>separate_wider_delim()</code> to clean up the <code>Visual.acuity</code> so that the variable becomes a <strong>factor</strong> with the following levels: “Very Poor”, “Poor”, “Average”, “Good”, “Excellent”.</p></li>
 </ol>
-<p>(Use <code>levels = c("Very Poor", "Poor", "Average", "Good", "Excellent")</code>) 4. You may use <code>separate_wider_delim</code> <strong>twice</strong> to clean up the <code>Device.OS</code> so that the variable is a <strong>character </strong> variable with the possible values: “Desktop computer”, “Laptop”, “iPhone”, “iPad”, “Smartphone”, “Tablet”, “Chromebook”. Please use <code>help(separate_wider_delim)</code> to find solutions for the issue where “Chromebook” does not have “-” or “(” as a delimiter. 5. Please clean up the columns <code>Avg.sleep.time</code>, <code>last.night.sleep.time</code>, <code>Awake.hours</code>, <code>Noise.level</code>, and <code>Avg.hours.exercise</code> so that they become numeric variables. <strong>Be cautious of using <code>as.numeric()</code> directly, as it may introduce NAs due to coercion.</strong> Instead, handle edge cases like “7h4min” and “7:30” first, then use <code>str_remove_all(..., "[[:alpha:][:space:]]")</code> to remove any characters and empty spaces from the responses. Finally, convert the cleaned data to numeric vectors. 6. Convert the <code>Class</code>, <code>Fatigue.level</code>, <code>Stress.level</code>, <code>Temp.level</code>, <code>Game.freq</code>, <code>Sport.freq</code>, <code>Cautious.level</code> as <strong>factors</strong> with levels as follows:</p>
+<p>(Use <code>levels = c("Very Poor", "Poor", "Average", "Good", "Excellent")</code>)</p>
+<ol start="4" type="1">
+<li><p>You may use <code>separate_wider_delim</code> <strong>twice</strong> to clean up the <code>Device.OS</code> so that the variable is a <strong>character </strong> variable with the possible values: “Desktop computer”, “Laptop”, “iPhone”, “iPad”, “Smartphone”, “Tablet”, “Chromebook”. Please use <code>help(separate_wider_delim)</code> to find solutions for the issue where “Chromebook” does not have “-” or “(” as a delimiter.</p></li>
+<li><p>Please clean up the columns <code>Avg.sleep.time</code>, <code>last.night.sleep.time</code>, <code>Awake.hours</code>, <code>Noise.level</code>, and <code>Avg.hours.exercise</code> so that they become numeric variables. <strong>Be cautious of using <code>as.numeric()</code> directly, as it may introduce NAs due to coercion.</strong> Instead, handle edge cases like “7h4min”, “7:30”, “1~3” first, then use <code>str_remove_all(..., "[[:alpha:][:space:]]")</code> to remove any characters and empty spaces from the responses. Finally, convert the cleaned columns to numeric variables.</p></li>
+<li><p>Convert the <code>Class</code>, <code>Fatigue.level</code>, <code>Stress.level</code>, <code>Temp.level</code>, <code>Game.freq</code>, <code>Sport.freq</code>, <code>Cautious.level</code> as <strong>factors</strong> with levels as follows:</p></li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>classlevel <span class="ot">=</span>  <span class="fu">c</span>(<span class="st">"Freshman"</span>, <span class="st">"Sophomore"</span>, <span class="st">"Junior"</span>, <span class="st">"Senior"</span>, <span class="st">"Graduate"</span>) <span class="co"># Even no freshman in the data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fatiguelevel <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Not fatigued at all"</span>, <span class="st">"Slightly Fatigued"</span>, </span>
@@ -209,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>After the data cleaning procedure, <code>glimpse(survey)</code> should show something like</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(survey)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 144</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 140</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 24</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ mockID                &lt;chr&gt; "MJJXGR", "JHJZMT", "VQTCNE", "CKJWEX", "MBKMNF"…</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ Reaction.time         &lt;dbl&gt; 180, 278, 350, 267, 229, 225, 200, 282, 272, 412…</span></span>
@@ -240,12 +245,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="question-ii-join-two-tables" class="level3">
 <h3 class="anchored" data-anchor-id="question-ii-join-two-tables">Question II: Join Two tables</h3>
 <ol type="1">
-<li><strong>[10 pts]</strong> Join the two tables and list the students who did not respond to the survey. [Hint: You may use <code>anti_join()</code> for this task. Look up information about anti_join() online if needed.]</li>
-<li><strong>[10 pts]</strong> Several students have submitted the survey more than once. To handle this, we should remove the duplicate submissions by keeping only the last submission (assuming the <code>survey</code> is in time order). Follow the steps:</li>
+<li><p><strong>[10 pts]</strong> Join the two tables and list the students who did not respond to the survey. [Hint: You may use <code>anti_join()</code> for this task. Look up information about <code>anti_join()</code> online if needed.]</p></li>
+<li><p><strong>[10 pts]</strong> Several students have submitted the survey more than once. To handle this, we should remove the duplicate submissions by keeping only the last submission (assuming the <code>survey</code> is in time order). Follow the steps:</p></li>
 </ol>
 <ul>
 <li>Arrange the observations in reverse-time order using <code>desc(row_number())</code>.</li>
-<li>Apply <code>distinct(mockID, .keep_all = TRUE)</code>.</li>
+<li>Apply <code>distinct(mockID, .keep_all = TRUE)</code>. [You can use <code>?distinct()</code> to understand why this approach works.]</li>
 </ul>
 <ol start="3" type="1">
 <li><strong>[10 pts]</strong> Join the two tables and keep all information from <code>survey</code>, use <code>mockID</code> as the key. Save the new tibble as <code>survey_student</code> (or a name of your choice).</li>
@@ -254,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="question-iii-explore-the-data-survey_student" class="level3">
 <h3 class="anchored" data-anchor-id="question-iii-explore-the-data-survey_student">Question III: Explore the Data <code>survey_student</code></h3>
 <p><strong>[30 pts]</strong> Create data visualizations or tables to uncover interesting insights from the data. Please list at least three notable findings.</p>
-<p>Hint: You may find it’s helpful to combine some categories into fewer, more concise categories.Here is one example,</p>
+<p>Hint: You may find it’s helpful to combine some categories into fewer, more concise categories. Here is one example,</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>survey_student <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fatigue.3 =</span> <span class="fu">case_when</span>(</span>
