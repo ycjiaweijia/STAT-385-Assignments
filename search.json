@@ -308,389 +308,256 @@
     "text": "Question 2.\nConsider the scores of a high school student:\n\nMaths – 95\nPhysics – 88.5\nPhysics lab – 79\nEnglish – 92\n\n(a). [1 pt] Use assignments to create variables maths, physics, physicslab, and english with their corresponding amounts.\n(b). [2 pts] Create a scores object with the four scores in (a). And use the function names() to give names o the elements of your vector scores.\n(c). [2 pts] Create a avg object with the average of the scores.\n(d). [4 pts] Create a grades object by converting the scores to grades based on the policy below. Then create a vector grade_values of integer values with the corresponding grade values. Recall that integer values are of the form 1L.\n\n\n\nRange\nGrade\nGrade Value\n\n\n\n\n[90, 100]\nA\n4\n\n\n[80, 90)\nB\n3\n\n\n[70, 80)\nC\n2\n\n\n[60, 70)\nD\n1\n\n\n&lt;60\nF\n0\n\n\n\n(e). [2 pts] Suppose the credits for Maths, Physics, Physics lab, English are 0.5, 1, 0.5, 1, respectively. Create a credits object.\n(f). [2 pts] Calculate the weighted GPA with\n\\[\\text{High School GPA} = \\sum (\\text{grade value}*\\text{credits})/ \\sum \\text{credits}\\] Save the value to object GPA."
   },
   {
-    "objectID": "Quiz15/Quiz15.html",
-    "href": "Quiz15/Quiz15.html",
+    "objectID": "Quiz16/Quiz16.html",
+    "href": "Quiz16/Quiz16.html",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions using ggplot. And submit a file named Quiz15.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz15.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz16.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz16.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz15/Quiz15.html#quiz-15-instructions",
-    "href": "Quiz15/Quiz15.html#quiz-15-instructions",
+    "objectID": "Quiz16/Quiz16.html#quiz-16-instructions",
+    "href": "Quiz16/Quiz16.html#quiz-16-instructions",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions using ggplot. And submit a file named Quiz15.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz15.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz16.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz16.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz15/Quiz15.html#data-preparation",
-    "href": "Quiz15/Quiz15.html#data-preparation",
+    "objectID": "Quiz16/Quiz16.html#install-and-load-the-fivethirtyeight-package",
+    "href": "Quiz16/Quiz16.html#install-and-load-the-fivethirtyeight-package",
     "title": "",
-    "section": "Data Preparation",
-    "text": "Data Preparation\nIn this quiz, we will use the data frames flights and weather from the package nycflights13. This data frame contains info of on-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in 2013. The description of the variables:\n\nyear, month, day – Date of departure.\ndep_time, arr_time – Actual departure and arrival times (format HHMM or HMM), local tz.\nsched_dep_time, sched_arr_time – Scheduled departure and arrival times (format HHMM or HMM), local tz.\ndep_delay, arr_delay – Departure and arrival delays, in minutes. Negative times represent early departures/arrivals.\ncarrier – Two letter carrier abbreviation. See airlines to get name.\nflight – Flight number.\ntailnum – Plane tail number. See planes for additional metadata.\norigin, dest – Origin and destination. See airports for additional metadata.\nair_time – Amount of time spent in the air, in minutes.\ndistance – Distance between airports, in miles.\nhour, minute – Time of scheduled departure broken into hour and minutes.\ntime_hour – Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be used to join flights data to weather data.\n\nPlease install and load the package nycflights13 beforehand. Then load the data frames flights and weather. Additionally, we could filter the data and create two new data frames, alaska_flights and early_january_weather, which will be used in the subsequent question.\nPlease make sure you copy and paste the code chunk below, for data preparation, at the beginning of your Quiz15.R script.\n\nif(!require(\"nycflights13\", character.only = TRUE)) install.packages(\"nycflights13\")\nlibrary(nycflights13)\nlibrary(tidyverse)\ndata(flights)\ndata(weather)\n\n# Define new data frame alaska_flights\nalaska_flights &lt;- flights %&gt;%\n  filter(carrier == \"AS\")\n\n### Define new data frame early_january_weather\nearly_january_weather &lt;- weather %&gt;%\n  filter(origin == \"EWR\" & month == 1 & day &lt;= 15)"
+    "section": "Install and Load the fivethirtyeight Package",
+    "text": "Install and Load the fivethirtyeight Package\nIn this quiz, let’s use a motivating example from the fivethirtyeight package.\nThe fivethirtyeight package (Kim, Ismay, and Chunn 2021) provides access to the datasets used in many articles published by the data journalism website, https://FiveThirtyEight.com. For a complete list of all 129 datasets included in the fivethirtyeight package, check out the package webpage by going to: https://fivethirtyeight-r.netlify.app/articles/fivethirtyeight.html.\n\nif(!require(\"fivethirtyeight\", character.only = TRUE)) install.packages(\"fivethirtyeight\")\nlibrary(fivethirtyeight)\nlibrary(tidyverse)"
   },
   {
-    "objectID": "Quiz15/Quiz15.html#question-1",
-    "href": "Quiz15/Quiz15.html#question-1",
+    "objectID": "Quiz16/Quiz16.html#question-1",
+    "href": "Quiz16/Quiz16.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[2 pts] Using ggplot, draw a scatter plot to visualize the relationship between the variables dep_delay and arr_delay in the alaska_flights data frame (defined above). Change the label for the x-axis as Departure Delay, the label for y-axis as Arrival Delay, and the plot title as Relationship between Departure and Arrival Delay. [Hint: On the ggplot2 cheat sheet, you may find helpful information in the Labels and Legends section.]\n\nSave the generated plot as PlotQ1a.png. Recall that, you can do so using ggsave().\n\n\n\nPlease use ggsave(..., , width = 10, height = 8, dpi = 300) for all questions in Quiz 15 to adjust the parameters to fit the plot size better.\n\n\n\n\n[2 pts] Using function in GGally, draw a scatterplot matrices of variables dep_time, sched_dep_time, dep_delay, arr_time, sched_arr_time, arr_delay in the data frame alaska_flights. Save the created plot as PlotQ1b.png."
+    "text": "Question 1\nUse the drinks data frame.\ndrinks is a data frame containing results from a survey of the average number of servings of beer, spirits, and wine consumed in 193 countries. This data was originally reported on FiveThirtyEight.com in Mona Chalabi’s article: “Dear Mona Followup: Where Do People Drink The Most Beer, Wine And Spirits?”.\n\n[2 pts] Prepare the data frame drinks_4ctrs:\n\nLet’s apply some of the data wrangling verbs we learned in the previous lectures on the drinks data frame:\n\nfilter() the drinks data frame to only the 4 countries: the United States, China, Italy, and Saudi Arabia, [Hint: Please use unique(drinks$country)to find the corresponding names in the country column.]\nselect() all columns except total_litres_of_pure_alcohol by using the - sign,\nrename() the variables beer_servings, spirit_servings, and wine_servings to beer, spirit, and wine, respectively.\n\nSave the resulting tibble as drinks_4ctrs.\n\n[2 pts] Convert drinks_4ctrs to “tidy” format using pivot_longer(). Let\n\n\nnames_to = \"type\"\nvalues_to = \"servings\"\n\nSave the tidy tibble as drinks_4ctrs_tidy.\n\n[2 pts] Visualize the data frame drinks_4ctrs_tidy by creating a bar-graph with x = country, y = serving, and color the bars using variable type. Please use position = \"dodge\" to place the bars side by side. Save the plot as PlotQ1.png using ggsave(\"PlotQ1.png\", width = 10, height = 8, dpi = 300)."
   },
   {
-    "objectID": "Quiz15/Quiz15.html#question-2",
-    "href": "Quiz15/Quiz15.html#question-2",
+    "objectID": "Quiz16/Quiz16.html#question-2",
+    "href": "Quiz16/Quiz16.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n[2 pts] Using ggplot, create a time series plot (line graph) of the hourly temperature (variable temp) vs the time time_hour saved in the early_january_weather data frame (defined above). Change the label for the x-axis as Date and Hour, the label for y-axis as Temperature, and the plot title as Line Graph of Temperature vs Date and Hour. Save the created plot as PlotQ2.png."
+    "text": "Question 2\nairline_safety is another data frame in fivethirtyeight package containing information on different airline companies’ safety records.\nThis data was originally reported on the data journalism website, FiveThirtyEight.com, in Nate Silver’s article, “Should Travelers Avoid Flying Airlines That Have Had Crashes in the Past?”.\n\n[2 pts] Create the tibble df_fatalities with the columns: airline, and all columns starts with fatalities. [Hint: You may use start_with(\"fatalities\").]\n[2 pts] Convert df_fatalities to tidy format as shown below and save the tidy tibble as df_fatalities_tidy. In this process, you need to\n\n\nLengthens the data, so that the new column fatalities_year storing the values fatalities_85_99 or fatalities_00_14, and the new column count storing the cell values.\nUse Seperate_wider_position() to remove the fatalities_ in the fatalities_year column. And the resulting column is named year.\nMake the year column a factor with levels year_level = c(\"85_99\", \"00_14\")\n\n\n#&gt; # A tibble: 112 × 3\n#&gt;    airline               year  count\n#&gt;    &lt;chr&gt;                 &lt;fct&gt; &lt;int&gt;\n#&gt;  1 Aer Lingus            85_99     0\n#&gt;  2 Aer Lingus            00_14     0\n#&gt;  3 Aeroflot              85_99   128\n#&gt;  4 Aeroflot              00_14    88\n#&gt;  5 Aerolineas Argentinas 85_99     0\n#&gt;  6 Aerolineas Argentinas 00_14     0\n#&gt;  7 Aeromexico            85_99    64\n#&gt;  8 Aeromexico            00_14     0\n#&gt;  9 Air Canada            85_99     0\n#&gt; 10 Air Canada            00_14     0\n#&gt; # ℹ 102 more rows\n\n\n[2 pts] Visualize the df_fatalities_tidy tibble by creating a bar-graph with x = airline, y = count, and color the bars using variable year for the airlines “United / Continental”, “Delta / Northwest”, and “American”. You may use position = \"dodge\" to place the bars side by side. Save the plot as PlotQ2.png using ggsave(\"PlotQ2.png\", width = 10, height = 8, dpi = 300)."
   },
   {
-    "objectID": "Quiz15/Quiz15.html#question-3",
-    "href": "Quiz15/Quiz15.html#question-3",
-    "title": "",
-    "section": "Question 3",
-    "text": "Question 3\n[2 pts] Using ggplot, draw histogram of temperature (variable temp on \\(x\\) axis) in the data frame weather. Change the bar color to blue and the border color to white.Save the created plot as PlotQ3.png."
-  },
-  {
-    "objectID": "Quiz15/Quiz15.html#question-4",
-    "href": "Quiz15/Quiz15.html#question-4",
-    "title": "",
-    "section": "Question 4",
-    "text": "Question 4\n[2 pts] Using ggplot and grid.arrange, draw the two plot side by side (i.e. 1 row and 2 columns).\n\nPlot 1: Draw a vertical boxplot of the variable temp in the data frame weather.\nPlot 2: Draw a vertical boxplot of temp vs month of the data frame weather. (You may need as.factor() to convert month to factor type.)\n\nSave the created plot as PlotQ4.png."
-  },
-  {
-    "objectID": "Quiz15/Quiz15.html#question-5",
-    "href": "Quiz15/Quiz15.html#question-5",
-    "title": "",
-    "section": "Question 5",
-    "text": "Question 5\n[2 pts] Using ggplot, draw a bar plot of carrier from the dataset flights. Save the created plot as PlotQ5.png."
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html",
-    "href": "Quiz12/Quiz12.html",
+    "objectID": "Quiz14/Quiz14.html",
+    "href": "Quiz14/Quiz14.html",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions using Base R Graphics. Do not use ggplot. And submit a file named Quiz12.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz12.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz14.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify BLACKFRIDAY.csv. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz14.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz12/Quiz12.html#quiz-12-instructions",
-    "href": "Quiz12/Quiz12.html#quiz-12-instructions",
+    "objectID": "Quiz14/Quiz14.html#quiz-14-instructions",
+    "href": "Quiz14/Quiz14.html#quiz-14-instructions",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions using Base R Graphics. Do not use ggplot. And submit a file named Quiz12.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz12.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz14.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify BLACKFRIDAY.csv. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz14.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz12/Quiz12.html#data-preparation",
-    "href": "Quiz12/Quiz12.html#data-preparation",
-    "title": "",
-    "section": "Data Preparation",
-    "text": "Data Preparation\nIn this quiz, we will use the data frames flights and weather from the package nycflights13. This data frame contains info of on-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in 2013. The description of the variables:\n\nyear, month, day – Date of departure.\ndep_time, arr_time – Actual departure and arrival times (format HHMM or HMM), local tz.\nsched_dep_time, sched_arr_time – Scheduled departure and arrival times (format HHMM or HMM), local tz.\ndep_delay, arr_delay – Departure and arrival delays, in minutes. Negative times represent early departures/arrivals.\ncarrier – Two letter carrier abbreviation. See airlines to get name.\nflight – Flight number.\ntailnum – Plane tail number. See planes for additional metadata.\norigin, dest – Origin and destination. See airports for additional metadata.\nair_time – Amount of time spent in the air, in minutes.\ndistance – Distance between airports, in miles.\nhour, minute – Time of scheduled departure broken into hour and minutes.\ntime_hour – Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be used to join flights data to weather data.\n\nPlease install and load the package nycflights13 beforehand. Then load the data frames flights and weather. Additionally, we could filter the data and create two new data frames, alaska_flights and early_january_weather, which will be used in the subsequent question.\nPlease make sure you copy and paste the code chunk below, for data preparation, at the beginning of your Quiz12.R script.\n\nif(!require(\"nycflights13\", character.only = TRUE)) install.packages(\"nycflights13\")\nlibrary(nycflights13)\ndata(flights)\ndata(weather)\n\n# Define new data frame alaska_flights\nalaska_flights &lt;- flights[flights$carrier == \"AS\",]\n\n### Define new data frame early_january_weather\nearly_january_weather &lt;- weather[weather$origin == \"EWR\" & weather$month == 1 & weather$day &lt;= 15,]"
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html#question-1",
-    "href": "Quiz12/Quiz12.html#question-1",
+    "objectID": "Quiz14/Quiz14.html#question-1",
+    "href": "Quiz14/Quiz14.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[2 pts] Draw a scatter plot to visualize the relationship between the variables dep_delay and arr_delay in the alaska_flights data frame (defined above). Change the label for the x-axis as Departure Delay, the label for y-axis as Arrival Delay, and the plot title as Relationship between Departure and Arrival Delay.\n\nSave the generated plot as PlotQ1a.png. Recall that, you can do so using the way below.\n\n\npng(\"PlotQ1a.png\")\n\n# [Code to generate the plot here]\n\ndev.off()\n\n\n\n\n\n[2 pts] Draw a scatterplot matrices of variables dep_time, sched_dep_time, dep_delay, arr_time, sched_arr_time, arr_delay in the data frame alaska_flights. Save the created plot as PlotQ1b.png."
+    "text": "Question 1\n\n[1 pt] Load the cats data frame from the MASS package. Save it as a tibble named tbl_cats.\n[1 pt] Try the codes below to identify another difference between a data frame and a tibble:\n\n\nTibbles are also stricter with $. Tibbles never do partial matching, and will throw a warning and return NULL if the column does not exist.\n\n\nIn this case, Sex is a variable name, but S is not. Data frame does the partial matching and print the Sex column. But tibble gives a warning.\n\n\nInstruction: Please just try the codes below. Before submitting Quiz14.R, please comment out tbl_cats$S to ensure there are no bugs.\n\n\ncats$S\ntbl_cats$S"
   },
   {
-    "objectID": "Quiz12/Quiz12.html#question-2",
-    "href": "Quiz12/Quiz12.html#question-2",
+    "objectID": "Quiz14/Quiz14.html#question-2",
+    "href": "Quiz14/Quiz14.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n[2 pts] Create a time series plot (line graph) of the hourly temperature (variable temp) vs the time time_hour saved in the early_january_weather data frame (defined above). Change the label for the x-axis as Date and Hour, the label for y-axis as Temperature, and the plot title as Line Graph of Temperature vs Date and Hour. Save the created plot as PlotQ2.png."
+    "text": "Question 2\n\n[1 pt] Please import the CSV data BLACKFRIDAY as a tibble named BlackFriday.\n[1 pt] First, check if BlackFriday is a data frame. Second, use is_tibble() to check if BlackFriday is a tibble.\n\nNote that: As tibble is a modern take on the classic data frame in R, and it inherits from the data frame class. Therefore, for a tibble, if you use is.data.frame function to check, it returns TRUE because a tibble is a specialized form of a data frame with additional features."
   },
   {
-    "objectID": "Quiz12/Quiz12.html#question-3",
-    "href": "Quiz12/Quiz12.html#question-3",
+    "objectID": "Quiz14/Quiz14.html#question-3",
+    "href": "Quiz14/Quiz14.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\n[2 pts] Draw histogram of temperature (variable temp) in the data frame weather. Change the bar color to blue. What’s more, use border = \"white\" to change the border color to white. Save the created plot as PlotQ3.png."
+    "text": "Question 3\nCreate the annoying tibble as follows:\n\nannoying &lt;- tibble(\n`1` = c(8, 5, 3, 9, 6, 7, 10, 7, 10, 4),\n`2` = `1` * 2 + rnorm(length(`1`))\n)\n\n\n[2 pt] Extract the column with the variable name 1 as a tibble. Denote it as tbl_1.\n[2 pt] Extract the column with the variable name 1 as an (atomic) vector (not a list). Denote it as vec_1.\n[1 pt] Create a new column called 3, which is column 2 divided by column 1.\n[1 pt] Please rename the columns to “one”, “two”, and “three”. [Hint: After renaming, be sure to save the new tibble to annoying to replace the original tibble. ]"
   },
   {
-    "objectID": "Quiz12/Quiz12.html#question-4",
-    "href": "Quiz12/Quiz12.html#question-4",
-    "title": "",
-    "section": "Question 4",
-    "text": "Question 4\n[2 pts] Draw the two plot side by side (i.e. 1 row and 2 columns).\n\nPlot 1: Draw a boxplot of the variable temp in the data frame weather.\nPlot 2: Draw a boxplot of temp vs month of the data frame weather.\n\nSave the created plot as PlotQ4.png."
-  },
-  {
-    "objectID": "Quiz12/Quiz12.html#question-5",
-    "href": "Quiz12/Quiz12.html#question-5",
-    "title": "",
-    "section": "Question 5",
-    "text": "Question 5\n[2 pts] Draw a bar plot of carrier from the dataset flights. Save the created plot as PlotQ5.png."
-  },
-  {
-    "objectID": "Quiz1/Quiz1.html",
-    "href": "Quiz1/Quiz1.html",
+    "objectID": "Quiz11/Quiz11.html",
+    "href": "Quiz11/Quiz11.html",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz1.R to Gradescope.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify data.csv. Your code won’t work properly on modified version of the data set.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz1.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz11.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify CLEANDATA.txt, etc. unless specifically requested and instructed below. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz11.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz1/Quiz1.html#quiz-1-instructions",
-    "href": "Quiz1/Quiz1.html#quiz-1-instructions",
+    "objectID": "Quiz11/Quiz11.html#quiz-11-instructions",
+    "href": "Quiz11/Quiz11.html#quiz-11-instructions",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz1.R to Gradescope.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify data.csv. Your code won’t work properly on modified version of the data set.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz1.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz11.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify CLEANDATA.txt, etc. unless specifically requested and instructed below. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz11.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz1/Quiz1.html#question-1.",
-    "href": "Quiz1/Quiz1.html#question-1.",
+    "objectID": "Quiz11/Quiz11.html#data-preparation-practice-converting-xlsx-file-to-csv",
+    "href": "Quiz11/Quiz11.html#data-preparation-practice-converting-xlsx-file-to-csv",
     "title": "",
-    "section": "Question 1.",
-    "text": "Question 1.\nMake a vector called myVector and have it store the integers \\(1,2,3\\)"
+    "section": "Data Preparation – Practice converting XLSX file to CSV",
+    "text": "Data Preparation – Practice converting XLSX file to CSV\nPlease review the instructions on “How to convert Excel file to CSV” at https://www.ablebits.com/office-addins-blog/convert-excel-csv/. Then, save the “BLACKFRIDAY” and “COFFEE” spreadsheets from “Datasets.xlsx” as two separate CSV files named “BLACKFRIDAY.csv” and “COFFEE.csv”.\nAfter this step, we will disregard “Datasets.xlsx” and only use the two newly created CSV files for the following questions."
   },
   {
-    "objectID": "Quiz1/Quiz1.html#question-2.",
-    "href": "Quiz1/Quiz1.html#question-2.",
+    "objectID": "Quiz11/Quiz11.html#question-1",
+    "href": "Quiz11/Quiz11.html#question-1",
     "title": "",
-    "section": "Question 2.",
-    "text": "Question 2.\nMake a string called myString and have it store “Hello STAT 385!”."
-  },
-  {
-    "objectID": "Quiz1/Quiz1.html#question-3.",
-    "href": "Quiz1/Quiz1.html#question-3.",
-    "title": "",
-    "section": "Question 3.",
-    "text": "Question 3.\nRead in the data set called data.csv and store the data frame as myDataFrame."
-  },
-  {
-    "objectID": "Lab7/Lab7.html",
-    "href": "Lab7/Lab7.html",
-    "title": "STAT 385 Lab 7 Data Manipulation and Visualization Practice",
-    "section": "",
-    "text": "library(tidyverse)\nlibrary(babynames)\nlibrary(nycflights13)"
-  },
-  {
-    "objectID": "Lab7/Lab7.html#load-the-packages",
-    "href": "Lab7/Lab7.html#load-the-packages",
-    "title": "STAT 385 Lab 7 Data Manipulation and Visualization Practice",
-    "section": "",
-    "text": "library(tidyverse)\nlibrary(babynames)\nlibrary(nycflights13)"
-  },
-  {
-    "objectID": "Lab7/Lab7.html#question-1",
-    "href": "Lab7/Lab7.html#question-1",
-    "title": "STAT 385 Lab 7 Data Manipulation and Visualization Practice",
     "section": "Question 1",
-    "text": "Question 1\nWe use the babynames tibble from the babynames package for this question. The tibble contains names of male and female babies born in the US from 1880 to 2017. There are 1.9M rows and 5 columns.\n\n[10 pts] Please draw a line chart of proportion of boys with the name Garrett (or a name and gender you choose) across the years.\n[10 pts] Find all the names that were used by exactly \\(5\\) or \\(6\\) children during the 1980s, i.e. 1980-1989. [Hint: You may need to use distinct().]\n[10 pts] Filter babynames to just boys born in 2015, select the name and n columns, arrange those columns so that the most popular names appear near the top."
+    "text": "Question 1\n\n[1pt] Import the first 4 columns of “COFFEE.csv” and save the data frame as COFFEE.PART1. [Hint: You may use nrows for this task.]\n\nThe imported data frame should be\n\n#&gt;   DEMAND PRICE         X Pred_DEMAND\n#&gt; 1   1120   3.0 0.3333333   1088.8869\n#&gt; 2    999   3.1 0.3225806   1015.6815\n#&gt; 3    932   3.2 0.3125000    947.0514\n#&gt; 4    884   3.3 0.3030303    882.5807\n#&gt; 5    807   3.4 0.2941176    821.9024\n#&gt; 6    760   3.5 0.2857143    764.6914\n#&gt; 7    701   3.6 0.2777778    710.6588\n#&gt; 8    688   3.7 0.2702703    659.5469\n\n\n[2pts] Export the regression analysis results to file “REGRESSION_COFFEE_PART1.txt”.\n\n[Hint: You may use cat() and sink() for this task; You may use the following R codes.\n\nlmod &lt;- lm(PRICE ~ DEMAND, data = COFFEE.PART1)\nsummary(lmod)\nanova(lmod)\n\n].\nThe final TXT file “REGRESSION_COFFEE_PART1.txt” should look like:\n\n\n\n\n\n\n[1pt] Import the last 3 columns of “COFFEE.csv” and save the data frame as COFFEE.PART2. Then rename the second column name as inverseP.\n\nThe imported data frame should be: (Below we only show the first and last 3 rows to save space)\n\nhead(COFFEE.PART2, 3)\n#&gt;      P  inverseP     Dhat\n#&gt; 1 3.00 0.3333333 1089.333\n#&gt; 2 3.01 0.3322259 1081.794\n#&gt; 3 3.02 0.3311258 1074.305\ntail(COFFEE.PART2, 3)\n#&gt;       P  inverseP     Dhat\n#&gt; 69 3.68 0.2717391 670.0000\n#&gt; 70 3.69 0.2710027 664.9864\n#&gt; 71 3.70 0.2702703 660.0000\n\n\n[1pt] Use plot(COFFEE.PART2$P, COFFEE.PART2$inverseP) to draw the scatterplot and save the plot as “PLOT_COFFEE_PART2.png”, make sure you use bg = \"transparent\" to set the background to transparent."
   },
   {
-    "objectID": "Lab7/Lab7.html#question-2",
-    "href": "Lab7/Lab7.html#question-2",
-    "title": "STAT 385 Lab 7 Data Manipulation and Visualization Practice",
+    "objectID": "Quiz11/Quiz11.html#question-2",
+    "href": "Quiz11/Quiz11.html#question-2",
+    "title": "",
     "section": "Question 2",
-    "text": "Question 2\nRe-create the R code necessary to generate the following graphs. The dataset is mpg from ggplot2 package.\n\n[10 pts] [Hint: You may use geom_smooth(formula = y ~ x, method = \"loess\") to add the smoothed line(s) for the questions.]\n\n\n\n\n\n\n\n\n\n\n\n[10 pts]\n\n[Hint: You may use color = drv.]"
+    "text": "Question 2\n[2pts] Import “BLACKFRIDAY.csv” and save the data frame as BLACKFRIDAY. Filter the data frame with YEARS greater than 10, and save the result as BLACKFRIDAY_gt10. Export data frame BLACKFRIDAY_gt10 to CSV file “BLACKFRIDAY_gt10.csv”. Make sure you use row.names = FALSE to avoid writing the row names."
   },
   {
-    "objectID": "Lab7/Lab7.html#question-3",
-    "href": "Lab7/Lab7.html#question-3",
-    "title": "STAT 385 Lab 7 Data Manipulation and Visualization Practice",
+    "objectID": "Quiz11/Quiz11.html#question-3",
+    "href": "Quiz11/Quiz11.html#question-3",
+    "title": "",
     "section": "Question 3",
-    "text": "Question 3\n\n[10 pts] Use flights dataset from the nycflights13 package. Find the average departure delay by month.\n[10 pts] Visualize the average departure delay by month from part (a) by drawing a bar-plot. Which three months have the worst average departure delays? [Hint: You may need to convert month to factor type using as.factor().]\n[10 pts] Currently, the dep_time and sched_dep_time are convenient to look at, but hard to compute with because they’re not really continuous numbers. Please convert them to a more convenient representation of number of minutes since midnight. Denote the two new variables as dep_time_minutes and sched_dep_time_minutes, respectively.\n\nFor example, 1755 corresponds to 5:55 pm. We can convert 1755 to minutes as \\(17*60 + 55 = 1075\\) minutes from midnight. You may consider using integer division operator \\(\\%/\\%\\) and modulus operator \\(\\%\\%\\)."
+    "text": "Question 3\nUse “CLEANDATA.txt” for this question. Complete the following parts.\n\n[2pts]\n\nStep 1: Skip the first five rows (consider the column names as Row 1) and import “CLEANDATA.txt”. Save the data frame as CLEANDATA.\nStep 2: Scan the column names from “CLEANDATA.txt” as header. Then assemble the data frame CLEANDATA and header.\nThe data frame CLEANDATA should be:\n\n#&gt;    EXP AUTOMATI OUTPUT\n#&gt; 1   &lt;1        M     12\n#&gt; 2   &lt;1        M     10\n#&gt; 3   &lt;1        L      5\n#&gt; 4   &lt;1        L      4\n#&gt; 5   &lt;1        L      8\n#&gt; 6  1-2        H     15\n#&gt; 7  1-2        H     18\n#&gt; 8  1-2        H     17\n#&gt; 9  1-2        M     10\n#&gt; 10 1-2        M     10\n#&gt; 11 1-2        M     12\n#&gt; 12 1-2        L      8\n#&gt; 13 1-2        L     10\n#&gt; 14 1-2        L     10\n#&gt; 15  &gt;2        H     20\n#&gt; 16  &gt;2        H     18\n#&gt; 17  &gt;2        H     19\n#&gt; 18  &gt;2        M     13\n#&gt; 19  &gt;2        M     13\n#&gt; 20  &gt;2        M     14\n#&gt; 21  &gt;2        L     12\n#&gt; 22  &gt;2        L     11\n#&gt; 23  &gt;2        L     13\n\n\n[1pt] Write the CLEANDATA$AUTOMATI, one element per line, to the file “AUTOMATI.txt”."
   },
   {
-    "objectID": "Lab6/Lab6.html",
-    "href": "Lab6/Lab6.html",
-    "title": "",
+    "objectID": "Lab8/Lab8.html",
+    "href": "Lab8/Lab8.html",
+    "title": "Lab 8 Reaction Time Project",
     "section": "",
-    "text": "Please ensure you review the document STAT 385 Lab 6 Help Document – Kronecker Product Illustration on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab6HelpDoc/Lab6HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 6 to Gradescope."
+    "text": "About the Data and Survey\nIn Spring 2024 STAT 425 class, we collected data on Reaction Time from around 150 students. Please find the survey used to collect this data Reaction Time Survey Questions.pdf. There are two datasets for Lab 8:\n\nThe real data – “Reaction Time Survey.csv”\nThe mock data – “Mock Student Information.csv”\n\nIn this lab, please clean and explore the datasets.\n\n\nLab 8 Instruction\n\nIt is strongly recommended to follow the method demonstrated in the lecture video “Projects in R Video – Female Life Expectancy Project” to create an R project and complete this lab.\nAs usual, you are only required to submit the PDF file generated to Gradescope.\n\n\n\nLoad Packages and Read Data\nPlease load the packages you need and import the two data sets:\n\nImport “Reaction Time survey.csv” as survey.\nImport “Mock Student Information.csv” as student.\n\n\n\nQuestion I: Data Cleaning\n[40 pts] Please perform the data cleaning for survey. Some hints are:\n\nYou may rename the variables as\n\n\nc(\"mockID\", \"Reaction.time\", \"Class\", \"Age\", \"Avg.sleep.time\",\n  \"last.night.sleep.time\", \"Awake.hours\", \"Fatigue.level\",\n  \"Stress.level\", \"Distraction\", \"Noise.level\", \"Temp.level\",\n  \"Game.freq\", \"Sport.freq\", \"Avg.hours.exercise\",\n  \"Caffein.intake\", \"Alcohol.intake\", \"Visual.acuity\",\n  \"Primary.hand\", \"Use.primary.hand\", \"Cautious.level\",\n  \"Input.device\", \"Device.OS\", \"WiFi.stable\")\n\n\nTechnically, it’s impossible to have a Reaction Time less than or equal to 100 milliseconds. Remove the observations with Reaction.time less than or equal to 100. [Notes: In reality, we contacted the students to confirm or update their submissions.]\nYou may use separate_wider_delim() to clean up the Visual.acuity so that the variable becomes a factor with the following levels: “Very Poor”, “Poor”, “Average”, “Good”, “Excellent”.\n\n(Use levels = c(\"Very Poor\", \"Poor\", \"Average\", \"Good\", \"Excellent\"))\n\nYou may use separate_wider_delim twice to clean up the Device.OS so that the variable is a character  variable with the possible values: “Desktop computer”, “Laptop”, “iPhone”, “iPad”, “Smartphone”, “Tablet”, “Chromebook”. Please use help(separate_wider_delim) to find solutions for the issue where “Chromebook” does not have “-” or “(” as a delimiter.\nPlease clean up the columns Avg.sleep.time, last.night.sleep.time, Awake.hours, Noise.level, and Avg.hours.exercise so that they become numeric variables. Be cautious of using as.numeric() directly, as it may introduce NAs due to coercion. Instead, handle edge cases like “7h4min”, “7:30”, “1~3” first, then use str_remove_all(..., \"[[:alpha:][:space:]]\") to remove any characters and empty spaces from the responses. Finally, convert the cleaned columns to numeric variables.\nConvert the Class, Fatigue.level, Stress.level, Temp.level, Game.freq, Sport.freq, Cautious.level as factors with levels as follows:\n\n\nclasslevel =  c(\"Freshman\", \"Sophomore\", \"Junior\", \"Senior\", \"Graduate\") \n# Even if there are no freshmen in the data.\nfatiguelevel = c(\"Not fatigued at all\", \"Slightly Fatigued\", \n                 \"Moderately fatigued\", \"Very fatigued\", \"Extremely fatigued\")\nstresslevel = c(\"Very Low\", \"Low\", \"Moderate\", \"High\" , \"Very High\")\ntemplevel = c(\"Very Cold\", \"Cold\", \"Neutral\", \"Warm\", \"Very Warm\")\ngamefreqlevel = c(\"Daily\", \"Several times a week\", \n                  \"Once a week\", \"Several times a month\", \"Rarely\", \"Never\")\nsportfreqlevel =  c(\"Daily\", \"Several times a week\", \"Once a week\", \n                    \"Several times a month\", \"Rarely\", \"Never\")\ncautiouslevel = c(\"Not cautious at all\", \"Slightly cautious\", \n                  \"Moderately cautious\", \"Very cautious\", \"Extremely cautious\")\n\n\nPerform any additional data cleaning you find necessary.\n\nAfter the data cleaning procedure, glimpse(survey) should show something like\n\nglimpse(survey)\n#&gt; Rows: 140\n#&gt; Columns: 24\n#&gt; $ mockID                &lt;chr&gt; \"MJJXGR\", \"JHJZMT\", \"VQTCNE\", \"CKJWEX\", \"MBKMNF\"…\n#&gt; $ Reaction.time         &lt;dbl&gt; 180, 278, 350, 267, 229, 225, 200, 282, 272, 412…\n#&gt; $ Class                 &lt;fct&gt; Sophomore, Sophomore, Senior, Graduate, Sophomor…\n#&gt; $ Age                   &lt;dbl&gt; 20, 19, 22, 24, 20, 20, 20, 20, 19, 21, 20, 21, …\n#&gt; $ Avg.sleep.time        &lt;dbl&gt; 7.0, 7.0, 8.0, 6.0, 7.0, 7.0, 6.0, 10.0, 8.5, 7.…\n#&gt; $ last.night.sleep.time &lt;dbl&gt; 8.0, 7.0, 5.0, 5.0, 6.0, 8.0, 5.0, 8.0, 9.0, 6.0…\n#&gt; $ Awake.hours           &lt;dbl&gt; 10.00, 6.00, 4.00, 6.00, 5.00, 5.00, 1.00, 4.00,…\n#&gt; $ Fatigue.level         &lt;fct&gt; Not fatigued at all, Slightly Fatigued, Slightly…\n#&gt; $ Stress.level          &lt;fct&gt; Very Low, Low, Low, High, Low, Moderate, Moderat…\n#&gt; $ Distraction           &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"Yes\", \"No\", \"Yes\", \"Yes…\n#&gt; $ Noise.level           &lt;dbl&gt; 5, 8, 3, 2, 9, 3, 6, 8, 7, 3, 5, 7, 3, 7, 5, 7, …\n#&gt; $ Temp.level            &lt;fct&gt; Neutral, Warm, Neutral, Neutral, Neutral, Neutra…\n#&gt; $ Game.freq             &lt;fct&gt; Several times a month, Rarely, Daily, Several ti…\n#&gt; $ Sport.freq            &lt;fct&gt; Several times a month, Several times a month, On…\n#&gt; $ Avg.hours.exercise    &lt;dbl&gt; 5.0, 6.0, 5.0, 3.0, 1.0, 10.0, 7.0, 7.0, 2.0, 4.…\n#&gt; $ Caffein.intake        &lt;chr&gt; \"No\", \"Yes\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\",…\n#&gt; $ Alcohol.intake        &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", …\n#&gt; $ Visual.acuity         &lt;fct&gt; Excellent, Excellent, Good, Good, Good, Excellen…\n#&gt; $ Primary.hand          &lt;chr&gt; \"Ambidextrous (both hands equally)\", \"Right hand…\n#&gt; $ Use.primary.hand      &lt;chr&gt; \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Yes\",…\n#&gt; $ Cautious.level        &lt;fct&gt; Moderately cautious, Slightly cautious, Slightly…\n#&gt; $ Input.device          &lt;chr&gt; \"Mouse\", \"Trackpad\", \"Mouse\", \"Touch screen\", \"T…\n#&gt; $ Device.OS             &lt;chr&gt; \"Desktop computer\", \"Laptop\", \"Laptop\", \"iPhone\"…\n#&gt; $ WiFi.stable           &lt;chr&gt; \"Stable\", \"Stable\", \"Stable\", \"Stable\", \"Stable\"…\n\n\n\nQuestion II: Join Two tables\n\n[10 pts] Join the two tables and list the students who did not respond to the survey. [Hint: You may use anti_join() for this task. Look up information about anti_join() online if needed.]\n[10 pts] Several students have submitted the survey more than once. To handle this, we should remove the duplicate submissions by keeping only the last submission (assuming the survey is in time order). Follow the steps:\n\n\nArrange the observations in reverse-time order using desc(row_number()).\nApply distinct(mockID, .keep_all = TRUE). [You can use ?distinct() to understand why this approach works.]\n\n\n[10 pts] Join the two tables and keep all information from survey, use mockID as the key. Save the new tibble as survey_student (or a name of your choice).\n\n\n\nQuestion III: Explore the Data survey_student\n[30 pts] Create data visualizations or tables to uncover interesting insights from the data. Please list at least three notable findings.\nHint: You may find it’s helpful to combine some categories into fewer, more concise categories. Here is one example,\n\nsurvey_student %&gt;%\n  mutate(Fatigue.3 = case_when(\n    Fatigue.level %in% c(\"Extremely fatigued\", \"Very fatigued\")~ \"H.Fatigue\",\n    Fatigue.level %in% c(\"Moderately fatigued\") ~ \"M.Fatigue\",\n    Fatigue.level %in% c(\"Not fatigued at all\", \"Slightly Fatigued\")~ \"L.Fatigue\"\n    ),\n    Fatigue.3 = factor(Fatigue.3, levels = c(\"H.Fatigue\", \"M.Fatigue\", \"L.Fatigue\"))\n  )"
   },
   {
-    "objectID": "Lab6/Lab6.html#lab-6-instruction",
-    "href": "Lab6/Lab6.html#lab-6-instruction",
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#why-vectorization",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#why-vectorization",
     "title": "",
-    "section": "",
-    "text": "Please ensure you review the document STAT 385 Lab 6 Help Document – Kronecker Product Illustration on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab6HelpDoc/Lab6HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 6 to Gradescope."
+    "section": "Why Vectorization?",
+    "text": "Why Vectorization?\n\nAvoid using for loops in R when possible.\nUse vectorization whenever you can."
   },
   {
-    "objectID": "Lab6/Lab6.html#mathemetical-definition-of-kronecker-product",
-    "href": "Lab6/Lab6.html#mathemetical-definition-of-kronecker-product",
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product",
+    "title": "",
+    "section": "Kronecker Product",
+    "text": "Kronecker Product\nIn mathematics, the Kronecker product, sometimes denoted by \\(\\bigotimes\\), is an operation on two matrices of arbitrary size resulting a block matrix. It is a specialization of the tensor product (which is denoted by the same symbol) from vectors to matrices and gives the matrix of the tensor product linear map with respect to a standard choice of basis. The Kronecker product is to be distinguished from the usual matrix multiplication, which is an entirely different operation. The Kronecker product is also sometimes called matrix direct product.\n\nYou can find more information about Kronecker Product on Wikipedia https://en.wikipedia.org/wiki/Kronecker_product."
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#mathemetical-definition-of-kronecker-product",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#mathemetical-definition-of-kronecker-product",
     "title": "",
     "section": "Mathemetical Definition of Kronecker Product",
-    "text": "Mathemetical Definition of Kronecker Product\nIn mathematics, the Kronecker product, sometimes denoted by \\(\\bigotimes\\), is an operation on two matrices of arbitrary size resulting a block matrix. It is a specialization of the tensor product (which is denoted by the same symbol) from vectors to matrices and gives the matrix of the tensor product linear map with respect to a standard choice of basis. The Kronecker product is to be distinguished from the usual matrix multiplication, which is an entirely different operation. The Kronecker product is also sometimes called matrix direct product.\n\nYou can find more information about Kronecker Product on Wikipedia https://en.wikipedia.org/wiki/Kronecker_product.\n\nIf \\(\\mathbf{A}\\) is an \\(m \\times n\\) matrix and \\(\\mathbf{B}\\) is a \\(p \\times q\\) matrix, then the Kronecker product \\(\\mathbf{A}\\bigotimes \\mathbf{B}\\) is the \\(pm \\times qn\\) block matrix:\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\begin{bmatrix}\na_{11}\\mathbf{B}\\quad  \\cdots \\quad a_{1n}\\mathbf{B}\\\\\n\\vdots\\quad  \\ddots\\quad  \\vdots\\\\\na_{m1}\\mathbf{B}\\quad  \\cdots \\quad a_{mn}\\mathbf{B}\n\\end{bmatrix},\\]\nmore explicitly,\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} =\\left[\\begin{array}{cccccccccc}\na_{11}b_{11}&  a_{11}b_{12} & \\cdots & a_{11}b_{1q}& \\cdots& \\cdots& a_{1n}b_{11}&  a_{1n}b_{12} & \\cdots & a_{1n}b_{1q} \\\\\na_{11}b_{21}&  a_{11}b_{22} & \\cdots & a_{11}b_{2q}& \\cdots& \\cdots& a_{1n}b_{21}&  a_{1n}b_{22} & \\cdots & a_{1n}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{11}b_{p1}&  a_{11}b_{p2} & \\cdots & a_{11}b_{pq}& \\cdots& \\cdots& a_{1n}b_{p1}&  a_{1n}b_{p2} & \\cdots & a_{1n}b_{pq} \\\\\n\\vdots& \\vdots&  &  \\vdots & \\ddots& & \\vdots  & \\vdots& & \\vdots \\\\\n\\vdots& \\vdots&  &  \\vdots & &\\ddots & \\vdots  & \\vdots& & \\vdots \\\\\na_{m1}b_{11}&  a_{m1}b_{12} & \\cdots & a_{m1}b_{1q}& \\cdots& \\cdots& a_{mn}b_{11}&  a_{mn}b_{12} & \\cdots & a_{mn}b_{1q} \\\\\na_{m1}b_{21}&  a_{m1}b_{22} & \\cdots & a_{m1}b_{2q}& \\cdots& \\cdots& a_{mn}b_{21}&  a_{mn}b_{22} & \\cdots & a_{mn}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{m1}b_{p1}&  a_{m1}b_{p2} & \\cdots & a_{m1}b_{pq}& \\cdots& \\cdots& a_{mn}b_{p1}&  a_{mn}b_{p2} & \\cdots & a_{mn}b_{pq}\n\\end{array}\\right],\\]"
+    "text": "Mathemetical Definition of Kronecker Product\nIf \\(\\mathbf{A}\\) is an \\(m \\times n\\) matrix and \\(\\mathbf{B}\\) is a \\(p \\times q\\) matrix, then the Kronecker product \\(\\mathbf{A}\\bigotimes \\mathbf{B}\\) is the \\(pm \\times qn\\) block matrix:\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\begin{bmatrix}\na_{11}\\mathbf{B}\\quad  \\cdots \\quad a_{1n}\\mathbf{B}\\\\\n\\vdots\\quad  \\ddots\\quad  \\vdots\\\\\na_{m1}\\mathbf{B}\\quad  \\cdots \\quad a_{mn}\\mathbf{B}\n\\end{bmatrix},\\]\nmore explicitly,\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} =\\left[\\begin{array}{cccccccccc}\na_{11}b_{11}&  a_{11}b_{12} & \\cdots & a_{11}b_{1q}& \\cdots& \\cdots& a_{1n}b_{11}&  a_{1n}b_{12} & \\cdots & a_{1n}b_{1q} \\\\\na_{11}b_{21}&  a_{11}b_{22} & \\cdots & a_{11}b_{2q}& \\cdots& \\cdots& a_{1n}b_{21}&  a_{1n}b_{22} & \\cdots & a_{1n}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{11}b_{p1}&  a_{11}b_{p2} & \\cdots & a_{11}b_{pq}& \\cdots& \\cdots& a_{1n}b_{p1}&  a_{1n}b_{p2} & \\cdots & a_{1n}b_{pq} \\\\\n\\vdots& \\vdots&  &  \\vdots & \\ddots& & \\vdots  & \\vdots& & \\vdots \\\\\n\\vdots& \\vdots&  &  \\vdots & &\\ddots & \\vdots  & \\vdots& & \\vdots \\\\\na_{m1}b_{11}&  a_{m1}b_{12} & \\cdots & a_{m1}b_{1q}& \\cdots& \\cdots& a_{mn}b_{11}&  a_{mn}b_{12} & \\cdots & a_{mn}b_{1q} \\\\\na_{m1}b_{21}&  a_{m1}b_{22} & \\cdots & a_{m1}b_{2q}& \\cdots& \\cdots& a_{mn}b_{21}&  a_{mn}b_{22} & \\cdots & a_{mn}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{m1}b_{p1}&  a_{m1}b_{p2} & \\cdots & a_{m1}b_{pq}& \\cdots& \\cdots& a_{mn}b_{p1}&  a_{mn}b_{p2} & \\cdots & a_{mn}b_{pq}\n\\end{array}\\right],\\]"
   },
   {
-    "objectID": "Lab6/Lab6.html#question-1",
-    "href": "Lab6/Lab6.html#question-1",
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product-example",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product-example",
     "title": "",
-    "section": "Question 1",
-    "text": "Question 1\n[20 pts] Please define the function forloop_kronecker(), using for loop, to calculate the Kronecker product of matrices A and B with arbitrary dimensions."
+    "section": "Kronecker Product Example",
+    "text": "Kronecker Product Example\n\\[A = \\begin{bmatrix}\n1 \\quad 3 \\\\\n2 \\quad 4\n\\end{bmatrix}\\]\n\\[B = \\begin{bmatrix}\n0 \\quad 5 \\\\\n6 \\quad 7\n\\end{bmatrix}\\]\nThen\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\left[\\begin{array}{cccc}\n1\\times 0 & 1\\times 5 & 3\\times 0 & 3\\times 5\\\\\n1\\times 6 & 1\\times 7 & 3\\times 6 & 3\\times 7\\\\\n2\\times 0 & 2\\times 5 & 4\\times 0 & 4\\times 5\\\\\n2\\times 6 & 2\\times 7 & 4\\times 6 & 4\\times 7\n\\end{array}\\right] =\n\\left[\\begin{array}{cccc}\n0 & 5 & 0 & 15\\\\\n6 & 7 & 18 & 21\\\\\n0 & 10 & 0 & 20\\\\\n12 & 14 & 24 & 28\n\\end{array}\\right].\\]"
   },
   {
-    "objectID": "Lab6/Lab6.html#question-2",
-    "href": "Lab6/Lab6.html#question-2",
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#calculate-kronecker-product-in-r",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#calculate-kronecker-product-in-r",
     "title": "",
-    "section": "Question 2",
-    "text": "Question 2\n[20 pts] Please define the function vectorization_kronecker(), using vectorization, to calculate the Kronecker product of matrices A and B with arbitrary dimensions."
+    "section": "Calculate Kronecker Product in R",
+    "text": "Calculate Kronecker Product in R\nLet \\(A\\) and \\(B\\) be \\(2 \\times 2\\) matrices as follows:\n\n(A &lt;- matrix(1:4, nrow = 2))\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    3\n#&gt; [2,]    2    4\n(B &lt;- matrix(c(0, 6, 5, 7), nrow = 2))\n#&gt;      [,1] [,2]\n#&gt; [1,]    0    5\n#&gt; [2,]    6    7"
   },
   {
-    "objectID": "Lab6/Lab6.html#question-3",
-    "href": "Lab6/Lab6.html#question-3",
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#method-i-the-kronecker-function",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#method-i-the-kronecker-function",
     "title": "",
-    "section": "Question 3",
-    "text": "Question 3\n[20 pts] Compare the CPU times for three Kronecker product calculation methods below for matrices A1 and B1, A2 and B2, and other pairs of matrices you choose to test. Use times = 10000L for each calculation. Discuss the computational efficiency of the three methods based on your findings.\n\nvectorization_kronecker()\nkronecker()\nforloop_kronecker()\n\n\n(A1 &lt;- matrix(1:16, nrow = 4, ncol = 4))\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    1    5    9   13\n#&gt; [2,]    2    6   10   14\n#&gt; [3,]    3    7   11   15\n#&gt; [4,]    4    8   12   16\n(B1 &lt;- matrix(1:20, nrow = 4, ncol = 5))\n#&gt;      [,1] [,2] [,3] [,4] [,5]\n#&gt; [1,]    1    5    9   13   17\n#&gt; [2,]    2    6   10   14   18\n#&gt; [3,]    3    7   11   15   19\n#&gt; [4,]    4    8   12   16   20\n\n(A2 &lt;- matrix(1:40, nrow = 5, ncol = 8))\n#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]\n#&gt; [1,]    1    6   11   16   21   26   31   36\n#&gt; [2,]    2    7   12   17   22   27   32   37\n#&gt; [3,]    3    8   13   18   23   28   33   38\n#&gt; [4,]    4    9   14   19   24   29   34   39\n#&gt; [5,]    5   10   15   20   25   30   35   40\n(B2 &lt;- matrix(1:50, nrow = 10, ncol = 5))\n#&gt;       [,1] [,2] [,3] [,4] [,5]\n#&gt;  [1,]    1   11   21   31   41\n#&gt;  [2,]    2   12   22   32   42\n#&gt;  [3,]    3   13   23   33   43\n#&gt;  [4,]    4   14   24   34   44\n#&gt;  [5,]    5   15   25   35   45\n#&gt;  [6,]    6   16   26   36   46\n#&gt;  [7,]    7   17   27   37   47\n#&gt;  [8,]    8   18   28   38   48\n#&gt;  [9,]    9   19   29   39   49\n#&gt; [10,]   10   20   30   40   50"
+    "section": "Method I: The kronecker() Function",
+    "text": "Method I: The kronecker() Function\n\nA\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    3\n#&gt; [2,]    2    4\nB\n#&gt;      [,1] [,2]\n#&gt; [1,]    0    5\n#&gt; [2,]    6    7\nkronecker(A, B)\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28"
   },
   {
-    "objectID": "Lab5/Lab5.html",
-    "href": "Lab5/Lab5.html",
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#method-ii-for-loop",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#method-ii-for-loop",
+    "title": "",
+    "section": "Method II: For Loop",
+    "text": "Method II: For Loop\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\left[\\begin{array}{cccc}\n1\\times 0 & 1\\times 5 & 3\\times 0 & 3\\times 5\\\\\n1\\times 6 & 1\\times 7 & 3\\times 6 & 3\\times 7\\\\\n2\\times 0 & 2\\times 5 & 4\\times 0 & 4\\times 5\\\\\n2\\times 6 & 2\\times 7 & 4\\times 6 & 4\\times 7\n\\end{array}\\right] =\n\\left[\\begin{array}{cccc}\n0 & 5 & 0 & 15\\\\\n6 & 7 & 18 & 21\\\\\n0 & 10 & 0 & 20\\\\\n12 & 14 & 24 & 28\n\\end{array}\\right].\\] Locations:\n\n\n\n\n\n\nforloop_kronecker &lt;- function(A, B){\n  Res = matrix(NA, nrow = 2*2, ncol = 2*2)\n  k = 0\n  l = 0\n  \n  for (j in 1:2){\n    k = 0\n    for (i in 1:2){\n      Res[(k+1):(k+2), (l+1):(l+2)] &lt;- A[i, j] * B\n      k = k + 2\n    }\n    l = l + 2\n  }\n  Res\n}\n\nforloop_kronecker(A, B)\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28"
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#method-iii-vectorization-recommended",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#method-iii-vectorization-recommended",
+    "title": "",
+    "section": "Method III: Vectorization [Recommended]",
+    "text": "Method III: Vectorization [Recommended]\n\nObjective\n\n\n\n\n\n\n\nDeal with A\n\n\n\n\nRecall\n\nrep(1:2, each = 2)\n#&gt; [1] 1 1 2 2\n\n\nA\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    3\n#&gt; [2,]    2    4\n\nA[rep(1:2, each = 2), rep(1:2, each = 2)]\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    1    1    3    3\n#&gt; [2,]    1    1    3    3\n#&gt; [3,]    2    2    4    4\n#&gt; [4,]    2    2    4    4\n\n\n\nDeal with B\n\n\n\n\nRecall\n\nrep(1:2, times = 2)\n#&gt; [1] 1 2 1 2\n\n\nB\n#&gt;      [,1] [,2]\n#&gt; [1,]    0    5\n#&gt; [2,]    6    7\nB[rep(1:2, times = 2), rep(1:2, times = 2)]\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0    5\n#&gt; [2,]    6    7    6    7\n#&gt; [3,]    0    5    0    5\n#&gt; [4,]    6    7    6    7\n\n\n\nPut Everything Together\n\nrepeated_A &lt;- A[rep(1:2, each = 2), rep(1:2, each = 2)]\nrepeated_B &lt;- B[rep(1:2, times = 2), rep(1:2, times = 2)]\nrepeated_A * repeated_B\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28\n\n\n\nWrap the Calculation into a Function (for \\(2 \\times 2\\) matrices)\n\nvectorization_kronecker &lt;- function(A, B){\n  repeated_A &lt;- A[rep(1:2, each = 2), rep(1:2, each = 2)]\n  repeated_B &lt;- B[rep(1:2, times = 2), rep(1:2, times = 2)]\n  return(repeated_A * repeated_B)\n}\n\nvectorization_kronecker(A, B)\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28"
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#compare-the-cpu-times-that-expressions-used",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#compare-the-cpu-times-that-expressions-used",
+    "title": "",
+    "section": "Compare the CPU Times that Expressions Used",
+    "text": "Compare the CPU Times that Expressions Used\n\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A,B),\n  kronecker(A, B),\n  forloop_kronecker(A, B),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                           expr  min   lq     mean median   uq    max neval\n#&gt;  vectorization_kronecker(A, B)  1.6  2.0  2.62334    2.1  2.3 1683.0 10000\n#&gt;                kronecker(A, B) 13.6 15.3 18.76118   15.8 16.5 1417.7 10000\n#&gt;        forloop_kronecker(A, B)  2.8  3.3  4.20677    3.5  3.7 1279.3 10000"
+  },
+  {
+    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#what-if-a-and-b-are-not-2-times-2-matrices",
+    "href": "Lab6HelpDoc/Lab6HelpDoc.html#what-if-a-and-b-are-not-2-times-2-matrices",
+    "title": "",
+    "section": "What if A and B are not \\(2 \\times 2\\) matrices?",
+    "text": "What if A and B are not \\(2 \\times 2\\) matrices?\nWith the assistance of this instructional document, please proceed with Lab 6.\nIn Lab 6, you will update the forloop_kronecker() and vectorization_kronecker() functions to make them suitable for calculating matrices A and B with arbitrary dimensions. And find result similar to the following.\n\nA1 &lt;- matrix(1:16, nrow = 4, ncol = 4)\nB1 &lt;- matrix(1:20, nrow = 4, ncol = 5)\n\nA2 &lt;- matrix(1:40, nrow = 5, ncol = 8)\nB2 &lt;- matrix(1:50, nrow = 10, ncol = 5)\n\n\nCompare the CPU Times that Expressions Used for A1 and B1\n\n\n# A1 and B1\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A1,B1),\n  kronecker(A1, B1),\n  forloop_kronecker(A1, B1),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                             expr  min   lq     mean median   uq    max neval\n#&gt;  vectorization_kronecker(A1, B1)  4.4  5.2  6.90709    5.5  5.8 1764.6 10000\n#&gt;                kronecker(A1, B1) 14.1 15.8 18.59105   16.4 17.3 1911.6 10000\n#&gt;        forloop_kronecker(A1, B1) 21.1 23.6 28.10669   24.6 25.6 6144.4 10000\n\n\nCompare the CPU Times that Expressions Used for A2 and B2\n\n\n# A2 and B2\n\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A2,B2),\n  kronecker(A2, B2),\n  forloop_kronecker(A2, B2),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                             expr  min   lq     mean median   uq    max neval\n#&gt;  vectorization_kronecker(A2, B2)  9.5 10.7 12.40686   11.3 12.0  240.7 10000\n#&gt;                kronecker(A2, B2) 19.8 22.7 29.42047   24.4 28.0 2941.8 10000\n#&gt;        forloop_kronecker(A2, B2) 53.1 58.3 72.02094   61.0 64.2 3951.4 10000"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html",
     "title": "",
     "section": "",
-    "text": "Please ensure you review the document Illustrate S3 System – U of I Women’s Basketball Team example on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 5 to Gradescope."
+    "text": "library(tidyverse) # stringr package is part of the tidyverse collection."
   },
   {
-    "objectID": "Lab5/Lab5.html#lab-5-s3-for-workshop-participants-instruction",
-    "href": "Lab5/Lab5.html#lab-5-s3-for-workshop-participants-instruction",
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#illustrate-s3-system-u-of-i-womens-basketball-team-example",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#illustrate-s3-system-u-of-i-womens-basketball-team-example",
     "title": "",
+    "section": "Illustrate S3 System – U of I Women’s Basketball Team example",
+    "text": "Illustrate S3 System – U of I Women’s Basketball Team example\n\nEnsure you’ve read the following section before watching this video.\n\nhttps://adv-r.hadley.nz/s3.html#s3-classes\n\nThe main components of S3: classes, generics, and methods\nThree functions used in most classes: constructor, helper, validator.\nGenerics, methods, and dispatch"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#u-of-i-womens-basketball-team",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#u-of-i-womens-basketball-team",
+    "title": "",
+    "section": "U of I Women’s Basketball Team",
+    "text": "U of I Women’s Basketball Team\nhttps://fightingillini.com/sports/womens-basketball/roster\n\nObjective: Display the profile information according to roles\n\nFor player, print the profile information like\n\nAdalia Mckenzie is a player on the U of I Women’s Basketball Team. Her jersey number is 24. Adalia is a student in her Senior year. She is 5-10 tall (177.8 cm). Her position is Guard.\n\nFor staff, print the profile information like\n\nShauna Green is the Head Coach of the U of I Women’s Basketball Team.\nMaya Solomon is a staff member of the U of I Women’s Basketball Team.\n\nFor all other people, like the spectator, print the information like\n\nWeijia Jia is neither a player nor a staff member."
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-player-class",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-player-class",
+    "title": "",
+    "section": "Create Player Class",
+    "text": "Create Player Class\n\nConstructor Function\n\nnew_player = function(x){\n  validate_player(x) # Validator, defined below\n  structure(\n    list(firstname = str_to_title(x$firstname), # str_to_title() is from stringr\n         lastname = str_to_title(x$lastname), # str_to_title() converts to title case\n         jersey = as.character(x$jersey),\n         height_inches = x$height,\n         position = str_to_title(x$position),\n         studentclass = str_to_title(x$class), \n         heightcm = convertHeightToCm(x$height) # Helper function, defined below\n         ),\n    class = \"player\"\n  )\n}\n\n\n\nHelper Function\nConvert the height from the “feet-inches” pattern to centimeters.\n\nconvertHeightToCm &lt;- function(height) {\n    # Split the input string by the dash\n    parts &lt;- str_split(height, \"-\")[[1]] # str_split() is from stringr package\n    \n    # Extract feet and inches as numeric values\n    feet &lt;- as.numeric(parts[1])\n    inches &lt;- as.numeric(parts[2])\n    \n    # Convert feet to inches and then total inches to centimeters\n    height_inches &lt;- (feet * 12) + inches\n    height_cm &lt;- height_inches * 2.54\n    \n    return(height_cm)\n}\n\n\n\nValidator Function\n\nIf any information is missing, print ‘… is missing’.\nIf the pattern of height doesn’t follow the “feet-inches” pattern, print a warning message.\nIf the position is not one of the three categories (Guard, Forward, Center), print a warning message.\nIf the class is not one of the five categories (Freshman, Sophomore, Junior, Senior, Fifth), print a warning message.\n\n\nvalidate_player &lt;- function(x){\n  if(is.na(x$firstname)) print(\"The player's first name is missing.\")\n  if(is.na(x$lastname)) print(\"The player's last name is missing.\")\n  if(is.na(x$jersey)) print(\"The player's jersey information is missing.\")\n  if(is.na(x$height)) print(\"The player's height information is missing.\")\n  if(is.na(x$position)) print(\"The player's position information is missing.\")\n  if(is.na(x$class)) print(\"The player's class information is missing.\")\n  \n  \n  if(!grepl(\"^\\\\d+-\\\\d+$\", x$height)) # grepl() is searching for matches\n    print(\"The player's height does not follow the 'feet-inches' pattern.\")\n  if(!str_to_title(x$position) %in% c(\"Guard\", \"Forward\", \"Center\")) \n    print(\"The player's position information is invalid.\")\n  if(!str_to_title(x$class) %in% c(\"Freshman\", \"Sophomore\", \"Junior\", \"Senior\", \"Fifth\")) \n    print(\"The player's class information is invalid.\")\n}"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-staff-class",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-staff-class",
+    "title": "",
+    "section": "Create Staff Class",
+    "text": "Create Staff Class\n\nConstructor Function\n\n\nnew_staff = function(x){\n  validate_staff(x)\n  structure(\n    list(name = x$name,\n         role = x$role,\n         role_with_article = article_selector(x$role) \n         ),\n    class = \"staff\"\n  )\n}\n\n\n\nHelper Function\nChoose appropriate article for the role information.\n\narticle_selector &lt;- function(role) {\n title &lt;- switch(\n   role,\n   \"head coach\" = \"the Head Coach\",\n   \"associate head coach\" = \"the Associate Head Coach\",\n   \"assistant coach\" = \"an Assistant Coach\",\n   \"a staff member\"\n  )\n return(title)\n}\n\n\n\nValidator Function\n\nif name or role is missing or not character type, print warning message.\n\n\nvalidate_staff &lt;- function(x){\n  if(is.na(x$name) || !is.character(x$name)) \n    print(\"The staff's name is not valid\")\n  if(is.na(x$role)|| !is.character(x$role)) \n    print(\"The staff's role information is not valid\")\n}"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-spectator-class",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-spectator-class",
+    "title": "",
+    "section": "Create Spectator Class",
+    "text": "Create Spectator Class\n\n\nnew_spectator = function(x){\n  structure(\n    list(name = x$name),\n    class = \"spectator\"\n  )\n}"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#generic-and-methods",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#generic-and-methods",
+    "title": "",
+    "section": "Generic and Methods",
+    "text": "Generic and Methods\n\nDefine the generic print_profile and the methods.\n\n\nprint_profile = function(x){\n  UseMethod(\"print_profile\")\n}\n\nprint_profile.player = function(x){\n  print(paste0(x$firstname, \" \", x$lastname, \" is a player on the U of I Women's Basketball Team. Her jersey number is \", x$jersey, \". \",  x$firstname, \" is a student in her \", x$studentclass, \" year. She is \", x$height_inches, \" tall (\", x$heightcm,\" cm). Her position is \", x$position, \".\" \n               )\n        )\n}\n\nprint_profile.staff = function(x){\n  print(paste0(x$name, \" is \", x$role_with_article, \n               \" of the U of I Women's Basketball Team.\" ))\n}\n\nprint_profile.default = function(x){\n  print(paste0(x$name, \" is neither a player nor a staff member.\"))\n}"
+  },
+  {
+    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#test",
+    "href": "Lab5HelpDoc/Lab5HelpDoc.html#test",
+    "title": "",
+    "section": "Test",
+    "text": "Test\n\n# Player\n\nMckenzie &lt;- new_player(x = list(\n  firstname = \"Adalia\",\n  lastname = \"Mckenzie\",\n  jersey = \"24\",\n  height = \"5-10\",\n  position = \"guard\",\n  class = \"senior\"\n)\n)\n\n### Incorrect Usage\nBryant &lt;- new_player(x = list(\n  firstname = \"Genesis\",\n  lastname = \"Bryant\",\n  jersey = \"1\",\n  height = \"5'6''\", \n  position = \"guard\",\n  class = \"fifth\"))\n#&gt; [1] \"The player's height does not follow the 'feet-inches' pattern.\"\n#&gt; Warning in convertHeightToCm(x$height): NAs introduced by coercion\n# Corrected\nBryant &lt;- new_player(x = list(\n  firstname = \"Genesis\",\n  lastname = \"Bryant\",\n  jersey = \"1\",\n  height = \"5-6\", \n  position = \"guard\",\n  class = \"fifth\"))\n\n\n# Staff\n\nGreen &lt;- new_staff(x = list(\n  name = \"Shauna Green\", \n  role = \"head coach\"\n  )\n)\n\nSolomon &lt;- new_staff(x = list(\n  name = \"Maya Solomon\", \n  role = \"director of basketball operations\"\n  )\n)\n\n# Spectator\n\nJia &lt;- new_spectator(x = list(\n  name = \"Weijia Jia\"\n  ))\nprint_profile(Mckenzie)\n#&gt; [1] \"Adalia Mckenzie is a player on the U of I Women's Basketball Team. Her jersey number is 24. Adalia is a student in her Senior year. She is 5-10 tall (177.8 cm). Her position is Guard.\"\nprint_profile(Bryant)\n#&gt; [1] \"Genesis Bryant is a player on the U of I Women's Basketball Team. Her jersey number is 1. Genesis is a student in her Fifth year. She is 5-6 tall (167.64 cm). Her position is Guard.\"\nprint_profile(Green)\n#&gt; [1] \"Shauna Green is the Head Coach of the U of I Women's Basketball Team.\"\nprint_profile(Solomon)\n#&gt; [1] \"Maya Solomon is a staff member of the U of I Women's Basketball Team.\"\nprint_profile(Jia)\n#&gt; [1] \"Weijia Jia is neither a player nor a staff member.\""
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Preface",
     "section": "",
-    "text": "Please ensure you review the document Illustrate S3 System – U of I Women’s Basketball Team example on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 5 to Gradescope."
-  },
-  {
-    "objectID": "Lab5/Lab5.html#background",
-    "href": "Lab5/Lab5.html#background",
-    "title": "",
-    "section": "Background",
-    "text": "Background\nSuppose a university is hosting a campus-wide data science workshop with undergraduate and graduate student participants, along with many faculty members showing interest in the series of workshops. Develop S3 classes for students, faculty, etc., incorporating validators and necessary helper functions."
-  },
-  {
-    "objectID": "Lab5/Lab5.html#question-1",
-    "href": "Lab5/Lab5.html#question-1",
-    "title": "",
-    "section": "Question 1",
-    "text": "Question 1\n\n[10 pts] Create the constructor function new_student() to generate objects of the “student” class. Student participants provide the following information: name, major, department, classYear (Freshman, Sophomore, Junior, Senior, or Graduate), UofI_email, and dsExperience which represents years of experience in data science.\n[10 pts] Create the validator function validate_student(). Below is a list of validations to include.\n\nValidations:\n\nIf any of the information required above is missing, print a warning message.\nIf dsExperience is not numeric, or the length is not 1, or the years is lower than 0 or greater than 20, print warning message that: The data science experience years information is not valid. Please use || for “or”.\nIf classYear doesn’t belong in one of the five categories, print the warning message that: The student’s class information is invalid.\nIf UofI_emailprovided is not character type, print the warning message: The student’s email information is invalid.\n\n\n[10 pts] Define a helper function to fill in or complete an email address. This is necessary because some students might only provide their NetID instead of a full email address. The completeEmail() function should take UofI_email as input and add @illinois.edu if needed. The output of completeEmail() function is saved as Complete_UofI_email.\n\n[Hint:\n\nConsider using an if-else statement to decide whether to append the domain.\nThe regular expression grepl(\"@illinois\\\\.edu\", UofI_email), checking if UofI_email contains @illinois.edu, might be helpful. ]"
-  },
-  {
-    "objectID": "Lab5/Lab5.html#question-2",
-    "href": "Lab5/Lab5.html#question-2",
-    "title": "",
-    "section": "Question 2",
-    "text": "Question 2\n\n[10 pts] Create the constructor function new_faculty() to generate objects of the “faculty” class. Faculty participants have the following information: name and department.\n[10 pts] Create the constructor function new_other() to generate objects of the “Other” class. Other participants have the following information: name."
-  },
-  {
-    "objectID": "Lab5/Lab5.html#question-3",
-    "href": "Lab5/Lab5.html#question-3",
-    "title": "",
-    "section": "Question 3",
-    "text": "Question 3\n[30 pts] Define generic and methods using the constructors from Question 1 and 2 to create classes for student, faculty, and other participants. Implement a participantInfo() function that prints specific information based on the class of the object.\nFor example,\n\nSwift &lt;- new_student(x = list(\n  name = \"Taylor Swift\",\n  major = \"Fisheries and Wildlife\",\n  department = \"Biological Sciences\",\n  classYear = \"Junior\", \n  UofI_email = \"Tswift\",\n  dsExperience = 1.5))\nparticipantInfo(Swift)\n\n\nRonaldo &lt;- new_faculty(x = list(\n  name = \"Cristiano Ronaldo\", \n  department = \"Applied Health Science\"\n  )\n)\nparticipantInfo(Ronaldo)\n\n\nSomeone &lt;- new_other(x = list(\n  name = \"Someone Else\"\n  )\n)\nparticipantInfo(Someone)\n\nshould show the following:\n\nFor student\n\nExample: “Taylor Swift is a Fisheries And Wildlife major. The email address is Tswift@illinois.edu. The student has 1.5 years of experience in data science.”\n\nFor faculty\n\nExample: “Cristiano Ronaldo is from the Applied Health Science Department.”\n\nFor other people\n\nExample: “Someone Else is neither a faculty member nor a student.”"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html",
-    "href": "ggplot2/ggplot2.html",
-    "title": "Data Visualization with ggplot2",
-    "section": "",
-    "text": "R is nowadays equipped with two independent (incompatible, yet coexisting) systems for graphics generation:\n\nTraditional System – base graphics\n\nBuilt-in functionality for creating charts and graphs in R.\nEasier to learn and use.\nDiscussed before.\n\nNewer System – grid\n\nggplot2 – an open-source data visualization package.\nVery flexible and gaining popularity rapidly nowadays.\nVery brief introduction to ggplot in this lecture.\nR Graph Gallery https://r-graph-gallery.com/\nggplot Cheatsheet https://rstudio.github.io/cheatsheets/html/data-visualization.html"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#data-visualization-in-r",
-    "href": "ggplot2/ggplot2.html#data-visualization-in-r",
-    "title": "Data Visualization with ggplot2",
-    "section": "",
-    "text": "R is nowadays equipped with two independent (incompatible, yet coexisting) systems for graphics generation:\n\nTraditional System – base graphics\n\nBuilt-in functionality for creating charts and graphs in R.\nEasier to learn and use.\nDiscussed before.\n\nNewer System – grid\n\nggplot2 – an open-source data visualization package.\nVery flexible and gaining popularity rapidly nowadays.\nVery brief introduction to ggplot in this lecture.\nR Graph Gallery https://r-graph-gallery.com/\nggplot Cheatsheet https://rstudio.github.io/cheatsheets/html/data-visualization.html"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#five-basic-graphs",
-    "href": "ggplot2/ggplot2.html#five-basic-graphs",
-    "title": "Data Visualization with ggplot2",
-    "section": "Five Basic Graphs",
-    "text": "Five Basic Graphs\nVisualization using ggplot2 will be introduced and compared with Base R Graphics.\n\nscatterplot\nlinegraph\nhistogram\nboxplot\nbarplot"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#recall-base-r-graphics",
-    "href": "ggplot2/ggplot2.html#recall-base-r-graphics",
-    "title": "Data Visualization with ggplot2",
-    "section": "Recall: Base R Graphics",
-    "text": "Recall: Base R Graphics\n\nScatterplot Example\nExample: Draw scatterplot of wind vs pressure of the data set storms (in the tidyverse package).\n\n# Plot scatter plot with x = pressure, y = wind\nplot(storms$pressure, storms$wind, col = \"blue\", \n     main = \"Scatterplot of Wind vs Pressure\")\n\n\n\n\n\n\n\n\n\n\nScatterplot Matrices Example\nExample: Draw scatterplot matrix of first 4 variables of the data frame iris (in the datasets package).\n\n#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n#&gt; 1          5.1         3.5          1.4         0.2  setosa\n#&gt; 2          4.9         3.0          1.4         0.2  setosa\n#&gt; 3          4.7         3.2          1.3         0.2  setosa\n#&gt; 4          4.6         3.1          1.5         0.2  setosa\n#&gt; 5          5.0         3.6          1.4         0.2  setosa\n#&gt; 6          5.4         3.9          1.7         0.4  setosa\n\n\n# pch = 19 stands for points symbols type 19,\n# which is solid circle\npairs(iris[,1:4], pch=19)\n\n\n\n\n\n\n\n\n\n\nLinegraph Example – Draw a linegraph of the Data Science search counts vs Month.\n\n#&gt;   Month_Since_2004 DataScience MachineLearning\n#&gt; 1                1          12              16\n#&gt; 2                2          10              14\n#&gt; 3                3           7              12\n#&gt; 4                4           7              16\n#&gt; 5                5           5              14\n#&gt; 6                6           7              11\n\n\npar(mfrow=c(1,2)) # 1 row, 2 columns (row-wise filling)\nplot(ds$Month_Since_2004, ds$DataScience, type=\"l\",\n     main = \"Line Plot for Data Science\",\n     xlab = \"Number of Months Since 2004\",\n     ylab = \"Data Science Search Counts\") # type=\"l\" represents lines\n\n### Plot with points and line\nplot(ds$Month_Since_2004, ds$DataScience, type=\"b\", # type=\"b\" represents both\n     main = \"Line and Point Plot for Data Science\",\n     xlab = \"Number of Months Since 2004\",\n     ylab = \"Data Science Search Counts\") \n\n\n\n\n\n\n\n\npar(mfrow=c(1,1)) # reset to default\n\n\n\nMultiple linegraphs Example\nExample: We could place multiple linegraphs on one plot. Draw two linegraphs (DataScience vs Month_Since_2004, MachineLearning vs Month_Since_2004) on a single plot.\n\nplot(ds$Month_Since_2004, ds$DataScience, type=\"l\", col=\"red\")\nlines(ds$Month_Since_2004, ds$MachineLearning, col=\"blue\")\n\n\n\n\n\n\n\n\n\n\nHistogram Example\nExample: Draw histogram of variable Sepal.Width in the data frame iris (in the datasets package).\n\ndata(iris)\nhist(iris$Sepal.Width)\n\n\n\n\n\n\n\n\n\n\nHistogram Matrices Example\n\nlibrary(Hmisc)\nhist.data.frame(iris[,1:4])\n\n\n\n\n\n\n\n\n\n\nBoxplot Example\nExample:\n\nDraw a boxplot of the variable wind in the data frame storms (in the tidyverse package).\nDraw a boxplot of wind vs category of the data frame storms.\n\n\npar(mfrow=c(2,2)) # Arrange the plots in 2*2 graphical matrix\n\n### (a) boxplot of wind\nboxplot(storms$wind, main = \"(a) Vertical\")\nboxplot(storms$wind, horizontal = TRUE, main = \"(a) Horizontal\")\n### (b) boxplot of wind over levels of category\n### vertical boxplot by default\nboxplot(wind ~ category, data = storms, main = \"(b) Vertical\")\n\n### horizontal boxplot\nboxplot(wind ~ category, data = storms, horizontal = TRUE, main = \"(b) Horizontal\")\n\n\n\n\n\n\n\n\npar(mfrow=c(1,1))\n\n\n\nBarplot Example\nExample: In the storms dataset,\n\nDraw a barplot of variable status.\nDraw a barplot of variable of status and category.\n\n\n### (a) Barplot\ncounts = table(storms$status)\nbarplot(counts)\n\n\n\n\n\n\n\n\ncounts\n#&gt; \n#&gt;            disturbance          extratropical              hurricane \n#&gt;                    171                   2151                   4803 \n#&gt;              other low subtropical depression      subtropical storm \n#&gt;                   1453                    151                    298 \n#&gt;    tropical depression         tropical storm          tropical wave \n#&gt;                   3569                   6830                    111\n\n# Horizontal barplot\nbarplot(counts, horiz=TRUE)\n\n\n\n\n\n\n\n\n### (b) Barplot of two variables\ncounts = table(storms$category, storms$status)\ncounts\n#&gt;    \n#&gt;     disturbance extratropical hurricane other low subtropical depression\n#&gt;   0           0             0         0         0                      0\n#&gt;   1           0             0      2548         0                      0\n#&gt;   2           0             0       993         0                      0\n#&gt;   3           0             0       593         0                      0\n#&gt;   4           0             0       553         0                      0\n#&gt;   5           0             0       116         0                      0\n#&gt;    \n#&gt;     subtropical storm tropical depression tropical storm tropical wave\n#&gt;   0                 0                   0              1             0\n#&gt;   1                 0                   0              0             0\n#&gt;   2                 0                   0              0             0\n#&gt;   3                 0                   0              0             0\n#&gt;   4                 0                   0              0             0\n#&gt;   5                 0                   0              0             0\n\nbarplot(counts, col= c(\"steelblue\", \"firebrick\", \"lightblue\", \"mistyrose\", \"lightcyan\",\n  \"lavender\", \"cornsilk\"), besid=TRUE, legend = rownames(counts),\n  args.legend=list(title=\"Category\"))\n\n\n\n\n\n\n\n\n\ncategory variable in storms represents the Saffir-Simpson storm category (range from 1 to 5), which the scale based only on a hurricane’s maximum sustained wind speed."
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#ggplot2",
-    "href": "ggplot2/ggplot2.html#ggplot2",
-    "title": "Data Visualization with ggplot2",
-    "section": "ggplot2",
-    "text": "ggplot2"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#why-ggplot",
-    "href": "ggplot2/ggplot2.html#why-ggplot",
-    "title": "Data Visualization with ggplot2",
-    "section": "Why ggplot",
-    "text": "Why ggplot\n\nLooks good!\n\n\nlibrary(ggplot2) is used by fivethirtyeight, Financial Times, BBC, the Urban Institute, and more.\n\n\nFlexible and expressive\n\n\nConstructing a visualization using library(ggplot2) is like playing a set of building blocks (it’s fun!)\nAdd different layers of component parts to the plot.\n\n\nReproducible and scalable\n\n\nOnce you have the plot-building-pipelines built, feed the data, select the code, Ctrl + Enter, then all done!\nIt’s almost as easy to make the 100th chart as it is to make the 2nd chart.\n\n\nEssential in analysis workflow"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#ggplot2-five-important-graphs-summary",
-    "href": "ggplot2/ggplot2.html#ggplot2-five-important-graphs-summary",
-    "title": "Data Visualization with ggplot2",
-    "section": "ggplot2– five important graphs – Summary",
-    "text": "ggplot2– five important graphs – Summary\nAssume we have the variables xvar, yvar in the data frame df.\n\n### scatterplot\nggplot(data=df, mapping=aes(x=xvar, y=yvar)) +\n  geom_point()\n\n### linegraph\nggplot(data=df, mapping=aes(x=xvar, y=yvar)) +\n  geom_line()\n\n  #linegraph with dots\n  ggplot(data=df, mapping=aes(x=xvar, y=yvar)) +\n    geom_line() +\n    geom_point()\n\n### histogram\nggplot(data=df, mapping=aes(x=xvar)) +\n  geom_histogram()\n\n### boxplot\n  # boxplot of one variable yvar\n  ggplot(data=df, mapping=aes(y=yvar)) +\n    geom_boxplot()\n  # boxplot of the yvar vs xvar\n  ggplot(data=df, mapping=aes(x=xvar, y=yvar)) +\n    geom_boxplot()\n\n### barplot of variable x\n  # If not pre-counted, use geom_bar()\n  ggplot(data=df, mapping=aes(x=xvar))+\n   geom_bar()\n  # If precounted, use geom_col()\n  ggplot(data=df_counted, mapping=aes(x=xvar,y=counts))+\n    geom_col()"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#ggplot2-scatterplot-example",
-    "href": "ggplot2/ggplot2.html#ggplot2-scatterplot-example",
-    "title": "Data Visualization with ggplot2",
-    "section": "ggplot2 – scatterplot – Example",
-    "text": "ggplot2 – scatterplot – Example\nFunction: geom_point(x,y)\nExample: Draw scatterplot of wind vs pressure of the data set storms (in the tidyverse package).\n\n# Data preparation\nlibrary(tidyverse)\ndata(storms) # data frame in tidyverse package\n\nstorms[6923, \"category\"]=0 #Fixed one error value\nstorms$category = as.factor(storms$category)\n\n\n# load the data set storms (in the tidyverse package)\nggplot(data = storms, mapping = aes(x=pressure, y=wind))+\n  geom_point()\n\n\n\n\n\n\n\n\n\nTake a quick peek on dealing with overplotting\n\n\n # Changing the transparency\nggplot(storms, mapping = aes(x=pressure, y=wind)) + \n  geom_jitter(alpha=0.2)"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#ggplot2-scatterplot-matrices-example",
-    "href": "ggplot2/ggplot2.html#ggplot2-scatterplot-matrices-example",
-    "title": "Data Visualization with ggplot2",
-    "section": "ggplot2 – scatterplot matrices – Example",
-    "text": "ggplot2 – scatterplot matrices – Example\nFunction: ggpairs(df)\nExample: Draw scatterplot matrix of first 4 variables of the data frame iris (in the datasets package).\n\ndata(iris)\n\nlibrary(GGally)\n#&gt; Registered S3 method overwritten by 'GGally':\n#&gt;   method from   \n#&gt;   +.gg   ggplot2\nggpairs(iris[,1:4])"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#ggplot2-linegraph-example",
-    "href": "ggplot2/ggplot2.html#ggplot2-linegraph-example",
-    "title": "Data Visualization with ggplot2",
-    "section": "ggplot2 – linegraph – Example",
-    "text": "ggplot2 – linegraph – Example\nFunction: geom_line()\nExample: From https://trends.google.com/, we downloaded the time series data set GoogleTrendDataScience.csv with three variables Month_Since_2004, DataScience, MachineLearning.\n\nDraw a linegraph of the Data Science search counts vs Month.\nDraw a linegraph with points.\n\n\nds = read.csv(\"GoogleTrendDataScience.csv\")\n\n### Plot with line only\np1 = ggplot(ds, aes(x = Month_Since_2004, y = DataScience)) +\n  geom_line()\n\n### Plot with points and line\np2= ggplot(ds, aes(x = Month_Since_2004, y = DataScience)) +\n  geom_line() +\n  geom_point(size=1.5)\n\nlibrary(gridExtra)\ngrid.arrange(p1, p2, nrow = 1, ncol = 2)"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#ggplot2-multiple-linegraphs-example",
-    "href": "ggplot2/ggplot2.html#ggplot2-multiple-linegraphs-example",
-    "title": "Data Visualization with ggplot2",
-    "section": "ggplot2 – Multiple linegraphs – Example",
-    "text": "ggplot2 – Multiple linegraphs – Example\nFunction: geom_line()\nExample: We could place multiple linegraphs on one plot. Draw two linegraphs (DataScience vs Month_Since_2004, MachineLearning vs Month_Since_2004) on one plot.\n\nggplot(ds) +\n  geom_line(aes(x=Month_Since_2004, y=DataScience), col = \"tomato3\", size = 1.5) +\n  geom_line(aes(x=Month_Since_2004, y=MachineLearning), col=\"steelblue\", size = 1.5)"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#ggplot2-histogram-example",
-    "href": "ggplot2/ggplot2.html#ggplot2-histogram-example",
-    "title": "Data Visualization with ggplot2",
-    "section": "ggplot2 – histogram – Example",
-    "text": "ggplot2 – histogram – Example\nFunction: geom_histogram()\nExample: Draw histogram of variable Sepal.Width in the data frame iris (in the datasets package).\n\n## Illini orange and blue!\nggplot(iris, aes(x=Sepal.Width)) +\n  geom_histogram(binwidth=0.2, color=\"#13294B\", fill=\"#FF5F05\")"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#ggplot2-boxplot-example",
-    "href": "ggplot2/ggplot2.html#ggplot2-boxplot-example",
-    "title": "Data Visualization with ggplot2",
-    "section": "ggplot2 – boxplot – Example",
-    "text": "ggplot2 – boxplot – Example\nFunctions: geom_boxplot()\nExample:\n\nDraw a boxplot of the variable wind in the data frame storms (in the tidyverse package).\nDraw a boxplot of wind vs category of the data frame storms .\n\n\n\n### (a) boxplot of wind\np1 = ggplot(storms, aes(y=wind))+\n  geom_boxplot()\n\n\n\n### (b) boxplot of wind over levels of category\n### vertical boxplot by default\np2 = ggplot(storms, aes(x = category, y = wind))+\n  geom_boxplot()\n\n### horizontal boxplot\np3 = ggplot(storms, aes(y = category, x = wind))+\n  geom_boxplot()\n# Or\np4 = ggplot(storms, aes(x = category, y = wind))+\n  geom_boxplot()+\n  coord_flip()\n\ngrid.arrange(p1, p2, p3, p4, nrow = 2, ncol = 2)"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#ggplot2-barplot-example",
-    "href": "ggplot2/ggplot2.html#ggplot2-barplot-example",
-    "title": "Data Visualization with ggplot2",
-    "section": "ggplot2 – barplot – Example",
-    "text": "ggplot2 – barplot – Example\nFunctions: geom_bar(), geom_col()\nExample: In the storms dataset,\n\nDraw a barplot of variable status.\nDraw a barplot of variable of status and category\n\n\n### Barplot\n    # If not pre-counted, use geom_bar()\n    ggplot(storms, aes(x = status))+\n      geom_bar()+\n      scale_x_discrete(guide = guide_axis(angle = 45)) ### Rotate the x axis label\n\n\n\n\n\n\n\n\n    # If precounted, use geom_col()\n    storms %&gt;% \n      group_by(status) %&gt;%\n      summarise(count = n())%&gt;%\n      ggplot(aes(x = status, y = count)) +\n      geom_col()+\n      scale_x_discrete(guide = guide_axis(angle = 45)) ### Rotate the x axis label\n\n\n\n\n\n\n\n\n# Horizontal barplot\nggplot(storms, aes(y=status))+\n  geom_bar()\n\n\n\n\n\n\n\n\n### Barplot of two variables\nggplot(storms, aes(x = status, fill = factor(category)))+\n  geom_bar(position = \"dodge\")+\n  scale_x_discrete(guide = guide_axis(angle = 45)) ### Rotate the x axis label\n\n\n\n\n\n\n\n\n\ncategory variable in storms represents the Saffir-Simpson storm category (range from 1 to 5), which the scale based only on a hurricane’s maximum sustained wind speed.\n\n\n### Barplot\np1 = ggplot(storms, aes(x = status))+\n  geom_bar()+\n  scale_x_discrete(guide = guide_axis(angle = 45)) ### Rotate the x axis label\n\n# Horizontal barplot\np2 = ggplot(storms, aes(y = status))+\n  geom_bar()\n\n### Barplot of two variables\np3 = ggplot(storms, aes(x = status, fill = factor(category))) +\n  geom_bar(position = \"dodge\")+\n  scale_x_discrete(guide = guide_axis(angle = 45)) ### Rotate the x axis label\n\ngrid.arrange(p1, p2, p3, layout_matrix = rbind(c(1,2), c(3,3)))"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#want-to-save-your-ggplot",
-    "href": "ggplot2/ggplot2.html#want-to-save-your-ggplot",
-    "title": "Data Visualization with ggplot2",
-    "section": "Want to save your ggplot?",
-    "text": "Want to save your ggplot?\n\nggplot(storms, aes(x = status, fill = factor(category))) +\n  geom_bar(position = \"dodge\")+\n  scale_x_discrete(guide = guide_axis(angle = 45))\n\nggsave(\"The Barplots.png\") ### Save the last plot\nggsave(\"p1.png\", plot = p1) ### Save the plot specified"
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#comments",
-    "href": "ggplot2/ggplot2.html#comments",
-    "title": "Data Visualization with ggplot2",
-    "section": "Comments",
-    "text": "Comments\n\nIf a graph could be done with ggplot2, it could probably be done with base R graphics, and vice versa.\nTo take a quick look at the data, the one-line base R graphics functions are quick and easy.\nFor data visualization, ggplot2 is much easier to code and with a much better output."
-  },
-  {
-    "objectID": "ggplot2/ggplot2.html#resources",
-    "href": "ggplot2/ggplot2.html#resources",
-    "title": "Data Visualization with ggplot2",
-    "section": "Resources",
-    "text": "Resources\n\nR Graph Gallery https://r-graph-gallery.com/\nRstudio Cheatsheets https://www.rstudio.com/resources/cheatsheets/\nReference Books (Free online books with excellent material)\n\nR for Data Science: https://r4ds.had.co.nz/index.html\nHands-on Programming with R: https://rstudio-education.github.io/hopr/\nR Graphics Cookbook: https://r-graphics.org/"
+    "text": "This are the lecture notes for STAT 385: Statistics Programming Methods, offered in the Summer of 2024 at UIUC. If you have any comments/suggestions/concerns about the notes please contact me at wjia@illinois.edu."
   },
   {
     "objectID": "dplyr/dplyr.html",
@@ -910,256 +777,424 @@
     "text": "Example 11.5\nGet a list of grouped summary statistics (min, Q1, median, Q3, max, mean, std. dev., missing) by transmission type (without sub group) and class type.\n\n\ndispl_summary &lt;- mpg_transtype %&gt;%\n  group_by(trans_type, class)%&gt;%\n  dplyr::summarize(\n    min = min(displ, na.rm = TRUE),\n    q1 = quantile(displ, 0.25, na.rm = TRUE),\n    median = quantile(displ, 0.5, na.rm = TRUE),\n    q3 = quantile(displ, 0.75, na.rm = TRUE),\n    max = max(displ, na.rm = TRUE),\n    mean = mean(displ, na.rm = TRUE),\n    sd = sd(displ, na.rm = TRUE),\n    missing = sum(is.na(displ))\n  )\n\ndispl_summary\n#&gt; # A tibble: 13 × 10\n#&gt; # Groups:   trans_type [2]\n#&gt;    trans_type class        min    q1 median    q3   max  mean    sd missing\n#&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;int&gt;\n#&gt;  1 auto       2seater      5.7  5.82   5.95  6.08   6.2  5.95 0.354       0\n#&gt;  2 auto       compact      1.8  2      2.3   2.8    3.3  2.35 0.485       0\n#&gt;  3 auto       midsize      1.8  2.4    3.1   3.5    5.3  3.08 0.750       0\n#&gt;  4 auto       minivan      2.4  3.3    3.3   3.8    4    3.39 0.453       0\n#&gt;  5 auto       pickup       2.7  4.15   4.7   5.2    5.9  4.61 0.789       0\n#&gt;  6 auto       subcompact   1.6  1.87   2.1   2.98   4.6  2.6  1.05        0\n#&gt;  7 auto       suv          2.5  4      4.7   5.4    6.5  4.64 0.964       0\n#&gt;  8 manual     2seater      5.7  5.95   6.2   6.6    7    6.3  0.656       0\n#&gt;  9 manual     compact      1.8  2      2.2   2.65   3.1  2.3  0.425       0\n#&gt; 10 manual     midsize      1.8  2.35   2.45  2.85   3.5  2.54 0.470       0\n#&gt; 11 manual     pickup       2.7  3.7    4.2   4.7    5.2  4.13 0.835       0\n#&gt; 12 manual     subcompact   1.6  1.95   2.2   3.25   5.4  2.71 1.17        0\n#&gt; 13 manual     suv          2.5  2.5    2.7   3.35   4    2.99 0.590       0"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Preface",
+    "objectID": "ggplot2/ggplot2.html",
+    "href": "ggplot2/ggplot2.html",
+    "title": "Data Visualization with ggplot2",
     "section": "",
-    "text": "This are the lecture notes for STAT 385: Statistics Programming Methods, offered in the Summer of 2024 at UIUC. If you have any comments/suggestions/concerns about the notes please contact me at wjia@illinois.edu."
+    "text": "R is nowadays equipped with two independent (incompatible, yet coexisting) systems for graphics generation:\n\nTraditional System – base graphics\n\nBuilt-in functionality for creating charts and graphs in R.\nEasier to learn and use.\nDiscussed before.\n\nNewer System – grid\n\nggplot2 – an open-source data visualization package.\nVery flexible and gaining popularity rapidly nowadays.\nVery brief introduction to ggplot in this lecture.\nR Graph Gallery https://r-graph-gallery.com/\nggplot Cheatsheet https://rstudio.github.io/cheatsheets/html/data-visualization.html"
   },
   {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html",
+    "objectID": "ggplot2/ggplot2.html#data-visualization-in-r",
+    "href": "ggplot2/ggplot2.html#data-visualization-in-r",
+    "title": "Data Visualization with ggplot2",
+    "section": "",
+    "text": "R is nowadays equipped with two independent (incompatible, yet coexisting) systems for graphics generation:\n\nTraditional System – base graphics\n\nBuilt-in functionality for creating charts and graphs in R.\nEasier to learn and use.\nDiscussed before.\n\nNewer System – grid\n\nggplot2 – an open-source data visualization package.\nVery flexible and gaining popularity rapidly nowadays.\nVery brief introduction to ggplot in this lecture.\nR Graph Gallery https://r-graph-gallery.com/\nggplot Cheatsheet https://rstudio.github.io/cheatsheets/html/data-visualization.html"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#five-basic-graphs",
+    "href": "ggplot2/ggplot2.html#five-basic-graphs",
+    "title": "Data Visualization with ggplot2",
+    "section": "Five Basic Graphs",
+    "text": "Five Basic Graphs\nVisualization using ggplot2 will be introduced and compared with Base R Graphics.\n\nscatterplot\nlinegraph\nhistogram\nboxplot\nbarplot"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#recall-base-r-graphics",
+    "href": "ggplot2/ggplot2.html#recall-base-r-graphics",
+    "title": "Data Visualization with ggplot2",
+    "section": "Recall: Base R Graphics",
+    "text": "Recall: Base R Graphics\n\nScatterplot Example\nExample: Draw scatterplot of wind vs pressure of the data set storms (in the tidyverse package).\n\n# Plot scatter plot with x = pressure, y = wind\nplot(storms$pressure, storms$wind, col = \"blue\", \n     main = \"Scatterplot of Wind vs Pressure\")\n\n\n\n\n\n\n\n\n\n\nScatterplot Matrices Example\nExample: Draw scatterplot matrix of first 4 variables of the data frame iris (in the datasets package).\n\n#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n#&gt; 1          5.1         3.5          1.4         0.2  setosa\n#&gt; 2          4.9         3.0          1.4         0.2  setosa\n#&gt; 3          4.7         3.2          1.3         0.2  setosa\n#&gt; 4          4.6         3.1          1.5         0.2  setosa\n#&gt; 5          5.0         3.6          1.4         0.2  setosa\n#&gt; 6          5.4         3.9          1.7         0.4  setosa\n\n\n# pch = 19 stands for points symbols type 19,\n# which is solid circle\npairs(iris[,1:4], pch=19)\n\n\n\n\n\n\n\n\n\n\nLinegraph Example – Draw a linegraph of the Data Science search counts vs Month.\n\n#&gt;   Month_Since_2004 DataScience MachineLearning\n#&gt; 1                1          12              16\n#&gt; 2                2          10              14\n#&gt; 3                3           7              12\n#&gt; 4                4           7              16\n#&gt; 5                5           5              14\n#&gt; 6                6           7              11\n\n\npar(mfrow=c(1,2)) # 1 row, 2 columns (row-wise filling)\nplot(ds$Month_Since_2004, ds$DataScience, type=\"l\",\n     main = \"Line Plot for Data Science\",\n     xlab = \"Number of Months Since 2004\",\n     ylab = \"Data Science Search Counts\") # type=\"l\" represents lines\n\n### Plot with points and line\nplot(ds$Month_Since_2004, ds$DataScience, type=\"b\", # type=\"b\" represents both\n     main = \"Line and Point Plot for Data Science\",\n     xlab = \"Number of Months Since 2004\",\n     ylab = \"Data Science Search Counts\") \n\n\n\n\n\n\n\n\npar(mfrow=c(1,1)) # reset to default\n\n\n\nMultiple linegraphs Example\nExample: We could place multiple linegraphs on one plot. Draw two linegraphs (DataScience vs Month_Since_2004, MachineLearning vs Month_Since_2004) on a single plot.\n\nplot(ds$Month_Since_2004, ds$DataScience, type=\"l\", col=\"red\")\nlines(ds$Month_Since_2004, ds$MachineLearning, col=\"blue\")\n\n\n\n\n\n\n\n\n\n\nHistogram Example\nExample: Draw histogram of variable Sepal.Width in the data frame iris (in the datasets package).\n\ndata(iris)\nhist(iris$Sepal.Width)\n\n\n\n\n\n\n\n\n\n\nHistogram Matrices Example\n\nlibrary(Hmisc)\nhist.data.frame(iris[,1:4])\n\n\n\n\n\n\n\n\n\n\nBoxplot Example\nExample:\n\nDraw a boxplot of the variable wind in the data frame storms (in the tidyverse package).\nDraw a boxplot of wind vs category of the data frame storms.\n\n\npar(mfrow=c(2,2)) # Arrange the plots in 2*2 graphical matrix\n\n### (a) boxplot of wind\nboxplot(storms$wind, main = \"(a) Vertical\")\nboxplot(storms$wind, horizontal = TRUE, main = \"(a) Horizontal\")\n### (b) boxplot of wind over levels of category\n### vertical boxplot by default\nboxplot(wind ~ category, data = storms, main = \"(b) Vertical\")\n\n### horizontal boxplot\nboxplot(wind ~ category, data = storms, horizontal = TRUE, main = \"(b) Horizontal\")\n\n\n\n\n\n\n\n\npar(mfrow=c(1,1))\n\n\n\nBarplot Example\nExample: In the storms dataset,\n\nDraw a barplot of variable status.\nDraw a barplot of variable of status and category.\n\n\n### (a) Barplot\ncounts = table(storms$status)\nbarplot(counts)\n\n\n\n\n\n\n\n\ncounts\n#&gt; \n#&gt;            disturbance          extratropical              hurricane \n#&gt;                    171                   2151                   4803 \n#&gt;              other low subtropical depression      subtropical storm \n#&gt;                   1453                    151                    298 \n#&gt;    tropical depression         tropical storm          tropical wave \n#&gt;                   3569                   6830                    111\n\n# Horizontal barplot\nbarplot(counts, horiz=TRUE)\n\n\n\n\n\n\n\n\n### (b) Barplot of two variables\ncounts = table(storms$category, storms$status)\ncounts\n#&gt;    \n#&gt;     disturbance extratropical hurricane other low subtropical depression\n#&gt;   0           0             0         0         0                      0\n#&gt;   1           0             0      2548         0                      0\n#&gt;   2           0             0       993         0                      0\n#&gt;   3           0             0       593         0                      0\n#&gt;   4           0             0       553         0                      0\n#&gt;   5           0             0       116         0                      0\n#&gt;    \n#&gt;     subtropical storm tropical depression tropical storm tropical wave\n#&gt;   0                 0                   0              1             0\n#&gt;   1                 0                   0              0             0\n#&gt;   2                 0                   0              0             0\n#&gt;   3                 0                   0              0             0\n#&gt;   4                 0                   0              0             0\n#&gt;   5                 0                   0              0             0\n\nbarplot(counts, col= c(\"steelblue\", \"firebrick\", \"lightblue\", \"mistyrose\", \"lightcyan\",\n  \"lavender\", \"cornsilk\"), besid=TRUE, legend = rownames(counts),\n  args.legend=list(title=\"Category\"))\n\n\n\n\n\n\n\n\n\ncategory variable in storms represents the Saffir-Simpson storm category (range from 1 to 5), which the scale based only on a hurricane’s maximum sustained wind speed."
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#ggplot2",
+    "href": "ggplot2/ggplot2.html#ggplot2",
+    "title": "Data Visualization with ggplot2",
+    "section": "ggplot2",
+    "text": "ggplot2"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#why-ggplot",
+    "href": "ggplot2/ggplot2.html#why-ggplot",
+    "title": "Data Visualization with ggplot2",
+    "section": "Why ggplot",
+    "text": "Why ggplot\n\nLooks good!\n\n\nlibrary(ggplot2) is used by fivethirtyeight, Financial Times, BBC, the Urban Institute, and more.\n\n\nFlexible and expressive\n\n\nConstructing a visualization using library(ggplot2) is like playing a set of building blocks (it’s fun!)\nAdd different layers of component parts to the plot.\n\n\nReproducible and scalable\n\n\nOnce you have the plot-building-pipelines built, feed the data, select the code, Ctrl + Enter, then all done!\nIt’s almost as easy to make the 100th chart as it is to make the 2nd chart.\n\n\nEssential in analysis workflow"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#ggplot2-five-important-graphs-summary",
+    "href": "ggplot2/ggplot2.html#ggplot2-five-important-graphs-summary",
+    "title": "Data Visualization with ggplot2",
+    "section": "ggplot2– five important graphs – Summary",
+    "text": "ggplot2– five important graphs – Summary\nAssume we have the variables xvar, yvar in the data frame df.\n\n### scatterplot\nggplot(data=df, mapping=aes(x=xvar, y=yvar)) +\n  geom_point()\n\n### linegraph\nggplot(data=df, mapping=aes(x=xvar, y=yvar)) +\n  geom_line()\n\n  #linegraph with dots\n  ggplot(data=df, mapping=aes(x=xvar, y=yvar)) +\n    geom_line() +\n    geom_point()\n\n### histogram\nggplot(data=df, mapping=aes(x=xvar)) +\n  geom_histogram()\n\n### boxplot\n  # boxplot of one variable yvar\n  ggplot(data=df, mapping=aes(y=yvar)) +\n    geom_boxplot()\n  # boxplot of the yvar vs xvar\n  ggplot(data=df, mapping=aes(x=xvar, y=yvar)) +\n    geom_boxplot()\n\n### barplot of variable x\n  # If not pre-counted, use geom_bar()\n  ggplot(data=df, mapping=aes(x=xvar))+\n   geom_bar()\n  # If precounted, use geom_col()\n  ggplot(data=df_counted, mapping=aes(x=xvar,y=counts))+\n    geom_col()"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#ggplot2-scatterplot-example",
+    "href": "ggplot2/ggplot2.html#ggplot2-scatterplot-example",
+    "title": "Data Visualization with ggplot2",
+    "section": "ggplot2 – scatterplot – Example",
+    "text": "ggplot2 – scatterplot – Example\nFunction: geom_point(x,y)\nExample: Draw scatterplot of wind vs pressure of the data set storms (in the tidyverse package).\n\n# Data preparation\nlibrary(tidyverse)\ndata(storms) # data frame in tidyverse package\n\nstorms[6923, \"category\"]=0 #Fixed one error value\nstorms$category = as.factor(storms$category)\n\n\n# load the data set storms (in the tidyverse package)\nggplot(data = storms, mapping = aes(x=pressure, y=wind))+\n  geom_point()\n\n\n\n\n\n\n\n\n\nTake a quick peek on dealing with overplotting\n\n\n # Changing the transparency\nggplot(storms, mapping = aes(x=pressure, y=wind)) + \n  geom_jitter(alpha=0.2)"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#ggplot2-scatterplot-matrices-example",
+    "href": "ggplot2/ggplot2.html#ggplot2-scatterplot-matrices-example",
+    "title": "Data Visualization with ggplot2",
+    "section": "ggplot2 – scatterplot matrices – Example",
+    "text": "ggplot2 – scatterplot matrices – Example\nFunction: ggpairs(df)\nExample: Draw scatterplot matrix of first 4 variables of the data frame iris (in the datasets package).\n\ndata(iris)\n\nlibrary(GGally)\n#&gt; Registered S3 method overwritten by 'GGally':\n#&gt;   method from   \n#&gt;   +.gg   ggplot2\nggpairs(iris[,1:4])"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#ggplot2-linegraph-example",
+    "href": "ggplot2/ggplot2.html#ggplot2-linegraph-example",
+    "title": "Data Visualization with ggplot2",
+    "section": "ggplot2 – linegraph – Example",
+    "text": "ggplot2 – linegraph – Example\nFunction: geom_line()\nExample: From https://trends.google.com/, we downloaded the time series data set GoogleTrendDataScience.csv with three variables Month_Since_2004, DataScience, MachineLearning.\n\nDraw a linegraph of the Data Science search counts vs Month.\nDraw a linegraph with points.\n\n\nds = read.csv(\"GoogleTrendDataScience.csv\")\n\n### Plot with line only\np1 = ggplot(ds, aes(x = Month_Since_2004, y = DataScience)) +\n  geom_line()\n\n### Plot with points and line\np2= ggplot(ds, aes(x = Month_Since_2004, y = DataScience)) +\n  geom_line() +\n  geom_point(size=1.5)\n\nlibrary(gridExtra)\ngrid.arrange(p1, p2, nrow = 1, ncol = 2)"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#ggplot2-multiple-linegraphs-example",
+    "href": "ggplot2/ggplot2.html#ggplot2-multiple-linegraphs-example",
+    "title": "Data Visualization with ggplot2",
+    "section": "ggplot2 – Multiple linegraphs – Example",
+    "text": "ggplot2 – Multiple linegraphs – Example\nFunction: geom_line()\nExample: We could place multiple linegraphs on one plot. Draw two linegraphs (DataScience vs Month_Since_2004, MachineLearning vs Month_Since_2004) on one plot.\n\nggplot(ds) +\n  geom_line(aes(x=Month_Since_2004, y=DataScience), col = \"tomato3\", size = 1.5) +\n  geom_line(aes(x=Month_Since_2004, y=MachineLearning), col=\"steelblue\", size = 1.5)"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#ggplot2-histogram-example",
+    "href": "ggplot2/ggplot2.html#ggplot2-histogram-example",
+    "title": "Data Visualization with ggplot2",
+    "section": "ggplot2 – histogram – Example",
+    "text": "ggplot2 – histogram – Example\nFunction: geom_histogram()\nExample: Draw histogram of variable Sepal.Width in the data frame iris (in the datasets package).\n\n## Illini orange and blue!\nggplot(iris, aes(x=Sepal.Width)) +\n  geom_histogram(binwidth=0.2, color=\"#13294B\", fill=\"#FF5F05\")"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#ggplot2-boxplot-example",
+    "href": "ggplot2/ggplot2.html#ggplot2-boxplot-example",
+    "title": "Data Visualization with ggplot2",
+    "section": "ggplot2 – boxplot – Example",
+    "text": "ggplot2 – boxplot – Example\nFunctions: geom_boxplot()\nExample:\n\nDraw a boxplot of the variable wind in the data frame storms (in the tidyverse package).\nDraw a boxplot of wind vs category of the data frame storms .\n\n\n\n### (a) boxplot of wind\np1 = ggplot(storms, aes(y=wind))+\n  geom_boxplot()\n\n\n\n### (b) boxplot of wind over levels of category\n### vertical boxplot by default\np2 = ggplot(storms, aes(x = category, y = wind))+\n  geom_boxplot()\n\n### horizontal boxplot\np3 = ggplot(storms, aes(y = category, x = wind))+\n  geom_boxplot()\n# Or\np4 = ggplot(storms, aes(x = category, y = wind))+\n  geom_boxplot()+\n  coord_flip()\n\ngrid.arrange(p1, p2, p3, p4, nrow = 2, ncol = 2)"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#ggplot2-barplot-example",
+    "href": "ggplot2/ggplot2.html#ggplot2-barplot-example",
+    "title": "Data Visualization with ggplot2",
+    "section": "ggplot2 – barplot – Example",
+    "text": "ggplot2 – barplot – Example\nFunctions: geom_bar(), geom_col()\nExample: In the storms dataset,\n\nDraw a barplot of variable status.\nDraw a barplot of variable of status and category\n\n\n### Barplot\n    # If not pre-counted, use geom_bar()\n    ggplot(storms, aes(x = status))+\n      geom_bar()+\n      scale_x_discrete(guide = guide_axis(angle = 45)) ### Rotate the x axis label\n\n\n\n\n\n\n\n\n    # If precounted, use geom_col()\n    storms %&gt;% \n      group_by(status) %&gt;%\n      summarise(count = n())%&gt;%\n      ggplot(aes(x = status, y = count)) +\n      geom_col()+\n      scale_x_discrete(guide = guide_axis(angle = 45)) ### Rotate the x axis label\n\n\n\n\n\n\n\n\n# Horizontal barplot\nggplot(storms, aes(y=status))+\n  geom_bar()\n\n\n\n\n\n\n\n\n### Barplot of two variables\nggplot(storms, aes(x = status, fill = factor(category)))+\n  geom_bar(position = \"dodge\")+\n  scale_x_discrete(guide = guide_axis(angle = 45)) ### Rotate the x axis label\n\n\n\n\n\n\n\n\n\ncategory variable in storms represents the Saffir-Simpson storm category (range from 1 to 5), which the scale based only on a hurricane’s maximum sustained wind speed.\n\n\n### Barplot\np1 = ggplot(storms, aes(x = status))+\n  geom_bar()+\n  scale_x_discrete(guide = guide_axis(angle = 45)) ### Rotate the x axis label\n\n# Horizontal barplot\np2 = ggplot(storms, aes(y = status))+\n  geom_bar()\n\n### Barplot of two variables\np3 = ggplot(storms, aes(x = status, fill = factor(category))) +\n  geom_bar(position = \"dodge\")+\n  scale_x_discrete(guide = guide_axis(angle = 45)) ### Rotate the x axis label\n\ngrid.arrange(p1, p2, p3, layout_matrix = rbind(c(1,2), c(3,3)))"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#want-to-save-your-ggplot",
+    "href": "ggplot2/ggplot2.html#want-to-save-your-ggplot",
+    "title": "Data Visualization with ggplot2",
+    "section": "Want to save your ggplot?",
+    "text": "Want to save your ggplot?\n\nggplot(storms, aes(x = status, fill = factor(category))) +\n  geom_bar(position = \"dodge\")+\n  scale_x_discrete(guide = guide_axis(angle = 45))\n\nggsave(\"The Barplots.png\") ### Save the last plot\nggsave(\"p1.png\", plot = p1) ### Save the plot specified"
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#comments",
+    "href": "ggplot2/ggplot2.html#comments",
+    "title": "Data Visualization with ggplot2",
+    "section": "Comments",
+    "text": "Comments\n\nIf a graph could be done with ggplot2, it could probably be done with base R graphics, and vice versa.\nTo take a quick look at the data, the one-line base R graphics functions are quick and easy.\nFor data visualization, ggplot2 is much easier to code and with a much better output."
+  },
+  {
+    "objectID": "ggplot2/ggplot2.html#resources",
+    "href": "ggplot2/ggplot2.html#resources",
+    "title": "Data Visualization with ggplot2",
+    "section": "Resources",
+    "text": "Resources\n\nR Graph Gallery https://r-graph-gallery.com/\nRstudio Cheatsheets https://www.rstudio.com/resources/cheatsheets/\nReference Books (Free online books with excellent material)\n\nR for Data Science: https://r4ds.had.co.nz/index.html\nHands-on Programming with R: https://rstudio-education.github.io/hopr/\nR Graphics Cookbook: https://r-graphics.org/"
+  },
+  {
+    "objectID": "Lab5/Lab5.html",
+    "href": "Lab5/Lab5.html",
     "title": "",
     "section": "",
-    "text": "library(tidyverse) # stringr package is part of the tidyverse collection."
+    "text": "Please ensure you review the document Illustrate S3 System – U of I Women’s Basketball Team example on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 5 to Gradescope."
   },
   {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#illustrate-s3-system-u-of-i-womens-basketball-team-example",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#illustrate-s3-system-u-of-i-womens-basketball-team-example",
+    "objectID": "Lab5/Lab5.html#lab-5-s3-for-workshop-participants-instruction",
+    "href": "Lab5/Lab5.html#lab-5-s3-for-workshop-participants-instruction",
     "title": "",
-    "section": "Illustrate S3 System – U of I Women’s Basketball Team example",
-    "text": "Illustrate S3 System – U of I Women’s Basketball Team example\n\nEnsure you’ve read the following section before watching this video.\n\nhttps://adv-r.hadley.nz/s3.html#s3-classes\n\nThe main components of S3: classes, generics, and methods\nThree functions used in most classes: constructor, helper, validator.\nGenerics, methods, and dispatch"
+    "section": "",
+    "text": "Please ensure you review the document Illustrate S3 System – U of I Women’s Basketball Team example on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab5HelpDoc/Lab5HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 5 to Gradescope."
   },
   {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#u-of-i-womens-basketball-team",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#u-of-i-womens-basketball-team",
+    "objectID": "Lab5/Lab5.html#background",
+    "href": "Lab5/Lab5.html#background",
     "title": "",
-    "section": "U of I Women’s Basketball Team",
-    "text": "U of I Women’s Basketball Team\nhttps://fightingillini.com/sports/womens-basketball/roster\n\nObjective: Display the profile information according to roles\n\nFor player, print the profile information like\n\nAdalia Mckenzie is a player on the U of I Women’s Basketball Team. Her jersey number is 24. Adalia is a student in her Senior year. She is 5-10 tall (177.8 cm). Her position is Guard.\n\nFor staff, print the profile information like\n\nShauna Green is the Head Coach of the U of I Women’s Basketball Team.\nMaya Solomon is a staff member of the U of I Women’s Basketball Team.\n\nFor all other people, like the spectator, print the information like\n\nWeijia Jia is neither a player nor a staff member."
+    "section": "Background",
+    "text": "Background\nSuppose a university is hosting a campus-wide data science workshop with undergraduate and graduate student participants, along with many faculty members showing interest in the series of workshops. Develop S3 classes for students, faculty, etc., incorporating validators and necessary helper functions."
   },
   {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-player-class",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-player-class",
+    "objectID": "Lab5/Lab5.html#question-1",
+    "href": "Lab5/Lab5.html#question-1",
     "title": "",
-    "section": "Create Player Class",
-    "text": "Create Player Class\n\nConstructor Function\n\nnew_player = function(x){\n  validate_player(x) # Validator, defined below\n  structure(\n    list(firstname = str_to_title(x$firstname), # str_to_title() is from stringr\n         lastname = str_to_title(x$lastname), # str_to_title() converts to title case\n         jersey = as.character(x$jersey),\n         height_inches = x$height,\n         position = str_to_title(x$position),\n         studentclass = str_to_title(x$class), \n         heightcm = convertHeightToCm(x$height) # Helper function, defined below\n         ),\n    class = \"player\"\n  )\n}\n\n\n\nHelper Function\nConvert the height from the “feet-inches” pattern to centimeters.\n\nconvertHeightToCm &lt;- function(height) {\n    # Split the input string by the dash\n    parts &lt;- str_split(height, \"-\")[[1]] # str_split() is from stringr package\n    \n    # Extract feet and inches as numeric values\n    feet &lt;- as.numeric(parts[1])\n    inches &lt;- as.numeric(parts[2])\n    \n    # Convert feet to inches and then total inches to centimeters\n    height_inches &lt;- (feet * 12) + inches\n    height_cm &lt;- height_inches * 2.54\n    \n    return(height_cm)\n}\n\n\n\nValidator Function\n\nIf any information is missing, print ‘… is missing’.\nIf the pattern of height doesn’t follow the “feet-inches” pattern, print a warning message.\nIf the position is not one of the three categories (Guard, Forward, Center), print a warning message.\nIf the class is not one of the five categories (Freshman, Sophomore, Junior, Senior, Fifth), print a warning message.\n\n\nvalidate_player &lt;- function(x){\n  if(is.na(x$firstname)) print(\"The player's first name is missing.\")\n  if(is.na(x$lastname)) print(\"The player's last name is missing.\")\n  if(is.na(x$jersey)) print(\"The player's jersey information is missing.\")\n  if(is.na(x$height)) print(\"The player's height information is missing.\")\n  if(is.na(x$position)) print(\"The player's position information is missing.\")\n  if(is.na(x$class)) print(\"The player's class information is missing.\")\n  \n  \n  if(!grepl(\"^\\\\d+-\\\\d+$\", x$height)) # grepl() is searching for matches\n    print(\"The player's height does not follow the 'feet-inches' pattern.\")\n  if(!str_to_title(x$position) %in% c(\"Guard\", \"Forward\", \"Center\")) \n    print(\"The player's position information is invalid.\")\n  if(!str_to_title(x$class) %in% c(\"Freshman\", \"Sophomore\", \"Junior\", \"Senior\", \"Fifth\")) \n    print(\"The player's class information is invalid.\")\n}"
+    "section": "Question 1",
+    "text": "Question 1\n\n[10 pts] Create the constructor function new_student() to generate objects of the “student” class. Student participants provide the following information: name, major, department, classYear (Freshman, Sophomore, Junior, Senior, or Graduate), UofI_email, and dsExperience which represents years of experience in data science.\n[10 pts] Create the validator function validate_student(). Below is a list of validations to include.\n\nValidations:\n\nIf any of the information required above is missing, print a warning message.\nIf dsExperience is not numeric, or the length is not 1, or the years is lower than 0 or greater than 20, print warning message that: The data science experience years information is not valid. Please use || for “or”.\nIf classYear doesn’t belong in one of the five categories, print the warning message that: The student’s class information is invalid.\nIf UofI_emailprovided is not character type, print the warning message: The student’s email information is invalid.\n\n\n[10 pts] Define a helper function to fill in or complete an email address. This is necessary because some students might only provide their NetID instead of a full email address. The completeEmail() function should take UofI_email as input and add @illinois.edu if needed. The output of completeEmail() function is saved as Complete_UofI_email.\n\n[Hint:\n\nConsider using an if-else statement to decide whether to append the domain.\nThe regular expression grepl(\"@illinois\\\\.edu\", UofI_email), checking if UofI_email contains @illinois.edu, might be helpful. ]"
   },
   {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-staff-class",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-staff-class",
+    "objectID": "Lab5/Lab5.html#question-2",
+    "href": "Lab5/Lab5.html#question-2",
     "title": "",
-    "section": "Create Staff Class",
-    "text": "Create Staff Class\n\nConstructor Function\n\n\nnew_staff = function(x){\n  validate_staff(x)\n  structure(\n    list(name = x$name,\n         role = x$role,\n         role_with_article = article_selector(x$role) \n         ),\n    class = \"staff\"\n  )\n}\n\n\n\nHelper Function\nChoose appropriate article for the role information.\n\narticle_selector &lt;- function(role) {\n title &lt;- switch(\n   role,\n   \"head coach\" = \"the Head Coach\",\n   \"associate head coach\" = \"the Associate Head Coach\",\n   \"assistant coach\" = \"an Assistant Coach\",\n   \"a staff member\"\n  )\n return(title)\n}\n\n\n\nValidator Function\n\nif name or role is missing or not character type, print warning message.\n\n\nvalidate_staff &lt;- function(x){\n  if(is.na(x$name) || !is.character(x$name)) \n    print(\"The staff's name is not valid\")\n  if(is.na(x$role)|| !is.character(x$role)) \n    print(\"The staff's role information is not valid\")\n}"
+    "section": "Question 2",
+    "text": "Question 2\n\n[10 pts] Create the constructor function new_faculty() to generate objects of the “faculty” class. Faculty participants have the following information: name and department.\n[10 pts] Create the constructor function new_other() to generate objects of the “Other” class. Other participants have the following information: name."
   },
   {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#create-spectator-class",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#create-spectator-class",
+    "objectID": "Lab5/Lab5.html#question-3",
+    "href": "Lab5/Lab5.html#question-3",
     "title": "",
-    "section": "Create Spectator Class",
-    "text": "Create Spectator Class\n\n\nnew_spectator = function(x){\n  structure(\n    list(name = x$name),\n    class = \"spectator\"\n  )\n}"
+    "section": "Question 3",
+    "text": "Question 3\n[30 pts] Define generic and methods using the constructors from Question 1 and 2 to create classes for student, faculty, and other participants. Implement a participantInfo() function that prints specific information based on the class of the object.\nFor example,\n\nSwift &lt;- new_student(x = list(\n  name = \"Taylor Swift\",\n  major = \"Fisheries and Wildlife\",\n  department = \"Biological Sciences\",\n  classYear = \"Junior\", \n  UofI_email = \"Tswift\",\n  dsExperience = 1.5))\nparticipantInfo(Swift)\n\n\nRonaldo &lt;- new_faculty(x = list(\n  name = \"Cristiano Ronaldo\", \n  department = \"Applied Health Science\"\n  )\n)\nparticipantInfo(Ronaldo)\n\n\nSomeone &lt;- new_other(x = list(\n  name = \"Someone Else\"\n  )\n)\nparticipantInfo(Someone)\n\nshould show the following:\n\nFor student\n\nExample: “Taylor Swift is a Fisheries And Wildlife major. The email address is Tswift@illinois.edu. The student has 1.5 years of experience in data science.”\n\nFor faculty\n\nExample: “Cristiano Ronaldo is from the Applied Health Science Department.”\n\nFor other people\n\nExample: “Someone Else is neither a faculty member nor a student.”"
   },
   {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#generic-and-methods",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#generic-and-methods",
+    "objectID": "Lab6/Lab6.html",
+    "href": "Lab6/Lab6.html",
     "title": "",
-    "section": "Generic and Methods",
-    "text": "Generic and Methods\n\nDefine the generic print_profile and the methods.\n\n\nprint_profile = function(x){\n  UseMethod(\"print_profile\")\n}\n\nprint_profile.player = function(x){\n  print(paste0(x$firstname, \" \", x$lastname, \" is a player on the U of I Women's Basketball Team. Her jersey number is \", x$jersey, \". \",  x$firstname, \" is a student in her \", x$studentclass, \" year. She is \", x$height_inches, \" tall (\", x$heightcm,\" cm). Her position is \", x$position, \".\" \n               )\n        )\n}\n\nprint_profile.staff = function(x){\n  print(paste0(x$name, \" is \", x$role_with_article, \n               \" of the U of I Women's Basketball Team.\" ))\n}\n\nprint_profile.default = function(x){\n  print(paste0(x$name, \" is neither a player nor a staff member.\"))\n}"
+    "section": "",
+    "text": "Please ensure you review the document STAT 385 Lab 6 Help Document – Kronecker Product Illustration on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab6HelpDoc/Lab6HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 6 to Gradescope."
   },
   {
-    "objectID": "Lab5HelpDoc/Lab5HelpDoc.html#test",
-    "href": "Lab5HelpDoc/Lab5HelpDoc.html#test",
+    "objectID": "Lab6/Lab6.html#lab-6-instruction",
+    "href": "Lab6/Lab6.html#lab-6-instruction",
     "title": "",
-    "section": "Test",
-    "text": "Test\n\n# Player\n\nMckenzie &lt;- new_player(x = list(\n  firstname = \"Adalia\",\n  lastname = \"Mckenzie\",\n  jersey = \"24\",\n  height = \"5-10\",\n  position = \"guard\",\n  class = \"senior\"\n)\n)\n\n### Incorrect Usage\nBryant &lt;- new_player(x = list(\n  firstname = \"Genesis\",\n  lastname = \"Bryant\",\n  jersey = \"1\",\n  height = \"5'6''\", \n  position = \"guard\",\n  class = \"fifth\"))\n#&gt; [1] \"The player's height does not follow the 'feet-inches' pattern.\"\n#&gt; Warning in convertHeightToCm(x$height): NAs introduced by coercion\n# Corrected\nBryant &lt;- new_player(x = list(\n  firstname = \"Genesis\",\n  lastname = \"Bryant\",\n  jersey = \"1\",\n  height = \"5-6\", \n  position = \"guard\",\n  class = \"fifth\"))\n\n\n# Staff\n\nGreen &lt;- new_staff(x = list(\n  name = \"Shauna Green\", \n  role = \"head coach\"\n  )\n)\n\nSolomon &lt;- new_staff(x = list(\n  name = \"Maya Solomon\", \n  role = \"director of basketball operations\"\n  )\n)\n\n# Spectator\n\nJia &lt;- new_spectator(x = list(\n  name = \"Weijia Jia\"\n  ))\nprint_profile(Mckenzie)\n#&gt; [1] \"Adalia Mckenzie is a player on the U of I Women's Basketball Team. Her jersey number is 24. Adalia is a student in her Senior year. She is 5-10 tall (177.8 cm). Her position is Guard.\"\nprint_profile(Bryant)\n#&gt; [1] \"Genesis Bryant is a player on the U of I Women's Basketball Team. Her jersey number is 1. Genesis is a student in her Fifth year. She is 5-6 tall (167.64 cm). Her position is Guard.\"\nprint_profile(Green)\n#&gt; [1] \"Shauna Green is the Head Coach of the U of I Women's Basketball Team.\"\nprint_profile(Solomon)\n#&gt; [1] \"Maya Solomon is a staff member of the U of I Women's Basketball Team.\"\nprint_profile(Jia)\n#&gt; [1] \"Weijia Jia is neither a player nor a staff member.\""
+    "section": "",
+    "text": "Please ensure you review the document STAT 385 Lab 6 Help Document – Kronecker Product Illustration on Canvas under Week 5 Module or visit the weblink https://ycjiaweijia.github.io/STAT-385-Assignments/Lab6HelpDoc/Lab6HelpDoc for helpful guidance on this lab.\nPlease complete the following questions and submit your Lab 6 to Gradescope."
   },
   {
-    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#why-vectorization",
-    "href": "Lab6HelpDoc/Lab6HelpDoc.html#why-vectorization",
-    "title": "",
-    "section": "Why Vectorization?",
-    "text": "Why Vectorization?\n\nAvoid using for loops in R when possible.\nUse vectorization whenever you can."
-  },
-  {
-    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product",
-    "href": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product",
-    "title": "",
-    "section": "Kronecker Product",
-    "text": "Kronecker Product\nIn mathematics, the Kronecker product, sometimes denoted by \\(\\bigotimes\\), is an operation on two matrices of arbitrary size resulting a block matrix. It is a specialization of the tensor product (which is denoted by the same symbol) from vectors to matrices and gives the matrix of the tensor product linear map with respect to a standard choice of basis. The Kronecker product is to be distinguished from the usual matrix multiplication, which is an entirely different operation. The Kronecker product is also sometimes called matrix direct product.\n\nYou can find more information about Kronecker Product on Wikipedia https://en.wikipedia.org/wiki/Kronecker_product."
-  },
-  {
-    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#mathemetical-definition-of-kronecker-product",
-    "href": "Lab6HelpDoc/Lab6HelpDoc.html#mathemetical-definition-of-kronecker-product",
+    "objectID": "Lab6/Lab6.html#mathemetical-definition-of-kronecker-product",
+    "href": "Lab6/Lab6.html#mathemetical-definition-of-kronecker-product",
     "title": "",
     "section": "Mathemetical Definition of Kronecker Product",
-    "text": "Mathemetical Definition of Kronecker Product\nIf \\(\\mathbf{A}\\) is an \\(m \\times n\\) matrix and \\(\\mathbf{B}\\) is a \\(p \\times q\\) matrix, then the Kronecker product \\(\\mathbf{A}\\bigotimes \\mathbf{B}\\) is the \\(pm \\times qn\\) block matrix:\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\begin{bmatrix}\na_{11}\\mathbf{B}\\quad  \\cdots \\quad a_{1n}\\mathbf{B}\\\\\n\\vdots\\quad  \\ddots\\quad  \\vdots\\\\\na_{m1}\\mathbf{B}\\quad  \\cdots \\quad a_{mn}\\mathbf{B}\n\\end{bmatrix},\\]\nmore explicitly,\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} =\\left[\\begin{array}{cccccccccc}\na_{11}b_{11}&  a_{11}b_{12} & \\cdots & a_{11}b_{1q}& \\cdots& \\cdots& a_{1n}b_{11}&  a_{1n}b_{12} & \\cdots & a_{1n}b_{1q} \\\\\na_{11}b_{21}&  a_{11}b_{22} & \\cdots & a_{11}b_{2q}& \\cdots& \\cdots& a_{1n}b_{21}&  a_{1n}b_{22} & \\cdots & a_{1n}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{11}b_{p1}&  a_{11}b_{p2} & \\cdots & a_{11}b_{pq}& \\cdots& \\cdots& a_{1n}b_{p1}&  a_{1n}b_{p2} & \\cdots & a_{1n}b_{pq} \\\\\n\\vdots& \\vdots&  &  \\vdots & \\ddots& & \\vdots  & \\vdots& & \\vdots \\\\\n\\vdots& \\vdots&  &  \\vdots & &\\ddots & \\vdots  & \\vdots& & \\vdots \\\\\na_{m1}b_{11}&  a_{m1}b_{12} & \\cdots & a_{m1}b_{1q}& \\cdots& \\cdots& a_{mn}b_{11}&  a_{mn}b_{12} & \\cdots & a_{mn}b_{1q} \\\\\na_{m1}b_{21}&  a_{m1}b_{22} & \\cdots & a_{m1}b_{2q}& \\cdots& \\cdots& a_{mn}b_{21}&  a_{mn}b_{22} & \\cdots & a_{mn}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{m1}b_{p1}&  a_{m1}b_{p2} & \\cdots & a_{m1}b_{pq}& \\cdots& \\cdots& a_{mn}b_{p1}&  a_{mn}b_{p2} & \\cdots & a_{mn}b_{pq}\n\\end{array}\\right],\\]"
+    "text": "Mathemetical Definition of Kronecker Product\nIn mathematics, the Kronecker product, sometimes denoted by \\(\\bigotimes\\), is an operation on two matrices of arbitrary size resulting a block matrix. It is a specialization of the tensor product (which is denoted by the same symbol) from vectors to matrices and gives the matrix of the tensor product linear map with respect to a standard choice of basis. The Kronecker product is to be distinguished from the usual matrix multiplication, which is an entirely different operation. The Kronecker product is also sometimes called matrix direct product.\n\nYou can find more information about Kronecker Product on Wikipedia https://en.wikipedia.org/wiki/Kronecker_product.\n\nIf \\(\\mathbf{A}\\) is an \\(m \\times n\\) matrix and \\(\\mathbf{B}\\) is a \\(p \\times q\\) matrix, then the Kronecker product \\(\\mathbf{A}\\bigotimes \\mathbf{B}\\) is the \\(pm \\times qn\\) block matrix:\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\begin{bmatrix}\na_{11}\\mathbf{B}\\quad  \\cdots \\quad a_{1n}\\mathbf{B}\\\\\n\\vdots\\quad  \\ddots\\quad  \\vdots\\\\\na_{m1}\\mathbf{B}\\quad  \\cdots \\quad a_{mn}\\mathbf{B}\n\\end{bmatrix},\\]\nmore explicitly,\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} =\\left[\\begin{array}{cccccccccc}\na_{11}b_{11}&  a_{11}b_{12} & \\cdots & a_{11}b_{1q}& \\cdots& \\cdots& a_{1n}b_{11}&  a_{1n}b_{12} & \\cdots & a_{1n}b_{1q} \\\\\na_{11}b_{21}&  a_{11}b_{22} & \\cdots & a_{11}b_{2q}& \\cdots& \\cdots& a_{1n}b_{21}&  a_{1n}b_{22} & \\cdots & a_{1n}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{11}b_{p1}&  a_{11}b_{p2} & \\cdots & a_{11}b_{pq}& \\cdots& \\cdots& a_{1n}b_{p1}&  a_{1n}b_{p2} & \\cdots & a_{1n}b_{pq} \\\\\n\\vdots& \\vdots&  &  \\vdots & \\ddots& & \\vdots  & \\vdots& & \\vdots \\\\\n\\vdots& \\vdots&  &  \\vdots & &\\ddots & \\vdots  & \\vdots& & \\vdots \\\\\na_{m1}b_{11}&  a_{m1}b_{12} & \\cdots & a_{m1}b_{1q}& \\cdots& \\cdots& a_{mn}b_{11}&  a_{mn}b_{12} & \\cdots & a_{mn}b_{1q} \\\\\na_{m1}b_{21}&  a_{m1}b_{22} & \\cdots & a_{m1}b_{2q}& \\cdots& \\cdots& a_{mn}b_{21}&  a_{mn}b_{22} & \\cdots & a_{mn}b_{2q} \\\\\n\\vdots& \\vdots&  \\ddots&  \\vdots & & & \\vdots& \\vdots&  \\ddots&  \\vdots \\\\\na_{m1}b_{p1}&  a_{m1}b_{p2} & \\cdots & a_{m1}b_{pq}& \\cdots& \\cdots& a_{mn}b_{p1}&  a_{mn}b_{p2} & \\cdots & a_{mn}b_{pq}\n\\end{array}\\right],\\]"
   },
   {
-    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product-example",
-    "href": "Lab6HelpDoc/Lab6HelpDoc.html#kronecker-product-example",
-    "title": "",
-    "section": "Kronecker Product Example",
-    "text": "Kronecker Product Example\n\\[A = \\begin{bmatrix}\n1 \\quad 3 \\\\\n2 \\quad 4\n\\end{bmatrix}\\]\n\\[B = \\begin{bmatrix}\n0 \\quad 5 \\\\\n6 \\quad 7\n\\end{bmatrix}\\]\nThen\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\left[\\begin{array}{cccc}\n1\\times 0 & 1\\times 5 & 3\\times 0 & 3\\times 5\\\\\n1\\times 6 & 1\\times 7 & 3\\times 6 & 3\\times 7\\\\\n2\\times 0 & 2\\times 5 & 4\\times 0 & 4\\times 5\\\\\n2\\times 6 & 2\\times 7 & 4\\times 6 & 4\\times 7\n\\end{array}\\right] =\n\\left[\\begin{array}{cccc}\n0 & 5 & 0 & 15\\\\\n6 & 7 & 18 & 21\\\\\n0 & 10 & 0 & 20\\\\\n12 & 14 & 24 & 28\n\\end{array}\\right].\\]"
-  },
-  {
-    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#calculate-kronecker-product-in-r",
-    "href": "Lab6HelpDoc/Lab6HelpDoc.html#calculate-kronecker-product-in-r",
-    "title": "",
-    "section": "Calculate Kronecker Product in R",
-    "text": "Calculate Kronecker Product in R\nLet \\(A\\) and \\(B\\) be \\(2 \\times 2\\) matrices as follows:\n\n(A &lt;- matrix(1:4, nrow = 2))\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    3\n#&gt; [2,]    2    4\n(B &lt;- matrix(c(0, 6, 5, 7), nrow = 2))\n#&gt;      [,1] [,2]\n#&gt; [1,]    0    5\n#&gt; [2,]    6    7"
-  },
-  {
-    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#method-i-the-kronecker-function",
-    "href": "Lab6HelpDoc/Lab6HelpDoc.html#method-i-the-kronecker-function",
-    "title": "",
-    "section": "Method I: The kronecker() Function",
-    "text": "Method I: The kronecker() Function\n\nA\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    3\n#&gt; [2,]    2    4\nB\n#&gt;      [,1] [,2]\n#&gt; [1,]    0    5\n#&gt; [2,]    6    7\nkronecker(A, B)\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28"
-  },
-  {
-    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#method-ii-for-loop",
-    "href": "Lab6HelpDoc/Lab6HelpDoc.html#method-ii-for-loop",
-    "title": "",
-    "section": "Method II: For Loop",
-    "text": "Method II: For Loop\n\\[\\mathbf{A}\\bigotimes \\mathbf{B} = \\left[\\begin{array}{cccc}\n1\\times 0 & 1\\times 5 & 3\\times 0 & 3\\times 5\\\\\n1\\times 6 & 1\\times 7 & 3\\times 6 & 3\\times 7\\\\\n2\\times 0 & 2\\times 5 & 4\\times 0 & 4\\times 5\\\\\n2\\times 6 & 2\\times 7 & 4\\times 6 & 4\\times 7\n\\end{array}\\right] =\n\\left[\\begin{array}{cccc}\n0 & 5 & 0 & 15\\\\\n6 & 7 & 18 & 21\\\\\n0 & 10 & 0 & 20\\\\\n12 & 14 & 24 & 28\n\\end{array}\\right].\\] Locations:\n\n\n\n\n\n\nforloop_kronecker &lt;- function(A, B){\n  Res = matrix(NA, nrow = 2*2, ncol = 2*2)\n  k = 0\n  l = 0\n  \n  for (j in 1:2){\n    k = 0\n    for (i in 1:2){\n      Res[(k+1):(k+2), (l+1):(l+2)] &lt;- A[i, j] * B\n      k = k + 2\n    }\n    l = l + 2\n  }\n  Res\n}\n\nforloop_kronecker(A, B)\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28"
-  },
-  {
-    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#method-iii-vectorization-recommended",
-    "href": "Lab6HelpDoc/Lab6HelpDoc.html#method-iii-vectorization-recommended",
-    "title": "",
-    "section": "Method III: Vectorization [Recommended]",
-    "text": "Method III: Vectorization [Recommended]\n\nObjective\n\n\n\n\n\n\n\nDeal with A\n\n\n\n\nRecall\n\nrep(1:2, each = 2)\n#&gt; [1] 1 1 2 2\n\n\nA\n#&gt;      [,1] [,2]\n#&gt; [1,]    1    3\n#&gt; [2,]    2    4\n\nA[rep(1:2, each = 2), rep(1:2, each = 2)]\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    1    1    3    3\n#&gt; [2,]    1    1    3    3\n#&gt; [3,]    2    2    4    4\n#&gt; [4,]    2    2    4    4\n\n\n\nDeal with B\n\n\n\n\nRecall\n\nrep(1:2, times = 2)\n#&gt; [1] 1 2 1 2\n\n\nB\n#&gt;      [,1] [,2]\n#&gt; [1,]    0    5\n#&gt; [2,]    6    7\nB[rep(1:2, times = 2), rep(1:2, times = 2)]\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0    5\n#&gt; [2,]    6    7    6    7\n#&gt; [3,]    0    5    0    5\n#&gt; [4,]    6    7    6    7\n\n\n\nPut Everything Together\n\nrepeated_A &lt;- A[rep(1:2, each = 2), rep(1:2, each = 2)]\nrepeated_B &lt;- B[rep(1:2, times = 2), rep(1:2, times = 2)]\nrepeated_A * repeated_B\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28\n\n\n\nWrap the Calculation into a Function (for \\(2 \\times 2\\) matrices)\n\nvectorization_kronecker &lt;- function(A, B){\n  repeated_A &lt;- A[rep(1:2, each = 2), rep(1:2, each = 2)]\n  repeated_B &lt;- B[rep(1:2, times = 2), rep(1:2, times = 2)]\n  return(repeated_A * repeated_B)\n}\n\nvectorization_kronecker(A, B)\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    0    5    0   15\n#&gt; [2,]    6    7   18   21\n#&gt; [3,]    0   10    0   20\n#&gt; [4,]   12   14   24   28"
-  },
-  {
-    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#compare-the-cpu-times-that-expressions-used",
-    "href": "Lab6HelpDoc/Lab6HelpDoc.html#compare-the-cpu-times-that-expressions-used",
-    "title": "",
-    "section": "Compare the CPU Times that Expressions Used",
-    "text": "Compare the CPU Times that Expressions Used\n\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A,B),\n  kronecker(A, B),\n  forloop_kronecker(A, B),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                           expr  min   lq     mean median   uq    max neval\n#&gt;  vectorization_kronecker(A, B)  1.6  2.0  2.62334    2.1  2.3 1683.0 10000\n#&gt;                kronecker(A, B) 13.6 15.3 18.76118   15.8 16.5 1417.7 10000\n#&gt;        forloop_kronecker(A, B)  2.8  3.3  4.20677    3.5  3.7 1279.3 10000"
-  },
-  {
-    "objectID": "Lab6HelpDoc/Lab6HelpDoc.html#what-if-a-and-b-are-not-2-times-2-matrices",
-    "href": "Lab6HelpDoc/Lab6HelpDoc.html#what-if-a-and-b-are-not-2-times-2-matrices",
-    "title": "",
-    "section": "What if A and B are not \\(2 \\times 2\\) matrices?",
-    "text": "What if A and B are not \\(2 \\times 2\\) matrices?\nWith the assistance of this instructional document, please proceed with Lab 6.\nIn Lab 6, you will update the forloop_kronecker() and vectorization_kronecker() functions to make them suitable for calculating matrices A and B with arbitrary dimensions. And find result similar to the following.\n\nA1 &lt;- matrix(1:16, nrow = 4, ncol = 4)\nB1 &lt;- matrix(1:20, nrow = 4, ncol = 5)\n\nA2 &lt;- matrix(1:40, nrow = 5, ncol = 8)\nB2 &lt;- matrix(1:50, nrow = 10, ncol = 5)\n\n\nCompare the CPU Times that Expressions Used for A1 and B1\n\n\n# A1 and B1\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A1,B1),\n  kronecker(A1, B1),\n  forloop_kronecker(A1, B1),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                             expr  min   lq     mean median   uq    max neval\n#&gt;  vectorization_kronecker(A1, B1)  4.4  5.2  6.90709    5.5  5.8 1764.6 10000\n#&gt;                kronecker(A1, B1) 14.1 15.8 18.59105   16.4 17.3 1911.6 10000\n#&gt;        forloop_kronecker(A1, B1) 21.1 23.6 28.10669   24.6 25.6 6144.4 10000\n\n\nCompare the CPU Times that Expressions Used for A2 and B2\n\n\n# A2 and B2\n\nmicrobenchmark::microbenchmark(\n  vectorization_kronecker(A2,B2),\n  kronecker(A2, B2),\n  forloop_kronecker(A2, B2),\n  times=10000L\n)\n#&gt; Unit: microseconds\n#&gt;                             expr  min   lq     mean median   uq    max neval\n#&gt;  vectorization_kronecker(A2, B2)  9.5 10.7 12.40686   11.3 12.0  240.7 10000\n#&gt;                kronecker(A2, B2) 19.8 22.7 29.42047   24.4 28.0 2941.8 10000\n#&gt;        forloop_kronecker(A2, B2) 53.1 58.3 72.02094   61.0 64.2 3951.4 10000"
-  },
-  {
-    "objectID": "Lab8/Lab8.html",
-    "href": "Lab8/Lab8.html",
-    "title": "Lab 8 Reaction Time Project",
-    "section": "",
-    "text": "About the Data and Survey\nIn Spring 2024 STAT 425 class, we collected data on Reaction Time from around 150 students. Please find the survey used to collect this data Reaction Time Survey Questions.pdf. There are two datasets for Lab 8:\n\nThe real data – “Reaction Time Survey.csv”\nThe mock data – “Mock Student Information.csv”\n\nIn this lab, please clean and explore the datasets.\n\n\nLab 8 Instruction\n\nIt is strongly recommended to follow the method demonstrated in the lecture video “Projects in R Video – Female Life Expectancy Project” to create an R project and complete this lab.\nAs usual, you are only required to submit the PDF file generated to Gradescope.\n\n\n\nLoad Packages and Read Data\nPlease load the packages you need and import the two data sets:\n\nImport “Reaction Time survey.csv” as survey.\nImport “Mock Student Information.csv” as student.\n\n\n\nQuestion I: Data Cleaning\n[40 pts] Please perform the data cleaning for survey. Some hints are:\n\nYou may rename the variables as\n\n\nc(\"mockID\", \"Reaction.time\", \"Class\", \"Age\", \"Avg.sleep.time\",\n  \"last.night.sleep.time\", \"Awake.hours\", \"Fatigue.level\",\n  \"Stress.level\", \"Distraction\", \"Noise.level\", \"Temp.level\",\n  \"Game.freq\", \"Sport.freq\", \"Avg.hours.exercise\",\n  \"Caffein.intake\", \"Alcohol.intake\", \"Visual.acuity\",\n  \"Primary.hand\", \"Use.primary.hand\", \"Cautious.level\",\n  \"Input.device\", \"Device.OS\", \"WiFi.stable\")\n\n\nTechnically, it’s impossible to have a Reaction Time less than or equal to 100 milliseconds. Remove the observations with Reaction.time less than or equal to 100. [Notes: In reality, we contacted the students to confirm or update their submissions.]\nYou may use separate_wider_delim() to clean up the Visual.acuity so that the variable becomes a factor with the following levels: “Very Poor”, “Poor”, “Average”, “Good”, “Excellent”.\n\n(Use levels = c(\"Very Poor\", \"Poor\", \"Average\", \"Good\", \"Excellent\"))\n\nYou may use separate_wider_delim twice to clean up the Device.OS so that the variable is a character  variable with the possible values: “Desktop computer”, “Laptop”, “iPhone”, “iPad”, “Smartphone”, “Tablet”, “Chromebook”. Please use help(separate_wider_delim) to find solutions for the issue where “Chromebook” does not have “-” or “(” as a delimiter.\nPlease clean up the columns Avg.sleep.time, last.night.sleep.time, Awake.hours, Noise.level, and Avg.hours.exercise so that they become numeric variables. Be cautious of using as.numeric() directly, as it may introduce NAs due to coercion. Instead, handle edge cases like “7h4min”, “7:30”, “1~3” first, then use str_remove_all(..., \"[[:alpha:][:space:]]\") to remove any characters and empty spaces from the responses. Finally, convert the cleaned columns to numeric variables.\nConvert the Class, Fatigue.level, Stress.level, Temp.level, Game.freq, Sport.freq, Cautious.level as factors with levels as follows:\n\n\nclasslevel =  c(\"Freshman\", \"Sophomore\", \"Junior\", \"Senior\", \"Graduate\") \n# Even if there are no freshmen in the data.\nfatiguelevel = c(\"Not fatigued at all\", \"Slightly Fatigued\", \n                 \"Moderately fatigued\", \"Very fatigued\", \"Extremely fatigued\")\nstresslevel = c(\"Very Low\", \"Low\", \"Moderate\", \"High\" , \"Very High\")\ntemplevel = c(\"Very Cold\", \"Cold\", \"Neutral\", \"Warm\", \"Very Warm\")\ngamefreqlevel = c(\"Daily\", \"Several times a week\", \n                  \"Once a week\", \"Several times a month\", \"Rarely\", \"Never\")\nsportfreqlevel =  c(\"Daily\", \"Several times a week\", \"Once a week\", \n                    \"Several times a month\", \"Rarely\", \"Never\")\ncautiouslevel = c(\"Not cautious at all\", \"Slightly cautious\", \n                  \"Moderately cautious\", \"Very cautious\", \"Extremely cautious\")\n\n\nPerform any additional data cleaning you find necessary.\n\nAfter the data cleaning procedure, glimpse(survey) should show something like\n\nglimpse(survey)\n#&gt; Rows: 140\n#&gt; Columns: 24\n#&gt; $ mockID                &lt;chr&gt; \"MJJXGR\", \"JHJZMT\", \"VQTCNE\", \"CKJWEX\", \"MBKMNF\"…\n#&gt; $ Reaction.time         &lt;dbl&gt; 180, 278, 350, 267, 229, 225, 200, 282, 272, 412…\n#&gt; $ Class                 &lt;fct&gt; Sophomore, Sophomore, Senior, Graduate, Sophomor…\n#&gt; $ Age                   &lt;dbl&gt; 20, 19, 22, 24, 20, 20, 20, 20, 19, 21, 20, 21, …\n#&gt; $ Avg.sleep.time        &lt;dbl&gt; 7.0, 7.0, 8.0, 6.0, 7.0, 7.0, 6.0, 10.0, 8.5, 7.…\n#&gt; $ last.night.sleep.time &lt;dbl&gt; 8.0, 7.0, 5.0, 5.0, 6.0, 8.0, 5.0, 8.0, 9.0, 6.0…\n#&gt; $ Awake.hours           &lt;dbl&gt; 10.00, 6.00, 4.00, 6.00, 5.00, 5.00, 1.00, 4.00,…\n#&gt; $ Fatigue.level         &lt;fct&gt; Not fatigued at all, Slightly Fatigued, Slightly…\n#&gt; $ Stress.level          &lt;fct&gt; Very Low, Low, Low, High, Low, Moderate, Moderat…\n#&gt; $ Distraction           &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"Yes\", \"No\", \"Yes\", \"Yes…\n#&gt; $ Noise.level           &lt;dbl&gt; 5, 8, 3, 2, 9, 3, 6, 8, 7, 3, 5, 7, 3, 7, 5, 7, …\n#&gt; $ Temp.level            &lt;fct&gt; Neutral, Warm, Neutral, Neutral, Neutral, Neutra…\n#&gt; $ Game.freq             &lt;fct&gt; Several times a month, Rarely, Daily, Several ti…\n#&gt; $ Sport.freq            &lt;fct&gt; Several times a month, Several times a month, On…\n#&gt; $ Avg.hours.exercise    &lt;dbl&gt; 5.0, 6.0, 5.0, 3.0, 1.0, 10.0, 7.0, 7.0, 2.0, 4.…\n#&gt; $ Caffein.intake        &lt;chr&gt; \"No\", \"Yes\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\",…\n#&gt; $ Alcohol.intake        &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", …\n#&gt; $ Visual.acuity         &lt;fct&gt; Excellent, Excellent, Good, Good, Good, Excellen…\n#&gt; $ Primary.hand          &lt;chr&gt; \"Ambidextrous (both hands equally)\", \"Right hand…\n#&gt; $ Use.primary.hand      &lt;chr&gt; \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Yes\",…\n#&gt; $ Cautious.level        &lt;fct&gt; Moderately cautious, Slightly cautious, Slightly…\n#&gt; $ Input.device          &lt;chr&gt; \"Mouse\", \"Trackpad\", \"Mouse\", \"Touch screen\", \"T…\n#&gt; $ Device.OS             &lt;chr&gt; \"Desktop computer\", \"Laptop\", \"Laptop\", \"iPhone\"…\n#&gt; $ WiFi.stable           &lt;chr&gt; \"Stable\", \"Stable\", \"Stable\", \"Stable\", \"Stable\"…\n\n\n\nQuestion II: Join Two tables\n\n[10 pts] Join the two tables and list the students who did not respond to the survey. [Hint: You may use anti_join() for this task. Look up information about anti_join() online if needed.]\n[10 pts] Several students have submitted the survey more than once. To handle this, we should remove the duplicate submissions by keeping only the last submission (assuming the survey is in time order). Follow the steps:\n\n\nArrange the observations in reverse-time order using desc(row_number()).\nApply distinct(mockID, .keep_all = TRUE). [You can use ?distinct() to understand why this approach works.]\n\n\n[10 pts] Join the two tables and keep all information from survey, use mockID as the key. Save the new tibble as survey_student (or a name of your choice).\n\n\n\nQuestion III: Explore the Data survey_student\n[30 pts] Create data visualizations or tables to uncover interesting insights from the data. Please list at least three notable findings.\nHint: You may find it’s helpful to combine some categories into fewer, more concise categories. Here is one example,\n\nsurvey_student %&gt;%\n  mutate(Fatigue.3 = case_when(\n    Fatigue.level %in% c(\"Extremely fatigued\", \"Very fatigued\")~ \"H.Fatigue\",\n    Fatigue.level %in% c(\"Moderately fatigued\") ~ \"M.Fatigue\",\n    Fatigue.level %in% c(\"Not fatigued at all\", \"Slightly Fatigued\")~ \"L.Fatigue\"\n    ),\n    Fatigue.3 = factor(Fatigue.3, levels = c(\"H.Fatigue\", \"M.Fatigue\", \"L.Fatigue\"))\n  )"
-  },
-  {
-    "objectID": "Quiz11/Quiz11.html",
-    "href": "Quiz11/Quiz11.html",
-    "title": "",
-    "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz11.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify CLEANDATA.txt, etc. unless specifically requested and instructed below. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz11.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
-  },
-  {
-    "objectID": "Quiz11/Quiz11.html#quiz-11-instructions",
-    "href": "Quiz11/Quiz11.html#quiz-11-instructions",
-    "title": "",
-    "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz11.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify CLEANDATA.txt, etc. unless specifically requested and instructed below. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz11.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
-  },
-  {
-    "objectID": "Quiz11/Quiz11.html#data-preparation-practice-converting-xlsx-file-to-csv",
-    "href": "Quiz11/Quiz11.html#data-preparation-practice-converting-xlsx-file-to-csv",
-    "title": "",
-    "section": "Data Preparation – Practice converting XLSX file to CSV",
-    "text": "Data Preparation – Practice converting XLSX file to CSV\nPlease review the instructions on “How to convert Excel file to CSV” at https://www.ablebits.com/office-addins-blog/convert-excel-csv/. Then, save the “BLACKFRIDAY” and “COFFEE” spreadsheets from “Datasets.xlsx” as two separate CSV files named “BLACKFRIDAY.csv” and “COFFEE.csv”.\nAfter this step, we will disregard “Datasets.xlsx” and only use the two newly created CSV files for the following questions."
-  },
-  {
-    "objectID": "Quiz11/Quiz11.html#question-1",
-    "href": "Quiz11/Quiz11.html#question-1",
+    "objectID": "Lab6/Lab6.html#question-1",
+    "href": "Lab6/Lab6.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[1pt] Import the first 4 columns of “COFFEE.csv” and save the data frame as COFFEE.PART1. [Hint: You may use nrows for this task.]\n\nThe imported data frame should be\n\n#&gt;   DEMAND PRICE         X Pred_DEMAND\n#&gt; 1   1120   3.0 0.3333333   1088.8869\n#&gt; 2    999   3.1 0.3225806   1015.6815\n#&gt; 3    932   3.2 0.3125000    947.0514\n#&gt; 4    884   3.3 0.3030303    882.5807\n#&gt; 5    807   3.4 0.2941176    821.9024\n#&gt; 6    760   3.5 0.2857143    764.6914\n#&gt; 7    701   3.6 0.2777778    710.6588\n#&gt; 8    688   3.7 0.2702703    659.5469\n\n\n[2pts] Export the regression analysis results to file “REGRESSION_COFFEE_PART1.txt”.\n\n[Hint: You may use cat() and sink() for this task; You may use the following R codes.\n\nlmod &lt;- lm(PRICE ~ DEMAND, data = COFFEE.PART1)\nsummary(lmod)\nanova(lmod)\n\n].\nThe final TXT file “REGRESSION_COFFEE_PART1.txt” should look like:\n\n\n\n\n\n\n[1pt] Import the last 3 columns of “COFFEE.csv” and save the data frame as COFFEE.PART2. Then rename the second column name as inverseP.\n\nThe imported data frame should be: (Below we only show the first and last 3 rows to save space)\n\nhead(COFFEE.PART2, 3)\n#&gt;      P  inverseP     Dhat\n#&gt; 1 3.00 0.3333333 1089.333\n#&gt; 2 3.01 0.3322259 1081.794\n#&gt; 3 3.02 0.3311258 1074.305\ntail(COFFEE.PART2, 3)\n#&gt;       P  inverseP     Dhat\n#&gt; 69 3.68 0.2717391 670.0000\n#&gt; 70 3.69 0.2710027 664.9864\n#&gt; 71 3.70 0.2702703 660.0000\n\n\n[1pt] Use plot(COFFEE.PART2$P, COFFEE.PART2$inverseP) to draw the scatterplot and save the plot as “PLOT_COFFEE_PART2.png”, make sure you use bg = \"transparent\" to set the background to transparent."
+    "text": "Question 1\n[20 pts] Please define the function forloop_kronecker(), using for loop, to calculate the Kronecker product of matrices A and B with arbitrary dimensions."
   },
   {
-    "objectID": "Quiz11/Quiz11.html#question-2",
-    "href": "Quiz11/Quiz11.html#question-2",
+    "objectID": "Lab6/Lab6.html#question-2",
+    "href": "Lab6/Lab6.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n[2pts] Import “BLACKFRIDAY.csv” and save the data frame as BLACKFRIDAY. Filter the data frame with YEARS greater than 10, and save the result as BLACKFRIDAY_gt10. Export data frame BLACKFRIDAY_gt10 to CSV file “BLACKFRIDAY_gt10.csv”. Make sure you use row.names = FALSE to avoid writing the row names."
+    "text": "Question 2\n[20 pts] Please define the function vectorization_kronecker(), using vectorization, to calculate the Kronecker product of matrices A and B with arbitrary dimensions."
   },
   {
-    "objectID": "Quiz11/Quiz11.html#question-3",
-    "href": "Quiz11/Quiz11.html#question-3",
+    "objectID": "Lab6/Lab6.html#question-3",
+    "href": "Lab6/Lab6.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\nUse “CLEANDATA.txt” for this question. Complete the following parts.\n\n[2pts]\n\nStep 1: Skip the first five rows (consider the column names as Row 1) and import “CLEANDATA.txt”. Save the data frame as CLEANDATA.\nStep 2: Scan the column names from “CLEANDATA.txt” as header. Then assemble the data frame CLEANDATA and header.\nThe data frame CLEANDATA should be:\n\n#&gt;    EXP AUTOMATI OUTPUT\n#&gt; 1   &lt;1        M     12\n#&gt; 2   &lt;1        M     10\n#&gt; 3   &lt;1        L      5\n#&gt; 4   &lt;1        L      4\n#&gt; 5   &lt;1        L      8\n#&gt; 6  1-2        H     15\n#&gt; 7  1-2        H     18\n#&gt; 8  1-2        H     17\n#&gt; 9  1-2        M     10\n#&gt; 10 1-2        M     10\n#&gt; 11 1-2        M     12\n#&gt; 12 1-2        L      8\n#&gt; 13 1-2        L     10\n#&gt; 14 1-2        L     10\n#&gt; 15  &gt;2        H     20\n#&gt; 16  &gt;2        H     18\n#&gt; 17  &gt;2        H     19\n#&gt; 18  &gt;2        M     13\n#&gt; 19  &gt;2        M     13\n#&gt; 20  &gt;2        M     14\n#&gt; 21  &gt;2        L     12\n#&gt; 22  &gt;2        L     11\n#&gt; 23  &gt;2        L     13\n\n\n[1pt] Write the CLEANDATA$AUTOMATI, one element per line, to the file “AUTOMATI.txt”."
+    "text": "Question 3\n[20 pts] Compare the CPU times for three Kronecker product calculation methods below for matrices A1 and B1, A2 and B2, and other pairs of matrices you choose to test. Use times = 10000L for each calculation. Discuss the computational efficiency of the three methods based on your findings.\n\nvectorization_kronecker()\nkronecker()\nforloop_kronecker()\n\n\n(A1 &lt;- matrix(1:16, nrow = 4, ncol = 4))\n#&gt;      [,1] [,2] [,3] [,4]\n#&gt; [1,]    1    5    9   13\n#&gt; [2,]    2    6   10   14\n#&gt; [3,]    3    7   11   15\n#&gt; [4,]    4    8   12   16\n(B1 &lt;- matrix(1:20, nrow = 4, ncol = 5))\n#&gt;      [,1] [,2] [,3] [,4] [,5]\n#&gt; [1,]    1    5    9   13   17\n#&gt; [2,]    2    6   10   14   18\n#&gt; [3,]    3    7   11   15   19\n#&gt; [4,]    4    8   12   16   20\n\n(A2 &lt;- matrix(1:40, nrow = 5, ncol = 8))\n#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]\n#&gt; [1,]    1    6   11   16   21   26   31   36\n#&gt; [2,]    2    7   12   17   22   27   32   37\n#&gt; [3,]    3    8   13   18   23   28   33   38\n#&gt; [4,]    4    9   14   19   24   29   34   39\n#&gt; [5,]    5   10   15   20   25   30   35   40\n(B2 &lt;- matrix(1:50, nrow = 10, ncol = 5))\n#&gt;       [,1] [,2] [,3] [,4] [,5]\n#&gt;  [1,]    1   11   21   31   41\n#&gt;  [2,]    2   12   22   32   42\n#&gt;  [3,]    3   13   23   33   43\n#&gt;  [4,]    4   14   24   34   44\n#&gt;  [5,]    5   15   25   35   45\n#&gt;  [6,]    6   16   26   36   46\n#&gt;  [7,]    7   17   27   37   47\n#&gt;  [8,]    8   18   28   38   48\n#&gt;  [9,]    9   19   29   39   49\n#&gt; [10,]   10   20   30   40   50"
   },
   {
-    "objectID": "Quiz14/Quiz14.html",
-    "href": "Quiz14/Quiz14.html",
+    "objectID": "Lab7/Lab7.html",
+    "href": "Lab7/Lab7.html",
+    "title": "STAT 385 Lab 7 Data Manipulation and Visualization Practice",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(babynames)\nlibrary(nycflights13)"
+  },
+  {
+    "objectID": "Lab7/Lab7.html#load-the-packages",
+    "href": "Lab7/Lab7.html#load-the-packages",
+    "title": "STAT 385 Lab 7 Data Manipulation and Visualization Practice",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(babynames)\nlibrary(nycflights13)"
+  },
+  {
+    "objectID": "Lab7/Lab7.html#question-1",
+    "href": "Lab7/Lab7.html#question-1",
+    "title": "STAT 385 Lab 7 Data Manipulation and Visualization Practice",
+    "section": "Question 1",
+    "text": "Question 1\nWe use the babynames tibble from the babynames package for this question. The tibble contains names of male and female babies born in the US from 1880 to 2017. There are 1.9M rows and 5 columns.\n\n[10 pts] Please draw a line chart of proportion of boys with the name Garrett (or a name and gender you choose) across the years.\n[10 pts] Find all the names that were used by exactly \\(5\\) or \\(6\\) children during the 1980s, i.e. 1980-1989. [Hint: You may need to use distinct().]\n[10 pts] Filter babynames to just boys born in 2015, select the name and n columns, arrange those columns so that the most popular names appear near the top."
+  },
+  {
+    "objectID": "Lab7/Lab7.html#question-2",
+    "href": "Lab7/Lab7.html#question-2",
+    "title": "STAT 385 Lab 7 Data Manipulation and Visualization Practice",
+    "section": "Question 2",
+    "text": "Question 2\nRe-create the R code necessary to generate the following graphs. The dataset is mpg from ggplot2 package.\n\n[10 pts] [Hint: You may use geom_smooth(formula = y ~ x, method = \"loess\") to add the smoothed line(s) for the questions.]\n\n\n\n\n\n\n\n\n\n\n\n[10 pts]\n\n[Hint: You may use color = drv.]"
+  },
+  {
+    "objectID": "Lab7/Lab7.html#question-3",
+    "href": "Lab7/Lab7.html#question-3",
+    "title": "STAT 385 Lab 7 Data Manipulation and Visualization Practice",
+    "section": "Question 3",
+    "text": "Question 3\n\n[10 pts] Use flights dataset from the nycflights13 package. Find the average departure delay by month.\n[10 pts] Visualize the average departure delay by month from part (a) by drawing a bar-plot. Which three months have the worst average departure delays? [Hint: You may need to convert month to factor type using as.factor().]\n[10 pts] Currently, the dep_time and sched_dep_time are convenient to look at, but hard to compute with because they’re not really continuous numbers. Please convert them to a more convenient representation of number of minutes since midnight. Denote the two new variables as dep_time_minutes and sched_dep_time_minutes, respectively.\n\nFor example, 1755 corresponds to 5:55 pm. We can convert 1755 to minutes as \\(17*60 + 55 = 1075\\) minutes from midnight. You may consider using integer division operator \\(\\%/\\%\\) and modulus operator \\(\\%\\%\\)."
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html",
+    "href": "Quiz1/Quiz1.html",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz14.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify BLACKFRIDAY.csv. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz14.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz1.R to Gradescope.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify data.csv. Your code won’t work properly on modified version of the data set.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz1.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz14/Quiz14.html#quiz-14-instructions",
-    "href": "Quiz14/Quiz14.html#quiz-14-instructions",
+    "objectID": "Quiz1/Quiz1.html#quiz-1-instructions",
+    "href": "Quiz1/Quiz1.html#quiz-1-instructions",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz14.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify BLACKFRIDAY.csv. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz14.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions and submit a file named Quiz1.R to Gradescope.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify data.csv. Your code won’t work properly on modified version of the data set.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz1.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz14/Quiz14.html#question-1",
-    "href": "Quiz14/Quiz14.html#question-1",
+    "objectID": "Quiz1/Quiz1.html#question-1.",
+    "href": "Quiz1/Quiz1.html#question-1.",
+    "title": "",
+    "section": "Question 1.",
+    "text": "Question 1.\nMake a vector called myVector and have it store the integers \\(1,2,3\\)"
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html#question-2.",
+    "href": "Quiz1/Quiz1.html#question-2.",
+    "title": "",
+    "section": "Question 2.",
+    "text": "Question 2.\nMake a string called myString and have it store “Hello STAT 385!”."
+  },
+  {
+    "objectID": "Quiz1/Quiz1.html#question-3.",
+    "href": "Quiz1/Quiz1.html#question-3.",
+    "title": "",
+    "section": "Question 3.",
+    "text": "Question 3.\nRead in the data set called data.csv and store the data frame as myDataFrame."
+  },
+  {
+    "objectID": "Quiz12/Quiz12.html",
+    "href": "Quiz12/Quiz12.html",
+    "title": "",
+    "section": "",
+    "text": "Please complete the following questions using Base R Graphics. Do not use ggplot. And submit a file named Quiz12.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz12.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz12/Quiz12.html#quiz-12-instructions",
+    "href": "Quiz12/Quiz12.html#quiz-12-instructions",
+    "title": "",
+    "section": "",
+    "text": "Please complete the following questions using Base R Graphics. Do not use ggplot. And submit a file named Quiz12.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz12.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz12/Quiz12.html#data-preparation",
+    "href": "Quiz12/Quiz12.html#data-preparation",
+    "title": "",
+    "section": "Data Preparation",
+    "text": "Data Preparation\nIn this quiz, we will use the data frames flights and weather from the package nycflights13. This data frame contains info of on-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in 2013. The description of the variables:\n\nyear, month, day – Date of departure.\ndep_time, arr_time – Actual departure and arrival times (format HHMM or HMM), local tz.\nsched_dep_time, sched_arr_time – Scheduled departure and arrival times (format HHMM or HMM), local tz.\ndep_delay, arr_delay – Departure and arrival delays, in minutes. Negative times represent early departures/arrivals.\ncarrier – Two letter carrier abbreviation. See airlines to get name.\nflight – Flight number.\ntailnum – Plane tail number. See planes for additional metadata.\norigin, dest – Origin and destination. See airports for additional metadata.\nair_time – Amount of time spent in the air, in minutes.\ndistance – Distance between airports, in miles.\nhour, minute – Time of scheduled departure broken into hour and minutes.\ntime_hour – Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be used to join flights data to weather data.\n\nPlease install and load the package nycflights13 beforehand. Then load the data frames flights and weather. Additionally, we could filter the data and create two new data frames, alaska_flights and early_january_weather, which will be used in the subsequent question.\nPlease make sure you copy and paste the code chunk below, for data preparation, at the beginning of your Quiz12.R script.\n\nif(!require(\"nycflights13\", character.only = TRUE)) install.packages(\"nycflights13\")\nlibrary(nycflights13)\ndata(flights)\ndata(weather)\n\n# Define new data frame alaska_flights\nalaska_flights &lt;- flights[flights$carrier == \"AS\",]\n\n### Define new data frame early_january_weather\nearly_january_weather &lt;- weather[weather$origin == \"EWR\" & weather$month == 1 & weather$day &lt;= 15,]"
+  },
+  {
+    "objectID": "Quiz12/Quiz12.html#question-1",
+    "href": "Quiz12/Quiz12.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[1 pt] Load the cats data frame from the MASS package. Save it as a tibble named tbl_cats.\n[1 pt] Try the codes below to identify another difference between a data frame and a tibble:\n\n\nTibbles are also stricter with $. Tibbles never do partial matching, and will throw a warning and return NULL if the column does not exist.\n\n\nIn this case, Sex is a variable name, but S is not. Data frame does the partial matching and print the Sex column. But tibble gives a warning.\n\n\nInstruction: Please just try the codes below. Before submitting Quiz14.R, please comment out tbl_cats$S to ensure there are no bugs.\n\n\ncats$S\ntbl_cats$S"
+    "text": "Question 1\n\n[2 pts] Draw a scatter plot to visualize the relationship between the variables dep_delay and arr_delay in the alaska_flights data frame (defined above). Change the label for the x-axis as Departure Delay, the label for y-axis as Arrival Delay, and the plot title as Relationship between Departure and Arrival Delay.\n\nSave the generated plot as PlotQ1a.png. Recall that, you can do so using the way below.\n\n\npng(\"PlotQ1a.png\")\n\n# [Code to generate the plot here]\n\ndev.off()\n\n\n\n\n\n[2 pts] Draw a scatterplot matrices of variables dep_time, sched_dep_time, dep_delay, arr_time, sched_arr_time, arr_delay in the data frame alaska_flights. Save the created plot as PlotQ1b.png."
   },
   {
-    "objectID": "Quiz14/Quiz14.html#question-2",
-    "href": "Quiz14/Quiz14.html#question-2",
+    "objectID": "Quiz12/Quiz12.html#question-2",
+    "href": "Quiz12/Quiz12.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\n\n[1 pt] Please import the CSV data BLACKFRIDAY as a tibble named BlackFriday.\n[1 pt] First, check if BlackFriday is a data frame. Second, use is_tibble() to check if BlackFriday is a tibble.\n\nNote that: As tibble is a modern take on the classic data frame in R, and it inherits from the data frame class. Therefore, for a tibble, if you use is.data.frame function to check, it returns TRUE because a tibble is a specialized form of a data frame with additional features."
+    "text": "Question 2\n[2 pts] Create a time series plot (line graph) of the hourly temperature (variable temp) vs the time time_hour saved in the early_january_weather data frame (defined above). Change the label for the x-axis as Date and Hour, the label for y-axis as Temperature, and the plot title as Line Graph of Temperature vs Date and Hour. Save the created plot as PlotQ2.png."
   },
   {
-    "objectID": "Quiz14/Quiz14.html#question-3",
-    "href": "Quiz14/Quiz14.html#question-3",
+    "objectID": "Quiz12/Quiz12.html#question-3",
+    "href": "Quiz12/Quiz12.html#question-3",
     "title": "",
     "section": "Question 3",
-    "text": "Question 3\nCreate the annoying tibble as follows:\n\nannoying &lt;- tibble(\n`1` = c(8, 5, 3, 9, 6, 7, 10, 7, 10, 4),\n`2` = `1` * 2 + rnorm(length(`1`))\n)\n\n\n[2 pt] Extract the column with the variable name 1 as a tibble. Denote it as tbl_1.\n[2 pt] Extract the column with the variable name 1 as an (atomic) vector (not a list). Denote it as vec_1.\n[1 pt] Create a new column called 3, which is column 2 divided by column 1.\n[1 pt] Please rename the columns to “one”, “two”, and “three”. [Hint: After renaming, be sure to save the new tibble to annoying to replace the original tibble. ]"
+    "text": "Question 3\n[2 pts] Draw histogram of temperature (variable temp) in the data frame weather. Change the bar color to blue. What’s more, use border = \"white\" to change the border color to white. Save the created plot as PlotQ3.png."
   },
   {
-    "objectID": "Quiz16/Quiz16.html",
-    "href": "Quiz16/Quiz16.html",
+    "objectID": "Quiz12/Quiz12.html#question-4",
+    "href": "Quiz12/Quiz12.html#question-4",
+    "title": "",
+    "section": "Question 4",
+    "text": "Question 4\n[2 pts] Draw the two plot side by side (i.e. 1 row and 2 columns).\n\nPlot 1: Draw a boxplot of the variable temp in the data frame weather.\nPlot 2: Draw a boxplot of temp vs month of the data frame weather.\n\nSave the created plot as PlotQ4.png."
+  },
+  {
+    "objectID": "Quiz12/Quiz12.html#question-5",
+    "href": "Quiz12/Quiz12.html#question-5",
+    "title": "",
+    "section": "Question 5",
+    "text": "Question 5\n[2 pts] Draw a bar plot of carrier from the dataset flights. Save the created plot as PlotQ5.png."
+  },
+  {
+    "objectID": "Quiz15/Quiz15.html",
+    "href": "Quiz15/Quiz15.html",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz16.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz16.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions using ggplot. And submit a file named Quiz15.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz15.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz16/Quiz16.html#quiz-16-instructions",
-    "href": "Quiz16/Quiz16.html#quiz-16-instructions",
+    "objectID": "Quiz15/Quiz15.html#quiz-15-instructions",
+    "href": "Quiz15/Quiz15.html#quiz-15-instructions",
     "title": "",
     "section": "",
-    "text": "Please complete the following questions and submit a file named Quiz16.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz16.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+    "text": "Please complete the following questions using ggplot. And submit a file named Quiz15.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz15.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
-    "objectID": "Quiz16/Quiz16.html#install-and-load-the-fivethirtyeight-package",
-    "href": "Quiz16/Quiz16.html#install-and-load-the-fivethirtyeight-package",
+    "objectID": "Quiz15/Quiz15.html#data-preparation",
+    "href": "Quiz15/Quiz15.html#data-preparation",
     "title": "",
-    "section": "Install and Load the fivethirtyeight Package",
-    "text": "Install and Load the fivethirtyeight Package\nIn this quiz, let’s use a motivating example from the fivethirtyeight package.\nThe fivethirtyeight package (Kim, Ismay, and Chunn 2021) provides access to the datasets used in many articles published by the data journalism website, https://FiveThirtyEight.com. For a complete list of all 129 datasets included in the fivethirtyeight package, check out the package webpage by going to: https://fivethirtyeight-r.netlify.app/articles/fivethirtyeight.html.\n\nif(!require(\"fivethirtyeight\", character.only = TRUE)) install.packages(\"fivethirtyeight\")\nlibrary(fivethirtyeight)\nlibrary(tidyverse)"
+    "section": "Data Preparation",
+    "text": "Data Preparation\nIn this quiz, we will use the data frames flights and weather from the package nycflights13. This data frame contains info of on-time data for all flights that departed NYC (i.e. JFK, LGA or EWR) in 2013. The description of the variables:\n\nyear, month, day – Date of departure.\ndep_time, arr_time – Actual departure and arrival times (format HHMM or HMM), local tz.\nsched_dep_time, sched_arr_time – Scheduled departure and arrival times (format HHMM or HMM), local tz.\ndep_delay, arr_delay – Departure and arrival delays, in minutes. Negative times represent early departures/arrivals.\ncarrier – Two letter carrier abbreviation. See airlines to get name.\nflight – Flight number.\ntailnum – Plane tail number. See planes for additional metadata.\norigin, dest – Origin and destination. See airports for additional metadata.\nair_time – Amount of time spent in the air, in minutes.\ndistance – Distance between airports, in miles.\nhour, minute – Time of scheduled departure broken into hour and minutes.\ntime_hour – Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be used to join flights data to weather data.\n\nPlease install and load the package nycflights13 beforehand. Then load the data frames flights and weather. Additionally, we could filter the data and create two new data frames, alaska_flights and early_january_weather, which will be used in the subsequent question.\nPlease make sure you copy and paste the code chunk below, for data preparation, at the beginning of your Quiz15.R script.\n\nif(!require(\"nycflights13\", character.only = TRUE)) install.packages(\"nycflights13\")\nlibrary(nycflights13)\nlibrary(tidyverse)\ndata(flights)\ndata(weather)\n\n# Define new data frame alaska_flights\nalaska_flights &lt;- flights %&gt;%\n  filter(carrier == \"AS\")\n\n### Define new data frame early_january_weather\nearly_january_weather &lt;- weather %&gt;%\n  filter(origin == \"EWR\" & month == 1 & day &lt;= 15)"
   },
   {
-    "objectID": "Quiz16/Quiz16.html#question-1",
-    "href": "Quiz16/Quiz16.html#question-1",
+    "objectID": "Quiz15/Quiz15.html#question-1",
+    "href": "Quiz15/Quiz15.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\nUse the drinks data frame.\ndrinks is a data frame containing results from a survey of the average number of servings of beer, spirits, and wine consumed in 193 countries. This data was originally reported on FiveThirtyEight.com in Mona Chalabi’s article: “Dear Mona Followup: Where Do People Drink The Most Beer, Wine And Spirits?”.\n\n[2 pts] Prepare the data frame drinks_4ctrs:\n\nLet’s apply some of the data wrangling verbs we learned in the previous lectures on the drinks data frame:\n\nfilter() the drinks data frame to only the 4 countries: the United States, China, Italy, and Saudi Arabia, [Hint: Please use unique(drinks$country)to find the corresponding names in the country column.]\nselect() all columns except total_litres_of_pure_alcohol by using the - sign,\nrename() the variables beer_servings, spirit_servings, and wine_servings to beer, spirit, and wine, respectively.\n\nSave the resulting tibble as drinks_4ctrs.\n\n[2 pts] Convert drinks_4ctrs to “tidy” format using pivot_longer(). Let\n\n\nnames_to = \"type\"\nvalues_to = \"servings\"\n\nSave the tidy tibble as drinks_4ctrs_tidy.\n\n[2 pts] Visualize the data frame drinks_4ctrs_tidy by creating a bar-graph with x = country, y = serving, and color the bars using variable type. Please use position = \"dodge\" to place the bars side by side. Save the plot as PlotQ1.png using ggsave(\"PlotQ1.png\", width = 10, height = 8, dpi = 300)."
+    "text": "Question 1\n\n[2 pts] Using ggplot, draw a scatter plot to visualize the relationship between the variables dep_delay and arr_delay in the alaska_flights data frame (defined above). Change the label for the x-axis as Departure Delay, the label for y-axis as Arrival Delay, and the plot title as Relationship between Departure and Arrival Delay. [Hint: On the ggplot2 cheat sheet, you may find helpful information in the Labels and Legends section.]\n\nSave the generated plot as PlotQ1a.png. Recall that, you can do so using ggsave().\n\n\n\nPlease use ggsave(..., , width = 10, height = 8, dpi = 300) for all questions in Quiz 15 to adjust the parameters to fit the plot size better.\n\n\n\n\n[2 pts] Using function in GGally, draw a scatterplot matrices of variables dep_time, sched_dep_time, dep_delay, arr_time, sched_arr_time, arr_delay in the data frame alaska_flights. Save the created plot as PlotQ1b.png."
   },
   {
-    "objectID": "Quiz16/Quiz16.html#question-2",
-    "href": "Quiz16/Quiz16.html#question-2",
+    "objectID": "Quiz15/Quiz15.html#question-2",
+    "href": "Quiz15/Quiz15.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\nairline_safety is another data frame in fivethirtyeight package containing information on different airline companies’ safety records.\nThis data was originally reported on the data journalism website, FiveThirtyEight.com, in Nate Silver’s article, “Should Travelers Avoid Flying Airlines That Have Had Crashes in the Past?”.\n\n[2 pts] Create the tibble df_fatalities with the columns: airline, and all columns starts with fatalities. [Hint: You may use start_with(\"fatalities\").]\n[2 pts] Convert df_fatalities to tidy format as shown below and save the tidy tibble as df_fatalities_tidy. In this process, you need to\n\n\nLengthens the data, so that the new column fatalities_year storing the values fatalities_85_99 or fatalities_00_14, and the new column count storing the cell values.\nUse Seperate_wider_position() to remove the fatalities_ in the fatalities_year column. And the resulting column is named year.\nMake the year column a factor with levels year_level = c(\"85_99\", \"00_14\")\n\n\n#&gt; # A tibble: 112 × 3\n#&gt;    airline               year  count\n#&gt;    &lt;chr&gt;                 &lt;fct&gt; &lt;int&gt;\n#&gt;  1 Aer Lingus            85_99     0\n#&gt;  2 Aer Lingus            00_14     0\n#&gt;  3 Aeroflot              85_99   128\n#&gt;  4 Aeroflot              00_14    88\n#&gt;  5 Aerolineas Argentinas 85_99     0\n#&gt;  6 Aerolineas Argentinas 00_14     0\n#&gt;  7 Aeromexico            85_99    64\n#&gt;  8 Aeromexico            00_14     0\n#&gt;  9 Air Canada            85_99     0\n#&gt; 10 Air Canada            00_14     0\n#&gt; # ℹ 102 more rows\n\n\n[2 pts] Visualize the df_fatalities_tidy tibble by creating a bar-graph with x = airline, y = count, and color the bars using variable year for the airlines “United / Continental”, “Delta / Northwest”, and “American”. You may use position = \"dodge\" to place the bars side by side. Save the plot as PlotQ2.png using ggsave(\"PlotQ2.png\", width = 10, height = 8, dpi = 300)."
+    "text": "Question 2\n[2 pts] Using ggplot, create a time series plot (line graph) of the hourly temperature (variable temp) vs the time time_hour saved in the early_january_weather data frame (defined above). Change the label for the x-axis as Date and Hour, the label for y-axis as Temperature, and the plot title as Line Graph of Temperature vs Date and Hour. Save the created plot as PlotQ2.png."
+  },
+  {
+    "objectID": "Quiz15/Quiz15.html#question-3",
+    "href": "Quiz15/Quiz15.html#question-3",
+    "title": "",
+    "section": "Question 3",
+    "text": "Question 3\n[2 pts] Using ggplot, draw histogram of temperature (variable temp on \\(x\\) axis) in the data frame weather. Change the bar color to blue and the border color to white.Save the created plot as PlotQ3.png."
+  },
+  {
+    "objectID": "Quiz15/Quiz15.html#question-4",
+    "href": "Quiz15/Quiz15.html#question-4",
+    "title": "",
+    "section": "Question 4",
+    "text": "Question 4\n[2 pts] Using ggplot and grid.arrange, draw the two plot side by side (i.e. 1 row and 2 columns).\n\nPlot 1: Draw a vertical boxplot of the variable temp in the data frame weather.\nPlot 2: Draw a vertical boxplot of temp vs month of the data frame weather. (You may need as.factor() to convert month to factor type.)\n\nSave the created plot as PlotQ4.png."
+  },
+  {
+    "objectID": "Quiz15/Quiz15.html#question-5",
+    "href": "Quiz15/Quiz15.html#question-5",
+    "title": "",
+    "section": "Question 5",
+    "text": "Question 5\n[2 pts] Using ggplot, draw a bar plot of carrier from the dataset flights. Save the created plot as PlotQ5.png."
+  },
+  {
+    "objectID": "Quiz17/Quiz17.html",
+    "href": "Quiz17/Quiz17.html",
+    "title": "Quiz 17",
+    "section": "",
+    "text": "Please complete the following questions and submit a file named Quiz17.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz17.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz17/Quiz17.html#quiz-17-instructions",
+    "href": "Quiz17/Quiz17.html#quiz-17-instructions",
+    "title": "Quiz 17",
+    "section": "",
+    "text": "Please complete the following questions and submit a file named Quiz17.R.\nRemember:\n\n\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz17.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
+  },
+  {
+    "objectID": "Quiz17/Quiz17.html#question-1",
+    "href": "Quiz17/Quiz17.html#question-1",
+    "title": "Quiz 17",
+    "section": "Question 1",
+    "text": "Question 1\n\n[2 pts] Use fct_relevel() to reorder the levels of Visual.acuity to c(\"Very Poor\", \"Poor\", \"Average\", \"Good\", \"Excellent\"). Find and save the count summary table as visual_acuity_count.\n\n\n[2 pts] Use fct_rev() to reverse the order of the levels of Visual.acuity from (a). Find and save the count summary table as visual_acuity_rev_count."
+  },
+  {
+    "objectID": "Quiz17/Quiz17.html#question-2",
+    "href": "Quiz17/Quiz17.html#question-2",
+    "title": "Quiz 17",
+    "section": "Question 2",
+    "text": "Question 2\nOn the [Reaction Time Statistics]https://humanbenchmark.com/tests/reactiontime/statistics page, it suggests: mobile device taps' tend to be a bit slower thanclicks’. Is it true according to survey_visual_click data?\n\n[2 pts] Use fct_collapse() to combine the “Touch screen” and “Trackpad” categories into “tap”, and merge the remaining three categories (“Mouse”, “Keyboard”, “Game controller”) into “click”. Name the new variable as tapclick.\n\n\n[2 pts] Use ggplot to create a bar plot with tapclick on the x-axis, and Reaction.time on the y-axis. Label the \\(x\\)-axis as Input Device and the \\(y\\)-axis as Reaction Time. Save the plot as tapclick_boxplot.png using ggsave(...,  width = 10, height = 8, dpi = 300)."
+  },
+  {
+    "objectID": "Quiz17/Quiz17.html#question-3",
+    "href": "Quiz17/Quiz17.html#question-3",
+    "title": "Quiz 17",
+    "section": "Question 3",
+    "text": "Question 3\n\n[2 pts] Draw a bar chart of the frequency of different Device.OS values, ensuring the bars are arranged in descending order. You may use fct_infreq() to achieve this. Label the \\(x\\)-axis as Device OS and the \\(y\\)-axis as Count. Save the plot as device_barchart.png using ggsave(...,  width = 10, height = 8, dpi = 300).\n\n\n[2 pts] From the bar chart in (a), we can see several small counts. Please use fct_lump_min() to lumps levels appear fewer than 10 times as “Other”. Save the new variable as device_lump and count the frequency of each category. Save the summary table as device_lump_count.\n\n\n[2 pts] Draw a bar chart of the frequency of different device_lump values, ensuring the bars are in descending order. Label the \\(x\\)-axis as Device OS and the \\(y\\)-axis as Count. Save the plot as device_lump_barchart.png using ggsave(...,  width = 10, height = 8, dpi = 300)"
   },
   {
     "objectID": "Quiz3/Quiz3.html",
