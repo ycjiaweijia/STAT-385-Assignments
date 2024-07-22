@@ -159,8 +159,18 @@ window.Quarto = {
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <ol type="a">
-<li><strong>[2 pts]</strong> Use <code>fct_relevel()</code> to reorder the levels of <code>Visual.acuity</code> to <code>c("Very Poor", "Poor", "Average", "Good", "Excellent")</code>. Find and save the count summary table as <code>visual_acuity_count</code>.</li>
+<li><strong>[2 pts]</strong> Use <code>fct_relevel()</code> to reorder the levels of <code>Visual.acuity</code> to <code>c("Very Poor", "Poor", "Average", "Good", "Excellent")</code>. Find and save the count summary table of <code>Visual.acuity</code> as <code>visual_acuity_count</code>. The table should look like:</li>
 </ol>
+<div class="cell">
+<pre><code>#&gt; # A tibble: 5 × 2
+#&gt;   Visual.acuity     n
+#&gt;   &lt;fct&gt;         &lt;int&gt;
+#&gt; 1 Very Poor         1
+#&gt; 2 Poor              4
+#&gt; 3 Average          15
+#&gt; 4 Good             53
+#&gt; 5 Excellent        67</code></pre>
+</div>
 <ol start="2" type="a">
 <li><strong>[2 pts]</strong> Use <code>fct_rev()</code> to reverse the order of the levels of <code>Visual.acuity</code> from (a). Find and save the count summary table as <code>visual_acuity_rev_count</code>.</li>
 </ol>

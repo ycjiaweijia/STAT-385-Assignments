@@ -1180,7 +1180,7 @@
     "href": "Quiz17/Quiz17.html#question-1",
     "title": "Quiz 17",
     "section": "Question 1",
-    "text": "Question 1\n\n[2 pts] Use fct_relevel() to reorder the levels of Visual.acuity to c(\"Very Poor\", \"Poor\", \"Average\", \"Good\", \"Excellent\"). Find and save the count summary table as visual_acuity_count.\n\n\n[2 pts] Use fct_rev() to reverse the order of the levels of Visual.acuity from (a). Find and save the count summary table as visual_acuity_rev_count."
+    "text": "Question 1\n\n[2 pts] Use fct_relevel() to reorder the levels of Visual.acuity to c(\"Very Poor\", \"Poor\", \"Average\", \"Good\", \"Excellent\"). Find and save the count summary table of Visual.acuity as visual_acuity_count. The table should look like:\n\n\n#&gt; # A tibble: 5 × 2\n#&gt;   Visual.acuity     n\n#&gt;   &lt;fct&gt;         &lt;int&gt;\n#&gt; 1 Very Poor         1\n#&gt; 2 Poor              4\n#&gt; 3 Average          15\n#&gt; 4 Good             53\n#&gt; 5 Excellent        67\n\n\n[2 pts] Use fct_rev() to reverse the order of the levels of Visual.acuity from (a). Find and save the count summary table as visual_acuity_rev_count."
   },
   {
     "objectID": "Quiz17/Quiz17.html#question-2",
