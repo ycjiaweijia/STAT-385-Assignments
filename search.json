@@ -1199,42 +1199,42 @@
   {
     "objectID": "Quiz18/Quiz18.html",
     "href": "Quiz18/Quiz18.html",
-    "title": "Quiz 18",
+    "title": "",
     "section": "",
     "text": "Please complete the following questions and submit a file named Quiz18.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify Urbana Police Incidents Data (2020-2023).csv. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz18.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
     "objectID": "Quiz18/Quiz18.html#quiz-18-instructions",
     "href": "Quiz18/Quiz18.html#quiz-18-instructions",
-    "title": "Quiz 18",
+    "title": "",
     "section": "",
     "text": "Please complete the following questions and submit a file named Quiz18.R.\nRemember:\n\nDo not rename external data files or edit them in any way. In other words, don’t modify Urbana Police Incidents Data (2020-2023).csv. Your code won’t work properly on my version of that data set, if you do.\nDo not use global paths in you script. Instead, use setwd() interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.\nDo not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.\nCheck to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.\nMake sure to name your submission Quiz18.R\n\nTip: before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs."
   },
   {
     "objectID": "Quiz18/Quiz18.html#data-source",
     "href": "Quiz18/Quiz18.html#data-source",
-    "title": "Quiz 18",
+    "title": "",
     "section": "Data Source:",
     "text": "Data Source:\nThe Urbana Open Data website Urbana Police Incidents Dataset Link contains police incident data from 1988 up until February 2023, which is when the Urbana Police began using a new computer system.\n\nIn this quiz, we use data exclusively from 2020 to 2023 Urbana Police Incidents Data (2020-2023).csv and concentrate only on the columns related to date and time."
   },
   {
     "objectID": "Quiz18/Quiz18.html#question-1",
     "href": "Quiz18/Quiz18.html#question-1",
-    "title": "Quiz 18",
+    "title": "",
     "section": "Question 1",
     "text": "Question 1\n\n[1 pt] Read in the CSV data as tibble incidents and select the columns from DATE.OCCURED to TIME.ARRIVED only (8 columns).\n\n\n\n\n\n\n\n\n[2 pts] Select the appropriate lubridate function to convert the variables DATE.OCCURRED, DATE.REPORTED, and DATE.ARRIVED from character to date type.\n\n\n\n\n\n\n\n\n\n[2 pts] Parse the day of the month the incidents occurred. Save the result as a vector named Day."
   },
   {
     "objectID": "Quiz18/Quiz18.html#question-2",
     "href": "Quiz18/Quiz18.html#question-2",
-    "title": "Quiz 18",
+    "title": "",
     "section": "Question 2",
     "text": "Question 2\n[3 pts] Please\n\ncombine the DATE.OCCURRED and TIME.OCCURRED as DATETIME.OCCURRED;\ncombine the DATE.REPORTED and TIME.REPORTED as DATETIME.REPORTED;\ncombine the DATE.ARRIVED and TIME.ARRIVED as DATETIME.ARRIVED.\n\n[Hint: We can combine the date “2022-01-04” and time “16:00:00” in the following way:\nymd_hms(paste(\"2022-01-04\", \"16:00:00\"), tz = \"America/Chicago\") ]"
   },
   {
     "objectID": "Quiz18/Quiz18.html#question-3",
     "href": "Quiz18/Quiz18.html#question-3",
-    "title": "Quiz 18",
+    "title": "",
     "section": "Question 3",
     "text": "Question 3\n\n[2 pts] Identify the top 5 incidents with the largest time difference between the time reported and the time occurred (i.e. DATETIME.REPORTED - DATETIME.OCCURRED or diff(DATETIME.REPORTED, DATETIME.OCCURRED)). Please make sure to use as.duration() to convert the difftime() object to a Duration object for easier interpretation. Name this difference variable report_occur_diff, and save the subset as a tibble named top5_rodiff.\n\n[Hint: You may use arrange() and head() or slice_head() functions.]\n\n\n\n\n\n\n\n\n[2 pts] Identify the top 5 incidents with the largest time difference between the time arrived and the time reported (i.e. DATETIME.ARRIVED - DATETIME.REPORTED or diff(DATETIME.ARRIVED, DATETIME.REPORTED)). Name this difference variable arrive_report_diff, and save the subset as a tibble named top5_ardiff."
   },
