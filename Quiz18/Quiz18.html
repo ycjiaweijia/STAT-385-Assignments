@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quiz17</title>
+<title>Quiz 18</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,35 +66,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -110,7 +81,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quiz-17-instructions" id="toc-quiz-17-instructions" class="nav-link active" data-scroll-target="#quiz-17-instructions">Quiz 17 Instructions</a></li>
+  <li><a href="#quiz-18-instructions" id="toc-quiz-18-instructions" class="nav-link active" data-scroll-target="#quiz-18-instructions">Quiz 18 Instructions</a></li>
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data Source:</a></li>
   <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
   <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
   <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
@@ -120,57 +92,92 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Quiz 18</h1>
+</div>
 
 
 
-<section id="quiz-17-instructions" class="level2">
-<h2 class="anchored" data-anchor-id="quiz-17-instructions">Quiz 17 Instructions</h2>
-<p>Please complete the following questions and submit a file named <strong>Quiz17.R</strong>.</p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="quiz-18-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="quiz-18-instructions">Quiz 18 Instructions</h2>
+<p>Please complete the following questions and submit a file named <strong>Quiz18.R</strong>.</p>
 <p><strong>Remember:</strong></p>
-<!-- -   Do not rename external data files or edit them in any way. In other words, don't modify *data.csv*. Your code won't work properly on my version of that data set, if you do. -->
 <ul>
-<li>Do not use global paths in you script. Instead, use <em>setwd()</em> interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.</li>
-<li>Do not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.</li>
-<li>Check to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.</li>
-<li>Make sure to name your submission <strong>Quiz17.R</strong></li>
+<li><p>Do not rename external data files or edit them in any way. In other words, don’t modify <em>Urbana Police Incidents Data (2020-2023).csv</em>. Your code won’t work properly on my version of that data set, if you do.</p></li>
+<li><p>Do not use global paths in you script. Instead, use <em>setwd()</em> interactively in the console, but do not forget to remove or comment out this part of the code before you submit. The directory structure of your machine is not the same as the one on Gradescope’s virtual machines.</p></li>
+<li><p>Do not destroy or overwrite any variables in your program. I check them only after I have run your entire program from start to finish.</p></li>
+<li><p>Check to make sure you do not have any syntax errors. Code that doesn’t run will get a very bad grade.</p></li>
+<li><p>Make sure to name your submission <strong>Quiz18.R</strong></p></li>
 </ul>
 <p><strong>Tip:</strong> before submitting, it might help to clear all the objects from your workspace, and then source your file before you submit it. This will often uncover bugs.</p>
-<div style="height:30px;">
-
-</div>
-<p><strong>Please download the CSV data <a href="survey_visual_device.csv">survey_visual_device</a> for this quiz.</strong></p>
+</section>
+<section id="data-source" class="level2">
+<h2 class="anchored" data-anchor-id="data-source">Data Source:</h2>
+<p>The Urbana Open Data website <a href="https://data.urbanaillinois.us/Police/Police-Incidents-from-1988-Feb-2023/uj4k-8xe8/about_data">Urbana Police Incidents Dataset Link</a> contains police incident data from 1988 up until February 2023, which is when the Urbana Police began using a new computer system.</p>
+<!-- Records before 1988 are incomplete - and could be data entry errors.  -->
+<p><strong>In this quiz, we use data exclusively from 2020 to 2023 <a href="Urbana Police Incidents Data (2020-2023).csv">Urbana Police Incidents Data (2020-2023).csv</a> and concentrate only on the columns related to date and time.</strong></p>
 </section>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <ol type="a">
-<li><strong>[2 pts]</strong> Use <code>fct_relevel()</code> to reorder the levels of <code>Visual.acuity</code> to <code>c("Very Poor", "Poor", "Average", "Good", "Excellent")</code>. Find and save the count summary table of <code>Visual.acuity</code> as <code>visual_acuity_count</code>. The table should look like:</li>
+<li><strong>[1 pt]</strong> Read in the CSV data as tibble <code>incidents</code> and select the columns from <code>DATE.OCCURED</code> to <code>TIME.ARRIVED</code> only (8 columns).</li>
 </ol>
-<div class="cell">
-<pre><code>#&gt; # A tibble: 5 × 2
-#&gt;   Visual.acuity     n
-#&gt;   &lt;fct&gt;         &lt;int&gt;
-#&gt; 1 Very Poor         1
-#&gt; 2 Poor              4
-#&gt; 3 Average          15
-#&gt; 4 Good             53
-#&gt; 5 Excellent        67</code></pre>
-</div>
+<!-- ```{r, message = FALSE, warning = FALSE} -->
+<!-- # Solution -->
+<!-- library(tidyverse) -->
+<!-- incidents <- read_csv("Urbana Police Incidents Data (2020-2023).csv") -->
+<!-- incidents <- incidents %>% select(DATE.OCCURRED:TIME.ARRIVED) -->
+<!-- ``` -->
 <ol start="2" type="a">
-<li><strong>[2 pts]</strong> Use <code>fct_rev()</code> to reverse the order of the levels of <code>Visual.acuity</code> from (a). Find and save the count summary table as <code>visual_acuity_rev_count</code>.</li>
+<li><strong>[2 pts]</strong> Select the appropriate <code>lubridate</code> function to convert the variables <code>DATE.OCCURRED</code>, <code>DATE.REPORTED</code>, and <code>DATE.ARRIVED</code> from <strong>character</strong> to <strong>date</strong> type.</li>
 </ol>
+<!-- ```{r} -->
+<!-- incidents <- incidents %>%  -->
+<!--   mutate(DATE.OCCURRED = mdy(DATE.OCCURRED), -->
+<!--          DATE.REPORTED = mdy(DATE.REPORTED), -->
+<!--          DATE.ARRIVED = mdy(DATE.ARRIVED) -->
+<!--   )  -->
+<!-- ``` -->
+<ol start="3" type="a">
+<li><strong>[2 pts]</strong> Parse the day of the month the incidents occurred. Save the result as a vector named <code>Day</code>.</li>
+</ol>
+<!-- ```{r} -->
+<!-- DAY <- day(incidents$DATE.OCCURRED) -->
+<!-- ``` -->
 <div style="height:30px;">
 
 </div>
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
-<p>On the <a href="https://humanbenchmark.com/tests/reactiontime/statistics">Reaction Time Statistics</a> page, it suggests: mobile device “taps” tend to be a bit slower than “clicks”. Is it true according to <code>survey_visual_device</code> data?</p>
-<ol type="a">
-<li><strong>[2 pts]</strong> Use <code>fct_collapse()</code> to combine the “Touch screen” and “Trackpad” categories into “tap”, and merge the remaining three categories (“Mouse”, “Keyboard”, “Game controller”) into “click”. Name the new variable as <code>tapclick</code>.</li>
-</ol>
-<ol start="2" type="a">
-<li><strong>[2 pts]</strong> Use <code>ggplot</code> to create a bar plot with <code>tapclick</code> on the x-axis, and <code>Reaction.time</code> on the y-axis. Label the <span class="math inline">\(x\)</span>-axis as <code>Input Device</code> and the <span class="math inline">\(y\)</span>-axis as <code>Reaction Time</code>. Save the plot as <code>tapclick_boxplot.png</code> using <code>ggsave(...,  width = 10, height = 8, dpi = 300)</code>.</li>
-</ol>
+<p><strong>[3 pts]</strong> Please</p>
+<ul>
+<li>combine the <code>DATE.OCCURRED</code> and <code>TIME.OCCURRED</code> as <code>DATETIME.OCCURRED</code>;</li>
+<li>combine the <code>DATE.REPORTED</code> and <code>TIME.REPORTED</code> as <code>DATETIME.REPORTED</code>;</li>
+<li>combine the <code>DATE.ARRIVED</code> and <code>TIME.ARRIVED</code> as <code>DATETIME.ARRIVED</code>.</li>
+</ul>
+<p>[Hint: We can combine the date “2022-01-04” and time “16:00:00” in the following way:</p>
+<p><code>ymd_hms(paste("2022-01-04", "16:00:00"), tz = "America/Chicago")</code> ]</p>
+<!-- ```{r} -->
+<!-- incidents <- incidents %>%  -->
+<!--   mutate(DATETIME.OCCURRED = ymd_hms(paste(DATE.OCCURRED, TIME.OCCURRED), tz = "America/Chicago"), -->
+<!--          DATETIME.REPORTED = ymd_hms(paste(DATE.REPORTED, TIME.REPORTED), tz = "America/Chicago"), -->
+<!--          DATETIME.ARRIVED = ymd_hms(paste(DATE.ARRIVED, TIME.ARRIVED), tz = "America/Chicago") -->
+<!--          )  -->
+<!-- ``` -->
 <div style="height:30px;">
 
 </div>
@@ -178,14 +185,52 @@ window.Quarto = {
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
 <ol type="a">
-<li><strong>[2 pts]</strong> Draw a bar chart of the frequency of different <code>Device.OS</code> values, ensuring the bars are arranged in descending order. You may use <code>fct_infreq()</code> to achieve this. Label the <span class="math inline">\(x\)</span>-axis as <code>Device OS</code> and the <span class="math inline">\(y\)</span>-axis as <code>Count</code>. Save the plot as <code>device_barchart.png</code> using <code>ggsave(...,  width = 10, height = 8, dpi = 300)</code>.</li>
+<li><strong>[2 pts]</strong> Identify the top 5 incidents with the largest time difference between the <em>time reported</em> and the <em>time occurred</em> (i.e.&nbsp;<code>DATETIME.REPORTED - DATETIME.OCCURRED</code> or <code>diff(DATETIME.REPORTED, DATETIME.OCCURRED)</code>). Please make sure to use <code>as.duration()</code> to convert the <code>difftime()</code> object to a <code>Duration</code> object for easier interpretation. Name this difference variable <code>report_occur_diff</code>, and save the subset as a tibble named <code>top5_rodiff</code>.</li>
 </ol>
+<p>[Hint: You may use <code>arrange()</code> and <code>head()</code> or <code>slice_head()</code> functions.]</p>
+<!-- ```{r} -->
+<!-- top5_rodiff <- incidents %>%  -->
+<!--   mutate(report_occur_diff = -->
+<!--            as.duration(DATETIME.REPORTED - DATETIME.OCCURRED)) %>%  -->
+<!--   arrange(desc(report_occur_diff)) %>%  -->
+<!--   slice_head(., n = 5) -->
+<!-- ``` -->
 <ol start="2" type="a">
-<li><strong>[2 pts]</strong> From the bar chart in (a), we can see several small counts. Please use <code>fct_lump_min()</code> to lumps levels appear fewer than 10 times as “Other”. Save the new variable as <code>device_lump</code> and count the frequency of each category. Save the summary table as <code>device_lump_count</code>.</li>
+<li><strong>[2 pts]</strong> Identify the top 5 incidents with the largest time difference between the <em>time arrived</em> and the <em>time reported</em> (i.e.&nbsp;<code>DATETIME.ARRIVED - DATETIME.REPORTED</code> or <code>diff(DATETIME.ARRIVED, DATETIME.REPORTED)</code>). Name this difference variable <code>arrive_report_diff</code>, and save the subset as a tibble named <code>top5_ardiff</code>.</li>
 </ol>
-<ol start="3" type="a">
-<li><strong>[2 pts]</strong> Draw a bar chart of the frequency of different <code>device_lump</code> values, ensuring the bars are in descending order. Label the <span class="math inline">\(x\)</span>-axis as <code>Device OS</code> and the <span class="math inline">\(y\)</span>-axis as <code>Count</code>. Save the plot as <code>device_lump_barchart.png</code> using <code>ggsave(...,  width = 10, height = 8, dpi = 300)</code></li>
-</ol>
+<!-- ```{r} -->
+<!-- top5_ardiff <- incidents %>%  -->
+<!--   mutate(arrive_report_diff =  -->
+<!--            as.duration(DATETIME.ARRIVED - DATETIME.REPORTED)) %>%  -->
+<!--   arrange(desc(arrive_report_diff)) %>%  -->
+<!--   slice_head(., n = 5)  -->
+<!-- ``` -->
+<!-- ```{r, echo = FALSE, eval = FALSE} -->
+<!-- # incidents %>%  -->
+<!-- #   mutate(occur_report_diff = -->
+<!-- #            as.duration(difftime(DATETIME.REPORTED,DATETIME.OCCURRED)), -->
+<!-- #          report_arrive_diff =  -->
+<!-- #            as.duration(difftime(DATETIME.ARRIVED,DATETIME.REPORTED))) %>%  -->
+<!-- #   arrange(occur_report_diff) %>%  -->
+<!-- #   head(., n=10) -->
+<!-- #  -->
+<!-- # incidents %>%  -->
+<!-- #   mutate(occur_report_diff = -->
+<!-- #            as.duration(difftime(DATETIME.REPORTED,DATETIME.OCCURRED)), -->
+<!-- #          report_arrive_diff =  -->
+<!-- #            as.duration(difftime(DATETIME.ARRIVED,DATETIME.REPORTED))) %>%  -->
+<!-- #   arrange(report_arrive_diff) %>%  -->
+<!-- #   head(., n=10)%>% print(width = Inf) -->
+<!-- ``` -->
+<!-- ## Question 4 -->
+<!-- ```{r} -->
+<!-- incidents %>%  -->
+<!--   mutate(occur_report_diff = -->
+<!--            as.duration(difftime(DATETIME.REPORTED, DATETIME.OCCURRED)), -->
+<!--          report_arrive_diff =  -->
+<!--            as.duration(difftime(DATETIME.ARRIVED,DATETIME.REPORTED))) %>% ggplot(aes(x=report_arrive_diff))+ -->
+<!--   geom_histogram() -->
+<!-- ``` -->
 
 
 </section>
