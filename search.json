@@ -333,7 +333,7 @@
     "href": "Quiz17/Quiz17.html#question-2",
     "title": "",
     "section": "Question 2",
-    "text": "Question 2\nOn the Reaction Time Statistics page, it suggests: mobile device “taps” tend to be a bit slower than “clicks”. Is it true according to survey_visual_device data?\n\n[2 pts] Use fct_collapse() to combine the “Touch screen” and “Trackpad” categories into “tap”, and merge the remaining three categories (“Mouse”, “Keyboard”, “Game controller”) into “click”. Name the new variable as tapclick.\n\n\n[2 pts] Use ggplot to create a bar plot with tapclick on the x-axis, and Reaction.time on the y-axis. Label the \\(x\\)-axis as Input Device and the \\(y\\)-axis as Reaction Time. Save the plot as tapclick_boxplot.png using ggsave(...,  width = 10, height = 8, dpi = 300)."
+    "text": "Question 2\nOn the Reaction Time Statistics page, it suggests: mobile device “taps” tend to be a bit slower than “clicks”. Is it true according to survey_visual_device data?\n\n[2 pts] Use fct_collapse() to combine the “Touch screen” and “Trackpad” categories into “tap”, and merge the remaining three categories (“Mouse”, “Keyboard”, “Game controller”) into “click”. Name the new variable as tapclick.\n\n\n[2 pts] Use ggplot to create a box-plot with tapclick on the x-axis, and Reaction.time on the y-axis. Label the \\(x\\)-axis as Input Device and the \\(y\\)-axis as Reaction Time. Save the plot as tapclick_boxplot.png using ggsave(...,  width = 10, height = 8, dpi = 300)."
   },
   {
     "objectID": "Quiz17/Quiz17.html#question-3",
