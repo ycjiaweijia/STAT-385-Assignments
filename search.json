@@ -1222,7 +1222,7 @@
     "href": "Quiz18/Quiz18.html#question-1",
     "title": "",
     "section": "Question 1",
-    "text": "Question 1\n\n[1 pt] Read in the CSV data as tibble incidents and select the columns from DATE.OCCURED to TIME.ARRIVED only (8 columns).\n\n\n\n\n\n\n\n\n[2 pts] Select the appropriate lubridate function to convert the variables DATE.OCCURRED, DATE.REPORTED, and DATE.ARRIVED from character to date type.\n\n\n\n\n\n\n\n\n\n[2 pts] Parse the day of the month the incidents occurred. Save the result as a vector named Day."
+    "text": "Question 1\n\n[1 pt] Read in the CSV data as tibble incidents and select the columns from DATE.OCCURRED to TIME.ARRIVED only (8 columns).\n\n\n\n\n\n\n\n\n[2 pts] Select the appropriate lubridate function to convert the variables DATE.OCCURRED, DATE.REPORTED, and DATE.ARRIVED from character to date type.\n\n\n\n\n\n\n\n\n\n[2 pts] Parse the day of the month the incidents occurred. Save the result as a vector named DAY."
   },
   {
     "objectID": "Quiz18/Quiz18.html#question-2",
