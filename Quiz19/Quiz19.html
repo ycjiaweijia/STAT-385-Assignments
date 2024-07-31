@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#quiz-19-instructions" id="toc-quiz-19-instructions" class="nav-link active" data-scroll-target="#quiz-19-instructions">Quiz 19 Instructions</a></li>
-  <li><a href="#shiny-app-design-question" id="toc-shiny-app-design-question" class="nav-link" data-scroll-target="#shiny-app-design-question">Shiny App Design Question</a></li>
+  <li><a href="#summary-statistics-shiny-app-design" id="toc-summary-statistics-shiny-app-design" class="nav-link" data-scroll-target="#summary-statistics-shiny-app-design">Summary Statistics Shiny App Design</a></li>
   </ul>
 </nav>
     </div>
@@ -142,13 +142,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="do">### We'll use some functions from stringr.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="shiny-app-design-question" class="level2">
-<h2 class="anchored" data-anchor-id="shiny-app-design-question">Shiny App Design Question</h2>
-<p>Please create a Shiny app that calculate the summary statistics of any input vector. Please use the following functions (<em>from Quiz 8, slightly modified</em>) for the design. When you design the app,</p>
+<section id="summary-statistics-shiny-app-design" class="level2">
+<h2 class="anchored" data-anchor-id="summary-statistics-shiny-app-design">Summary Statistics Shiny App Design</h2>
+<p>Please create a Shiny app that calculate the summary statistics of any input vector, which may contain missing values. Please use the following functions (<em>from Quiz 8, slightly modified</em>) for the design. When you design the app,</p>
 <ol type="1">
 <li><strong>[1 pt]</strong> Please use <code>textInput()</code> for the vector input (inputID: <code>vec_Input</code>). Please set the initial value as “1, 2, 3, 4, 5”.</li>
 <li><strong>[1 pt]</strong> Please add an actionButton (inputID: <code>calculate</code>).</li>
-<li><strong>[3 pt]</strong> Please create an output using <code>verbatimTextOutput()</code> with the outputID <code>summary_statistic</code> in the mainPanel of the page.</li>
+<li><strong>[3 pt]</strong> Please create an output using <code>verbatimTextOutput()</code> with the outputID: <code>summary_statistic</code> in the mainPanel of the page.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>squared_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
@@ -174,7 +174,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">num.missing =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(x))</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(stats)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">unlist</span>(<span class="fu">strsplit</span>(input<span class="sc">$</span>vec_Input, <span class="st">","</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
